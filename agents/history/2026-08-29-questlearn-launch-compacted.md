@@ -19,13 +19,13 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Three detailed game plans under `docs/games/`.
 - Design system, reusable components and responsive scenarios under `docs/design/`.
 - Static EduGames portal, toolkit and three playable prototypes under `site/`.
-- Twelve isolated component PNGs, fifteen responsive captures and four generated artwork sources under `docs/images/`.
+- Twelve isolated component PNGs, eighteen responsive captures and four generated artwork sources under `docs/images/`.
 - Node unit/content/site checks and GitHub Actions verification/deployment workflows.
 
 ## Verification
 
-- `npm run test:all`: 39 tests pass; local link check passes.
-- `npm run screenshots`: 27 PNGs captured and key mobile/desktop/mining/onboarding/flight/active-quest/short-landscape views visually reviewed.
+- `npm run test:all`: 44 tests pass; 104 local files pass the link check.
+- `npm run screenshots`: 30 PNGs captured and key mobile/desktop/mining/onboarding/flight/active-quest/English-Land/Learn/short-landscape views visually reviewed.
 - GitHub repository created at `https://github.com/fahimc/questlearn-uk`; Pages configured to deploy from Actions.
 
 ## EduGames portal and Netlify release
@@ -90,6 +90,18 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Added the child-facing question list and feedback policy in `docs/games/blocksmith-maths-quest-bank.md`, plus deterministic mobile welcome and flight captures.
 - Local and production browser checks verified all four onboarding steps, reopening help, flight toggling, the hidden-answer question brief and accepted-quest tracking. Netlify deploy `6a9346d42536cbbcf0d0bb12` published the final update.
 
+## Seeded terrain, learning support and English Land
+
+- Expanded the world to 121 × 121 columns. `site/games/blocksmith-terrain.js` uses fixed-seed value noise for a predefined but uneven -1 to 4-height terrain; reservations and a one-cell ring around all quests remain level.
+- Extended digging to layered ground down to bedrock with gravity support at each exposed block height. Terrain, fixtures, flowers and rune markers share integer columns and terrain-aware heights.
+- Added `site/games/blocksmith-english-quests.js` with 10 Years 3–5 spelling, homophone, prefix, suffix and punctuation builds, taking the progression to 30 quests total.
+- Added 298 deterministic buried letter/punctuation deposits in English Land. Glowing surface runes point to deposits without showing the symbol; mined symbols enter a persistent, responsive letter-stone tray and can be placed into ordered word lines.
+- Every maths and English quest now has learner-controlled Learn and Hint support. Learn uses different examples to teach the method; failed checks do not automatically expose the hint or internal answer.
+- Accepting a quest activates a pulsing perimeter, stronger pad glow and more obvious beacon bob. The persistent quest tile continues to reopen the brief.
+- Added `docs/games/blocksmith-english-quest-bank.md`, updated the world and responsive documentation, and added English Land, mobile Learn and highlighted-pad screenshots.
+- `npm run test:all` passes 44 tests and 104-file link validation; `npm run screenshots` captures 30 baselines. Desktop, 390 × 844 mobile and 844 × 390 short landscape were visually reviewed.
+- Netlify production deploy `6a934dea0b60df96d21b87ab` is live at `https://edugames-189.netlify.app/games/blocksmith.html`; live checks returned 200 and confirmed the 30-quest journal, Learn/Hint markup, English quest bank and terrain seed module.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -98,4 +110,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-Gravity, device-aware onboarding, flight and the twenty-question maths progression are live on Netlify and ready for the matching GitHub Pages release. Next product phase is horizontal voxel collision, saved constructions and teacher evidence export.
+Seeded uneven terrain, layered mining, 20 maths quests, 10 English quests, buried letter stones, Learn/Hint support and active-pad highlighting are live on Netlify and ready for the matching GitHub Pages release. Next product phase is horizontal voxel collision, saved constructions and teacher evidence export.

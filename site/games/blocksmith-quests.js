@@ -1,3 +1,5 @@
+import { blocksmithEnglishQuests } from './blocksmith-english-quests.js';
+
 export const materialNames={moss:'moss',wood:'wood',stone:'stone',glass:'glass'};
 
 const slots=[
@@ -32,7 +34,21 @@ const questions=[
   {id:'third-towers-36',title:'Sky Fraction Towers',year:'Year 5',age:'9–10',strand:'Fractions',objectiveId:'ENG-M-Y5-FRA-02',prompt:'Use 36 stone blocks for 2 towers. One is one third of the total; the other is two thirds.',targetBlocks:36,materialPlan:{stone:36},shape:{type:'tower-heights',heights:[12,24],label:'the two fraction-sized towers'},reward:{wood:6,glass:4},collectHint:'Dig exposed stone and visit the stone quarry.',hint:'Find one third, then double it for the taller tower.',success:'The towers are 12 and 24 blocks high: one third and two thirds.'}
 ];
 
-export const blocksmithQuests=questions.map((quest,index)=>({...quest,number:String(index+1).padStart(2,'0'),...slots[index],colour:colours[index%colours.length]}));
+const mathsLessons={
+  Fractions:{title:'Fractions of a quantity',text:'The denominator tells you how many equal groups to make. The numerator tells you how many of those groups to use.',examples:['One half of 10 is one of 2 equal groups.','Two thirds of 12 uses 2 of 3 equal groups.']},
+  Multiplication:{title:'Arrays and equal rows',text:'An array has equal rows. Divide the total by the number of rows to find how many blocks belong in each row.',examples:['15 blocks in 3 rows gives 5 per row.','20 blocks in 5 rows gives 4 per row.']},
+  Division:{title:'Equal sharing',text:'Division shares a total equally. Use a multiplication fact to check that every group is the same size.',examples:['18 shared between 3 groups gives 6 each.','24 shared between 6 groups gives 4 each.']},
+  Perimeter:{title:'Measuring perimeter',text:'Perimeter is the distance around the outside. Build only the border and count each corner once.',examples:['A 4 by 2 outline uses 8 edge blocks.','A 3 by 3 outline uses 8 edge blocks.']},
+  Area:{title:'Measuring area',text:'Area counts the equal squares inside a flat shape. Multiply its row length by its number of rows.',examples:['A 3 by 5 floor has area 15.','A 2 by 7 floor has area 14.']},
+  Decimals:{title:'Tenths as decimals',text:'A digit in the tenths place describes parts out of ten. Turn the decimal into tenths before finding the quantity.',examples:['0.5 means five tenths.','0.7 means seven tenths.']},
+  'Factor pairs':{title:'Using factor pairs',text:'A factor pair contains two whole numbers that multiply to make the total. Rectangle side lengths form a factor pair.',examples:['3 and 5 are factors of 15.','4 and 6 are factors of 24.']},
+  Percentages:{title:'Percentages of quantities',text:'Percent means out of one hundred. Use a helpful equivalent fraction or find 10% and scale it.',examples:['50% is the same as one half.','10% of 40 is 4.']},
+  Volume:{title:'Cuboid volume',text:'A solid cuboid is made from equal layers. Multiply length by width to find one layer, then use the total to find the height.',examples:['A 3 by 3 layer contains 9 blocks.','Two 4 by 2 layers contain 16 blocks.']}
+};
+
+export const blocksmithMathQuests=questions.map((quest,index)=>({...quest,subject:'Maths',learn:mathsLessons[quest.strand],number:String(index+1).padStart(2,'0'),...slots[index],colour:colours[index%colours.length]}));
+export { blocksmithEnglishQuests };
+export const blocksmithQuests=[...blocksmithMathQuests,...blocksmithEnglishQuests];
 
 export function isInsideQuestZone(quest,x,z){return x>=quest.zone.x&&x<quest.zone.x+quest.zone.width&&z>=quest.zone.z&&z<quest.zone.z+quest.zone.depth}
 export function countMaterials(blocks){return blocks.reduce((counts,block)=>{counts[block.type]=(counts[block.type]||0)+1;return counts},{})}
@@ -40,16 +56,18 @@ export function countMaterials(blocks){return blocks.reduce((counts,block)=>{cou
 function dimensions(blocks){const xs=blocks.map(block=>block.x),ys=blocks.map(block=>block.y),zs=blocks.map(block=>block.z);return{x:Math.max(...xs)-Math.min(...xs)+1,y:Math.max(...ys)-Math.min(...ys)+1,z:Math.max(...zs)-Math.min(...zs)+1,minX:Math.min(...xs),maxX:Math.max(...xs),minZ:Math.min(...zs),maxZ:Math.max(...zs)}}
 function matchesBase(size,shape){return(size.x===shape.width&&size.z===shape.depth)||(size.x===shape.depth&&size.z===shape.width)}
 function matchesTowerHeights(blocks,expected){const columns=new Map();blocks.forEach(block=>{const key=`${block.x}|${block.z}`;if(!columns.has(key))columns.set(key,[]);columns.get(key).push(block.y)});if(columns.size!==expected.length)return false;const actual=[];let base=null;for(const ys of columns.values()){ys.sort((a,b)=>a-b);if(base===null)base=ys[0];if(ys[0]!==base||ys.some((y,index)=>y!==base+index))return false;actual.push(ys.length)}const wanted=[...expected].sort((a,b)=>a-b);return actual.sort((a,b)=>a-b).every((height,index)=>height===wanted[index])}
-function shapeIsCorrect(quest,blocks){if(quest.shape.type==='count')return true;if(quest.shape.type==='tower-heights')return matchesTowerHeights(blocks,quest.shape.heights);const size=dimensions(blocks);if(size.y!==quest.shape.layers||!matchesBase(size,quest.shape))return false;if(quest.shape.type==='solid-box')return size.x*size.y*size.z===blocks.length;if(quest.shape.type==='outline')return blocks.every(block=>block.y===blocks[0].y&&(block.x===size.minX||block.x===size.maxX||block.z===size.minZ||block.z===size.maxZ));return false}
+function matchesWordLine(blocks,expected){if(!blocks.every(block=>block.type==='letter'&&typeof block.symbol==='string'))return false;const sameX=blocks.every(block=>block.x===blocks[0].x),sameZ=blocks.every(block=>block.z===blocks[0].z),sameY=blocks.every(block=>block.y===blocks[0].y);if(!sameY||(!sameX&&!sameZ))return false;const ordered=[...blocks].sort((a,b)=>sameX?a.z-b.z:a.x-b.x).map(block=>block.symbol).join('');return ordered===expected||[...ordered].reverse().join('')===expected}
+function shapeIsCorrect(quest,blocks){if(quest.shape.type==='count')return true;if(quest.shape.type==='tower-heights')return matchesTowerHeights(blocks,quest.shape.heights);if(quest.shape.type==='word-line')return matchesWordLine(blocks,quest.shape.expectedSymbols);const size=dimensions(blocks);if(size.y!==quest.shape.layers||!matchesBase(size,quest.shape))return false;if(quest.shape.type==='solid-box')return size.x*size.y*size.z===blocks.length;if(quest.shape.type==='outline')return blocks.every(block=>block.y===blocks[0].y&&(block.x===size.minX||block.x===size.maxX||block.z===size.minZ||block.z===size.maxZ));return false}
 
 export function validateQuestBuild(quest,blocks){
-  if(!quest||!Array.isArray(blocks)||blocks.some(block=>!Number.isInteger(block.x)||!Number.isInteger(block.y)||!Number.isInteger(block.z)||!materialNames[block.type]))throw new TypeError('Quest and valid block records are required');
+  if(!quest||!Array.isArray(blocks)||blocks.some(block=>!Number.isInteger(block.x)||!Number.isInteger(block.y)||!Number.isInteger(block.z)||(!materialNames[block.type]&&!(block.type==='letter'&&/^[A-Z?!',.]$/.test(block.symbol||'')))))throw new TypeError('Quest and valid block records are required');
   const unique=new Set(blocks.map(block=>`${block.x}|${block.y}|${block.z}`));if(unique.size!==blocks.length)throw new TypeError('Build blocks must use unique cells');
   const difference=blocks.length-quest.targetBlocks;
-  if(difference<0)return{complete:false,difference,message:`You have placed ${blocks.length}. Add ${Math.abs(difference)} more ${Math.abs(difference)===1?'block':'blocks'}, then check your maths.`};
-  if(difference>0)return{complete:false,difference,message:`You have placed ${blocks.length}. Remove ${difference} ${difference===1?'block':'blocks'}, then check your maths.`};
+  if(difference<0)return{complete:false,difference,message:`You have placed ${blocks.length}. Add ${Math.abs(difference)} more ${Math.abs(difference)===1?'block':'blocks'}, then check again.`};
+  if(difference>0)return{complete:false,difference,message:`You have placed ${blocks.length}. Remove ${difference} ${difference===1?'block':'blocks'}, then check again.`};
+  if(quest.subject==='English'){if(!shapeIsCorrect(quest,blocks))return{complete:false,difference:0,message:'The letters or punctuation do not complete the quest yet. Rearrange them, or open the quest for Learn and Hint.'};return{complete:true,difference:0,message:quest.success}}
   const counts=countMaterials(blocks);const materialsCorrect=Object.entries(quest.materialPlan).every(([type,needed])=>(counts[type]||0)===needed)&&Object.keys(counts).every(type=>Boolean(quest.materialPlan[type]));
-  if(!materialsCorrect)return{complete:false,difference:0,message:`The total is right, but the material fractions do not match. ${quest.hint}`};
-  if(!shapeIsCorrect(quest,blocks))return{complete:false,difference:0,message:`You have the right materials. Rearrange them as ${quest.shape.label}. ${quest.hint}`};
+  if(!materialsCorrect)return{complete:false,difference:0,message:'The total is right, but the material fractions do not match. Open the quest for Learn or Hint if you are stuck.'};
+  if(!shapeIsCorrect(quest,blocks))return{complete:false,difference:0,message:`You have the right materials. Rearrange them as ${quest.shape.label}, or open the quest for Learn and Hint.`};
   return{complete:true,difference:0,message:quest.success};
 }

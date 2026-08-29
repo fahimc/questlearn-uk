@@ -19,6 +19,9 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Blocksmith device-aware welcome, mobile, 390 × 844 | [PNG](responsive/blocksmith-welcome-mobile.png) |
 | Blocksmith mobile flight controls, 390 × 844 | [PNG](responsive/blocksmith-flight-mobile.png) |
 | Blocksmith touch short landscape, 844 × 390 | [PNG](responsive/blocksmith-short-landscape.png) |
+| Blocksmith uneven English Land, 1280 × 720 | [PNG](responsive/blocksmith-english-desktop.png) |
+| Blocksmith Learn support, mobile, 390 × 844 | [PNG](responsive/blocksmith-learn-mobile.png) |
+| Blocksmith pulsing active pad, desktop, 1280 × 720 | [PNG](responsive/blocksmith-highlight-desktop.png) |
 | Skybound short landscape, 844 × 390 | [PNG](responsive/skybound-short-landscape.png) |
 | Chronicle desktop, 1280 × 720 | [PNG](responsive/chronicle-desktop.png) |
 

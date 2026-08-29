@@ -23,6 +23,7 @@ First-person/third-person 3D voxel interaction, low input latency, strong placem
 ## Learning integration
 
 - **Maths:** arrays, multiplication, perimeter/area/volume, fractions of plots, money/budget, coordinates, scale and data.
+- **English:** spelling patterns, statutory words, homophones, prefixes, suffixes and punctuation assembled from mined letter stones.
 - **Science:** plants, habitats, rocks/materials, states of matter, circuits, forces and fair tests.
 - **Geography/history:** maps, settlements, rivers/biomes/resources and evidence-constrained historical builds.
 - **Computing/D&T:** automation sequences, variables, sensors, structures and iterative evaluation.
@@ -43,11 +44,13 @@ No destruction of hours of work. Failed simulation freezes, highlights observabl
 
 ## Playable prototype
 
-The browser prototype is a small free-roaming first-person 3D voxel world. The learner can mine the grass surface for moss, dig the exposed stone layer, chop voxel trees for wood, clear leaves and harvest glass crystals. Natural changes persist on the device. Colour-coded resource piles still regrow so exploration or a mistake cannot permanently block progress. Placing a block spends that material; removing an unfinished block returns it.
+The browser prototype is a free-roaming first-person 3D voxel world split into Numberland and English Land. The learner can mine the turf for moss, dig through multiple exposed layers, fall into excavated holes, chop voxel trees for wood, clear leaves and harvest glass crystals. In English Land, glowing rune markers indicate buried stone blocks carrying letters or punctuation. Natural changes and collected symbols persist on the device. Colour-coded resource piles still regrow so exploration or a mistake cannot permanently block progress. Placing a block spends that material or symbol; removing an unfinished block returns it.
 
-The world layout uses one integer-column reservation map. River tiles, one-cell banks, quest pads, beacons, resource patches and signs, trees, rocks, boundary hedges and the spawn area are allocated before decorative flowers are added. A validation test fails if two fixtures claim the same column. Quest beacons sit outside their pads, and only the active quest may place blocks on its reserved pad.
+The terrain is procedural but predefined: a fixed seed and value-noise height function produce the same uneven Minecraft-like hills on every fresh load. Terrain ranges across several block heights while all reserved fixtures and a one-tile ring around every quest remain level. The world layout uses one integer-column reservation map. River tiles, one-cell banks, quest pads, beacons, resource patches and signs, trees, rocks, boundary hedges and the spawn area are allocated before decorative flowers and buried letters are added. Decorations use their column's terrain height. A validation test fails if two fixtures claim the same column. Quest beacons sit outside their pads, and only the active quest may place blocks on its reserved pad.
 
-Twenty beacons form a visible Years 3–5 progression. A learner reads a short question, works out the missing material quantities or dimensions, collects the named materials, builds inside the glowing pad and asks the game to check the actual block positions and materials. The child-facing brief and journal never render the internal answer plan. Feedback gives a recoverable next action without revealing derived material counts before success. Correct builds remain as monuments and award a small bundle for free building. The complete progression is documented in [`blocksmith-maths-quest-bank.md`](blocksmith-maths-quest-bank.md).
+Thirty beacons form a visible Years 3–5 progression: 20 maths quests and 10 English quests. A learner reads a short question, collects the needed blocks, builds inside the active pad and asks the game to check the actual block positions, materials or symbols. The accepted quest gains a bright pulsing boundary and its beacon bobs more strongly so the build site is unmistakable. The child-facing brief and journal never render the internal answer plan. Feedback gives a recoverable next action without revealing derived counts or spelling before success. Correct builds remain as monuments and award a small bundle for free building. The complete progressions are documented in [`blocksmith-maths-quest-bank.md`](blocksmith-maths-quest-bank.md) and [`blocksmith-english-quest-bank.md`](blocksmith-english-quest-bank.md).
+
+Every quest includes **Learn this** and **Show a hint** controls. Learn explains the transferable concept with different worked examples; Hint gives a smaller cue about the current task. Neither is forced open, and failed checks point back to support without automatically showing it.
 
 After a quest is accepted, a persistent current-quest tile stays visible on mobile and desktop. It shows the quest number and live placed-block count; tapping it reopens the complete child-friendly brief without losing or restarting build progress.
 
@@ -57,13 +60,13 @@ After a quest is accepted, a persistent current-quest tile stays visible on mobi
 | Year 4, ages 8–9 | Fractions, decimals, factor pairs, perimeter and area | Mixed-material builds, outlines, filled rectangles and fraction towers |
 | Year 5, ages 9–10 | Percentages, fraction scaling and cuboid volume | Percentage material mixes, tall ratio towers and multi-layer cuboids |
 
-This sequence follows the research in [`docs/research/england-years-3-5.md`](../research/england-years-3-5.md): Year 3 uses simple fractions and multiplication representations, Year 4 applies perimeter and fractions, and Year 5 applies volume and percentages. It also follows the project feedback ladder: the game describes the observable mismatch and allows immediate revision instead of giving only correct/incorrect effects.
+This sequence follows the research in [`docs/research/england-years-3-5.md`](../research/england-years-3-5.md): Year 3 uses simple fractions and multiplication representations plus lower-Key-Stage-2 spelling and punctuation; Year 4 applies perimeter, fractions, homophones and word structure; and Year 5 applies volume, percentages and upper-Key-Stage-2 spelling patterns. It also follows the project feedback ladder: the game describes the observable mismatch and allows immediate revision instead of giving only correct/incorrect effects.
 
 Desktop supports pointer-lock mouse look, WASD, gravity, jump, place/dig, numbered hotbar keys and optional flight with F, Space to rise and Shift to descend. Touch devices receive drag-to-look, movement, jump, place, dig and a dedicated flight toggle; double-tapping jump also toggles flight. Players fall into one- and two-block mined holes and can jump or fly back out. A four-step device-aware welcome guide explains movement, looking, mining, placing, materials, beacons, jumping and flight, and can be reopened from the HUD. Material inventory and quest completion are stored locally. Prototype: [`site/games/blocksmith.html`](../../site/games/blocksmith.html).
 
 ## Production MVP boundary
 
-Add collision/terrain physics, authored tutorials, saved player constructions, science/design build validators, accessibility alternatives to first-person navigation, richer original textures/audio and teacher evidence export. The prototype uses Three.js from a pinned CDN module; production should bundle and integrity-audit the engine.
+Add full body collision, saved player constructions, science/design build validators, accessibility alternatives to first-person navigation, richer original textures/audio and teacher evidence export. The prototype uses Three.js from a pinned CDN module; production should bundle and integrity-audit the engine.
 
 ## Risks and tests
 
