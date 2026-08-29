@@ -14,6 +14,7 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Blocksmith narrow mobile, 341 × 772 | [PNG](responsive/blocksmith-narrow-mobile.png) |
 | Blocksmith mobile inventory, 341 × 772 | [PNG](responsive/blocksmith-inventory-mobile.png) |
 | Blocksmith desktop world, 1440 × 900 | [PNG](responsive/blocksmith-desktop.png) |
+| Blocksmith low-power tablet, 1024 × 600 | [PNG](responsive/blocksmith-low-power-tablet.png) |
 | Blocksmith mineable tree view, 1280 × 720 | [PNG](responsive/blocksmith-mining-desktop.png) |
 | Blocksmith mobile quest, 390 × 844 | [PNG](responsive/blocksmith-quest-mobile.png) |
 | Blocksmith active quest, mobile, 390 × 844 | [PNG](responsive/blocksmith-active-mobile.png) |

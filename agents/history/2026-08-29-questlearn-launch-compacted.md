@@ -119,6 +119,16 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Added a regression test that fails when any English target of four or more symbols appears in its title or prompt. `npm run test:all` passes 47 tests and the 108-file link check.
 - Netlify deploy `6a93589a2ecfe64740cf728f` is live; the production quest module contains the new inference prompt and no longer contains `Because Bridge` or the answer-revealing sentence.
 
+## Chromebook and tablet performance pass
+
+- Added `site/games/blocksmith-performance.js`, a renderer-independent quality selector. ChromeOS, coarse-pointer devices, devices with four or fewer hardware threads and devices reporting 4 GB memory or less automatically use the low-power tier; `?quality=low|high` gives deterministic test overrides.
+- Split the 121 × 121 procedural surface into 16 × 16 instanced terrain chunks and cull chunks outside the active draw radius. Trees, leaves, rocks, resource piles, flowers, hedges and riverbanks now use shared instance batches while individual mineable resources retain their inventory, persistence and renewable behaviour.
+- Removed 30 quest PointLights, bounded desktop DPR at 1.35, reduced shadow cost, and configured the low tier for DPR 1, no antialiasing, no shadows, a 42-block draw distance and a 45 FPS target.
+- Throttled radar, labels, nearest-quest detection and world visibility to 8 Hz; distant animals stop animating, overlays render at 20 FPS, and hidden tabs stop rendering. Surface collision now probes only the player's voxel column instead of scanning every natural and placed block each frame.
+- Added a 1024 × 600 low-power tablet baseline at `docs/images/responsive/blocksmith-low-power-tablet.png` and documented the runtime path in the game, engine and responsive-layout notes.
+- `npm run test:all` passes 49 tests and validates 110 local links. Syntax checks pass. Local and production low-tier runtime checks both report 57 draw calls and 74,340 triangles for the initial world view.
+- Netlify production deploy `6a935bf9df6f2933a38b6c92` is live at `https://edugames-189.netlify.app/games/blocksmith.html`; the live module contains batching and no Three.js PointLights.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -127,4 +137,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The compact mobile drawer, unmarked multi-depth whole-world letter hunt, richer vegetation and roaming voxel wildlife are live on Netlify with 46 passing tests and 33 visual baselines. Next product phase is horizontal voxel/animal collision, saved constructions and teacher evidence export.
+The Chromebook/tablet performance build is live on Netlify with 49 passing tests, 110 validated links and 34 visual baselines. Low-power initial rendering is 57 calls / 74,340 triangles while mining, building, procedural terrain, quests and animals remain enabled. Next product phase is real-device sustained frame-time profiling, horizontal voxel/animal collision, saved constructions and teacher evidence export.

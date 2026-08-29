@@ -37,6 +37,8 @@ flowchart TB
 
 Detect broad capability from frame timing, not device fingerprinting. Offer a manual “simpler graphics” control.
 
+Blocksmith's current prototype maps capable desktops to its richer tier and maps coarse-pointer devices, ChromeOS, four-core-or-lower devices and devices reporting 4 GB memory or less to its low-power tier. The runtime uses procedural, seeded content in both tiers; quality changes only rendering cost. Terrain is divided into cullable instance chunks, repeated voxel props share instance batches, shadows and pixel density are bounded, distant actors stop animating, and non-render UI work is throttled. Query-string tier overrides make browser profiling and screenshot regression deterministic. A production build should add sustained frame-time sampling and expose a child-friendly graphics switch without changing saved world data.
+
 ## Content packaging
 
 Each game bundle contains manifest, engine adapter, scenes, localised strings, asset catalogue with licences, tutorial, accessibility declaration and integrity hash. Learning content remains separate so the same game can run England Year 3 or Wales Progression Step 2–3 packs.
@@ -49,4 +51,3 @@ Each game bundle contains manifest, engine adapter, scenes, localised strings, a
 - Visual: 320×800, 390×844, 768×1024, 1280×720 and extreme 844×390.
 - Device: representative low-end Android, iPad class tablet, Chromebook and keyboard-only desktop.
 - Learning: educator content review plus child usability and transfer studies.
-
