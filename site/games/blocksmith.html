@@ -22,14 +22,16 @@
       <div class="voxel-status">
         <span class="world-pill material-pill"><i>◆</i> <b data-materials>0</b> <span data-selected-material>moss</span></span>
         <span class="world-pill quest-status"><i>?</i> <b data-active-quest>Explore for a quest</b></span>
+        <span class="world-pill flight-pill" data-flight-status hidden><i>↟</i> <b>Flying</b></span>
       </div>
+      <button class="voxel-icon-button" type="button" data-help aria-label="Open getting started guide">?</button>
       <button class="voxel-icon-button" type="button" data-pause aria-label="Pause game">Ⅱ</button>
     </header>
 
     <div class="quest-radar" aria-hidden="true"><span>N</span><i data-radar-dot></i><b data-distance>Find a beacon</b></div>
     <button class="active-quest-chip" type="button" data-active-quest-button hidden aria-haspopup="dialog" aria-label="Review current quest">
       <span class="active-quest-glyph" data-active-quest-number>01</span>
-      <span class="active-quest-copy"><small>Current quest</small><b data-active-quest-short>Quest title</b><em data-active-quest-progress>0/12 blocks</em></span>
+      <span class="active-quest-copy"><small>Current quest</small><b data-active-quest-short>Quest title</b><em data-active-quest-progress>0/24 blocks</em></span>
     </button>
     <div class="crosshair" aria-hidden="true"><i></i><i></i></div>
     <div class="world-message" data-world-message role="status" aria-live="polite"></div>
@@ -45,17 +47,39 @@
 
     <div class="voxel-touch" aria-label="Touch game controls">
       <div class="move-pad"><button type="button" data-move="forward" aria-label="Move forward">▲</button><button type="button" data-move="left" aria-label="Move left">◀</button><button type="button" data-move="back" aria-label="Move backwards">▼</button><button type="button" data-move="right" aria-label="Move right">▶</button></div>
-      <div class="action-pad"><button type="button" data-action="remove" aria-label="Dig or collect block">⛏</button><button type="button" data-action="place" aria-label="Place selected block">＋</button><button type="button" data-action="jump" aria-label="Jump">↑</button></div>
+      <div class="action-pad"><button type="button" data-action="remove" aria-label="Dig or collect block">⛏</button><button type="button" data-action="place" aria-label="Place selected block">＋</button><button type="button" data-action="fly" aria-label="Turn flying on or off">↟</button><button type="button" data-action="jump" aria-label="Jump or rise while flying">↑</button></div>
     </div>
 
     <section class="world-intro" data-intro aria-labelledby="intro-title">
       <div class="intro-card">
-        <p class="voxel-eyebrow">A tiny world of big ideas</p>
-        <h1 id="intro-title">Mine. Solve. Build.</h1>
-        <p>Explore the island like a block-building world: chop tree trunks for wood, clear leaves and dig grass to uncover stone. Crystal patches provide glass. Each beacon gives you a Years 3–5 maths build that needs the right blocks and shape.</p>
-        <div class="control-summary"><span><kbd>WASD</kbd> move</span><span><kbd>Mouse</kbd> look</span><span><kbd>Left click</kbd> mine</span><span><kbd>Right click</kbd> place</span></div>
-        <button class="voxel-primary" type="button" data-start>Enter the world</button>
-        <small>Original voxel prototype · no account or personal data required</small>
+        <div class="tour-progress"><span data-tour-progress>1 of 4</span><i data-tour-dots aria-hidden="true">●○○○</i></div>
+        <article class="tour-step" data-tour-step>
+          <p class="voxel-eyebrow">Welcome to Blocksmith Worlds</p>
+          <h1 id="intro-title">Mine. Solve. Build.</h1>
+          <p>Roam a block world, collect materials and discover 20 maths quests for ages 7–10. The blocks you build are your answer.</p>
+        </article>
+        <article class="tour-step" data-tour-step hidden>
+          <p class="voxel-eyebrow">Step 2 · Move and look</p>
+          <h2>Explore your way.</h2>
+          <div class="device-guide desktop-guide"><b><kbd>W A S D</kbd> walk</b><span>Move the mouse to look. Press <kbd>Space</kbd> to jump.</span></div>
+          <div class="device-guide touch-guide"><b>Arrow buttons walk</b><span>Drag anywhere on the world to look. Tap <strong>↑</strong> to jump.</span></div>
+        </article>
+        <article class="tour-step" data-tour-step hidden>
+          <p class="voxel-eyebrow">Step 3 · Mine and make</p>
+          <h2>Every block matters.</h2>
+          <div class="device-guide desktop-guide"><b><kbd>Left click</kbd> mines</b><span><kbd>Right click</kbd> places the selected block. Keys <kbd>1–4</kbd> change material.</span></div>
+          <div class="device-guide touch-guide"><b><strong>⛏</strong> mines · <strong>＋</strong> places</b><span>Tap the hotbar to choose moss, wood, stone or glass.</span></div>
+          <p>Dig grass to drop into the hole and uncover stone. Chop trees for wood and mine crystal blocks for glass.</p>
+        </article>
+        <article class="tour-step" data-tour-step hidden>
+          <p class="voxel-eyebrow">Step 4 · Quests and flying</p>
+          <h2>Build the answer.</h2>
+          <div class="device-guide desktop-guide"><b><kbd>E</kbd> opens a beacon · <kbd>F</kbd> flies</b><span>While flying, hold <kbd>Space</kbd> to rise and <kbd>Shift</kbd> to descend.</span></div>
+          <div class="device-guide touch-guide"><b>Tap a beacon · <strong>↟</strong> flies</b><span>Tap jump twice quickly to toggle flight too. Tap <strong>↑</strong> while flying to rise.</span></div>
+          <p>Read the question, work out the block mix or shape, build it on the glowing pad, then check your work.</p>
+        </article>
+        <footer class="tour-actions"><button class="voxel-secondary" type="button" data-tour-back hidden>Back</button><button class="voxel-primary" type="button" data-tour-next>Next</button><button class="voxel-primary" type="button" data-start hidden>Enter the world</button></footer>
+        <small>Open this guide again at any time with the ? button.</small>
       </div>
     </section>
 
@@ -63,7 +87,7 @@
       <form method="dialog" class="quest-card">
         <header><div class="quest-glyph" data-quest-number>01</div><div><span data-quest-objective></span><h2 data-quest-title>Quest title</h2></div><button class="dialog-close" value="cancel" aria-label="Close quest">×</button></header>
         <div class="quest-copy"><p class="quest-kicker">Build challenge</p><p data-quest-prompt></p></div>
-        <div class="quest-rule"><span class="block-swatch swatch-quest"></span><div><b data-quest-rule>Build plan</b><p data-quest-collect>Mine the world to collect the blocks you need, then build inside the glowing pad.</p></div></div>
+        <div class="quest-rule"><span class="block-swatch swatch-quest"></span><div><b data-quest-rule>Build your answer</b><p data-quest-collect>Mine the world to collect the blocks you need, then build inside the glowing pad.</p></div></div>
         <p class="quest-hint" data-quest-hint></p>
         <footer><button class="voxel-secondary" value="cancel">Keep exploring</button><button class="voxel-primary" type="button" data-accept>Accept build quest</button></footer>
       </form>
@@ -74,7 +98,7 @@
     </dialog>
 
     <aside id="questJournal" class="quest-journal" data-journal aria-label="Quest journal">
-      <header><div><span>World journal</span><h2>Build quests</h2></div><b><i data-complete-count>0</i>/6</b></header>
+      <header><div><span>World journal</span><h2>Build quests</h2></div><b><i data-complete-count>0</i>/20</b></header>
       <div data-quest-list></div>
       <button type="button" data-close-journal>Close journal</button>
     </aside>

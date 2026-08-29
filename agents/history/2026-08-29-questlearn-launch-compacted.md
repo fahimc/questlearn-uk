@@ -19,13 +19,13 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Three detailed game plans under `docs/games/`.
 - Design system, reusable components and responsive scenarios under `docs/design/`.
 - Static EduGames portal, toolkit and three playable prototypes under `site/`.
-- Twelve isolated component PNGs, thirteen responsive captures and four generated artwork sources under `docs/images/`.
+- Twelve isolated component PNGs, fifteen responsive captures and four generated artwork sources under `docs/images/`.
 - Node unit/content/site checks and GitHub Actions verification/deployment workflows.
 
 ## Verification
 
-- `npm run test:all`: 33 tests pass; local link check passes.
-- `npm run screenshots`: 25 PNGs captured and key mobile/desktop/mining/active-quest/short-landscape views visually reviewed.
+- `npm run test:all`: 39 tests pass; local link check passes.
+- `npm run screenshots`: 27 PNGs captured and key mobile/desktop/mining/onboarding/flight/active-quest/short-landscape views visually reviewed.
 - GitHub repository created at `https://github.com/fahimc/questlearn-uk`; Pages configured to deploy from Actions.
 
 ## EduGames portal and Netlify release
@@ -79,6 +79,17 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Added deterministic 390 × 844 and 1280 × 720 active-quest baselines plus a static regression check. Local and production browser click-throughs verified accept → reopen → return.
 - Netlify production deploy `6a93418208adfae8fbad1441` published the active-quest control at `https://edugames-189.netlify.app/games/blocksmith.html`.
 
+## Physics, onboarding, flight and 20-question progression
+
+- Reworked player height as an actual world-space foot position. `site/games/blocksmith-physics.js` applies gravity, jump velocity, landing and flight movement against the highest reachable voxel surface in the current column. Mining turf drops the player onto exposed stone; mining that stone drops them to bedrock.
+- Added a four-step welcome/getting-started guide that swaps desktop and touch instructions. It covers movement, looking, mining, placing, material selection, beacons, jumping and flight, and is always reopenable from the HUD.
+- Added desktop flight with F, Space to rise and Shift to descend. Touch has a dedicated Fly button; double-tapping Jump also toggles flight, and Jump rises while flight is active.
+- Expanded the island from 41 × 41 to 65 × 65 and arranged twenty non-overlapping 6 × 6 quest pads, separate beacons, larger resource patches and revised scenery through the shared reservation map.
+- Replaced six answer-revealing briefs with twenty Years 3–5 build questions spanning equal sharing, arrays, fractions, decimals, factor pairs, perimeter, area, percentages, volume and fraction towers. The question, journal, collection messages and pre-success feedback do not render internal solution counts.
+- Added tower-height validation for equal towers and one-third/two-thirds tower pairs up to 24 blocks tall. Build placement now supports height 24 and flight makes tall construction practical.
+- Added the child-facing question list and feedback policy in `docs/games/blocksmith-maths-quest-bank.md`, plus deterministic mobile welcome and flight captures.
+- Local and production browser checks verified all four onboarding steps, reopening help, flight toggling, the hidden-answer question brief and accepted-quest tracking. Netlify deploy `6a9346d42536cbbcf0d0bb12` published the final update.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -87,4 +98,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The persistent active-quest control is live on Netlify and ready for the matching GitHub Pages release. Next product phase is terrain-aware player collision/falling, saved constructions and teacher evidence export rather than more disconnected mini-games.
+Gravity, device-aware onboarding, flight and the twenty-question maths progression are live on Netlify and ready for the matching GitHub Pages release. Next product phase is horizontal voxel collision, saved constructions and teacher evidence export.

@@ -47,19 +47,19 @@ The browser prototype is a small free-roaming first-person 3D voxel world. The l
 
 The world layout uses one integer-column reservation map. River tiles, one-cell banks, quest pads, beacons, resource patches and signs, trees, rocks, boundary hedges and the spawn area are allocated before decorative flowers are added. A validation test fails if two fixtures claim the same column. Quest beacons sit outside their pads, and only the active quest may place blocks on its reserved pad.
 
-Six beacons form a visible Years 3–5 progression. A learner reads a short brief, collects the named materials, builds inside the glowing pad and asks the game to check the actual block positions and materials. Feedback gives a recoverable next action: change the count, swap a material or rearrange the shape. Correct builds remain as monuments and award a small bundle for free building.
+Twenty beacons form a visible Years 3–5 progression. A learner reads a short question, works out the missing material quantities or dimensions, collects the named materials, builds inside the glowing pad and asks the game to check the actual block positions and materials. The child-facing brief and journal never render the internal answer plan. Feedback gives a recoverable next action without revealing derived material counts before success. Correct builds remain as monuments and award a small bundle for free building. The complete progression is documented in [`blocksmith-maths-quest-bank.md`](blocksmith-maths-quest-bank.md).
 
 After a quest is accepted, a persistent current-quest tile stays visible on mobile and desktop. It shows the quest number and live placed-block count; tapping it reopens the complete child-friendly brief without losing or restarting build progress.
 
 | Level | Curriculum application | Physical evidence |
 |---|---|---|
-| Year 3, ages 7–8 | Half of 24; 3 × 4 array | 12 moss blocks; three rows of four wood blocks |
-| Year 4, ages 8–9 | Perimeter; one quarter of a quantity | 5 × 3 stone outline; 9 wood and 3 glass |
-| Year 5, ages 9–10 | Cuboid volume; 25% of a quantity | Filled 3 × 2 × 2 stone cuboid; 5 glass and 15 wood |
+| Year 3, ages 7–8 | Equal sharing, simple fractions and multiplication arrays | Material groups, equal rows and equal-height towers |
+| Year 4, ages 8–9 | Fractions, decimals, factor pairs, perimeter and area | Mixed-material builds, outlines, filled rectangles and fraction towers |
+| Year 5, ages 9–10 | Percentages, fraction scaling and cuboid volume | Percentage material mixes, tall ratio towers and multi-layer cuboids |
 
 This sequence follows the research in [`docs/research/england-years-3-5.md`](../research/england-years-3-5.md): Year 3 uses simple fractions and multiplication representations, Year 4 applies perimeter and fractions, and Year 5 applies volume and percentages. It also follows the project feedback ladder: the game describes the observable mismatch and allows immediate revision instead of giving only correct/incorrect effects.
 
-Desktop supports pointer-lock mouse look, WASD, jump, place/dig and numbered hotbar keys. Touch devices receive drag-to-look, movement, jump, place and dig controls. Material inventory and quest completion are stored locally. Prototype: [`site/games/blocksmith.html`](../../site/games/blocksmith.html).
+Desktop supports pointer-lock mouse look, WASD, gravity, jump, place/dig, numbered hotbar keys and optional flight with F, Space to rise and Shift to descend. Touch devices receive drag-to-look, movement, jump, place, dig and a dedicated flight toggle; double-tapping jump also toggles flight. Players fall into one- and two-block mined holes and can jump or fly back out. A four-step device-aware welcome guide explains movement, looking, mining, placing, materials, beacons, jumping and flight, and can be reopened from the HUD. Material inventory and quest completion are stored locally. Prototype: [`site/games/blocksmith.html`](../../site/games/blocksmith.html).
 
 ## Production MVP boundary
 
