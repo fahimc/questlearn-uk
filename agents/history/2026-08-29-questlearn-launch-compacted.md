@@ -24,8 +24,8 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Verification
 
-- `npm run test:all`: 29 tests pass; local link check passes.
-- `npm run screenshots`: 22 PNGs captured and key mobile/desktop/short-landscape views visually reviewed.
+- `npm run test:all`: 31 tests pass; local link check passes.
+- `npm run screenshots`: 23 PNGs captured and key mobile/desktop/mining/short-landscape views visually reviewed.
 - GitHub repository created at `https://github.com/fahimc/questlearn-uk`; Pages configured to deploy from Actions.
 
 ## EduGames portal and Netlify release
@@ -49,6 +49,17 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Quest definitions and pure validation live in `site/games/blocksmith-quests.js`; ten focused Blocksmith tests contribute to a 26-test suite.
 - Material counts, a dig action and responsive short-landscape overrides are covered by site checks. Desktop, mobile, mobile quest and 844 × 390 touch captures are stored under `docs/images/responsive/`.
 
+## Mineable world update
+
+- Replaced the decorative flat ground with a 41 × 41 instanced voxel surface. Every grass cell can be mined for moss; removing it reveals a separate stone block that can also be mined.
+- Rebuilt scenery trees from individual collectible wood and leaf voxels. Surface rock clusters are collectible stone; renewable labelled piles remain available so a saved world cannot run out of quest materials.
+- Natural terrain and tree damage persist in `blocksmith-v3-mined`; inventory and completed quests retain their existing storage keys.
+- Added occupancy checks so placed blocks cannot overlap unmined natural blocks and filtered inactive terrain instances out of subsequent raycasts.
+- Desktop controls now match the familiar block-game convention: left click mines and right click places. Touch keeps explicit mine, place and jump buttons.
+- Browser interaction checks confirmed grass 12→13 with “Dug 1 moss block”, exposed stone 8→9 with “Dug 1 stone block”, and wood 9→10 with “Chopped 1 wood block”.
+- Added a deterministic `?preview=mine` scene and `docs/images/responsive/blocksmith-mining-desktop.png` for visual regression evidence.
+- Netlify production deploy `6a932971c6d91ad67b37a4ef` published the mineable world at `https://edugames-189.netlify.app/games/blocksmith.html`.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -57,4 +68,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-Verify GitHub Actions after the EduGames commit. The Netlify production page and Blocksmith route are already live and visually checked. Next product phase is player/world collision, saved constructions and teacher evidence export rather than more disconnected mini-games.
+The mineable-world update is live on Netlify and ready for the matching GitHub Pages release. Next product phase is terrain-aware player collision/falling, saved constructions and teacher evidence export rather than more disconnected mini-games.

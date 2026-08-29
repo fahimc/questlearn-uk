@@ -43,7 +43,7 @@ No destruction of hours of work. Failed simulation freezes, highlights observabl
 
 ## Playable prototype
 
-The browser prototype is a small free-roaming first-person 3D voxel world. The learner digs colour-coded resource piles to collect moss, wood, stone and glass. Placing a block spends that material; removing an unfinished block returns it. Resource piles regrow so an experiment or mistake cannot permanently block progress.
+The browser prototype is a small free-roaming first-person 3D voxel world. The learner can mine the grass surface for moss, dig the exposed stone layer, chop voxel trees for wood, clear leaves and harvest glass crystals. Natural changes persist on the device. Colour-coded resource piles still regrow so exploration or a mistake cannot permanently block progress. Placing a block spends that material; removing an unfinished block returns it.
 
 Six beacons form a visible Years 3–5 progression. A learner reads a short brief, collects the named materials, builds inside the glowing pad and asks the game to check the actual block positions and materials. Feedback gives a recoverable next action: change the count, swap a material or rearrange the shape. Correct builds remain as monuments and award a small bundle for free building.
 
