@@ -113,6 +113,12 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - `npm run test:all` passes 46 tests and validates 108 local files. Coverage includes whole-world/depth-balanced letters, 45-tree reservations, deterministic bounded animal movement, the drawer contract, hidden indicators and animal integration.
 - Netlify production deploy `6a93576f25f232e13de76139` is live. Page, game module and animal module returned 200; a live 341 × 772 inventory capture matched the local baseline.
 
+## English prompt answer-safety correction
+
+- Removed longer target answers from every pre-success English quest title and prompt. E02 is now `Reason Bridge`, asking learners to infer a seven-letter conjunction from sentence context; E07 and E08 use age-appropriate vocabulary definitions, and E10 asks learners to derive a noun-forming suffix.
+- Added a regression test that fails when any English target of four or more symbols appears in its title or prompt. `npm run test:all` passes 47 tests and the 108-file link check.
+- Netlify deploy `6a93589a2ecfe64740cf728f` is live; the production quest module contains the new inference prompt and no longer contains `Because Bridge` or the answer-revealing sentence.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.

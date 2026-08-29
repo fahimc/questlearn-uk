@@ -13,20 +13,20 @@ Every quest has two learner-controlled support levels:
 1. **Learn this** explains the concept or method with two different examples. It teaches the transferable idea without spelling the current answer.
 2. **Show a hint** gives one next-step cue for the current challenge without supplying the finished word or punctuation.
 
-Incorrect checks do not automatically expose the hint. They direct the learner back to these controls, preserving choice and productive struggle. Correct feedback may name the completed word because the learner has already demonstrated it with blocks.
+Incorrect checks do not automatically expose the hint. They direct the learner back to these controls, preserving choice and productive struggle. Quest titles and prompts use sentence context, definitions or word structure rather than displaying a target of four or more symbols. Correct feedback may name the completed word because the learner has already demonstrated it with blocks.
 
 ## Quest sequence
 
 | Quest | Suggested year | Focus | Build evidence | Learn focus | Hint approach |
 |---|---|---|---|---|---|
 | E01 The Missing Tile | Year 3 | Missing letter | One letter stone completing a common word | Test a sound between known letters | Say the complete word slowly |
-| E02 Because Bridge | Year 3 | Statutory spelling | Seven ordered letter stones | Chunk and reread a longer word | Listen for the middle vowels |
+| E02 Reason Bridge | Year 3 | Spelling and conjunctions | Seven ordered letter stones inferred from sentence context | Connect an action to its reason, then chunk the spelling | Identify the reason word and its first letter |
 | E03 Homophone Hollow | Year 3 | Homophones | Five ordered letters fitting sentence meaning | Choose spelling from context | Identify that the gap describes place |
 | E04 Apostrophe Arch | Year 4 | Contractions | Seven symbols including an apostrophe | Apostrophe marks omitted letters | Expand the phrase to two words |
 | E05 Question Quarry | Year 3 | End punctuation | One punctuation stone | Questions ask for information | Decide whether the sentence asks or tells |
 | E06 Warning Woods | Year 4 | Exclamation marks | One punctuation stone | Strong commands and feelings | Read the warning with expression |
-| E07 Beautiful Build | Year 4 | Statutory spelling | Nine ordered letter stones | Chunk and proofread tricky spelling | Check the unusual vowel group |
-| E08 Separate Stones | Year 5 | Unstressed vowels | Eight ordered letter stones | Recall spelling patterns that speech obscures | Check the middle syllable |
+| E07 Vivid View | Year 4 | Spelling and vocabulary | Nine ordered letter stones inferred from a definition | Chunk and proofread tricky spelling | Check the unusual vowel group |
+| E08 Parting Paths | Year 5 | Unstressed vowels and vocabulary | Eight ordered letter stones inferred from a definition | Recall spelling patterns that speech obscures | Check the middle syllable |
 | E09 Prefix Peak | Year 5 | Negative prefixes | Two ordered prefix letters | Prefix spelling may adapt to the next sound | Notice the first sound in the base word |
 | E10 Suffix Summit | Year 5 | Noun-forming suffixes | Four ordered suffix letters | Add `-ness` to form an abstract noun | Decide what kind of word is needed |
 
