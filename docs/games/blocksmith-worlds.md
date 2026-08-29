@@ -49,6 +49,8 @@ The world layout uses one integer-column reservation map. River tiles, one-cell 
 
 Six beacons form a visible Years 3–5 progression. A learner reads a short brief, collects the named materials, builds inside the glowing pad and asks the game to check the actual block positions and materials. Feedback gives a recoverable next action: change the count, swap a material or rearrange the shape. Correct builds remain as monuments and award a small bundle for free building.
 
+After a quest is accepted, a persistent current-quest tile stays visible on mobile and desktop. It shows the quest number and live placed-block count; tapping it reopens the complete child-friendly brief without losing or restarting build progress.
+
 | Level | Curriculum application | Physical evidence |
 |---|---|---|
 | Year 3, ages 7–8 | Half of 24; 3 × 4 array | 12 moss blocks; three rows of four wood blocks |

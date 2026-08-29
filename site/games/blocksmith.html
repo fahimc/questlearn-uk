@@ -27,6 +27,10 @@
     </header>
 
     <div class="quest-radar" aria-hidden="true"><span>N</span><i data-radar-dot></i><b data-distance>Find a beacon</b></div>
+    <button class="active-quest-chip" type="button" data-active-quest-button hidden aria-haspopup="dialog" aria-label="Review current quest">
+      <span class="active-quest-glyph" data-active-quest-number>01</span>
+      <span class="active-quest-copy"><small>Current quest</small><b data-active-quest-short>Quest title</b><em data-active-quest-progress>0/12 blocks</em></span>
+    </button>
     <div class="crosshair" aria-hidden="true"><i></i><i></i></div>
     <div class="world-message" data-world-message role="status" aria-live="polite"></div>
     <button class="nearby-prompt" type="button" data-interact hidden><kbd>E</kbd><span>Open quest</span></button>

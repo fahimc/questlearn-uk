@@ -14,6 +14,8 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Blocksmith desktop world, 1440 × 900 | [PNG](responsive/blocksmith-desktop.png) |
 | Blocksmith mineable tree view, 1280 × 720 | [PNG](responsive/blocksmith-mining-desktop.png) |
 | Blocksmith mobile quest, 390 × 844 | [PNG](responsive/blocksmith-quest-mobile.png) |
+| Blocksmith active quest, mobile, 390 × 844 | [PNG](responsive/blocksmith-active-mobile.png) |
+| Blocksmith active quest, desktop, 1280 × 720 | [PNG](responsive/blocksmith-active-desktop.png) |
 | Blocksmith touch short landscape, 844 × 390 | [PNG](responsive/blocksmith-short-landscape.png) |
 | Skybound short landscape, 844 × 390 | [PNG](responsive/skybound-short-landscape.png) |
 | Chronicle desktop, 1280 × 720 | [PNG](responsive/chronicle-desktop.png) |

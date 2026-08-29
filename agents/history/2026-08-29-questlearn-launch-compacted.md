@@ -19,13 +19,13 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Three detailed game plans under `docs/games/`.
 - Design system, reusable components and responsive scenarios under `docs/design/`.
 - Static EduGames portal, toolkit and three playable prototypes under `site/`.
-- Twelve isolated component PNGs, ten responsive captures and four generated artwork sources under `docs/images/`.
+- Twelve isolated component PNGs, thirteen responsive captures and four generated artwork sources under `docs/images/`.
 - Node unit/content/site checks and GitHub Actions verification/deployment workflows.
 
 ## Verification
 
-- `npm run test:all`: 32 tests pass; local link check passes.
-- `npm run screenshots`: 23 PNGs captured and key mobile/desktop/mining/short-landscape views visually reviewed.
+- `npm run test:all`: 33 tests pass; local link check passes.
+- `npm run screenshots`: 25 PNGs captured and key mobile/desktop/mining/active-quest/short-landscape views visually reviewed.
 - GitHub repository created at `https://github.com/fahimc/questlearn-uk`; Pages configured to deploy from Actions.
 
 ## EduGames portal and Netlify release
@@ -71,6 +71,14 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - The layout test asserts zero conflicting columns and integer coordinates for quest, resource, tree and rock fixtures.
 - Netlify production deploy `6a932c7025f232e8b4e76122` published the grid correction and was visually checked at 1440 × 900.
 
+## Persistent active-quest control
+
+- Accepting a Blocksmith quest now reveals an always-available current-quest tile. Mobile shows a large quest-number icon and placed-block count; desktop also shows the full quest title.
+- The tile's live progress and accessible label update whenever a quest block is placed or removed, and the tile disappears after successful completion.
+- Tapping or clicking the tile reopens the complete brief. Its primary action changes to “Back to building”, preserving the active quest and all placed blocks instead of restarting it.
+- Added deterministic 390 × 844 and 1280 × 720 active-quest baselines plus a static regression check. Local and production browser click-throughs verified accept → reopen → return.
+- Netlify production deploy `6a93418208adfae8fbad1441` published the active-quest control at `https://edugames-189.netlify.app/games/blocksmith.html`.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -79,4 +87,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The grid-layout correction is live on Netlify and ready for the matching GitHub Pages release. Next product phase is terrain-aware player collision/falling, saved constructions and teacher evidence export rather than more disconnected mini-games.
+The persistent active-quest control is live on Netlify and ready for the matching GitHub Pages release. Next product phase is terrain-aware player collision/falling, saved constructions and teacher evidence export rather than more disconnected mini-games.
