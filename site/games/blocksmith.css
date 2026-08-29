@@ -59,7 +59,7 @@
   .voxel-touch{right:max(10px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));left:max(10px,env(safe-area-inset-left))}
   .inventory-drawer{right:max(10px,env(safe-area-inset-right));bottom:max(128px,calc(env(safe-area-inset-bottom) + 118px));left:max(10px,env(safe-area-inset-left));width:auto;max-height:calc(100dvh - 210px);padding:14px}.inventory-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.inventory-item{min-height:66px}
 }
-.force-touch .inventory-toggle{display:grid}.force-touch .material-pill,.force-touch .quest-status,.force-touch .hotbar,.force-touch .letter-tray,.force-touch .flight-pill{display:none!important}.force-touch .voxel-touch{bottom:max(12px,env(safe-area-inset-bottom))}
+.force-touch .inventory-toggle,.touch-capable .inventory-toggle{display:grid}.force-touch .material-pill,.force-touch .quest-status,.force-touch .hotbar,.force-touch .letter-tray,.force-touch .flight-pill,.touch-capable .material-pill,.touch-capable .quest-status,.touch-capable .hotbar,.touch-capable .letter-tray,.touch-capable .flight-pill{display:none!important}.force-touch .voxel-touch,.touch-capable .voxel-touch{display:flex!important;bottom:max(12px,env(safe-area-inset-bottom))}
 @media(max-height:520px) and (orientation:landscape){.inventory-drawer{top:57px;right:112px;bottom:12px;left:112px;width:auto;max-height:none}.inventory-grid{grid-template-columns:repeat(8,minmax(0,1fr))}.inventory-item{min-height:60px}.force-touch .voxel-touch{bottom:10px}.quest-radar{top:57px}.active-quest-chip{top:99px}.check-build{top:99px}}
 
 /* Keep transient feedback in a dedicated HUD row below the quest radar. */

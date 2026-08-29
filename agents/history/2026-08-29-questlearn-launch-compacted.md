@@ -129,6 +129,17 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - `npm run test:all` passes 49 tests and validates 110 local links. Syntax checks pass. Local and production low-tier runtime checks both report 57 draw calls and 74,340 triangles for the initial world view.
 - Netlify production deploy `6a935bf9df6f2933a38b6c92` is live at `https://edugames-189.netlify.app/games/blocksmith.html`; the live module contains batching and no Three.js PointLights.
 
+## Movement and frame-pacing correction
+
+- Corrected the low-tier 45 FPS limiter: on a 60 Hz display it skipped alternate frames and effectively produced roughly 30 FPS. Active gameplay now renders on every animation frame and runs player movement/gravity in bounded fixed 60 Hz simulation substeps; dialogs retain a 20 FPS render limit.
+- Reduced low-tier DPR from 1 to 0.85 and draw distance from 42 to 34 blocks. The initial low-tier scene now reports 42 draw calls and 65,060 triangles instead of 57 / 74,340.
+- Made `#worldCanvas` focusable and explicitly restore focus after entering the world and closing quest, inventory, pause or journal panels. This fixes WASD and Space being ignored while a hidden welcome/panel button retained focus.
+- Touch movement buttons capture their own pointers and clear held state on release, cancellation, focus loss or tab hiding. Jump, fly, dig and place execute on pointer-down so a second touch works while movement remains held.
+- Hybrid touchscreen Chromebooks now expose the touch HUD even when their trackpad reports a fine pointer; the inventory drawer replaces the hotbar/letter strip in that mode.
+- Real-browser local and production checks verified welcome → canvas focus, keyboard movement, touch-held movement, a 0.9-block jump and landing. The live low tier sustained 60 FPS in the test browser at 42 calls / 65,060 triangles with no console warnings or errors.
+- `npm run test:all` passes 50 tests and validates 110 links. `npm run screenshots` rebuilt 34 baselines, including the 1024 × 600 low-power touch-tablet capture.
+- Netlify production deploy `6a9360f26fded0651c88bd6e` is live at `https://edugames-189.netlify.app/games/blocksmith.html`.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -137,4 +148,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The Chromebook/tablet performance build is live on Netlify with 49 passing tests, 110 validated links and 34 visual baselines. Low-power initial rendering is 57 calls / 74,340 triangles while mining, building, procedural terrain, quests and animals remain enabled. Next product phase is real-device sustained frame-time profiling, horizontal voxel/animal collision, saved constructions and teacher evidence export.
+The corrected Chromebook/tablet build is live on Netlify with 50 passing tests, 110 validated links and 34 visual baselines. Production browser checks confirm movement, jump, 60 FPS and 42 calls / 65,060 triangles on the low tier while mining, building, procedural terrain, quests and animals remain enabled. Next product phase is physical Chromebook/tablet heat and sustained frame-time profiling, horizontal voxel/animal collision, saved constructions and teacher evidence export.

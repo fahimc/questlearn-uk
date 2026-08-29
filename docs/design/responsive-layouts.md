@@ -19,7 +19,8 @@
 
 - Two-column component gallery and selected two-column content cards.
 - Game board still sits above challenge if vertical space is stronger than width.
-- Blocksmith automatically uses its low-power rendering tier on coarse-pointer tablets: DPR 1, no dynamic shadows, a shorter draw distance and a 45 FPS target, without removing quests, building, mining, animals or learning support.
+- Blocksmith automatically uses its low-power rendering tier on coarse-pointer tablets: DPR 0.85, no dynamic shadows, a shorter draw distance and a 60 FPS target, without removing quests, building, mining, animals or learning support.
+- Hybrid touchscreen Chromebooks keep the touch controls and inventory drawer available even when the device also reports a fine trackpad pointer.
 
 ## Desktop: 1440 × 900
 
