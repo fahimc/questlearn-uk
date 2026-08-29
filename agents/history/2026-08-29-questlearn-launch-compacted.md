@@ -1,4 +1,4 @@
-# QuestLearn UK launch handoff
+# EduGames launch handoff
 
 ## Purpose
 
@@ -18,15 +18,26 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Platform, learning engine, game engine, safety and content schema under `docs/architecture/`.
 - Three detailed game plans under `docs/games/`.
 - Design system, reusable components and responsive scenarios under `docs/design/`.
-- Static toolkit and three playable prototypes under `site/`.
-- Twelve isolated component PNGs and six responsive captures under `docs/images/`.
+- Static EduGames portal, toolkit and three playable prototypes under `site/`.
+- Twelve isolated component PNGs, ten responsive captures and four generated artwork sources under `docs/images/`.
 - Node unit/content/site checks and GitHub Actions verification/deployment workflows.
 
 ## Verification
 
-- `npm run test:all`: 26 tests pass; local link check passes.
-- `npm run screenshots`: 21 PNGs captured and key mobile/desktop/short-landscape views visually reviewed.
+- `npm run test:all`: 29 tests pass; local link check passes.
+- `npm run screenshots`: 22 PNGs captured and key mobile/desktop/short-landscape views visually reviewed.
 - GitHub repository created at `https://github.com/fahimc/questlearn-uk`; Pages configured to deploy from Actions.
+
+## EduGames portal and Netlify release
+
+- Renamed the public experience to EduGames and rebuilt `site/index.html` as an original dark game-discovery portal with a compact subject rail, central search, category shelf, featured game and responsive game grid.
+- The portal states ages 7–10, no adverts, no chats and no account needed in the first viewport. It does not use CrazyGames branding, copy or assets.
+- Blocksmith Worlds is the first and featured game. Search and subject/category filters are functional across the three game cards.
+- Generated an original EduGames block-mark and thumbnails for Blocksmith Worlds, Skybound Academy and Chronicle Keepers. Full PNG sources are in `docs/images/generated/`; compressed web derivatives are in `site/assets/edugames/`.
+- Added `netlify.toml` with static publishing, security headers and immutable generated-asset caching.
+- Netlify production project: `edugames-189`, project ID `14593ede-4f8c-438c-8e1b-662ae138de35`, public URL `https://edugames-189.netlify.app`.
+- Disabled Netlify's injected public built-with badge at project level so the child-facing page stays free of promotional overlays.
+- Added homepage content/ordering/filter/asset tests and responsive portal screenshots at 320×800, 768×1024, 1440×900 and 844×390.
 
 ## Blocksmith 3D vertical slice update
 
@@ -46,4 +57,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-Verify the updated Pages deployment and live Blocksmith module. Next product phase is player/world collision, saved constructions and teacher evidence export rather than more disconnected mini-games.
+Verify GitHub Actions after the EduGames commit. The Netlify production page and Blocksmith route are already live and visually checked. Next product phase is player/world collision, saved constructions and teacher evidence export rather than more disconnected mini-games.

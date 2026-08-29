@@ -4,6 +4,12 @@
 
 Confident, playful and calm. The visual language uses chunky geometry and tactile depth from games, balanced by high-legibility learning surfaces. It avoids toddler styling for older primary learners and avoids casino-like reward spectacle.
 
+## EduGames portal identity
+
+The public game-discovery layer is named **EduGames**. Its original stacked-block `E` mark uses mint, yellow and indigo against a deep navy portal shell. Search, subject shortcuts, a large featured game and compact thumbnail shelves provide the fast discovery rhythm of a modern browser-game portal, while safety promises remain visible in the header and opening viewport.
+
+Original generated source artwork lives in `docs/images/generated/`; optimised web-ready derivatives live in `site/assets/edugames/`. The set includes the EduGames mark plus covers for Blocksmith Worlds, Skybound Academy and Chronicle Keepers. The covers contain no third-party game branding, copied characters or embedded text; titles and status labels remain accessible HTML overlays.
+
 ## Foundations
 
 | Token | Value | Role |
@@ -48,4 +54,3 @@ Motion communicates state: placement, landing, unlock and feedback. Standard UI 
 ## Accessibility acceptance criteria
 
 Keyboard and touch parity, visible focus, 44 px targets, semantic DOM overlay, 4.5:1 text contrast where required, state not colour-only, zoom/reflow, reduced motion, captions/transcripts, untimed option and manual orientation testing.
-

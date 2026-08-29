@@ -9,6 +9,7 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Extreme mobile landing, 320 × 800 | [PNG](responsive/index-mobile.png) |
 | Tablet landing, 768 × 1024 | [PNG](responsive/index-tablet.png) |
 | Desktop landing, 1440 × 900 | [PNG](responsive/index-desktop.png) |
+| EduGames short landscape, 844 × 390 | [PNG](responsive/index-short-landscape.png) |
 | Blocksmith mobile, 390 × 844 | [PNG](responsive/blocksmith-mobile.png) |
 | Blocksmith desktop world, 1440 × 900 | [PNG](responsive/blocksmith-desktop.png) |
 | Blocksmith mobile quest, 390 × 844 | [PNG](responsive/blocksmith-quest-mobile.png) |
@@ -32,3 +33,7 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 - [Empty state](components/empty.png)
 
 These captures cover visual regression/reference needs. Production acceptance still requires real-device, keyboard, screen-reader, zoom and assistive-input testing.
+
+## Generated EduGames artwork
+
+Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The set contains the EduGames mark and the three game thumbnails; visible titles remain HTML rather than baked into the artwork.

@@ -5,3 +5,6 @@ coverage/
 dist/
 test-results/
 
+
+# Local Netlify folder
+.netlify

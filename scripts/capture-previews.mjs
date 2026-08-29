@@ -9,7 +9,7 @@ const site=resolve(root,'site');
 const screenshotScript='C:\\Users\\fahim\\.agents\\skills\\browser-screenshot\\scripts\\screenshot.py';
 const componentNames=['buttons','objective','answers','feedback','progress','mission','hud','touch','modal','profile','teacher','empty'];
 const jobs=[
-  ['index-mobile','index.html',320,800],['index-tablet','index.html',768,1024],['index-desktop','index.html',1440,900],
+  ['index-mobile','index.html',320,800],['index-tablet','index.html',768,1024],['index-desktop','index.html',1440,900],['index-short-landscape','index.html',844,390],
   ['blocksmith-mobile','games/blocksmith.html?preview=touch',390,844],['blocksmith-desktop','games/blocksmith.html?preview=world',1440,900],['blocksmith-quest-mobile','games/blocksmith.html?preview=quest',390,844],['blocksmith-short-landscape','games/blocksmith.html?preview=touch',844,390],['skybound-short-landscape','games/skybound.html',844,390],['chronicle-desktop','games/chronicle.html',1280,720]
 ];
 mkdirSync(resolve(root,'docs/images/components'),{recursive:true});mkdirSync(resolve(root,'docs/images/responsive'),{recursive:true});

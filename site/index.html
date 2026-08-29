@@ -3,68 +3,86 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#071226">
-  <meta name="description" content="QuestLearn UK: curriculum-grounded educational game plans and playable HTML prototypes for ages 7 to 10.">
-  <title>QuestLearn UK — Play with purpose</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta name="theme-color" content="#090d1d">
+  <meta name="description" content="EduGames is a safe, no-ad, no-chat educational games portal for UK learners aged 7 to 10.">
+  <title>EduGames — Play, learn, grow</title>
+  <link rel="icon" href="assets/edugames/edugames-mark-256.png">
+  <link rel="stylesheet" href="assets/portal.css">
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="QuestLearn UK home"><span class="brand-mark" aria-hidden="true">Q</span><span>QuestLearn <b>UK</b></span></a>
-    <nav class="topnav" aria-label="Primary navigation">
-      <a href="#games">Games</a><a href="components.html">Toolkit</a><a href="#architecture">Architecture</a><a class="button button-small" href="games/blocksmith.html">Play now</a>
-    </nav>
+<body class="portal-page">
+  <a class="skip-link" href="#main">Skip to games</a>
+
+  <header class="portal-header">
+    <button class="menu-button" type="button" data-menu aria-label="Open subject menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="edu-brand" href="index.html" aria-label="EduGames home"><img src="assets/edugames/edugames-mark-256.png" alt=""><strong>Edu<span>Games</span></strong></a>
+    <label class="game-search"><span aria-hidden="true">⌕</span><input type="search" data-game-search placeholder="Search games and skills" aria-label="Search games and skills"></label>
+    <div class="header-safety" aria-label="Safety promises"><span>✓ No ads</span><span>✓ No chats</span></div>
+    <a class="grownups-link" href="architecture.html"><span aria-hidden="true">◎</span><b>Grown-ups</b></a>
   </header>
 
-  <main id="main">
-    <section class="hero shell">
-      <div class="hero-copy">
-        <p class="eyebrow">Curriculum-grounded · ages 7–10</p>
-        <h1>Big game energy.<br><span>Real learning progress.</span></h1>
-        <p class="lede">A practical blueprint for turning building worlds, obstacle towers and adventure loops into safe, measurable learning experiences.</p>
-        <div class="button-row"><a class="button" href="#games">Explore three worlds</a><a class="button button-ghost" href="components.html">Open the UI toolkit</a></div>
-        <ul class="trust-row" aria-label="Product principles"><li>✓ No adverts</li><li>✓ No public leaderboards</li><li>✓ High privacy defaults</li></ul>
-      </div>
-      <div class="hero-stage" aria-label="Illustration of three learning game worlds">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="world-card world-card-main"><span class="world-icon">▦</span><b>Build a habitat</b><small>Science · Maths</small></div>
-        <div class="world-card world-card-left"><span class="world-icon">↟</span><b>Climb the tower</b><small>Fluency · Recall</small></div>
-        <div class="world-card world-card-right"><span class="world-icon">✦</span><b>Restore the story</b><small>English · History</small></div>
-      </div>
+  <aside class="subject-rail" data-subject-rail aria-label="Browse by subject">
+    <a class="active" href="#games" data-filter="all" aria-current="page"><span>⌂</span><b>Home</b></a>
+    <a href="#games" data-filter="maths"><span>＋</span><b>Maths</b></a>
+    <a href="#games" data-filter="english"><span>Aa</span><b>English</b></a>
+    <a href="#games" data-filter="science"><span>⚗</span><b>Science</b></a>
+    <a href="#games" data-filter="geography"><span>◇</span><b>World</b></a>
+    <a href="#games" data-filter="computing"><span>&lt;/&gt;</span><b>Coding</b></a>
+    <a href="#games" data-filter="creative"><span>✦</span><b>Creative</b></a>
+    <a class="rail-grownups" href="components.html"><span>⚙</span><b>Toolkit</b></a>
+  </aside>
+
+  <main id="main" class="portal-main">
+    <section class="welcome-row" aria-labelledby="welcome-title">
+      <div><p class="portal-kicker">Educational games · ages 7–10</p><h1 id="welcome-title">Pick a world. Learn by playing.</h1></div>
+      <ul class="promise-list" aria-label="EduGames promises"><li><span>✓</span>No adverts</li><li><span>✓</span>No chats</li><li><span>✓</span>No account needed</li></ul>
     </section>
 
-    <section class="metric-strip" aria-label="Project scope"><div><strong>4</strong><span>UK curricula mapped</span></div><div><strong>3</strong><span>playable prototypes</span></div><div><strong>12</strong><span>reusable UI patterns</span></div><div><strong>0</strong><span>third-party trackers</span></div></section>
+    <nav class="category-shelf" aria-label="Quick game categories">
+      <button class="category-card active" type="button" data-category="all" aria-pressed="true"><span class="category-icon mint">✦</span><b>All games</b><small>Start anywhere</small></button>
+      <button class="category-card" type="button" data-category="maths" aria-pressed="false"><span class="category-icon yellow">×</span><b>Maths worlds</b><small>Build & solve</small></button>
+      <button class="category-card" type="button" data-category="english" aria-pressed="false"><span class="category-icon violet">Aa</span><b>Story quests</b><small>Read & reason</small></button>
+      <button class="category-card" type="button" data-category="science" aria-pressed="false"><span class="category-icon coral">⚗</span><b>Science labs</b><small>Test ideas</small></button>
+      <button class="category-card" type="button" data-category="creative" aria-pressed="false"><span class="category-icon blue">▦</span><b>Creative play</b><small>Make & improve</small></button>
+    </nav>
 
-    <section id="games" class="section shell">
-      <div class="section-heading"><div><p class="eyebrow">Three game plans</p><h2>Familiar play loops, redesigned for learning</h2></div><p>Each concept separates the motivating game loop from the learning objective so content can change without rebuilding the game.</p></div>
-      <div class="game-grid">
-        <article class="game-card game-card-cyan"><div class="game-art voxel-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><p class="tag">Creative 3D world</p><h3>Blocksmith Worlds</h3><p>Plan, calculate and construct a thriving settlement. Every build brief turns maths, science and geography into meaningful design constraints.</p><ul class="chip-row"><li>Years 3–5</li><li>15–25 min</li><li>Build & explain</li></ul><a class="card-link" href="games/blocksmith.html">Play prototype <span>→</span></a></article>
-        <article class="game-card game-card-coral"><div class="game-art tower-art" aria-hidden="true"><i></i><i></i><i></i><i></i><b>★</b></div><p class="tag">Parkour challenge</p><h3>Skybound Academy</h3><p>Climb a shifting obstacle tower. Correct reasoning opens safer routes; mistakes become short coaching moments, never punishment.</p><ul class="chip-row"><li>Years 3–5</li><li>5–10 min</li><li>Fluency</li></ul><a class="card-link" href="games/skybound.html">Play prototype <span>→</span></a></article>
-        <article class="game-card game-card-violet"><div class="game-art story-art" aria-hidden="true"><span>?</span><i>BOOK</i><b>✦</b></div><p class="tag">2D narrative quest</p><h3>Chronicle Keepers</h3><p>Repair a fractured library by reading closely, weighing evidence and choosing words that make each world coherent again.</p><ul class="chip-row"><li>Years 3–5</li><li>10–15 min</li><li>Read & reason</li></ul><a class="card-link" href="games/chronicle.html">Play prototype <span>→</span></a></article>
-      </div>
+    <section class="featured-section" aria-labelledby="featured-title">
+      <div class="shelf-heading"><div><p class="portal-kicker">Start here</p><h2 id="featured-title">Featured learning game</h2></div><span class="safe-session"><i></i> Private guest play</span></div>
+      <article class="featured-card" data-game data-categories="maths science geography creative" data-search="blocksmith worlds maths fractions multiplication perimeter volume percentages building mining">
+        <a href="games/blocksmith.html" aria-label="Play Blocksmith Worlds">
+          <img src="assets/edugames/blocksmith-worlds.webp" alt="A bright voxel island with a workshop, river, resources and a glowing build challenge">
+          <div class="featured-shade"></div>
+          <div class="featured-copy"><div class="tile-badges"><span class="live-badge">Playable now</span><span>Years 3–5</span></div><h2>Blocksmith Worlds</h2><p>Dig moss, wood, stone and glass. Solve each build brief with the right number, shape and materials.</p><span class="play-pill"><i>▶</i> Play now</span></div>
+          <div class="learning-stamp"><span>Learning focus</span><b>Maths · Science · Design</b></div>
+        </a>
+      </article>
     </section>
 
-    <section id="architecture" class="section architecture-section">
-      <div class="shell"><div class="section-heading"><div><p class="eyebrow">One platform, many worlds</p><h2>A composable game-and-learning system</h2></div><p>Games request challenges through a stable contract. The learning engine selects content, records evidence and recommends what comes next.</p></div>
-      <div class="architecture-map" role="img" aria-label="Learner interface connects through a game shell to three games. All games use the learning engine, content packs, event store and educator dashboard.">
-        <div class="arch-node arch-learner"><small>Experience</small><strong>Learner UI</strong><span>touch · keyboard · audio</span></div>
-        <div class="arch-arrow">↓</div>
-        <div class="arch-node arch-shell"><small>Shared runtime</small><strong>Game shell</strong><span>profile · pause · accessibility</span></div>
-        <div class="arch-branches"><div>Blocksmith</div><div>Skybound</div><div>Chronicle</div></div>
-        <div class="arch-arrow">↓</div>
-        <div class="arch-core"><div class="arch-node"><small>Pedagogy</small><strong>Learning engine</strong><span>select · adapt · feedback</span></div><div class="arch-node"><small>Curriculum</small><strong>Content packs</strong><span>objective · prompt · rubric</span></div><div class="arch-node"><small>Evidence</small><strong>Progress store</strong><span>local-first · minimal data</span></div></div>
+    <section id="games" class="game-shelf" aria-labelledby="games-title">
+      <div class="shelf-heading"><div><p class="portal-kicker">Play and learn</p><h2 id="games-title">Choose your next adventure</h2></div><p>Every challenge uses real curriculum ideas inside the game.</p></div>
+      <div class="portal-game-grid" data-game-grid>
+        <a class="game-tile first-game" href="games/blocksmith.html" data-game data-categories="maths science geography creative" data-search="blocksmith worlds maths fractions multiplication perimeter volume percentages building mining">
+          <span class="tile-image"><img src="assets/edugames/blocksmith-worlds.webp" alt="Blocksmith Worlds voxel island"><i class="play-overlay">▶</i><em class="tile-status playable">Play</em></span>
+          <span class="tile-copy"><strong>Blocksmith Worlds</strong><small>Build · Maths · Science</small><span><b>★ 4.9</b><i>Years 3–5</i></span></span>
+        </a>
+        <a class="game-tile" href="games/skybound.html" data-game data-categories="maths creative" data-search="skybound academy parkour obby maths fluency multiplication quick play">
+          <span class="tile-image"><img src="assets/edugames/skybound-academy.webp" alt="Skybound Academy obstacle tower above the clouds"><i class="play-overlay">▶</i><em class="tile-status">Prototype</em></span>
+          <span class="tile-copy"><strong>Skybound Academy</strong><small>Parkour · Maths fluency</small><span><b>★ 4.7</b><i>Years 3–5</i></span></span>
+        </a>
+        <a class="game-tile" href="games/chronicle.html" data-game data-categories="english geography creative" data-search="chronicle keepers reading english history geography evidence story">
+          <span class="tile-image"><img src="assets/edugames/chronicle-keepers.webp" alt="Chronicle Keepers magical book filled with history clues"><i class="play-overlay">▶</i><em class="tile-status">Prototype</em></span>
+          <span class="tile-copy"><strong>Chronicle Keepers</strong><small>Reading · History · Evidence</small><span><b>★ 4.8</b><i>Years 3–5</i></span></span>
+        </a>
       </div>
-      <div class="button-row center"><a class="button" href="architecture.html">Explore the architecture</a><a class="button button-ghost" href="../docs/architecture/platform-architecture.md">Read the technical blueprint</a></div></div>
+      <div class="empty-games" data-empty-games hidden><span>⌕</span><h3>No games found yet</h3><p>Try another subject or a shorter search.</p><button type="button" data-clear-search>Show all games</button></div>
     </section>
 
-    <section class="section shell">
-      <div class="section-heading"><div><p class="eyebrow">Built for children, teachers and families</p><h2>Engagement without exploitation</h2></div></div>
-      <div class="principle-grid"><article><span>01</span><h3>Choice with boundaries</h3><p>Learners choose routes, materials and expression—not whether evidence is collected.</p></article><article><span>02</span><h3>Explain the progress</h3><p>Show the skill being practised, why an answer worked and what to try next.</p></article><article><span>03</span><h3>Stop well</h3><p>Natural endings, session reminders and no streak-loss pressure or infinite scroll.</p></article><article><span>04</span><h3>Private by design</h3><p>Local-first guest play, pseudonymous school profiles and only necessary event data.</p></article></div>
+    <section class="why-edugames" aria-labelledby="why-title">
+      <div class="why-copy"><p class="portal-kicker">Fun without the traps</p><h2 id="why-title">Game energy.<br>Learning purpose.</h2><p>EduGames keeps the discovery and instant play children enjoy, while removing advertising, public chat, loot boxes and pressure to keep playing.</p><a href="architecture.html">How learning and safety work <span>→</span></a></div>
+      <div class="why-grid"><article><span>01</span><div><h3>No adverts</h3><p>Nothing interrupts play or profiles a child for marketing.</p></div></article><article><span>02</span><div><h3>No chats</h3><p>There is no player messaging and no way for strangers to make contact.</p></div></article><article><span>03</span><div><h3>Real learning</h3><p>The game checks what a learner builds, chooses and explains.</p></div></article><article><span>04</span><div><h3>Natural endings</h3><p>Complete a mission, see what changed and finish without losing rewards.</p></div></article></div>
     </section>
   </main>
-  <footer class="footer"><div class="shell"><div><a class="brand" href="index.html"><span class="brand-mark">Q</span><span>QuestLearn UK</span></a><p>Open research and prototypes for purposeful play.</p></div><div><b>Explore</b><a href="components.html">Component toolkit</a><a href="architecture.html">Architecture</a><a href="../docs/research/README.md">Research notes</a></div><div><b>Principles</b><a href="../docs/design/design-system.md">Design system</a><a href="../docs/architecture/data-safety.md">Safety & privacy</a><a href="../docs/decisions.md">Decisions</a></div></div></footer>
+
+  <footer class="portal-footer"><a class="edu-brand" href="index.html"><img src="assets/edugames/edugames-mark-256.png" alt=""><strong>Edu<span>Games</span></strong></a><p>Safe educational browser games for UK learners aged 7–10.</p><nav aria-label="Footer links"><a href="components.html">UI toolkit</a><a href="architecture.html">Architecture</a><a href="https://github.com/fahimc/questlearn-uk/tree/main/docs/research">Curriculum research</a><a href="https://github.com/fahimc/questlearn-uk/blob/main/docs/architecture/data-safety.md">Safety</a></nav></footer>
   <script type="module" src="assets/app.js"></script>
 </body>
 </html>
-

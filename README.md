@@ -1,6 +1,6 @@
-# QuestLearn UK
+# EduGames
 
-QuestLearn UK is an open product blueprint and interactive toolkit for mobile-first educational games aimed at learners aged 7–10. It combines:
+EduGames is a safe, no-ad, no-chat browser-game portal backed by the open QuestLearn UK product blueprint. It is designed for learners aged 7–10 and combines:
 
 - a referenced review of the curricula in England, Wales, Scotland and Northern Ireland;
 - three original game plans inspired by voxel building, obstacle-course platforming and 2D adventure loops;
@@ -9,7 +9,9 @@ QuestLearn UK is an open product blueprint and interactive toolkit for mobile-fi
 - three playable HTML prototypes, including a free-roaming 3D voxel quest world; and
 - automated checks plus responsive visual evidence.
 
-**Live toolkit:** [fahimc.github.io/questlearn-uk](https://fahimc.github.io/questlearn-uk/)
+**Live site:** [edugames-189.netlify.app](https://edugames-189.netlify.app/)
+
+**GitHub Pages mirror:** [fahimc.github.io/questlearn-uk](https://fahimc.github.io/questlearn-uk/)
 
 The detailed baseline is England's Key Stage 2 curriculum (Years 3–5 are the closest fit for ages 7–10). Devolved-nation mappings are explicit because there is no single UK-wide school curriculum.
 
@@ -42,7 +44,7 @@ npm run screenshots
 1. Learning objective before game mechanic.
 2. Evidence before mastery claims.
 3. Challenge without shame; no public ranking of children.
-4. High privacy by default; no advertising or dark patterns.
+4. High privacy by default; no advertising, chat or dark patterns.
 5. Touch, keyboard, reduced-motion and small-screen support from the start.
 
 This is a research and prototyping toolkit, not a certified curriculum or production safeguarding assessment.

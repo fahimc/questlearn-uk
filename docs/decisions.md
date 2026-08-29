@@ -35,3 +35,15 @@
 **Decision:** Blocksmith quests require learners to dig named materials and use them in count, array, perimeter, fraction, volume and percentage builds. Validators inspect the placed materials and geometry.
 
 **Why:** collecting remains meaningful play while the construction itself demonstrates the curriculum idea. Regrowing deposits and returned unfinished blocks prevent scarcity from punishing experimentation.
+
+## ADR-007: EduGames uses a game-portal discovery pattern
+
+**Decision:** rename the public experience EduGames and use an original dark, search-led portal with a subject rail, category shelf, featured game and image-led game grid. Keep “No ads” and “No chats” visible in the first viewport. Generated artwork is original and carries no third-party branding or embedded copy.
+
+**Why:** familiar game discovery reduces friction for children, while original identity and explicit safety messaging distinguish the educational purpose and avoid copying another portal’s protected branding or assets.
+
+## ADR-008: Netlify is the primary preview host
+
+**Decision:** publish the static `site/` directory to Netlify using `netlify.toml`; keep GitHub Pages as a mirror.
+
+**Why:** Netlify provides a direct production preview and cache/security header configuration without changing the dependency-free static architecture.
