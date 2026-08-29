@@ -1,0 +1,17 @@
+{
+  "name": "questlearn-uk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Curriculum-grounded game plans, learning architecture, and playable HTML prototypes for UK learners aged 7-10.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.js",
+    "test:all": "npm test && node scripts/check-links.mjs",
+    "screenshots": "node scripts/capture-previews.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
+
