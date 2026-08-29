@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { blocksmithQuests, countMaterials, isInsideQuestZone, validateQuestBuild } from '../site/games/blocksmith-quests.js';
+import { createWorldReservations, RESOURCE_PATCHES, ROCK_CLUSTERS, TREE_SPOTS } from '../site/games/blocksmith-world-layout.js';
 
 const blocks=(count,type='moss',start=0)=>Array.from({length:count},(_,index)=>({x:start+index,y:0,z:0,type}));
 const solid=(width,depth,layers,type)=>Array.from({length:layers},(_,y)=>Array.from({length:width},(_,x)=>Array.from({length:depth},(_,z)=>({x,y,z,type})))).flat(2);
@@ -16,3 +17,4 @@ test('the Year 5 percentage quest checks the 5-to-15 material mix',()=>{const qu
 test('quest feedback tells the learner exactly how many blocks to change',()=>{const quest=blocksmithQuests[1];assert.match(validateQuestBuild(quest,blocks(4,'wood')).message,/Add 8 more blocks/);assert.match(validateQuestBuild(quest,blocks(14,'wood')).message,/Remove 2 blocks/)});
 test('zone boundaries include marked cells and exclude neighbours',()=>{const quest=blocksmithQuests[0];assert.equal(isInsideQuestZone(quest,quest.zone.x,quest.zone.z),true);assert.equal(isInsideQuestZone(quest,quest.zone.x+quest.zone.width-1,quest.zone.z+quest.zone.depth-1),true);assert.equal(isInsideQuestZone(quest,quest.zone.x-1,quest.zone.z),false)});
 test('invalid build records are rejected',()=>{assert.throws(()=>validateQuestBuild(blocksmithQuests[0],[{x:0,y:0,type:'moss'}]),TypeError);assert.throws(()=>validateQuestBuild(null,[]),TypeError)});
+test('world fixtures occupy unique grid columns',()=>{const layout=createWorldReservations(blocksmithQuests);assert.deepEqual(layout.conflicts,[]);blocksmithQuests.forEach(quest=>{assert.equal(isInsideQuestZone(quest,quest.position.x,quest.position.z),false);assert.ok(Number.isInteger(quest.position.x)&&Number.isInteger(quest.position.z))});RESOURCE_PATCHES.forEach(patch=>assert.ok(Number.isInteger(patch.origin.x)&&Number.isInteger(patch.origin.z)&&Number.isInteger(patch.sign.x)&&Number.isInteger(patch.sign.z)));TREE_SPOTS.flat().forEach(value=>assert.ok(Number.isInteger(value)));ROCK_CLUSTERS.flat(2).forEach(value=>assert.ok(Number.isInteger(value)))});

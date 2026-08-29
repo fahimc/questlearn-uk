@@ -24,7 +24,7 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Verification
 
-- `npm run test:all`: 31 tests pass; local link check passes.
+- `npm run test:all`: 32 tests pass; local link check passes.
 - `npm run screenshots`: 23 PNGs captured and key mobile/desktop/mining/short-landscape views visually reviewed.
 - GitHub repository created at `https://github.com/fahimc/questlearn-uk`; Pages configured to deploy from Actions.
 
@@ -60,6 +60,17 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Added a deterministic `?preview=mine` scene and `docs/images/responsive/blocksmith-mining-desktop.png` for visual regression evidence.
 - Netlify production deploy `6a932971c6d91ad67b37a4ef` published the mineable world at `https://edugames-189.netlify.app/games/blocksmith.html`.
 
+## Grid-layout correction
+
+- Added `site/games/blocksmith-world-layout.js` as the single definition for integer world bounds, river and banks, spawn clearance, resource footprints/signs, trees and rock clusters.
+- Quest beacons now occupy separate columns outside their build pads. The Timber Row Camp and Stone Storehouse pads moved completely clear of the river and bank columns.
+- Replaced stretched two-cell banks and boundary hedges with one-cell repeated geometry. Resource signs now use explicit integer cells.
+- Decorations consult the reservation map, so flowers cannot appear inside later-added resources or other fixtures. Runtime placement protects reserved columns and only permits blocks on the active quest's pad.
+- Protected terrain under pads, paths, signs, spawn and fixed decorations cannot be mined into holes; old saved holes in newly protected columns are restored on load.
+- Billboard labels now respect scene depth and a short visibility distance, preventing distant quest/resource labels from stacking through the world.
+- The layout test asserts zero conflicting columns and integer coordinates for quest, resource, tree and rock fixtures.
+- Netlify production deploy `6a932c7025f232e8b4e76122` published the grid correction and was visually checked at 1440 × 900.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -68,4 +79,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The mineable-world update is live on Netlify and ready for the matching GitHub Pages release. Next product phase is terrain-aware player collision/falling, saved constructions and teacher evidence export rather than more disconnected mini-games.
+The grid-layout correction is live on Netlify and ready for the matching GitHub Pages release. Next product phase is terrain-aware player collision/falling, saved constructions and teacher evidence export rather than more disconnected mini-games.
