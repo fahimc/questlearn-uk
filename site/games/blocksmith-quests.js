@@ -1,21 +1,33 @@
+export const materialNames={moss:'moss',wood:'wood',stone:'stone',glass:'glass'};
+
 export const blocksmithQuests = [
-  { id:'half-24', number:'01', title:'The Halfway Garden', objectiveId:'ENG-M-Y3-FRA-01', prompt:'Build a shape using half of 24 blocks.', targetBlocks:12, reward:12, hint:'Half means split the whole into two equal groups.', success:'24 ÷ 2 = 12. Your 12-block shape shows one half of the whole.', position:{x:-9,z:4}, zone:{x:-12,z:1,width:6,depth:6}, colour:0x45e0d5 },
-  { id:'third-18', number:'02', title:'Three Equal Camps', objectiveId:'ENG-M-Y3-FRA-02', prompt:'Build one third of an 18-block camp.', targetBlocks:6, reward:8, hint:'A third means one of three equal groups.', success:'18 ÷ 3 = 6. One equal camp needs 6 blocks.', position:{x:8,z:8}, zone:{x:5,z:5,width:6,depth:6}, colour:0xffd166 },
-  { id:'quarter-28', number:'03', title:'Quarter of the Quarry', objectiveId:'ENG-M-Y4-FRA-01', prompt:'Build a sculpture using one quarter of 28 blocks.', targetBlocks:7, reward:9, hint:'Divide 28 into four equal groups.', success:'28 ÷ 4 = 7. Your sculpture is one quarter of 28.', position:{x:10,z:-7}, zone:{x:7,z:-10,width:6,depth:6}, colour:0xff7a66 },
-  { id:'array-15', number:'04', title:'The Orchard Array', objectiveId:'ENG-M-Y3-MUL-01', prompt:'Build an array with 3 rows of 5 blocks.', targetBlocks:15, reward:15, hint:'Each of the 3 rows needs 5 blocks.', success:'3 × 5 = 15. The whole array contains 15 blocks.', position:{x:-8,z:-9}, zone:{x:-11,z:-12,width:6,depth:6}, colour:0x9d7bff },
-  { id:'double-8', number:'05', title:'Twin Lookout', objectiveId:'ENG-M-Y3-MUL-02', prompt:'Build a lookout using double 8 blocks.', targetBlocks:16, reward:16, hint:'Double means two equal groups of the same amount.', success:'8 + 8 = 16. Double 8 is 16 blocks.', position:{x:1,z:-13}, zone:{x:-2,z:-16,width:6,depth:6}, colour:0x71dc83 },
-  { id:'difference-20-7', number:'06', title:'Bridge Difference', objectiveId:'ENG-M-Y3-AS-01', prompt:'A bridge starts with 20 blocks. Seven wash away. Build the number that remain.', targetBlocks:13, reward:13, hint:'Find the difference between 20 and 7.', success:'20 − 7 = 13. Your bridge uses the 13 blocks that remain.', position:{x:14,z:1}, zone:{x:11,z:-2,width:6,depth:6}, colour:0x5eb6ff }
+  {id:'half-24',number:'01',title:'The Halfway Garden',year:'Year 3',age:'7–8',strand:'Fractions',objectiveId:'ENG-M-Y3-FRA-01',prompt:'A garden has room for 24 plants. Build half of it with 12 moss blocks.',targetBlocks:12,materialPlan:{moss:12},shape:{type:'count',label:'any clear shape'},reward:{wood:4},collectHint:'Dig the green turf piles to collect moss blocks.',hint:'Half means split 24 into two equal groups.',success:'You split 24 into two equal groups. One half is 12.',position:{x:-9,z:4},zone:{x:-12,z:1,width:6,depth:6},colour:0x45e0d5},
+  {id:'array-12',number:'02',title:'Timber Row Camp',year:'Year 3',age:'7–8',strand:'Multiplication',objectiveId:'ENG-M-Y3-MUL-01',prompt:'Build 3 straight rows of 4 wood blocks.',targetBlocks:12,materialPlan:{wood:12},shape:{type:'solid-box',width:4,depth:3,layers:1,label:'3 rows of 4'},reward:{stone:4},collectHint:'Dig the log piles to collect wood blocks.',hint:'Three equal rows with 4 in each row make 12.',success:'Your 3 rows of 4 show 3 × 4 = 12.',position:{x:8,z:8},zone:{x:5,z:5,width:6,depth:6},colour:0xffd166},
+  {id:'perimeter-5-3',number:'03',title:'Quarry Fence',year:'Year 4',age:'8–9',strand:'Perimeter',objectiveId:'ENG-M-Y4-MEA-01',prompt:'Make the stone outline of a rectangle that is 5 blocks long and 3 blocks wide.',targetBlocks:12,materialPlan:{stone:12},shape:{type:'outline',width:5,depth:3,layers:1,label:'a 5 by 3 outline'},reward:{glass:3},collectHint:'Dig the grey quarry piles to collect stone blocks.',hint:'Only build the outside edge. Do not fill the middle.',success:'The outside edge uses 12 blocks. You measured the perimeter.',position:{x:10,z:-7},zone:{x:7,z:-10,width:6,depth:6},colour:0xff7a66},
+  {id:'quarters-12',number:'04',title:'Fraction Lantern',year:'Year 4',age:'8–9',strand:'Equivalent fractions',objectiveId:'ENG-M-Y4-FRA-01',prompt:'Build with 12 blocks: 9 wood and 3 glass. Show that 1/4 is the same as 3/12.',targetBlocks:12,materialPlan:{wood:9,glass:3},shape:{type:'count',label:'one quarter glass'},reward:{moss:4,glass:2},collectHint:'Dig log piles for wood and blue crystal piles for glass.',hint:'One quarter of 12 is 3. The other 9 blocks are wood.',success:'3/12 of your blocks are glass. This is equivalent to 1/4.',position:{x:-8,z:-9},zone:{x:-11,z:-12,width:6,depth:6},colour:0x9d7bff},
+  {id:'volume-12',number:'05',title:'Stone Storehouse',year:'Year 5',age:'9–10',strand:'Volume',objectiveId:'ENG-M-Y5-MEA-02',prompt:'Build a solid stone cuboid: 3 blocks long, 2 blocks wide and 2 blocks high.',targetBlocks:12,materialPlan:{stone:12},shape:{type:'solid-box',width:3,depth:2,layers:2,label:'a solid 3 × 2 × 2 cuboid'},reward:{wood:5},collectHint:'Dig the grey quarry piles to collect stone blocks.',hint:'Fill both layers. Each layer has 3 × 2 = 6 blocks.',success:'Two layers of 6 make a volume of 12 blocks.',position:{x:1,z:-13},zone:{x:-2,z:-16,width:6,depth:6},colour:0x71dc83},
+  {id:'percent-20',number:'06',title:'Beacon Signal',year:'Year 5',age:'9–10',strand:'Percentages',objectiveId:'ENG-M-Y5-FDP-01',prompt:'Build a 20-block signal. Use 5 glass blocks and 15 wood blocks, so 25% is glass.',targetBlocks:20,materialPlan:{glass:5,wood:15},shape:{type:'count',label:'25% glass'},reward:{moss:5,stone:5,glass:3},collectHint:'Dig blue crystal piles for glass and log piles for wood.',hint:'25% is one quarter. One quarter of 20 is 5.',success:'5 out of 20 is one quarter, so 25% of your signal is glass.',position:{x:14,z:1},zone:{x:11,z:-2,width:6,depth:6},colour:0x5eb6ff}
 ];
 
-export function isInsideQuestZone(quest, x, z) {
-  return x >= quest.zone.x && x < quest.zone.x + quest.zone.width && z >= quest.zone.z && z < quest.zone.z + quest.zone.depth;
-}
+export function isInsideQuestZone(quest,x,z){return x>=quest.zone.x&&x<quest.zone.x+quest.zone.width&&z>=quest.zone.z&&z<quest.zone.z+quest.zone.depth}
 
-export function validateQuestBuild(quest, blockCount) {
-  if (!quest || !Number.isInteger(blockCount) || blockCount < 0) throw new TypeError('Quest and non-negative integer block count are required');
-  const difference = blockCount - quest.targetBlocks;
-  if (difference === 0) return { complete:true, difference:0, message:quest.success };
-  if (difference < 0) return { complete:false, difference, message:`You have placed ${blockCount}. Add ${Math.abs(difference)} more ${Math.abs(difference) === 1 ? 'block' : 'blocks'}. ${quest.hint}` };
-  return { complete:false, difference, message:`You have placed ${blockCount}. Remove ${difference} ${difference === 1 ? 'block' : 'blocks'}. ${quest.hint}` };
-}
+export function countMaterials(blocks){return blocks.reduce((counts,block)=>{counts[block.type]=(counts[block.type]||0)+1;return counts},{})}
 
+function dimensions(blocks){const xs=blocks.map(block=>block.x),ys=blocks.map(block=>block.y),zs=blocks.map(block=>block.z);return{x:Math.max(...xs)-Math.min(...xs)+1,y:Math.max(...ys)-Math.min(...ys)+1,z:Math.max(...zs)-Math.min(...zs)+1,minX:Math.min(...xs),maxX:Math.max(...xs),minZ:Math.min(...zs),maxZ:Math.max(...zs)}}
+function matchesBase(size,shape){return(size.x===shape.width&&size.z===shape.depth)||(size.x===shape.depth&&size.z===shape.width)}
+function shapeIsCorrect(quest,blocks){if(quest.shape.type==='count')return true;const size=dimensions(blocks);if(size.y!==quest.shape.layers||!matchesBase(size,quest.shape))return false;if(quest.shape.type==='solid-box')return size.x*size.y*size.z===blocks.length;if(quest.shape.type==='outline')return blocks.every(block=>block.y===blocks[0].y&&(block.x===size.minX||block.x===size.maxX||block.z===size.minZ||block.z===size.maxZ));return false}
+function joinParts(parts){if(parts.length<2)return parts[0]||'';return `${parts.slice(0,-1).join(', ')} and ${parts.at(-1)}`}
+
+export function validateQuestBuild(quest,blocks){
+  if(!quest||!Array.isArray(blocks)||blocks.some(block=>!Number.isInteger(block.x)||!Number.isInteger(block.y)||!Number.isInteger(block.z)||!materialNames[block.type]))throw new TypeError('Quest and valid block records are required');
+  const unique=new Set(blocks.map(block=>`${block.x}|${block.y}|${block.z}`));if(unique.size!==blocks.length)throw new TypeError('Build blocks must use unique cells');
+  const difference=blocks.length-quest.targetBlocks;
+  if(difference<0)return{complete:false,difference,message:`You have placed ${blocks.length}. Add ${Math.abs(difference)} more ${Math.abs(difference)===1?'block':'blocks'}. ${quest.hint}`};
+  if(difference>0)return{complete:false,difference,message:`You have placed ${blocks.length}. Remove ${difference} ${difference===1?'block':'blocks'}. ${quest.hint}`};
+  const counts=countMaterials(blocks);const changes=[];
+  Object.entries(quest.materialPlan).forEach(([type,needed])=>{const actual=counts[type]||0;if(actual<needed)changes.push(`add ${needed-actual} ${materialNames[type]}`);if(actual>needed)changes.push(`remove ${actual-needed} ${materialNames[type]}`)});
+  Object.entries(counts).forEach(([type,actual])=>{if(!quest.materialPlan[type])changes.push(`remove ${actual} ${materialNames[type]}`)});
+  if(changes.length)return{complete:false,difference:0,message:`You have the right total. Now ${joinParts(changes)}. ${quest.hint}`};
+  if(!shapeIsCorrect(quest,blocks))return{complete:false,difference:0,message:`You have the right blocks. Arrange them as ${quest.shape.label}. ${quest.hint}`};
+  return{complete:true,difference:0,message:quest.success};
+}

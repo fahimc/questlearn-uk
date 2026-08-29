@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#71c7dc">
-  <meta name="description" content="Explore an original voxel world, discover maths quests and build the answers to earn creative blocks.">
+  <meta name="description" content="Dig, collect and build with different materials in curriculum-linked maths quests for ages 7 to 10.">
   <title>Blocksmith Worlds · QuestLearn UK</title>
   <link rel="stylesheet" href="../assets/game.css">
   <link rel="stylesheet" href="blocksmith.css">
@@ -20,7 +20,7 @@
     <header class="voxel-hud" aria-label="Game status">
       <a class="voxel-brand" href="../index.html" aria-label="Exit Blocksmith Worlds"><span>Q</span><b>Blocksmith</b></a>
       <div class="voxel-status">
-        <span class="world-pill"><i>◆</i> <b data-materials>0</b> blocks</span>
+        <span class="world-pill material-pill"><i>◆</i> <b data-materials>0</b> <span data-selected-material>moss</span></span>
         <span class="world-pill quest-status"><i>?</i> <b data-active-quest>Explore for a quest</b></span>
       </div>
       <button class="voxel-icon-button" type="button" data-pause aria-label="Pause game">Ⅱ</button>
@@ -33,23 +33,23 @@
     <button class="check-build" type="button" data-check hidden><span>✓</span> Check my build <kbd>C</kbd></button>
 
     <nav class="hotbar" aria-label="Block palette">
-      <button class="hotbar-slot selected" type="button" data-block="moss" aria-pressed="true"><span class="block-swatch swatch-moss"></span><kbd>1</kbd><b>Moss</b></button>
-      <button class="hotbar-slot" type="button" data-block="wood" aria-pressed="false"><span class="block-swatch swatch-wood"></span><kbd>2</kbd><b>Wood</b></button>
-      <button class="hotbar-slot" type="button" data-block="stone" aria-pressed="false"><span class="block-swatch swatch-stone"></span><kbd>3</kbd><b>Stone</b></button>
-      <button class="hotbar-slot" type="button" data-block="glass" aria-pressed="false"><span class="block-swatch swatch-glass"></span><kbd>4</kbd><b>Glass</b></button>
+      <button class="hotbar-slot selected" type="button" data-block="moss" aria-pressed="true"><span class="block-swatch swatch-moss"></span><kbd>1</kbd><b>Moss</b><span class="slot-count" data-count-for="moss">0</span></button>
+      <button class="hotbar-slot" type="button" data-block="wood" aria-pressed="false"><span class="block-swatch swatch-wood"></span><kbd>2</kbd><b>Wood</b><span class="slot-count" data-count-for="wood">0</span></button>
+      <button class="hotbar-slot" type="button" data-block="stone" aria-pressed="false"><span class="block-swatch swatch-stone"></span><kbd>3</kbd><b>Stone</b><span class="slot-count" data-count-for="stone">0</span></button>
+      <button class="hotbar-slot" type="button" data-block="glass" aria-pressed="false"><span class="block-swatch swatch-glass"></span><kbd>4</kbd><b>Glass</b><span class="slot-count" data-count-for="glass">0</span></button>
     </nav>
 
     <div class="voxel-touch" aria-label="Touch game controls">
       <div class="move-pad"><button type="button" data-move="forward" aria-label="Move forward">▲</button><button type="button" data-move="left" aria-label="Move left">◀</button><button type="button" data-move="back" aria-label="Move backwards">▼</button><button type="button" data-move="right" aria-label="Move right">▶</button></div>
-      <div class="action-pad"><button type="button" data-action="remove" aria-label="Remove block">−</button><button type="button" data-action="place" aria-label="Place block">＋</button><button type="button" data-action="jump" aria-label="Jump">↑</button></div>
+      <div class="action-pad"><button type="button" data-action="remove" aria-label="Dig or collect block">⛏</button><button type="button" data-action="place" aria-label="Place selected block">＋</button><button type="button" data-action="jump" aria-label="Jump">↑</button></div>
     </div>
 
     <section class="world-intro" data-intro aria-labelledby="intro-title">
       <div class="intro-card">
         <p class="voxel-eyebrow">A tiny world of big ideas</p>
-        <h1 id="intro-title">Explore. Solve. Build.</h1>
-        <p>Roam the island and find the glowing quest beacons. Build each mathematical answer on its marked pad to earn permanent blocks for your own creations.</p>
-        <div class="control-summary"><span><kbd>WASD</kbd> move</span><span><kbd>Mouse</kbd> look</span><span><kbd>Click</kbd> place</span><span><kbd>Right click</kbd> remove</span></div>
+        <h1 id="intro-title">Dig. Solve. Build.</h1>
+        <p>Explore the island and dig coloured resource piles to collect moss, wood, stone and glass. Each beacon gives you a Years 3–5 maths build that needs the right blocks and shape.</p>
+        <div class="control-summary"><span><kbd>WASD</kbd> move</span><span><kbd>Mouse</kbd> look</span><span><kbd>Click</kbd> place</span><span><kbd>Right click</kbd> dig</span></div>
         <button class="voxel-primary" type="button" data-start>Enter the world</button>
         <small>Original voxel prototype · no account or personal data required</small>
       </div>
@@ -59,7 +59,7 @@
       <form method="dialog" class="quest-card">
         <header><div class="quest-glyph" data-quest-number>01</div><div><span data-quest-objective></span><h2 data-quest-title>Quest title</h2></div><button class="dialog-close" value="cancel" aria-label="Close quest">×</button></header>
         <div class="quest-copy"><p class="quest-kicker">Build challenge</p><p data-quest-prompt></p></div>
-        <div class="quest-rule"><span class="block-swatch swatch-quest"></span><div><b>How to complete it</b><p>Accept the quest, then place blocks inside the glowing build pad. Your pieces are free inside the pad.</p></div></div>
+        <div class="quest-rule"><span class="block-swatch swatch-quest"></span><div><b data-quest-rule>Build plan</b><p data-quest-collect>Dig resource piles to collect the blocks you need, then build inside the glowing pad.</p></div></div>
         <p class="quest-hint" data-quest-hint></p>
         <footer><button class="voxel-secondary" value="cancel">Keep exploring</button><button class="voxel-primary" type="button" data-accept>Accept build quest</button></footer>
       </form>
@@ -83,4 +83,3 @@
   <script>setTimeout(()=>{if(!document.documentElement.dataset.worldReady)document.querySelector('[data-webgl-warning]').hidden=false},8000)</script>
 </body>
 </html>
-

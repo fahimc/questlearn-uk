@@ -43,9 +43,19 @@ No destruction of hours of work. Failed simulation freezes, highlights observabl
 
 ## Playable prototype
 
-The browser prototype is now a small free-roaming first-person 3D voxel world. Six original quest beacons are distributed across the island. A learner approaches or taps a beacon, accepts a build prompt, constructs the numerical answer inside a glowing pad and asks the game to validate the actual block count. Correct builds become permanent monuments and award creative inventory for construction anywhere else.
+The browser prototype is a small free-roaming first-person 3D voxel world. The learner digs colour-coded resource piles to collect moss, wood, stone and glass. Placing a block spends that material; removing an unfinished block returns it. Resource piles regrow so an experiment or mistake cannot permanently block progress.
 
-Included tasks cover half of 24, one third of 18, one quarter of 28, a 3 × 5 array, double 8 and the difference between 20 and 7. Desktop supports pointer-lock mouse look, WASD, jump, place/remove and numbered hotbar keys. Touch devices receive drag-to-look, movement, jump and place/remove controls. Quest/inventory completion is stored locally. Prototype: [`site/games/blocksmith.html`](../../site/games/blocksmith.html).
+Six beacons form a visible Years 3–5 progression. A learner reads a short brief, collects the named materials, builds inside the glowing pad and asks the game to check the actual block positions and materials. Feedback gives a recoverable next action: change the count, swap a material or rearrange the shape. Correct builds remain as monuments and award a small bundle for free building.
+
+| Level | Curriculum application | Physical evidence |
+|---|---|---|
+| Year 3, ages 7–8 | Half of 24; 3 × 4 array | 12 moss blocks; three rows of four wood blocks |
+| Year 4, ages 8–9 | Perimeter; one quarter of a quantity | 5 × 3 stone outline; 9 wood and 3 glass |
+| Year 5, ages 9–10 | Cuboid volume; 25% of a quantity | Filled 3 × 2 × 2 stone cuboid; 5 glass and 15 wood |
+
+This sequence follows the research in [`docs/research/england-years-3-5.md`](../research/england-years-3-5.md): Year 3 uses simple fractions and multiplication representations, Year 4 applies perimeter and fractions, and Year 5 applies volume and percentages. It also follows the project feedback ladder: the game describes the observable mismatch and allows immediate revision instead of giving only correct/incorrect effects.
+
+Desktop supports pointer-lock mouse look, WASD, jump, place/dig and numbered hotbar keys. Touch devices receive drag-to-look, movement, jump, place and dig controls. Material inventory and quest completion are stored locally. Prototype: [`site/games/blocksmith.html`](../../site/games/blocksmith.html).
 
 ## Production MVP boundary
 

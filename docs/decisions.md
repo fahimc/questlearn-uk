@@ -18,11 +18,11 @@
 
 **Why:** stronger reflow, keyboard, screen-reader and localisation behaviour than canvas-only UI.
 
-## ADR-004: No external runtime in the prototype
+## ADR-004: Static hosting with a pinned 3D runtime
 
-**Decision:** prototypes use HTML/CSS/Canvas and native JavaScript; Babylon.js/Phaser are production candidates.
+**Decision:** the toolkit remains a static GitHub Pages site. Blocksmith uses a pinned Three.js browser module for its 3D vertical slice; the smaller prototypes use native HTML, CSS and JavaScript.
 
-**Why:** the toolkit deploys as a transparent, dependency-free GitHub Pages site while engine selection remains subject to device spikes.
+**Why:** static hosting keeps the prototype transparent and portable while a proven rendering runtime makes the voxel interaction testable. Production still requires bundling, integrity review and representative-device performance testing.
 
 ## ADR-005: Ethical engagement boundary
 
@@ -30,3 +30,8 @@
 
 **Why:** the product is likely to be accessed by children and must place their best interests before retention metrics.
 
+## ADR-006: Materials are learning evidence, not a detached reward
+
+**Decision:** Blocksmith quests require learners to dig named materials and use them in count, array, perimeter, fraction, volume and percentage builds. Validators inspect the placed materials and geometry.
+
+**Why:** collecting remains meaningful play while the construction itself demonstrates the curriculum idea. Regrowing deposits and returned unfinished blocks prevent scarcity from punishing experimentation.

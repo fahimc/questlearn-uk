@@ -24,17 +24,19 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Verification
 
-- `npm run test:all`: 13 tests pass; local link check passes.
-- `npm run screenshots`: 18 PNGs captured and key mobile/desktop/short-landscape views visually reviewed.
+- `npm run test:all`: 26 tests pass; local link check passes.
+- `npm run screenshots`: 21 PNGs captured and key mobile/desktop/short-landscape views visually reviewed.
 - GitHub repository created at `https://github.com/fahimc/questlearn-uk`; Pages configured to deploy from Actions.
 
 ## Blocksmith 3D vertical slice update
 
 - Replaced the original isometric tile demo with a free-roaming Three.js first-person voxel island in `site/games/blocksmith.html` and `site/games/blocksmith.js`.
-- Six scattered maths beacons now open build quests. Quest-pad blocks are free; the actual placed count is validated, and success awards permanent creative inventory.
+- Four labelled, regrowing resource patches now support digging and collection of moss, wood, stone and glass. Placing spends the selected material; removing unfinished blocks returns it; inventory persists locally.
+- Six scattered maths beacons now progress through Years 3–5: fraction-of-quantity and arrays, perimeter and equivalent fractions, then cuboid volume and percentages. Validation inspects counts, material combinations and block geometry rather than accepting a detached answer.
+- Quest language exposes the year, strand and age band in child-readable briefs. Feedback names the count, material or arrangement to change, following the research feedback ladder.
 - Added desktop pointer-lock/WASD/place/remove/hotbar controls, mobile drag look/movement/action controls, local progress, pause and quest journal.
-- Quest definitions and pure validation live in `site/games/blocksmith-quests.js`; five focused tests raise the suite total to 18.
-- Added desktop world and mobile quest screenshots; visual baseline total is now 20.
+- Quest definitions and pure validation live in `site/games/blocksmith-quests.js`; ten focused Blocksmith tests contribute to a 26-test suite.
+- Material counts, a dig action and responsive short-landscape overrides are covered by site checks. Desktop, mobile, mobile quest and 844 × 390 touch captures are stored under `docs/images/responsive/`.
 
 ## Constraints and follow-ups
 
@@ -44,4 +46,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-Verify the updated Pages deployment and live Blocksmith module. Next product phase is collision/terrain physics, persistent builds and teacher evidence export for Blocksmith rather than more disconnected mini-games.
+Verify the updated Pages deployment and live Blocksmith module. Next product phase is player/world collision, saved constructions and teacher evidence export rather than more disconnected mini-games.

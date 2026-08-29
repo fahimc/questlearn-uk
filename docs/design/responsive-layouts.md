@@ -30,6 +30,6 @@
 - Game board and challenge dock appear side-by-side.
 - Challenge answers use compact vertical rhythm but remain at least 40–44 px.
 - Gameplay remains functional with browser/device safe areas.
+- Blocksmith keeps its four material counts and dig/place controls visible without clipping; its `420px` portrait safety floor is removed in this orientation.
 
 Visual baselines are generated in `docs/images/responsive/`; automated screenshots support review but do not replace physical device and assistive-technology testing.
-
