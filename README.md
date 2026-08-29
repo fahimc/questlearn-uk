@@ -6,7 +6,7 @@ QuestLearn UK is an open product blueprint and interactive toolkit for mobile-fi
 - three original game plans inspired by voxel building, obstacle-course platforming and 2D adventure loops;
 - a modular learning-engine and game-platform architecture;
 - a consistent, accessible component library;
-- three dependency-free playable HTML prototypes; and
+- three playable HTML prototypes, including a free-roaming 3D voxel quest world; and
 - automated checks plus responsive visual evidence.
 
 **Live toolkit:** [fahimc.github.io/questlearn-uk](https://fahimc.github.io/questlearn-uk/)

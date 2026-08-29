@@ -41,9 +41,15 @@ Example brief: “Build a 24-plot habitat. Half must support flowering plants, o
 
 No destruction of hours of work. Failed simulation freezes, highlights observable effects and offers undo/retry. Feedback names the relevant concept. A hint may show a grid overlay or worked mini-model, recorded as support evidence.
 
-## MVP
+## Playable prototype
 
-One isometric/3D plot, 12 block types, three Year 3–4 missions, local save, maths/science packs, build validation, structured reflection and teacher evidence summary. Prototype: [`site/games/blocksmith.html`](../../site/games/blocksmith.html).
+The browser prototype is now a small free-roaming first-person 3D voxel world. Six original quest beacons are distributed across the island. A learner approaches or taps a beacon, accepts a build prompt, constructs the numerical answer inside a glowing pad and asks the game to validate the actual block count. Correct builds become permanent monuments and award creative inventory for construction anywhere else.
+
+Included tasks cover half of 24, one third of 18, one quarter of 28, a 3 × 5 array, double 8 and the difference between 20 and 7. Desktop supports pointer-lock mouse look, WASD, jump, place/remove and numbered hotbar keys. Touch devices receive drag-to-look, movement, jump and place/remove controls. Quest/inventory completion is stored locally. Prototype: [`site/games/blocksmith.html`](../../site/games/blocksmith.html).
+
+## Production MVP boundary
+
+Add collision/terrain physics, authored tutorials, saved player constructions, science/design build validators, accessibility alternatives to first-person navigation, richer original textures/audio and teacher evidence export. The prototype uses Three.js from a pinned CDN module; production should bundle and integrity-audit the engine.
 
 ## Risks and tests
 
@@ -51,4 +57,3 @@ One isometric/3D plot, 12 block types, three Year 3–4 missions, local save, ma
 - **Building overwhelms objective:** compare explanation/transfer after build vs quiz-only control.
 - **3D controls exclude learners:** provide tap-to-place 2.5D fallback and test motor/access needs.
 - **Incorrect simulation teaches misconception:** educator/science review and explicit model limitations.
-

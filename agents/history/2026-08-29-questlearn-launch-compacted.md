@@ -28,12 +28,20 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - `npm run screenshots`: 18 PNGs captured and key mobile/desktop/short-landscape views visually reviewed.
 - GitHub repository created at `https://github.com/fahimc/questlearn-uk`; Pages configured to deploy from Actions.
 
+## Blocksmith 3D vertical slice update
+
+- Replaced the original isometric tile demo with a free-roaming Three.js first-person voxel island in `site/games/blocksmith.html` and `site/games/blocksmith.js`.
+- Six scattered maths beacons now open build quests. Quest-pad blocks are free; the actual placed count is validated, and success awards permanent creative inventory.
+- Added desktop pointer-lock/WASD/place/remove/hotbar controls, mobile drag look/movement/action controls, local progress, pause and quest journal.
+- Quest definitions and pure validation live in `site/games/blocksmith-quests.js`; five focused tests raise the suite total to 18.
+- Added desktop world and mobile quest screenshots; visual baseline total is now 20.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
-- The 3D plans are represented by lightweight interaction prototypes; production engine choice needs low-end device spikes.
+- Blocksmith is a functional Three.js vertical slice; Skybound and Chronicle remain lightweight interaction prototypes. Production engine/device validation is still required.
 - Before classroom pilots: nation-specific qualified educator review, content item bank expansion, real-device/accessibility testing, DPIA and safeguarding/threat review.
 
 ## Resume point
 
-Check GitHub Actions Pages deployment and live smoke test. Next product phase is a production vertical slice of one Blocksmith mission plus educator authoring/reporting, not more disconnected mini-games.
+Verify the updated Pages deployment and live Blocksmith module. Next product phase is collision/terrain physics, persistent builds and teacher evidence export for Blocksmith rather than more disconnected mini-games.
