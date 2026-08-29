@@ -26,6 +26,7 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 - `npm run test:all`: 13 tests pass; local link check passes.
 - `npm run screenshots`: 18 PNGs captured and key mobile/desktop/short-landscape views visually reviewed.
+- GitHub repository created at `https://github.com/fahimc/questlearn-uk`; Pages configured to deploy from Actions.
 
 ## Constraints and follow-ups
 
@@ -36,4 +37,3 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 ## Resume point
 
 Check GitHub Actions Pages deployment and live smoke test. Next product phase is a production vertical slice of one Blocksmith mission plus educator authoring/reporting, not more disconnected mini-games.
-
