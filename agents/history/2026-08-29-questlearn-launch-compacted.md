@@ -102,6 +102,17 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - `npm run test:all` passes 44 tests and 104-file link validation; `npm run screenshots` captures 30 baselines. Desktop, 390 × 844 mobile and 844 × 390 short landscape were visually reviewed.
 - Netlify production deploy `6a934dea0b60df96d21b87ab` is live at `https://edugames-189.netlify.app/games/blocksmith.html`; live checks returned 200 and confirmed the 30-quest journal, Learn/Hint markup, English quest bank and terrain seed module.
 
+## Mobile inventory, hidden-symbol exploration and voxel wildlife
+
+- Replaced Blocksmith's competing mobile hotbar, material pill and letter tray with one `▦` owned-block drawer. Its four-column portrait and eight-column short-landscape grids contain ordinary materials plus collected letters and punctuation; world movement pauses while the overlay is open.
+- Rebuilt the top HUD as a compact flex row for home, inventory, quest journal, help and pause. The radar, current quest/check action, transient message and bottom touch controls occupy separate responsive safe zones. Text selection and touch callouts remain disabled on controls.
+- Removed every buried-letter surface marker. The seeded allocator now distributes all 298 letter/punctuation deposits through twelve bands spanning the complete 121 × 121 world, with deposits hidden one, two or three blocks deep. Entering English Land shows a 5.6-second discovery message once per session.
+- Increased reserved tree locations from 15 to 45 and decorative flower attempts from 90 to 210 without allowing scenery to overlap quest or fixture reservations.
+- Added `site/games/blocksmith-animals.js` with twelve deterministic roaming voxel sheep, pigs, cows and chickens. Rendering remains in Three.js while pure movement state is independently tested.
+- Added exact 341 × 772 narrow/mobile-inventory captures and a 1280 × 720 animal capture. `npm run screenshots` now produces 33 baselines; the narrow, active-quest, flight, short-landscape, English-message and animal views were visually inspected.
+- `npm run test:all` passes 46 tests and validates 108 local files. Coverage includes whole-world/depth-balanced letters, 45-tree reservations, deterministic bounded animal movement, the drawer contract, hidden indicators and animal integration.
+- Netlify production deploy `6a93576f25f232e13de76139` is live. Page, game module and animal module returned 200; a live 341 × 772 inventory capture matched the local baseline.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -110,4 +121,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-Seeded uneven terrain, layered mining, 20 maths quests, 10 English quests, buried letter stones, Learn/Hint support and active-pad highlighting are live on Netlify and ready for the matching GitHub Pages release. Next product phase is horizontal voxel collision, saved constructions and teacher evidence export.
+The compact mobile drawer, unmarked multi-depth whole-world letter hunt, richer vegetation and roaming voxel wildlife are live on Netlify with 46 passing tests and 33 visual baselines. Next product phase is horizontal voxel/animal collision, saved constructions and teacher evidence export.

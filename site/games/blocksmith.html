@@ -24,8 +24,12 @@
         <span class="world-pill quest-status"><i>?</i> <b data-active-quest>Explore for a quest</b></span>
         <span class="world-pill flight-pill" data-flight-status hidden><i>↟</i> <b>Flying</b></span>
       </div>
-      <button class="voxel-icon-button" type="button" data-help aria-label="Open getting started guide">?</button>
-      <button class="voxel-icon-button" type="button" data-pause aria-label="Pause game">Ⅱ</button>
+      <div class="voxel-hud-actions">
+        <button class="voxel-icon-button inventory-toggle" type="button" data-inventory-toggle aria-label="Open block inventory" aria-expanded="false" aria-controls="blockInventory"><span aria-hidden="true">▦</span><small data-inventory-current>M</small></button>
+        <button class="voxel-icon-button" type="button" data-open-journal aria-label="Open quest journal">☷</button>
+        <button class="voxel-icon-button" type="button" data-help aria-label="Open getting started guide">?</button>
+        <button class="voxel-icon-button" type="button" data-pause aria-label="Pause game">Ⅱ</button>
+      </div>
     </header>
 
     <div class="quest-radar" aria-hidden="true"><span>N</span><i data-radar-dot></i><b data-distance>Find a beacon</b></div>
@@ -48,6 +52,12 @@
     <nav class="letter-tray" data-letter-tray hidden aria-label="Collected letter and punctuation blocks">
       <span>Letter stones</span><div data-letter-buttons></div>
     </nav>
+
+    <aside id="blockInventory" class="inventory-drawer" data-inventory-drawer hidden aria-label="Block inventory">
+      <header><div><span>Your blocks</span><h2>Choose a block</h2></div><button type="button" data-inventory-close aria-label="Close block inventory">×</button></header>
+      <p>Tap any block you own to select it for building.</p>
+      <div class="inventory-grid" data-inventory-grid></div>
+    </aside>
 
     <div class="voxel-touch" aria-label="Touch game controls">
       <div class="move-pad"><button type="button" data-move="forward" aria-label="Move forward">▲</button><button type="button" data-move="left" aria-label="Move left">◀</button><button type="button" data-move="back" aria-label="Move backwards">▼</button><button type="button" data-move="right" aria-label="Move right">▶</button></div>
@@ -72,8 +82,8 @@
           <p class="voxel-eyebrow">Step 3 · Mine and make</p>
           <h2>Every block matters.</h2>
           <div class="device-guide desktop-guide"><b><kbd>Left click</kbd> mines</b><span><kbd>Right click</kbd> places the selected block. Keys <kbd>1–4</kbd> change material.</span></div>
-          <div class="device-guide touch-guide"><b><strong>⛏</strong> mines · <strong>＋</strong> places</b><span>Tap the hotbar to choose moss, wood, stone or glass.</span></div>
-          <p>Dig grass to drop into the hole and uncover stone. In English Land, glowing rune markers show where letter and punctuation stones are hidden.</p>
+          <div class="device-guide touch-guide"><b><strong>⛏</strong> mines · <strong>＋</strong> places</b><span>Open <strong>▦</strong> to choose any material, letter or punctuation block you own.</span></div>
+          <p>Dig grass to drop into the hole and uncover stone. Letter and punctuation stones are hidden at different depths across the world.</p>
         </article>
         <article class="tour-step" data-tour-step hidden>
           <p class="voxel-eyebrow">Step 4 · Quests and flying</p>
@@ -108,8 +118,6 @@
       <div data-quest-list></div>
       <button type="button" data-close-journal>Close journal</button>
     </aside>
-    <button class="journal-tab" type="button" data-open-journal aria-label="Open quest journal"><span>☷</span><b>Quests</b></button>
-
     <div class="webgl-warning" data-webgl-warning hidden><b>The 3D world could not start.</b><span>Try a current browser with WebGL enabled and an internet connection.</span></div>
     <div class="sr-only" data-feedback aria-live="polite"></div>
   </main>

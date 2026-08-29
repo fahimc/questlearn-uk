@@ -2,7 +2,7 @@
 
 ## Purpose
 
-English Land turns spelling, vocabulary and punctuation into physical collection and construction. Learners dig beneath glowing rune markers, collect stone blocks carrying letters or punctuation, and arrange the blocks in a straight reading line. The validator reads the placed symbols in either approach direction, so camera orientation never changes whether a correct word is accepted.
+English Land turns spelling, vocabulary and punctuation into physical collection and construction. Learners explore and dig without location indicators, collect hidden stone blocks carrying letters or punctuation, and arrange the blocks in a straight reading line. The validator reads the placed symbols in either approach direction, so camera orientation never changes whether a correct word is accepted.
 
 The ten prototype quests apply the English progression summarised in [`england-years-3-5.md`](../research/england-years-3-5.md): Years 3–4 spelling patterns, prefixes, suffixes and homophones; increasingly accurate punctuation; and Year 5 statutory-pattern vocabulary. Year labels are recommended sequencing rather than a claim that schools must teach every item in the same term.
 
@@ -32,9 +32,9 @@ Incorrect checks do not automatically expose the hint. They direct the learner b
 
 ## Buried block distribution
 
-The English region begins east of the river. A fixed seeded allocator selects unreserved grid columns and places 298 deposits: repeated A–Z letters, extra high-frequency letters, and `?`, `!`, apostrophe, full stop and comma stones. Deposits do not occupy quests, beacons, trees, rocks, paths or resource fixtures. A small glowing rune on the turf makes a deposit easy to discover without revealing its symbol before digging.
+The English region begins east of the river, but its collectable symbols are hidden across Numberland and English Land to reward broad exploration. A fixed seeded allocator divides the full world into twelve bands and places 298 deposits: repeated A–Z letters, extra high-frequency letters, and `?`, `!`, apostrophe, full stop and comma stones. Every deposit is one, two or three blocks beneath its surface column and has no marker or location indicator. Deposits do not occupy quests, beacons, trees, rocks, paths or resource fixtures. The first entry into English Land triggers a 5.6-second message telling the learner that hidden letter and punctuation stones can be found by digging at different depths.
 
-Mining state and collected letter inventory persist locally. Removing an unfinished letter build returns its symbol to the tray. Completed word builds lock in place as monuments and award ordinary construction materials.
+Mining state and collected letter inventory persist locally. Removing an unfinished letter build returns its symbol to the owned-block drawer on mobile or letter tray on desktop. Completed word builds lock in place as monuments and award ordinary construction materials.
 
 ## Validation and safeguards
 
@@ -44,4 +44,3 @@ Mining state and collected letter inventory persist locally. Removing an unfinis
 - Reversed world-axis order is accepted so the same visible word works when approached from either side.
 - Prompts, Learn examples, hints and failure messages do not expose an internal answer plan.
 - Automated tests cover correct order, reversed approach, incorrect symbols, non-linear placement and deterministic deposits.
-

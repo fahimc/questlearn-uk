@@ -11,6 +11,8 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Desktop landing, 1440 × 900 | [PNG](responsive/index-desktop.png) |
 | EduGames short landscape, 844 × 390 | [PNG](responsive/index-short-landscape.png) |
 | Blocksmith mobile, 390 × 844 | [PNG](responsive/blocksmith-mobile.png) |
+| Blocksmith narrow mobile, 341 × 772 | [PNG](responsive/blocksmith-narrow-mobile.png) |
+| Blocksmith mobile inventory, 341 × 772 | [PNG](responsive/blocksmith-inventory-mobile.png) |
 | Blocksmith desktop world, 1440 × 900 | [PNG](responsive/blocksmith-desktop.png) |
 | Blocksmith mineable tree view, 1280 × 720 | [PNG](responsive/blocksmith-mining-desktop.png) |
 | Blocksmith mobile quest, 390 × 844 | [PNG](responsive/blocksmith-quest-mobile.png) |
@@ -20,6 +22,7 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Blocksmith mobile flight controls, 390 × 844 | [PNG](responsive/blocksmith-flight-mobile.png) |
 | Blocksmith touch short landscape, 844 × 390 | [PNG](responsive/blocksmith-short-landscape.png) |
 | Blocksmith uneven English Land, 1280 × 720 | [PNG](responsive/blocksmith-english-desktop.png) |
+| Blocksmith roaming voxel animals, 1280 × 720 | [PNG](responsive/blocksmith-animals-desktop.png) |
 | Blocksmith Learn support, mobile, 390 × 844 | [PNG](responsive/blocksmith-learn-mobile.png) |
 | Blocksmith pulsing active pad, desktop, 1280 × 720 | [PNG](responsive/blocksmith-highlight-desktop.png) |
 | Skybound short landscape, 844 × 390 | [PNG](responsive/skybound-short-landscape.png) |

@@ -11,7 +11,9 @@
 
 - One-column landing/game browser.
 - Three game cards keep full art and 44 px action targets.
-- HUD uses compact pills; build grid remains tappable.
+- HUD uses one flex row for navigation, inventory, quest journal, help and pause; secondary labels are removed before controls shrink.
+- A single drawer icon opens every owned construction block, letter and punctuation stone in a four-column overlay.
+- The drawer stops world movement while open, stays above the touch controls and scrolls inside the available height.
 
 ## Tablet portrait: 768 × 1024
 
@@ -30,14 +32,14 @@
 - Game board and challenge dock appear side-by-side.
 - Challenge answers use compact vertical rhythm but remain at least 40–44 px.
 - Gameplay remains functional with browser/device safe areas.
-- Blocksmith keeps its four material counts and dig/place controls visible without clipping; its `420px` portrait safety floor is removed in this orientation.
+- Blocksmith keeps movement and dig/place controls visible without clipping; the inventory drawer uses eight columns between the two control clusters, and its `420px` portrait safety floor is removed in this orientation.
 
 ## Blocksmith learning supports
 
 - Learn and Hint controls stack on narrow portrait screens and remain side-by-side when width permits.
 - The quest dialog scrolls within the safe viewport; opening teaching content never pushes its close or action controls outside reach.
-- Collected letter stones use a horizontally scrollable tray rather than shrinking symbols below a readable touch target.
-- On mobile, the tray sits above movement controls; on desktop it docks above the hotbar and journal button.
+- Mobile uses the same owned-block drawer for ordinary materials, letters and punctuation, so no second tray competes with movement controls.
+- Desktop retains its fast numbered hotbar and letter tray while the mobile drawer keeps every item at a readable touch target.
 - Active quest borders pulse in the 3D world while the compact current-quest tile remains available in the HUD.
 
 Visual baselines are generated in `docs/images/responsive/`; automated screenshots support review but do not replace physical device and assistive-technology testing.
