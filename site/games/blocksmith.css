@@ -7,3 +7,4 @@
 .nearby-prompt[hidden],.check-build[hidden]{display:none!important}
 @media(max-width:600px){.quest-status{display:none!important}.voxel-brand b{display:none!important}}
 .force-touch .voxel-touch{display:flex!important;bottom:96px}.force-touch .hotbar{bottom:max(14px,env(safe-area-inset-bottom))}.force-touch .hotbar-slot{width:51px;height:51px}.force-touch .hotbar-slot b,.force-touch .voxel-brand b{display:none}.force-touch .journal-tab{right:max(14px,env(safe-area-inset-right));bottom:168px;width:54px}.force-touch .journal-tab b{display:none}
+.voxel-touch,.voxel-touch *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
