@@ -1,6 +1,11 @@
 export const SKYBOUND_LANES=Object.freeze(['left','right']);
 export const SKYBOUND_PLAYER_FOOT_RADIUS=.3;
 
+export function createSkyboundShareData(pageUrl){
+  const url=new URL(pageUrl);url.search='';url.hash='';
+  return{title:'Skybound Academy achievement',text:'I completed all 10 maths bridges in Skybound Academy on EduGames!',url:url.href};
+}
+
 function analogAxis(value){return Number.isFinite(value)?Math.max(-1,Math.min(1,value)):0}
 export function getSkyboundJoystickVector(clientX,clientY,bounds){
   const radius=Math.max(1,Math.min(bounds.width,bounds.height)*.29),rawX=(clientX-(bounds.left+bounds.width/2))/radius,rawY=((bounds.top+bounds.height/2)-clientY)/radius,magnitude=Math.hypot(rawX,rawY);if(magnitude<.08)return{x:0,y:0,knobX:0,knobY:0};const scale=Math.min(1,magnitude)/magnitude,x=rawX*scale,y=rawY*scale;return{x,y,knobX:x*radius,knobY:-y*radius};

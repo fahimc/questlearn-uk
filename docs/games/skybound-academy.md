@@ -15,7 +15,7 @@ The game uses an original EduGames world, character, interface and question set.
 - Landing uses the avatar's foot area rather than a zero-width centre point, so every visible glass edge is usable while the gap between answers remains unsafe.
 - Falling always returns the learner to the checkpoint immediately before that bridge.
 - Checkpoint progress is local and private. There is no timer, public ranking, chat, lives system or paid skip.
-- Completing the tenth bridge opens a natural session ending with replay and choose-another-game actions.
+- Completing the tenth bridge opens a natural session ending with share, replay and choose-another-game actions. Sharing uses the device's native share sheet when available and falls back to copying the canonical game link. The fixed achievement message never includes a learner's identity, answers or saved progress.
 
 ## Curriculum route
 
