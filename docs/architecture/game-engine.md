@@ -9,7 +9,7 @@ Use a progressive web app shell with DOM-based learning UI. Games are lazy-loade
 - TypeScript for production shared contracts.
 - Web Audio with explicit independent controls; service worker for downloaded missions.
 
-The HTML prototypes use no third-party engine so they load directly on GitHub Pages and keep the architecture inspectable. They validate interaction/layout, not production physics.
+The playable Blocksmith and Skybound prototypes use Three.js from a pinned import map while keeping game rules in renderer-independent modules. Chronicle remains a lightweight DOM/canvas prototype. All routes remain static-host compatible on GitHub Pages and Netlify.
 
 ## Runtime layers
 
@@ -38,6 +38,8 @@ flowchart TB
 Detect broad capability from frame timing, not device fingerprinting. Offer a manual “simpler graphics” control.
 
 Blocksmith's current prototype maps capable desktops to its richer tier and maps coarse-pointer devices, ChromeOS, four-core-or-lower devices and devices reporting 4 GB memory or less to its low-power tier. The runtime uses procedural, seeded content in both tiers; quality changes only rendering cost. Terrain is divided into cullable instance chunks, repeated voxel props share instance batches, shadows and pixel density are bounded, distant actors stop animating, and non-render UI work is throttled. The low tier renders every animation frame rather than imposing an uneven fractional frame cap, while player physics uses fixed 60 Hz substeps and catches up safely after a slow frame. Query-string tier overrides make browser profiling and screenshot regression deterministic. A production build should add sustained frame-time sampling and expose a child-friendly graphics switch without changing saved world data.
+
+Skybound reuses the same capability selector and fixed 60 Hz simulation. Checkpoints, posts and clouds are instanced; only the twenty stateful glass tiles and the small block-character rig remain individual meshes. The renderer-independent bridge state machine is the authority for answer lanes, falls, retries, checkpoint progression and completion.
 
 ## Content packaging
 

@@ -26,6 +26,9 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Blocksmith roaming voxel animals, 1280 × 720 | [PNG](responsive/blocksmith-animals-desktop.png) |
 | Blocksmith Learn support, mobile, 390 × 844 | [PNG](responsive/blocksmith-learn-mobile.png) |
 | Blocksmith pulsing active pad, desktop, 1280 × 720 | [PNG](responsive/blocksmith-highlight-desktop.png) |
+| Skybound glass run, mobile, 390 × 844 | [PNG](responsive/skybound-mobile.png) |
+| Skybound glass run, desktop, 1280 × 720 | [PNG](responsive/skybound-desktop.png) |
+| Skybound Learn support, desktop, 1280 × 720 | [PNG](responsive/skybound-learn-desktop.png) |
 | Skybound short landscape, 844 × 390 | [PNG](responsive/skybound-short-landscape.png) |
 | Chronicle desktop, 1280 × 720 | [PNG](responsive/chronicle-desktop.png) |
 
