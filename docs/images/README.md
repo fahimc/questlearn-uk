@@ -30,6 +30,10 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Skybound glass run, desktop, 1280 × 720 | [PNG](responsive/skybound-desktop.png) |
 | Skybound Learn support, desktop, 1280 × 720 | [PNG](responsive/skybound-learn-desktop.png) |
 | Skybound short landscape, 844 × 390 | [PNG](responsive/skybound-short-landscape.png) |
+| LexiClimb course, mobile, 390 × 844 | [PNG](responsive/wordwall-mobile.png) |
+| LexiClimb course, desktop, 1280 × 720 | [PNG](responsive/wordwall-desktop.png) |
+| LexiClimb English gate, mobile, 390 × 844 | [PNG](responsive/wordwall-challenge-mobile.png) |
+| LexiClimb English gate, short landscape, 844 × 390 | [PNG](responsive/wordwall-short-landscape.png) |
 | Chronicle desktop, 1280 × 720 | [PNG](responsive/chronicle-desktop.png) |
 
 ## Component designs
@@ -51,4 +55,4 @@ These captures cover visual regression/reference needs. Production acceptance st
 
 ## Generated EduGames artwork
 
-Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The set contains the EduGames mark and the three game thumbnails; visible titles remain HTML rather than baked into the artwork.
+Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The active set contains the EduGames mark and thumbnails for Blocksmith, Skybound and LexiClimb; the earlier Chronicle artwork remains archived in the repository. Visible titles remain HTML rather than baked into the artwork.

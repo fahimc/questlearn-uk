@@ -9,7 +9,7 @@ Use a progressive web app shell with DOM-based learning UI. Games are lazy-loade
 - TypeScript for production shared contracts.
 - Web Audio with explicit independent controls; service worker for downloaded missions.
 
-The playable Blocksmith and Skybound prototypes use Three.js from a pinned import map while keeping game rules in renderer-independent modules. Chronicle remains a lightweight DOM/canvas prototype. All routes remain static-host compatible on GitHub Pages and Netlify.
+The playable Blocksmith, Skybound and LexiClimb prototypes use Three.js from a pinned import map while keeping game rules in renderer-independent modules. Chronicle remains available as an earlier lightweight DOM/canvas prototype. All routes remain static-host compatible on GitHub Pages and Netlify.
 
 ## Runtime layers
 
@@ -40,6 +40,8 @@ Detect broad capability from frame timing, not device fingerprinting. Offer a ma
 Blocksmith's current prototype maps capable desktops to its richer tier and maps coarse-pointer devices, ChromeOS, four-core-or-lower devices and devices reporting 4 GB memory or less to its low-power tier. The runtime uses procedural, seeded content in both tiers; quality changes only rendering cost. Terrain is divided into cullable instance chunks, repeated voxel props share instance batches, shadows and pixel density are bounded, distant actors stop animating, and non-render UI work is throttled. The low tier renders every animation frame rather than imposing an uneven fractional frame cap, while player physics uses fixed 60 Hz substeps and catches up safely after a slow frame. Query-string tier overrides make browser profiling and screenshot regression deterministic. A production build should add sustained frame-time sampling and expose a child-friendly graphics switch without changing saved world data.
 
 Skybound reuses the same capability selector and fixed 60 Hz simulation. Checkpoints, posts and clouds are instanced; only the twenty stateful glass tiles and the small block-character rig remain individual meshes. The renderer-independent bridge state machine is the authority for answer lanes, falls, retries, checkpoint progression and completion.
+
+LexiClimb reuses Skybound's camera-relative movement, analogue input, buffered jump, procedural audio and low-power selection. Its six deterministic course plans contain 48 obstacle supports, seven checkpoint platforms and six collapsible word walls. `wordwall-engine.js` owns checkpoint/challenge progression and answer normalisation; Three.js owns presentation, collision sampling and wall animation.
 
 ## Content packaging
 

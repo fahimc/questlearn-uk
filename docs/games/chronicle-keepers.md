@@ -1,4 +1,6 @@
-# Game plan 3: Chronicle Keepers
+# Earlier concept: Chronicle Keepers
+
+Chronicle Keepers is retained as an earlier narrative prototype. LexiClimb Tower is the active third EduGames plan and homepage game.
 
 ## Promise
 
@@ -36,4 +38,3 @@ One chapter, four English/history encounters, five relics, local save and respon
 - **One “correct” interpretation:** accept evidence-backed alternatives where appropriate; author rubrics.
 - **Story reward distracts from explanation:** require brief evidence selection before consequence.
 - **Cultural flattening:** named expert reviewers and provenance for historical content.
-

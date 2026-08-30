@@ -52,4 +52,12 @@
 - Portrait uses a full-width question below the HUD and bottom-corner controls. Short landscape uses a 300 px question card in the upper-left, smaller controls and the rest of the viewport for the bridge.
 - All HUD elements use safe-area offsets. Gameplay controls disable selection and callouts without disabling selection in learning text.
 
+## LexiClimb tower
+
+- The full-screen Three.js course keeps its compact progress HUD at the top, a single next-gate objective below it and independent movement/jump controls at the bottom corners.
+- Portrait stacks multiple-choice answers and completion actions into one thumb-friendly column. Letter-bank gates retain five equal touch columns.
+- Short landscape uses two answer columns, a ten-column letter bank and a shallower dialog so the complete challenge stays inside 844 × 390.
+- The English dialog owns the top layer and pauses movement; Learn and Hint expand inside its bounded scrolling area.
+- Desktop and touch both retain orbital camera control without stealing the analogue or Jump pointers.
+
 Visual baselines are generated in `docs/images/responsive/`; automated screenshots support review but do not replace physical device and assistive-technology testing.
