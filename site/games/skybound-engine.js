@@ -5,6 +5,13 @@ export function getSkyboundMovementAxes(input={},cameraYaw=0){
   return{x:x/length,z:z/length};
 }
 
+export function createSkyboundJumpControl(){return{bufferRemaining:0,coyoteRemaining:0}}
+export function queueSkyboundJump(state){return{...state,bufferRemaining:.2}}
+export function stepSkyboundJump(state,{delta,grounded}){
+  let bufferRemaining=Math.max(0,state.bufferRemaining-delta),coyoteRemaining=grounded?.1:Math.max(0,state.coyoteRemaining-delta);const jumped=bufferRemaining>0&&coyoteRemaining>0;
+  if(jumped){bufferRemaining=0;coyoteRemaining=0}return{state:{bufferRemaining,coyoteRemaining},jumped};
+}
+
 function hashText(value){let hash=2166136261;for(const character of value){hash^=character.charCodeAt(0);hash=Math.imul(hash,16777619)}return hash>>>0}
 function assertQuestions(questions){if(!Array.isArray(questions)||!questions.length)throw new TypeError('Skybound needs a non-empty question list.')}
 function laneAnswers(question,stageIndex){const answerLeft=(hashText(`${question.id}:${stageIndex}`)&1)===0,wrong=question.options.find(option=>option!==question.answer);return answerLeft?{left:question.answer,right:wrong}:{left:wrong,right:question.answer}}

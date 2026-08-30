@@ -177,6 +177,12 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - The in-app browser test connection failed before page setup, so pointer-drag runtime validation still needs a physical desktop/touch pass; syntax, static integration and renderer-independent camera movement tests passed.
 - GitHub commit `ff8c9e2` and Netlify production deploy `6a9459cfeb01f7fc63226163` published the orbit controls. Live page, game module and movement engine returned 200 and contained the new camera paths.
 
+## Skybound multi-touch repeat jumping
+
+- Replaced shared touch booleans with a pointer-ID action map. A direction finger remains held while a separate finger presses and releases Jump repeatedly; releasing one control only clears its own action.
+- Added a deterministic 200 ms jump buffer with a short coyote window. Each press creates a new request, presses just before landing are no longer discarded, and the buffer resets on pause, blur or respawn.
+- Added engine and integration regressions for three successive jump requests, pre-landing buffering and per-pointer touch tracking. `npm run test:all` passes 64 tests and validates 118 local files.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.

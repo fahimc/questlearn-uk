@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { chooseSkyboundLane, createSkyboundRun, getSkyboundMovementAxes, getSkyboundStage, reachSkyboundCheckpoint, respawnSkyboundStage, SKYBOUND_LANES } from '../site/games/skybound-engine.js';
+import { chooseSkyboundLane, createSkyboundJumpControl, createSkyboundRun, getSkyboundMovementAxes, getSkyboundStage, queueSkyboundJump, reachSkyboundCheckpoint, respawnSkyboundStage, SKYBOUND_LANES, stepSkyboundJump } from '../site/games/skybound-engine.js';
 import { skyboundQuestions, validateSkyboundQuestions } from '../site/games/skybound-questions.js';
 
 function correctLane(state,question){return SKYBOUND_LANES.find(lane=>state.laneAnswers[lane]===question.answer)}
@@ -15,3 +15,4 @@ test('crossing all ten bridges completes the run',()=>{let state=createSkyboundR
 test('lane choices are ignored after the bridge has been answered',()=>{const initial=createSkyboundRun(skyboundQuestions),first=chooseSkyboundLane(initial,skyboundQuestions,correctLane(initial,skyboundQuestions[0]));assert.equal(chooseSkyboundLane(first,skyboundQuestions,'left'),first);assert.throws(()=>chooseSkyboundLane(initial,skyboundQuestions,'middle'),TypeError)});
 test('camera-relative left and right match what the player sees',()=>{assert.deepEqual(getSkyboundMovementAxes({left:true}),{x:1,z:0});assert.deepEqual(getSkyboundMovementAxes({right:true}),{x:-1,z:0});assert.deepEqual(getSkyboundMovementAxes({forward:true}),{x:0,z:1});const diagonal=getSkyboundMovementAxes({right:true,forward:true});assert.ok(Math.abs(Math.hypot(diagonal.x,diagonal.z)-1)<Number.EPSILON)});
 test('movement rotates with the orbit camera',()=>{const quarterTurn=getSkyboundMovementAxes({forward:true},Math.PI/2),right=getSkyboundMovementAxes({right:true},Math.PI/2);assert.ok(Math.abs(quarterTurn.x+1)<Number.EPSILON);assert.ok(Math.abs(quarterTurn.z)<1e-12);assert.ok(Math.abs(right.x)<1e-12);assert.ok(Math.abs(right.z+1)<Number.EPSILON)});
+test('jump presses can be buffered and repeated after landing',()=>{let control=queueSkyboundJump(createSkyboundJumpControl()),step=stepSkyboundJump(control,{delta:1/60,grounded:true});assert.equal(step.jumped,true);control=queueSkyboundJump(step.state);step=stepSkyboundJump(control,{delta:.1,grounded:false});assert.equal(step.jumped,false);step=stepSkyboundJump(step.state,{delta:.05,grounded:true});assert.equal(step.jumped,true);control=queueSkyboundJump(step.state);step=stepSkyboundJump(control,{delta:1/60,grounded:true});assert.equal(step.jumped,true)});
