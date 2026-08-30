@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { chooseSkyboundLane, createSkyboundRun, getSkyboundStage, reachSkyboundCheckpoint, respawnSkyboundStage, SKYBOUND_LANES } from '../site/games/skybound-engine.js';
+import { chooseSkyboundLane, createSkyboundRun, getSkyboundMovementAxes, getSkyboundStage, reachSkyboundCheckpoint, respawnSkyboundStage, SKYBOUND_LANES } from '../site/games/skybound-engine.js';
 import { skyboundQuestions, validateSkyboundQuestions } from '../site/games/skybound-questions.js';
 
 function correctLane(state,question){return SKYBOUND_LANES.find(lane=>state.laneAnswers[lane]===question.answer)}
@@ -13,3 +13,4 @@ test('falling after a safe choice also restores the current bridge question',()=
 test('a correct tile unlocks only the next checkpoint',()=>{const initial=createSkyboundRun(skyboundQuestions),lane=correctLane(initial,skyboundQuestions[0]),crossing=chooseSkyboundLane(initial,skyboundQuestions,lane);assert.equal(crossing.status,'crossing');assert.equal(reachSkyboundCheckpoint(initial,skyboundQuestions),initial);const advanced=reachSkyboundCheckpoint(crossing,skyboundQuestions);assert.equal(advanced.stageIndex,1);assert.equal(advanced.checkpointStage,1);assert.equal(advanced.status,'ready');assert.equal(advanced.attempt,1)});
 test('crossing all ten bridges completes the run',()=>{let state=createSkyboundRun(skyboundQuestions);for(const question of skyboundQuestions){state=chooseSkyboundLane(state,skyboundQuestions,correctLane(state,question));state=reachSkyboundCheckpoint(state,skyboundQuestions)}assert.equal(state.completed,true);assert.equal(state.status,'complete');assert.equal(state.checkpointStage,skyboundQuestions.length)});
 test('lane choices are ignored after the bridge has been answered',()=>{const initial=createSkyboundRun(skyboundQuestions),first=chooseSkyboundLane(initial,skyboundQuestions,correctLane(initial,skyboundQuestions[0]));assert.equal(chooseSkyboundLane(first,skyboundQuestions,'left'),first);assert.throws(()=>chooseSkyboundLane(initial,skyboundQuestions,'middle'),TypeError)});
+test('camera-relative left and right match what the player sees',()=>{assert.deepEqual(getSkyboundMovementAxes({left:true}),{x:1,z:0});assert.deepEqual(getSkyboundMovementAxes({right:true}),{x:-1,z:0});assert.deepEqual(getSkyboundMovementAxes({forward:true}),{x:0,z:1});const diagonal=getSkyboundMovementAxes({right:true,forward:true});assert.ok(Math.abs(Math.hypot(diagonal.x,diagonal.z)-1)<Number.EPSILON)});

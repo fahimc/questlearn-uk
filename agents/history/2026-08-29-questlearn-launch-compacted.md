@@ -162,6 +162,12 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - `npm run test:all` passes 61 tests and validates 118 local files. The home page now marks Skybound as playable rather than a prototype.
 - GitHub commit `f54f49d` and Netlify production deploy `6a94127159eebdb51b393df7` published the game. The live wrong-tile check fell, restored attempt 2 at checkpoint 1, and sustained 60 FPS at 57 calls with no console warnings or errors.
 
+## Skybound camera-relative controls correction
+
+- Corrected Skybound's horizontal movement mapping for its positive-Z follow camera. On-screen Left now moves left and on-screen Right moves right for arrow keys, A/D and touch controls.
+- Centralised the camera-relative direction calculation in `site/games/skybound-engine.js` and added a regression test covering left, right, forward and normalised diagonal input.
+- `npm run test:all` passes 62 tests and validates 118 local files.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -170,4 +176,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The Skybound glass-bridge obby is live on Netlify and GitHub alongside Blocksmith with 61 passing tests, 118 validated local files and 37 visual baselines. Local and production browser checks confirm its ten-stage physical-answer loop, checkpoint retries, Learn/Hint support, fixed-step character movement and steady 60 FPS low-tier rendering. Next product phase is physical Chromebook/tablet heat testing, a motor-assist option for Skybound, animal collision and saved constructions for Blocksmith, then the full Chronicle implementation and teacher evidence export.
+The Skybound glass-bridge obby is live on Netlify and GitHub alongside Blocksmith with 62 passing tests, 118 validated local files and 37 visual baselines. Its horizontal controls now match the follow-camera view across keyboard and touch. Local and production browser checks confirm its ten-stage physical-answer loop, checkpoint retries, Learn/Hint support, fixed-step character movement and steady 60 FPS low-tier rendering. Next product phase is physical Chromebook/tablet heat testing, a motor-assist option for Skybound, animal collision and saved constructions for Blocksmith, then the full Chronicle implementation and teacher evidence export.

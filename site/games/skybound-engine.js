@@ -1,5 +1,10 @@
 export const SKYBOUND_LANES=Object.freeze(['left','right']);
 
+export function getSkyboundMovementAxes(input={}){
+  const x=Number(Boolean(input.left))-Number(Boolean(input.right)),z=Number(Boolean(input.forward))-Number(Boolean(input.back)),length=Math.hypot(x,z)||1;
+  return{x:x/length,z:z/length};
+}
+
 function hashText(value){let hash=2166136261;for(const character of value){hash^=character.charCodeAt(0);hash=Math.imul(hash,16777619)}return hash>>>0}
 function assertQuestions(questions){if(!Array.isArray(questions)||!questions.length)throw new TypeError('Skybound needs a non-empty question list.')}
 function laneAnswers(question,stageIndex){const answerLeft=(hashText(`${question.id}:${stageIndex}`)&1)===0,wrong=question.options.find(option=>option!==question.answer);return answerLeft?{left:question.answer,right:wrong}:{left:wrong,right:question.answer}}
