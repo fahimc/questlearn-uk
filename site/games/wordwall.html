@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#8f5cff">
-  <meta name="description" content="Climb a huge 3D obby and unlock English word walls for UK learners aged 7 to 10.">
+  <meta name="description" content="Climb a huge 3D obby, collect coins, unlock character skins and solve English word walls for UK learners aged 7 to 10.">
   <title>LexiClimb Tower · EduGames</title>
   <link rel="stylesheet" href="../assets/game.css">
   <link rel="stylesheet" href="wordwall.css">
+  <link rel="stylesheet" href="wordwall-shop.css">
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js"}}</script>
 </head>
 <body class="game-page wordwall-page">
@@ -19,6 +20,7 @@
       <a class="tower-brand" href="../index.html" aria-label="Exit LexiClimb Tower"><span>E</span><b>LexiClimb</b></a>
       <div class="tower-progress"><small>Course</small><b><span data-stage>1</span>/6</b><i><em data-progress></em></i></div>
       <span class="tower-checkpoint"><i>◆</i><span>Checkpoint</span><b data-checkpoint>0</b></span>
+      <button class="tower-wallet" type="button" data-shop aria-label="Open skin shop. You have 0 coins"><i aria-hidden="true">●</i><b data-coins>0</b></button>
       <button class="tower-icon" type="button" data-audio aria-label="Mute sound" aria-pressed="false">🔊</button>
       <button class="tower-icon" type="button" data-help aria-label="Open how to play">?</button>
       <button class="tower-icon" type="button" data-pause aria-label="Pause game">Ⅱ</button>
@@ -36,7 +38,7 @@
       <section class="tower-card" aria-labelledby="towerWelcome">
         <p class="tower-kicker">English obby · ages 7–10</p><h1 id="towerWelcome">LexiClimb Tower</h1>
         <p>Climb six huge floating courses that spiral around the tower. Each checkpoint is locked by an English word wall. Solve it, watch the wall collapse, then keep climbing.</p>
-        <div class="tower-guide"><article><span>1</span><div><b>Climb the spiral</b><small>Follow stepping stones, beams, stairs and tiny platforms around the tower.</small></div></article><article><span>2</span><div><b>Move &amp; look</b><small class="desktop-copy">Use WASD or arrows. Drag or use Q/E to orbit and turn your character.</small><small class="touch-copy">Use the analogue stick. Swipe the world to orbit and turn your character.</small></div></article><article><span>3</span><div><b>Jump</b><small class="desktop-copy">Press Space as often as you need.</small><small class="touch-copy">Tap Jump with another finger.</small></div></article><article><span>4</span><div><b>Unlock</b><small>Solve the English gate. Learn and Hint are always available.</small></div></article></div>
+        <div class="tower-guide"><article><span>1</span><div><b>Climb the spiral</b><small>Cross blocks, circles and triangles in different sizes.</small></div></article><article><span>2</span><div><b>Move &amp; look</b><small class="desktop-copy">Use WASD or arrows. Drag or use Q/E to orbit and turn your character.</small><small class="touch-copy">Use the analogue stick. Swipe the world to orbit and turn your character.</small></div></article><article><span>3</span><div><b>Jump &amp; collect</b><small>Grab coins along the route and spend them on character skins.</small></div></article><article><span>4</span><div><b>Unlock</b><small>Solve the English gate. Learn and Hint are always available.</small></div></article></div>
         <button class="tower-primary" type="button" data-start>Start climbing</button><small>No timer · no lives · no adverts · no chat</small>
       </section>
     </div>
@@ -46,7 +48,9 @@
     </dialog>
 
     <dialog class="tower-dialog" data-pause-dialog><section class="tower-card"><p class="tower-kicker">Game paused</p><h2>Checkpoint saved</h2><p>Take your time. Your latest word wall is safe.</p><button class="tower-primary" type="button" data-resume>Continue climbing</button><a href="../index.html">Exit to EduGames</a></section></dialog>
-    <dialog class="tower-dialog" data-help-dialog><section class="tower-card"><button class="dialog-close" type="button" data-close-help aria-label="Close how to play">×</button><p class="tower-kicker">How to play</p><h2>Climb, solve, continue</h2><div class="tower-guide compact"><article><span>W</span><div><b>Move</b><small>Run in any direction.</small></div></article><article><span>↔</span><div><b>Orbit</b><small>Drag or swipe to turn the view and your character. Desktop can use Q/E.</small></div></article><article><span>↑</span><div><b>Jump</b><small>Every new press makes a new jump when grounded.</small></div></article><article><span>Aa</span><div><b>Unlock</b><small>Complete the word task to drop the wall.</small></div></article></div><button class="tower-primary" type="button" data-close-help>Back to course</button></section></dialog>
+    <dialog class="tower-dialog" data-help-dialog><section class="tower-card"><button class="dialog-close" type="button" data-close-help aria-label="Close how to play">×</button><p class="tower-kicker">How to play</p><h2>Climb, solve, continue</h2><div class="tower-guide compact"><article><span>W</span><div><b>Move</b><small>Run in any direction.</small></div></article><article><span>↔</span><div><b>Orbit</b><small>Drag or swipe to turn the view and your character. Desktop can use Q/E.</small></div></article><article><span>↑</span><div><b>Jump</b><small>Every new press makes a new jump when grounded.</small></div></article><article><span>●</span><div><b>Collect</b><small>Touch coins and open the coin button to buy skins.</small></div></article><article><span>Aa</span><div><b>Unlock</b><small>Complete the word task to drop the wall.</small></div></article></div><button class="tower-primary" type="button" data-close-help>Back to course</button></section></dialog>
+
+    <dialog class="tower-dialog shop-dialog" data-shop-dialog><section class="tower-card"><button class="dialog-close" type="button" data-close-shop aria-label="Close skin shop">×</button><p class="tower-kicker">Character shop</p><h2>Choose your climber</h2><p class="shop-balance"><i aria-hidden="true">●</i> <b data-shop-coins>0</b> coins</p><div class="skin-grid" data-skin-grid></div><p class="shop-message" data-shop-message role="status" aria-live="polite"></p><small>Coins, owned skins and your chosen look are saved only on this device.</small></section></dialog>
 
     <dialog class="tower-dialog complete-dialog" data-complete-dialog><section class="tower-card"><div class="tower-trophy" aria-hidden="true">★</div><p class="tower-kicker">All six walls unlocked</p><h2>Tower conquered!</h2><p>You used spelling, vocabulary, homophones, punctuation and prefixes to reach the summit.</p><div class="complete-actions"><button class="tower-primary" type="button" data-share>Share achievement</button><button class="tower-secondary" type="button" data-replay>Climb again</button></div><span class="share-status" data-share-status role="status" aria-live="polite"></span><a href="../index.html">Choose another game</a></section></dialog>
   </main>

@@ -41,7 +41,7 @@ Blocksmith's current prototype maps capable desktops to its richer tier and maps
 
 Skybound reuses the same capability selector and fixed 60 Hz simulation. Checkpoints, posts and clouds are instanced; only the twenty stateful glass tiles and the small block-character rig remain individual meshes. The renderer-independent bridge state machine is the authority for answer lanes, falls, retries, checkpoint progression and completion.
 
-LexiClimb reuses Skybound's camera-relative movement, analogue input, buffered jump, procedural audio and low-power selection. Its six deterministic course plans contain 48 rotated obstacle supports, seven checkpoint platforms and six collapsible word walls arranged as a one-and-a-half-turn helix around a central tower. `wordwall-engine.js` owns the spiral pose formula, rotated footprint and gate collision, checkpoint/challenge progression and answer normalisation; Three.js owns presentation and wall animation.
+LexiClimb reuses Skybound's camera-relative movement, analogue input, buffered jump, procedural audio and low-power selection. Its six deterministic course plans contain 48 rotated box, circle and triangle supports, seven checkpoint platforms and six collapsible word walls arranged as a one-and-a-half-turn helix around a central tower. `wordwall-engine.js` owns the spiral pose formula, shape-accurate rotated footprints, gate collision, checkpoint/challenge progression, answer normalisation and the validated coin/skin profile. Three.js owns presentation, wall animation and a single instanced batch for all 30 collectible coins.
 
 ## Content packaging
 

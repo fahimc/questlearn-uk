@@ -8,14 +8,23 @@ The visual direction uses the broad genre pattern visible in bright browser obbi
 
 ## Core loop
 
-`Traverse course → reach checkpoint → open English word wall → use Learn or Hint if needed → solve → watch wall collapse → continue upward`.
+`Traverse varied shapes → collect coins → reach checkpoint → use Learn or Hint if needed → solve the English wall → spend coins on a skin → continue upward`.
 
-- Each course has eight traversable obstacles and a distinct colour/shape rhythm.
+- Each course has eight traversable obstacles and a distinct colour/shape rhythm. Boxes, circles and triangles vary in width and depth, and the landing engine uses the same rotated footprint as the visible mesh.
 - Each section curves through 90 degrees around the core and rises four world units. Seven rotated checkpoint platforms join the sections into one readable helix rather than a straight corridor.
+- Five coins sit on each section's intended route. Collection is immediate, idempotent and rendered as one instanced batch, so the 30 rewards do not create 30 extra draw calls.
 - A checkpoint is secured before its challenge opens, so a later fall never erases a solved or reached section.
 - The blocking wall remains physically closed until the challenge is correct. Its full brick width, depth and height block the avatar from the front, back, sides and corners; then the collider releases as the brick group drops from the route.
 - There is no timer, lives counter, public leaderboard, advertising or chat.
 - The summit provides replay, choose-another-game and privacy-safe sharing.
+
+## Coins and character skins
+
+- The HUD coin button opens a responsive character shop without leaving the game. It pauses movement and ambient sound while open.
+- Candy Climber is always available. Ocean Explorer costs 5 coins, Solar Sprinter costs 9 and Galaxy Hero costs 14, so one complete 30-coin climb can unlock all three optional looks.
+- Buying a skin also equips it. Any owned skin can later be equipped without another charge.
+- Coin IDs are one-time rewards. Reloading or falling cannot duplicate a collected coin, while uncollected coins remain available on a later attempt.
+- Balance, collected IDs, owned skins and the equipped skin use a validated, versioned local profile. They stay on the device and are not shared, uploaded or attached to achievement links.
 
 ## English gate route
 
@@ -32,13 +41,13 @@ The objectives map to the spelling, vocabulary and grammar strands documented in
 
 ## Runtime and responsive behaviour
 
-- `site/games/wordwall-engine.js` is deterministic and renderer-independent. It owns checkpoint activation, challenge attempts, solved-gate progression, completion and the privacy-safe share payload.
+- `site/games/wordwall-engine.js` is deterministic and renderer-independent. It owns checkpoint activation, challenge attempts, solved-gate progression, completion, shape footprints, idempotent token claims, skin purchase/equip rules, profile validation and the privacy-safe share payload.
 - The same engine owns the spiral pose formula, rotated support footprints and rotated word-wall collision. Three.js consumes those values for mesh position and yaw so visuals and physics share one layout.
 - `site/games/wordwall-challenges.js` is the validated six-gate item bank.
 - `site/games/wordwall.js` composes Three.js presentation with shared Skybound movement, footprint collision, buffered jumping, analogue input, orbit camera, procedural audio and low-power device selection.
 - Desktop uses WASD/arrows, Space, mouse drag and Q/E. Touch uses an independent analogue pointer, Jump pointer and swipe-to-orbit canvas.
 - Orbiting turns the avatar to the view's forward heading even when idle; forward, reverse and strafing controls stay relative to that view.
-- Portrait stacks challenge options and completion actions; short landscape compacts the modal while preserving the course view.
+- Portrait stacks challenge options and completion actions; short landscape compacts the modal while preserving the course view. The skin shop uses two touch-friendly columns in both orientations and owns the only scrolling region inside its bounded dialog.
 
 ## Risks and next tests
 

@@ -3,6 +3,13 @@ function assertChallenges(challenges){if(!Array.isArray(challenges)||!challenges
 
 export const WORDWALL_SPIRAL=Object.freeze({radius:13,stageArc:Math.PI/2,stageRise:4,startAngle:-Math.PI/2});
 export const WORDWALL_GATE_COLLIDER=Object.freeze({width:7,depth:.72,height:3.15});
+export const WORDWALL_TOKEN_STEPS=Object.freeze([0,2,3,5,7]);
+export const WORDWALL_SKINS=Object.freeze([
+  Object.freeze({id:'starter',name:'Candy Climber',price:0,shirt:0xff6fcf,trousers:0x362e72,hair:0x35241f,accent:0xff6fcf}),
+  Object.freeze({id:'ocean',name:'Ocean Explorer',price:5,shirt:0x37ddeb,trousers:0x1555a8,hair:0x12325b,accent:0x37ddeb}),
+  Object.freeze({id:'solar',name:'Solar Sprinter',price:9,shirt:0xffc93f,trousers:0xe66032,hair:0x582814,accent:0xffc93f}),
+  Object.freeze({id:'galaxy',name:'Galaxy Hero',price:14,shirt:0x895cff,trousers:0x252058,hair:0xff65c8,accent:0x895cff})
+]);
 
 export function getWordwallSpiralPose(stageIndex,progress=0,radialOffset=0,spiral=WORDWALL_SPIRAL){
   const routeProgress=stageIndex+Math.max(0,Math.min(1,progress)),angle=spiral.startAngle+routeProgress*spiral.stageArc,radius=spiral.radius+radialOffset,radialX=Math.cos(angle),radialZ=Math.sin(angle),forwardX=-radialZ,forwardZ=radialX;
@@ -11,9 +18,11 @@ export function getWordwallSpiralPose(stageIndex,progress=0,radialOffset=0,spira
 
 function worldToLocal(x,z,originX,originZ,yaw){const dx=x-originX,dz=z-originZ,c=Math.cos(yaw),s=Math.sin(yaw);return{x:c*dx-s*dz,z:s*dx+c*dz}}
 function localToWorld(x,z,originX,originZ,yaw){const c=Math.cos(yaw),s=Math.sin(yaw);return{x:originX+c*x+s*z,z:originZ-s*x+c*z}}
+function pointInTriangle(point,a,b,c){const sign=(p,p1,p2)=>(p.x-p2.x)*(p1.z-p2.z)-(p1.x-p2.x)*(p.z-p2.z),d1=sign(point,a,b),d2=sign(point,b,c),d3=sign(point,c,a),hasNegative=d1<0||d2<0||d3<0,hasPositive=d1>0||d2>0||d3>0;return!(hasNegative&&hasPositive)}
+function distanceToSegment(point,a,b){const dx=b.x-a.x,dz=b.z-a.z,lengthSquared=dx*dx+dz*dz,t=lengthSquared?Math.max(0,Math.min(1,((point.x-a.x)*dx+(point.z-a.z)*dz)/lengthSquared)):0;return Math.hypot(point.x-(a.x+t*dx),point.z-(a.z+t*dz))}
 
 export function isWordwallFootprintOnSupport(x,z,support,radius=.3){
-  if(!support?.solid)return false;const local=worldToLocal(x,z,support.x,support.z,support.yaw||0),outsideX=Math.max(0,Math.abs(local.x)-support.width/2),outsideZ=Math.max(0,Math.abs(local.z)-support.depth/2);return Math.hypot(outsideX,outsideZ)<=radius+1e-9;
+  if(!support?.solid)return false;const local=worldToLocal(x,z,support.x,support.z,support.yaw||0);if(support.shape==='circle')return Math.hypot(local.x,local.z)<=support.width/2+radius+1e-9;if(support.shape==='triangle'){const vertices=[{x:0,z:-support.depth*2/3},{x:-support.width/2,z:support.depth/3},{x:support.width/2,z:support.depth/3}];return pointInTriangle(local,...vertices)||vertices.some((vertex,index)=>distanceToSegment(local,vertex,vertices[(index+1)%3])<=radius+1e-9)}const outsideX=Math.max(0,Math.abs(local.x)-support.width/2),outsideZ=Math.max(0,Math.abs(local.z)-support.depth/2);return Math.hypot(outsideX,outsideZ)<=radius+1e-9;
 }
 
 export function resolveWordwallGateMovement({previousX,previousZ,nextX,nextZ,playerY},gate,{radius=.3,playerHeight=2.2}={}){
@@ -29,3 +38,11 @@ export function submitWordwallAnswer(state,challenges,answer){assertChallenges(c
 export function respawnWordwallRun(state){return{...state,status:state.completed?'complete':'running',activeChallenge:null}}
 export function getWordwallChallenge(state,challenges){assertChallenges(challenges);return state.activeChallenge===null?null:challenges[state.activeChallenge]}
 export function createWordwallShareData(pageUrl){const url=new URL(pageUrl);url.search='';url.hash='';return{title:'LexiClimb Tower achievement',text:'I completed all 6 English gates in LexiClimb Tower on EduGames!',url:url.href}}
+
+export function createWordwallProfile(saved={}){
+  const source=saved&&typeof saved==='object'?saved:{},skinIds=new Set(WORDWALL_SKINS.map(skin=>skin.id)),owned=[...new Set(Array.isArray(source.ownedSkins)?source.ownedSkins.filter(id=>skinIds.has(id)):[])];if(!owned.includes('starter'))owned.unshift('starter');const equippedSkin=owned.includes(source.equippedSkin)?source.equippedSkin:'starter',collectedTokens=[...new Set(Array.isArray(source.collectedTokens)?source.collectedTokens.filter(id=>typeof id==='string'&&id.length<=40):[])];return{version:1,coins:Math.max(0,Math.floor(Number(source.coins)||0)),collectedTokens,ownedSkins:owned,equippedSkin};
+}
+export function createWordwallTokenId(stageIndex,stepIndex){if(!Number.isInteger(stageIndex)||stageIndex<0||!Number.isInteger(stepIndex)||stepIndex<0)throw new RangeError('Token positions need non-negative integer indexes.');return`stage-${stageIndex+1}-coin-${stepIndex+1}`}
+export function collectWordwallToken(profile,tokenId,value=1){const current=createWordwallProfile(profile),id=String(tokenId);if(!id||current.collectedTokens.includes(id))return{profile:current,collected:false};return{profile:{...current,coins:current.coins+Math.max(1,Math.floor(Number(value)||1)),collectedTokens:[...current.collectedTokens,id]},collected:true}}
+export function purchaseWordwallSkin(profile,skinId){const current=createWordwallProfile(profile),skin=WORDWALL_SKINS.find(item=>item.id===skinId);if(!skin)return{profile:current,purchased:false,reason:'missing'};if(current.ownedSkins.includes(skin.id))return{profile:{...current,equippedSkin:skin.id},purchased:false,reason:'owned'};if(current.coins<skin.price)return{profile:current,purchased:false,reason:'coins'};return{profile:{...current,coins:current.coins-skin.price,ownedSkins:[...current.ownedSkins,skin.id],equippedSkin:skin.id},purchased:true,reason:'purchased'}}
+export function equipWordwallSkin(profile,skinId){const current=createWordwallProfile(profile);return current.ownedSkins.includes(skinId)?{...current,equippedSkin:skinId}:current}
