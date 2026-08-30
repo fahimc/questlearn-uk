@@ -160,6 +160,7 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Static checkpoints, posts, crowns, rings and cloud clusters use instancing. Stateful glass remains individually animated. The low-power profile renders the initial scene at 57 calls and sustains 60 FPS in the browser check.
 - Added desktop, 390 × 844 mobile, Learn, and 844 × 390 short-landscape visual baselines. Browser checks confirmed start/focus, jump/landing, wrong-tile collapse and attempt-2 respawn, correct-tile safety, support content, responsive layouts and zero console errors.
 - `npm run test:all` passes 61 tests and validates 118 local files. The home page now marks Skybound as playable rather than a prototype.
+- GitHub commit `f54f49d` and Netlify production deploy `6a94127159eebdb51b393df7` published the game. The live wrong-tile check fell, restored attempt 2 at checkpoint 1, and sustained 60 FPS at 57 calls with no console warnings or errors.
 
 ## Constraints and follow-ups
 
@@ -169,4 +170,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The Skybound glass-bridge obby is ready to publish alongside Blocksmith with 61 passing tests, 118 validated local files and 37 visual baselines. Desktop/mobile browser checks confirm its ten-stage physical-answer loop, checkpoint retries, Learn/Hint support, fixed-step character movement and steady 60 FPS low-tier rendering. Next product phase is physical Chromebook/tablet heat testing, a motor-assist option for Skybound, animal collision and saved constructions for Blocksmith, then the full Chronicle implementation and teacher evidence export.
+The Skybound glass-bridge obby is live on Netlify and GitHub alongside Blocksmith with 61 passing tests, 118 validated local files and 37 visual baselines. Local and production browser checks confirm its ten-stage physical-answer loop, checkpoint retries, Learn/Hint support, fixed-step character movement and steady 60 FPS low-tier rendering. Next product phase is physical Chromebook/tablet heat testing, a motor-assist option for Skybound, animal collision and saved constructions for Blocksmith, then the full Chronicle implementation and teacher evidence export.
