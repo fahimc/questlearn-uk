@@ -140,6 +140,16 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - `npm run test:all` passes 50 tests and validates 110 links. `npm run screenshots` rebuilt 34 baselines, including the 1024 × 600 low-power touch-tablet capture.
 - Netlify production deploy `6a9360f26fded0651c88bd6e` is live at `https://edugames-189.netlify.app/games/blocksmith.html`.
 
+## Solid streamed underground correction
+
+- Replaced the thin one-column reveal behaviour with a deterministic implicit voxel volume extending from each terrain surface to bedrock at Y=-48. Mining any surface or underground block now exposes the block below and the four surrounding tunnel walls, so shafts and tunnels no longer open into a hollow world.
+- Added `site/games/blocksmith-underground.js` as the renderer-independent underground model. It owns voxel adjacency, surface/bedrock bounds, mined-cell exclusion and deterministic letter-stone substitution.
+- Existing saved excavations are hydrated on load by rebuilding only their exposed boundary. The complete hidden underground volume is never instantiated.
+- Exposed ordinary stone uses growable 1,024-instance render pages. A deep shaft adds instance data to a shared draw call rather than creating one Three.js mesh/draw call for every wall block; letter stones remain individually textured and collectible.
+- Added two-block-high tunnel collision while the player is below a mined surface, preventing walking through unmined underground walls while preserving the existing above-ground step movement.
+- Added a deterministic `?preview=underground&quality=low` validation scene. Desktop and phone-sized browser checks showed an enclosed three-block shaft, no console warnings, 60 FPS desktop / 56 FPS during the phone capture, and 44 calls in the phone-sized low-tier scene.
+- `npm run test:all` passes 53 tests and validates 111 local files. New unit coverage verifies 48-block-deep solid terrain, six-sided excavation boundaries, mined-cell air and buried letter replacement.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -148,4 +158,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The corrected Chromebook/tablet build is live on Netlify with 50 passing tests, 110 validated links and 34 visual baselines. Production browser checks confirm movement, jump, 60 FPS and 42 calls / 65,060 triangles on the low tier while mining, building, procedural terrain, quests and animals remain enabled. Next product phase is physical Chromebook/tablet heat and sustained frame-time profiling, horizontal voxel/animal collision, saved constructions and teacher evidence export.
+The solid-underground build is ready to publish with 53 passing tests and 111 validated local files. It keeps the low-power renderer and fixed-step movement, adds implicit terrain to Y=-48, exposes only excavation boundaries in shared instance batches, restores old saved holes, and prevents players inside shafts from crossing unmined walls. Next product phase is physical Chromebook/tablet heat and sustained frame-time profiling, animal collision, saved constructions and teacher evidence export.
