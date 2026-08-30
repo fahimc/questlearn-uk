@@ -234,6 +234,14 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Added a deterministic quarter-turn preview and regressions for idle orientation plus both game integrations. Browser captures at 1280 × 720 visually confirmed the avatars facing the rotated route with intact HUD/course framing.
 - `npm run test:all` passes 81 tests and validates 133 local files. GitHub commit `cef9ac1` and Netlify production deploy `6a94a90ad8a901608db3284b` published the correction; both production pages, controllers and shared engine returned 200 with the new orientation path.
 
+## LexiClimb solid word-wall correction
+
+- Replaced the one-way Z-threshold gate check with the renderer-independent `resolveWordwallGateMovement` volume resolver. Closed gates now block the avatar radius across their complete width, depth and height from front, back, sides, edges and diagonal approaches.
+- Collision resolves X and Z independently and zeros only the blocked velocity, allowing natural sliding without tunnelling. A gate releases collision only when its answer is correct and its falling animation begins.
+- Rebuilt alternating brick rows so every row visibly spans the same seven-unit checkpoint width; the wall no longer has misleading side notches.
+- A deterministic `?preview=wall&quality=low` browser scene drove the avatar continuously into the first gate and visually confirmed it stopped flush at the continuous wall. `npm run test:all` passes 82 tests and validates 133 local files.
+- GitHub commit `7f90470` and Netlify production deploy `6a94ab4f26f95b6909e9646f` published the fix. The production page, controller and collision engine returned 200 with the new paths.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -242,4 +250,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-EduGames now has three active Three.js games on Netlify and GitHub: Blocksmith Worlds, Skybound Academy and LexiClimb Tower. The repository has 81 passing tests, 133 validated local files and 41 saved visual baselines. LexiClimb supplies the English movement/mastery route with six long obby sections and checkpoint word walls; Skybound supplies ten physical-answer maths bridges; Blocksmith supplies the open voxel build-and-language world. All three use mobile-first controls and local/private progress boundaries, and Skybound/LexiClimb provide privacy-safe completion sharing. Both obby avatars turn with their orbit camera even while idle. Physical Chromebook/tablet heat and full interaction testing remain follow-ups, along with a motor-assist option, animal collision and saved constructions for Blocksmith, expanded educator-reviewed item banks and teacher evidence export.
+EduGames now has three active Three.js games on Netlify and GitHub: Blocksmith Worlds, Skybound Academy and LexiClimb Tower. The repository has 82 passing tests, 133 validated local files and 41 saved visual baselines. LexiClimb supplies the English movement/mastery route with six long obby sections and fully solid checkpoint word walls; Skybound supplies ten physical-answer maths bridges; Blocksmith supplies the open voxel build-and-language world. All three use mobile-first controls and local/private progress boundaries, and Skybound/LexiClimb provide privacy-safe completion sharing. Both obby avatars turn with their orbit camera even while idle. Physical Chromebook/tablet heat and full interaction testing remain follow-ups, along with a motor-assist option, animal collision and saved constructions for Blocksmith, expanded educator-reviewed item banks and teacher evidence export.
