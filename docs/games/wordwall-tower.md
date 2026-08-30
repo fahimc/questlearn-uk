@@ -35,6 +35,7 @@ The objectives map to the spelling, vocabulary and grammar strands documented in
 - `site/games/wordwall-challenges.js` is the validated six-gate item bank.
 - `site/games/wordwall.js` composes Three.js presentation with shared Skybound movement, footprint collision, buffered jumping, analogue input, orbit camera, procedural audio and low-power device selection.
 - Desktop uses WASD/arrows, Space, mouse drag and Q/E. Touch uses an independent analogue pointer, Jump pointer and swipe-to-orbit canvas.
+- Orbiting turns the avatar to the view's forward heading even when idle; forward, reverse and strafing controls stay relative to that view.
 - Portrait stacks challenge options and completion actions; short landscape compacts the modal while preserving the course view.
 
 ## Risks and next tests

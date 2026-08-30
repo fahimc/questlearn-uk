@@ -48,6 +48,7 @@ Every question includes a curriculum objective ID, child-readable success explan
 
 - Desktop: WASD or arrow keys move; Space jumps.
 - Touch: a pressure-free analogue stick provides 360-degree direction and variable speed while the separate Jump pointer fires independently.
+- Dragging or swiping the orbit camera turns the avatar to the camera's forward heading, including while standing still. Forward, reverse and strafing movement remain camera-relative.
 - Sound starts only after player interaction. The HUD speaker button or M key toggles a preference remembered on that device.
 - The full-screen canvas owns the viewport. The compact question card, safe-area HUD and touch controls occupy separate zones.
 - Portrait mobile keeps the question above the active tiles and the controls at the bottom corners. Short landscape compacts the question into the upper-left while preserving a clear view of the bridge.
