@@ -175,6 +175,7 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Player movement is transformed using the camera's actual rendered facing direction, so WASD, arrows and the touch direction pad remain screen-relative while the orbit camera is still smoothing into its new position.
 - Updated the welcome/help instructions and accessible canvas label. `npm run test:all` passes 63 tests and validates 118 local files; the new regression rotates movement through a quarter-turn camera view.
 - The in-app browser test connection failed before page setup, so pointer-drag runtime validation still needs a physical desktop/touch pass; syntax, static integration and renderer-independent camera movement tests passed.
+- GitHub commit `ff8c9e2` and Netlify production deploy `6a9459cfeb01f7fc63226163` published the orbit controls. Live page, game module and movement engine returned 200 and contained the new camera paths.
 
 ## Constraints and follow-ups
 
@@ -184,4 +185,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The Skybound glass-bridge obby is live on Netlify and GitHub alongside Blocksmith with 62 passing tests, 118 validated local files and 37 visual baselines. Its horizontal controls now match the follow-camera view across keyboard and touch. Local and production browser checks confirm its ten-stage physical-answer loop, checkpoint retries, Learn/Hint support, fixed-step character movement and steady 60 FPS low-tier rendering. Next product phase is physical Chromebook/tablet heat testing, a motor-assist option for Skybound, animal collision and saved constructions for Blocksmith, then the full Chronicle implementation and teacher evidence export.
+The Skybound glass-bridge obby is live on Netlify and GitHub alongside Blocksmith with 63 passing tests, 118 validated local files and 37 visual baselines. Its orbit camera supports desktop drag/Q/E and mobile swipe, with movement kept relative to the rendered view. Earlier local and production browser checks confirm its ten-stage physical-answer loop, checkpoint retries, Learn/Hint support, fixed-step character movement and steady 60 FPS low-tier rendering; the new orbit pointer interaction still needs a physical desktop/touch pass because the in-app browser connection failed during this release. Next product phase is physical Chromebook/tablet heat testing, a motor-assist option for Skybound, animal collision and saved constructions for Blocksmith, then the full Chronicle implementation and teacher evidence export.
