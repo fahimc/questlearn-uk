@@ -149,6 +149,7 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Added two-block-high tunnel collision while the player is below a mined surface, preventing walking through unmined underground walls while preserving the existing above-ground step movement.
 - Added a deterministic `?preview=underground&quality=low` validation scene. Desktop and phone-sized browser checks showed an enclosed three-block shaft, no console warnings, 60 FPS desktop / 56 FPS during the phone capture, and 44 calls in the phone-sized low-tier scene.
 - `npm run test:all` passes 53 tests and validates 111 local files. New unit coverage verifies 48-block-deep solid terrain, six-sided excavation boundaries, mined-cell air and buried letter replacement.
+- GitHub commit `37f00c8` and Netlify production deploy `6a93eda6a7bc0bbe2377da3d` published the correction. The live underground validation scene reached a steady 60 FPS at 66 calls / 65,354 triangles with no console warnings or errors.
 
 ## Constraints and follow-ups
 
@@ -158,4 +159,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-The solid-underground build is ready to publish with 53 passing tests and 111 validated local files. It keeps the low-power renderer and fixed-step movement, adds implicit terrain to Y=-48, exposes only excavation boundaries in shared instance batches, restores old saved holes, and prevents players inside shafts from crossing unmined walls. Next product phase is physical Chromebook/tablet heat and sustained frame-time profiling, animal collision, saved constructions and teacher evidence export.
+The solid-underground build is live on Netlify and GitHub with 53 passing tests and 111 validated local files. It keeps the low-power renderer and fixed-step movement, adds implicit terrain to Y=-48, exposes only excavation boundaries in shared instance batches, restores old saved holes, and prevents players inside shafts from crossing unmined walls. The live low-tier underground scene sustains 60 FPS in the test browser. Next product phase is physical Chromebook/tablet heat and sustained frame-time profiling, animal collision, saved constructions and teacher evidence export.
