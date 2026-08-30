@@ -2,7 +2,7 @@
 
 ## Playable promise
 
-LexiClimb Tower is a third-person, block-character English obby for UK learners aged 7–10. The player climbs six large, continuous floating course sections made from stepping stones, narrow beams, alternating jumps and rising stairs. Falling returns them to the latest checkpoint without losing learning progress.
+LexiClimb Tower is a third-person, block-character English obby for UK learners aged 7–10. The player climbs six large, continuous floating course sections that form a one-and-a-half-turn rising spiral around the tower core. The route mixes stepping stones, narrow beams, alternating jumps and rising stairs. Falling returns them to the latest checkpoint without losing learning progress.
 
 The visual direction uses the broad genre pattern visible in bright browser obbies—long floating routes, readable colours and immediate movement—but the world, character, level plan, interface, questions, artwork and code are original EduGames work.
 
@@ -11,6 +11,7 @@ The visual direction uses the broad genre pattern visible in bright browser obbi
 `Traverse course → reach checkpoint → open English word wall → use Learn or Hint if needed → solve → watch wall collapse → continue upward`.
 
 - Each course has eight traversable obstacles and a distinct colour/shape rhythm.
+- Each section curves through 90 degrees around the core and rises four world units. Seven rotated checkpoint platforms join the sections into one readable helix rather than a straight corridor.
 - A checkpoint is secured before its challenge opens, so a later fall never erases a solved or reached section.
 - The blocking wall remains physically closed until the challenge is correct. Its full brick width, depth and height block the avatar from the front, back, sides and corners; then the collider releases as the brick group drops from the route.
 - There is no timer, lives counter, public leaderboard, advertising or chat.
@@ -32,6 +33,7 @@ The objectives map to the spelling, vocabulary and grammar strands documented in
 ## Runtime and responsive behaviour
 
 - `site/games/wordwall-engine.js` is deterministic and renderer-independent. It owns checkpoint activation, challenge attempts, solved-gate progression, completion and the privacy-safe share payload.
+- The same engine owns the spiral pose formula, rotated support footprints and rotated word-wall collision. Three.js consumes those values for mesh position and yaw so visuals and physics share one layout.
 - `site/games/wordwall-challenges.js` is the validated six-gate item bank.
 - `site/games/wordwall.js` composes Three.js presentation with shared Skybound movement, footprint collision, buffered jumping, analogue input, orbit camera, procedural audio and low-power device selection.
 - Desktop uses WASD/arrows, Space, mouse drag and Q/E. Touch uses an independent analogue pointer, Jump pointer and swipe-to-orbit canvas.

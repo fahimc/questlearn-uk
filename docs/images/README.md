@@ -32,6 +32,7 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Skybound short landscape, 844 × 390 | [PNG](responsive/skybound-short-landscape.png) |
 | LexiClimb course, mobile, 390 × 844 | [PNG](responsive/wordwall-mobile.png) |
 | LexiClimb course, desktop, 1280 × 720 | [PNG](responsive/wordwall-desktop.png) |
+| LexiClimb spiral overview, 1280 × 720 | [PNG](responsive/wordwall-overview.png) |
 | LexiClimb English gate, mobile, 390 × 844 | [PNG](responsive/wordwall-challenge-mobile.png) |
 | LexiClimb English gate, short landscape, 844 × 390 | [PNG](responsive/wordwall-short-landscape.png) |
 | Chronicle desktop, 1280 × 720 | [PNG](responsive/chronicle-desktop.png) |
