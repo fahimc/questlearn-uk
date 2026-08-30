@@ -184,6 +184,13 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Added engine and integration regressions for three successive jump requests, pre-landing buffering and per-pointer touch tracking. `npm run test:all` passes 64 tests and validates 118 local files.
 - GitHub commit `919dcb2` and Netlify production deploy `6a946116eb01f71d7a226157` published the fix. The live page, game module and engine returned 200 and contained both new paths.
 
+## Skybound analogue movement stick
+
+- Replaced the four-button touch D-pad with a circular virtual analogue stick. It captures its own pointer independently from Jump, supports all 360-degree directions, includes a centre dead zone and exposes proportional movement speed from centre to rim.
+- Extended the renderer-independent movement engine to retain partial stick magnitude while still normalising combined/diagonal input and rotating it relative to the rendered camera view. Keyboard controls remain unchanged.
+- Updated touch onboarding and `docs/games/skybound-academy.md`. Refreshed and visually reviewed the 390 × 844 portrait and 844 × 390 short-landscape baselines; the stick and Jump control stay inside their safe zones without covering learning or bridge content.
+- `npm run test:all` passes 65 tests and validates 118 local files. Coverage includes dead-zone rest, half-speed travel, full-speed circular clamping and diagonal camera-relative movement.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.

@@ -35,12 +35,7 @@
     <div class="attempt-chip" data-attempt hidden>Try <b>2</b> · same checkpoint</div>
 
     <nav class="sky-touch" aria-label="Touch game controls">
-      <div class="move-pad">
-        <button type="button" data-action="forward" aria-label="Move forward">▲</button>
-        <button type="button" data-action="left" aria-label="Move left">◀</button>
-        <button type="button" data-action="back" aria-label="Move backwards">▼</button>
-        <button type="button" data-action="right" aria-label="Move right">▶</button>
-      </div>
+      <div class="analog-stick" data-joystick role="group" aria-label="Movement analogue stick"><span class="analog-knob" data-joystick-knob aria-hidden="true"><i></i></span></div>
       <button class="jump-button" type="button" data-action="jump" aria-label="Jump"><span>↑</span><b>Jump</b></button>
     </nav>
 
@@ -51,7 +46,7 @@
         <p>Cross ten glass bridges above the clouds. Read the question, then jump onto the tile carrying the correct answer.</p>
         <div class="guide-grid">
           <article><span>1</span><div><b>Read</b><small>Both answers appear on the glass.</small></div></article>
-          <article><span>2</span><div><b>Move &amp; look</b><small class="desktop-copy">Use WASD or arrows. Drag or use Q/E to orbit.</small><small class="touch-copy">Use the direction pad. Swipe the world to orbit.</small></div></article>
+          <article><span>2</span><div><b>Move &amp; look</b><small class="desktop-copy">Use WASD or arrows. Drag or use Q/E to orbit.</small><small class="touch-copy">Drag the analogue stick. Swipe the world to orbit.</small></div></article>
           <article><span>3</span><div><b>Jump</b><small class="desktop-copy">Press Space.</small><small class="touch-copy">Tap Jump.</small></div></article>
           <article><span>4</span><div><b>Checkpoint</b><small>A wrong tile drops you back to this bridge, not the beginning.</small></div></article>
         </div>

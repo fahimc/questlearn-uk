@@ -45,7 +45,7 @@ Every question includes a curriculum objective ID, child-readable success explan
 ## Controls and responsive behaviour
 
 - Desktop: WASD or arrow keys move; Space jumps.
-- Touch: an independent four-way direction pad can remain held while the separate Jump pointer fires.
+- Touch: a pressure-free analogue stick provides 360-degree direction and variable speed while the separate Jump pointer fires independently.
 - The full-screen canvas owns the viewport. The compact question card, safe-area HUD and touch controls occupy separate zones.
 - Portrait mobile keeps the question above the active tiles and the controls at the bottom corners. Short landscape compacts the question into the upper-left while preserving a clear view of the bridge.
 - Text selection and touch callouts are disabled only on the gameplay controls.
