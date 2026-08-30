@@ -242,6 +242,16 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - A deterministic `?preview=wall&quality=low` browser scene drove the avatar continuously into the first gate and visually confirmed it stopped flush at the continuous wall. `npm run test:all` passes 82 tests and validates 133 local files.
 - GitHub commit `7f90470` and Netlify production deploy `6a94ab4f26f95b6909e9646f` published the fix. The production page, controller and collision engine returned 200 with the new paths.
 
+## LexiClimb spiral-tower redesign
+
+- Replaced the straight +Z corridor with a deterministic one-and-a-half-turn helix around a central tower. Each of six sections advances 90 degrees, rises four world units and retains its eight-obstacle difficulty pattern; seven checkpoint platforms and six word walls now rotate with the route.
+- Added `WORDWALL_SPIRAL`, `getWordwallSpiralPose` and rotated footprint/collider transforms to `site/games/wordwall-engine.js`. Platform meshes, landing footprints, gate meshes and solid gate collision now consume the same position/yaw model.
+- Added a vertical support ceiling to the controller so an upper checkpoint that overlaps a lower turn in X/Z cannot teleport a player upward. Falling can still land naturally on a lower visible platform.
+- Re-centred the translucent tower core and level bands, distributed clouds around the tower, aimed the initial camera along the first curve, made respawns checkpoint-local and retained free orbital control.
+- Updated onboarding, homepage copy, architecture/game docs and the reusable screenshot job. Refreshed four LexiClimb responsive baselines and added the 1280 × 720 spiral overview, bringing the saved baseline count to 42.
+- Browser review covered the whole-tower overview, ground-level desktop, 390 × 844 phone, rotated solid wall, 390 × 844 challenge and 844 × 390 challenge. The initial review caught and corrected upper/lower support ambiguity; the final views had no HUD clipping or unexpected teleport.
+- `npm run test:all` passes 85 tests and validates 134 local files. GitHub commit `e81e3be` and Netlify production deploy `6a94aedb1e39ad5d732565af` published the redesign; the production homepage, game, controller and engine returned 200 with spiral markers.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -250,4 +260,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-EduGames now has three active Three.js games on Netlify and GitHub: Blocksmith Worlds, Skybound Academy and LexiClimb Tower. The repository has 82 passing tests, 133 validated local files and 41 saved visual baselines. LexiClimb supplies the English movement/mastery route with six long obby sections and fully solid checkpoint word walls; Skybound supplies ten physical-answer maths bridges; Blocksmith supplies the open voxel build-and-language world. All three use mobile-first controls and local/private progress boundaries, and Skybound/LexiClimb provide privacy-safe completion sharing. Both obby avatars turn with their orbit camera even while idle. Physical Chromebook/tablet heat and full interaction testing remain follow-ups, along with a motor-assist option, animal collision and saved constructions for Blocksmith, expanded educator-reviewed item banks and teacher evidence export.
+EduGames now has three active Three.js games on Netlify and GitHub: Blocksmith Worlds, Skybound Academy and LexiClimb Tower. The repository has 85 passing tests, 134 validated local files and 42 saved visual baselines. LexiClimb supplies the English movement/mastery route as a six-section spiral tower with fully solid rotated checkpoint word walls; Skybound supplies ten physical-answer maths bridges; Blocksmith supplies the open voxel build-and-language world. All three use mobile-first controls and local/private progress boundaries, and Skybound/LexiClimb provide privacy-safe completion sharing. Both obby avatars turn with their orbit camera even while idle. Physical Chromebook/tablet heat and full interaction testing remain follow-ups, along with a motor-assist option, animal collision and saved constructions for Blocksmith, expanded educator-reviewed item banks and teacher evidence export.
