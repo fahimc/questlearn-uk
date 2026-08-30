@@ -201,6 +201,12 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Refreshed and visually reviewed the 390 × 844 and 844 × 390 Skybound baselines; compact mobile HUD sizing keeps the new speaker control clear of the learning card and other controls.
 - GitHub commit `bba9b5c` and Netlify production deploy `6a949a2f07e78cd2d13b806e` published the audio layer. Live page, game module and audio module returned 200 with the toggle, event cues and wind path.
 
+## Skybound glass-edge collision correction
+
+- Replaced the inset point-based landing check, which made a hidden 0.12-block border around every tile, with exact circle-versus-rectangle overlap using the avatar's 0.30-block foot radius.
+- Every visible outer and inner tile edge now accepts genuine foot contact. The two answer tiles retain a 0.10-block unsafe centre gap, broken tiles remain non-solid, and diagonal corner misses do not land.
+- Added renderer-independent edge, overlap, centre-gap, broken-tile and corner regressions. `npm run test:all` passes 70 tests and validates 120 local files.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.

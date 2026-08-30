@@ -12,6 +12,7 @@ The game uses an original EduGames world, character, interface and question set.
 
 - A correct tile turns green and remains solid.
 - A wrong tile turns red, cracks away and drops the avatar below the clouds.
+- Landing uses the avatar's foot area rather than a zero-width centre point, so every visible glass edge is usable while the gap between answers remains unsafe.
 - Falling always returns the learner to the checkpoint immediately before that bridge.
 - Checkpoint progress is local and private. There is no timer, public ranking, chat, lives system or paid skip.
 - Completing the tenth bridge opens a natural session ending with replay and choose-another-game actions.

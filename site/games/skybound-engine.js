@@ -1,4 +1,5 @@
 export const SKYBOUND_LANES=Object.freeze(['left','right']);
+export const SKYBOUND_PLAYER_FOOT_RADIUS=.3;
 
 function analogAxis(value){return Number.isFinite(value)?Math.max(-1,Math.min(1,value)):0}
 export function getSkyboundJoystickVector(clientX,clientY,bounds){
@@ -8,6 +9,8 @@ export function getSkyboundMovementAxes(input={},cameraYaw=0){
   const forward=Number(Boolean(input.forward))-Number(Boolean(input.back))+analogAxis(input.moveY),left=Number(Boolean(input.left))-Number(Boolean(input.right))-analogAxis(input.moveX),x=left*Math.cos(cameraYaw)-forward*Math.sin(cameraYaw),z=left*Math.sin(cameraYaw)+forward*Math.cos(cameraYaw),scale=Math.max(1,Math.hypot(x,z));
   return{x:x/scale,z:z/scale};
 }
+
+export function isSkyboundFootprintOnSupport(x,z,support,radius=SKYBOUND_PLAYER_FOOT_RADIUS){if(!support?.solid)return false;const outsideX=Math.max(0,Math.abs(x-support.x)-support.width/2),outsideZ=Math.max(0,Math.abs(z-support.z)-support.depth/2);return Math.hypot(outsideX,outsideZ)<=radius}
 
 export function createSkyboundJumpControl(){return{bufferRemaining:0,coyoteRemaining:0}}
 export function queueSkyboundJump(state){return{...state,bufferRemaining:.2}}
