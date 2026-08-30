@@ -12,7 +12,7 @@ The visual direction uses the broad genre pattern visible in bright browser obbi
 
 - Each course has eight traversable obstacles and a distinct colour/shape rhythm.
 - A checkpoint is secured before its challenge opens, so a later fall never erases a solved or reached section.
-- The blocking wall remains physically closed until the challenge is correct, then its brick group drops from the route.
+- The blocking wall remains physically closed until the challenge is correct. Its full brick width, depth and height block the avatar from the front, back, sides and corners; then the collider releases as the brick group drops from the route.
 - There is no timer, lives counter, public leaderboard, advertising or chat.
 - The summit provides replay, choose-another-game and privacy-safe sharing.
 
