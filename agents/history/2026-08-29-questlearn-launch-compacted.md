@@ -169,6 +169,13 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - `npm run test:all` passes 62 tests and validates 118 local files.
 - GitHub commit `7b0d4e0` and Netlify production deploy `6a943a1b5e4367a3ce1076f7` published the correction.
 
+## Skybound orbit camera controls
+
+- Replaced the fixed follow view with a pitch-limited third-person orbit camera. Mouse/trackpad drag and Q/E rotate it on desktop; swiping the unobstructed world rotates it on touch devices.
+- Player movement is transformed using the camera's actual rendered facing direction, so WASD, arrows and the touch direction pad remain screen-relative while the orbit camera is still smoothing into its new position.
+- Updated the welcome/help instructions and accessible canvas label. `npm run test:all` passes 63 tests and validates 118 local files; the new regression rotates movement through a quarter-turn camera view.
+- The in-app browser test connection failed before page setup, so pointer-drag runtime validation still needs a physical desktop/touch pass; syntax, static integration and renderer-independent camera movement tests passed.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.

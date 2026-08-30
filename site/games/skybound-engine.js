@@ -1,7 +1,7 @@
 export const SKYBOUND_LANES=Object.freeze(['left','right']);
 
-export function getSkyboundMovementAxes(input={}){
-  const x=Number(Boolean(input.left))-Number(Boolean(input.right)),z=Number(Boolean(input.forward))-Number(Boolean(input.back)),length=Math.hypot(x,z)||1;
+export function getSkyboundMovementAxes(input={},cameraYaw=0){
+  const forward=Number(Boolean(input.forward))-Number(Boolean(input.back)),left=Number(Boolean(input.left))-Number(Boolean(input.right)),x=left*Math.cos(cameraYaw)-forward*Math.sin(cameraYaw),z=left*Math.sin(cameraYaw)+forward*Math.cos(cameraYaw),length=Math.hypot(x,z)||1;
   return{x:x/length,z:z/length};
 }
 

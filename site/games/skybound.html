@@ -13,7 +13,7 @@
 <body class="game-page skybound-page">
   <a class="skip-link" href="#bridgeQuestion">Skip to bridge question</a>
   <main class="skybound-game" aria-label="Skybound Academy glass bridge game">
-    <canvas id="obbyCanvas" tabindex="0" aria-label="A third-person glass bridge obstacle course. Use W A S D or the touch controls to move and jump."></canvas>
+    <canvas id="obbyCanvas" tabindex="0" aria-label="A third-person glass bridge obstacle course. Move with W A S D or the touch controls. Drag or swipe the world to orbit the camera."></canvas>
 
     <header class="sky-hud" aria-label="Game status">
       <a class="sky-brand" href="../index.html" aria-label="Exit Skybound Academy and return to EduGames"><span>E</span><b>Skybound</b></a>
@@ -51,7 +51,7 @@
         <p>Cross ten glass bridges above the clouds. Read the question, then jump onto the tile carrying the correct answer.</p>
         <div class="guide-grid">
           <article><span>1</span><div><b>Read</b><small>Both answers appear on the glass.</small></div></article>
-          <article><span>2</span><div><b>Move</b><small class="desktop-copy">Use WASD or arrow keys.</small><small class="touch-copy">Use the direction pad.</small></div></article>
+          <article><span>2</span><div><b>Move &amp; look</b><small class="desktop-copy">Use WASD or arrows. Drag or use Q/E to orbit.</small><small class="touch-copy">Use the direction pad. Swipe the world to orbit.</small></div></article>
           <article><span>3</span><div><b>Jump</b><small class="desktop-copy">Press Space.</small><small class="touch-copy">Tap Jump.</small></div></article>
           <article><span>4</span><div><b>Checkpoint</b><small>A wrong tile drops you back to this bridge, not the beginning.</small></div></article>
         </div>
@@ -65,7 +65,7 @@
     </dialog>
 
     <dialog class="sky-dialog" data-help-dialog>
-      <section class="sky-modal-card"><button class="dialog-close" type="button" data-close-help aria-label="Close how to play">×</button><p class="modal-kicker">How to play</p><h2>Choose with your jump</h2><div class="guide-grid compact"><article><span>W</span><div><b>Move</b><small>Run forward, back, left and right.</small></div></article><article><span>↑</span><div><b>Jump</b><small>Leap from the checkpoint to one answer tile.</small></div></article><article><span>✓</span><div><b>Cross</b><small>A correct tile stays solid. Reach the next checkpoint.</small></div></article><article><span>↺</span><div><b>Retry</b><small>A wrong tile breaks and restarts only this bridge.</small></div></article></div><button class="sky-primary" type="button" data-close-help>Back to bridge</button></section>
+      <section class="sky-modal-card"><button class="dialog-close" type="button" data-close-help aria-label="Close how to play">×</button><p class="modal-kicker">How to play</p><h2>Choose with your jump</h2><div class="guide-grid compact"><article><span>W</span><div><b>Move</b><small>Run forward, back, left and right.</small></div></article><article><span>↔</span><div><b>Look around</b><small>Drag or swipe the world to orbit. Desktop also supports Q/E.</small></div></article><article><span>↑</span><div><b>Jump</b><small>Leap from the checkpoint to one answer tile.</small></div></article><article><span>✓</span><div><b>Cross</b><small>A correct tile stays solid. Reach the next checkpoint.</small></div></article></div><button class="sky-primary" type="button" data-close-help>Back to bridge</button></section>
     </dialog>
 
     <dialog class="sky-dialog complete-dialog" data-complete-dialog>
