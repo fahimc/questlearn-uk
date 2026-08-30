@@ -192,6 +192,14 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - `npm run test:all` passes 65 tests and validates 118 local files. Coverage includes dead-zone rest, half-speed travel, full-speed circular clamping and diagonal camera-relative movement.
 - GitHub commit `524bc85` and Netlify production deploy `6a94634fc8c5e8ad338e05cf` published the control. Live page, input module and movement engine returned 200 with stick markup, pointer tracking and proportional movement.
 
+## Skybound procedural audio
+
+- Added `site/games/skybound-audio.js`, a file-free Web Audio layer. A reusable deterministic noise buffer creates quiet filtered cloud wind plus landing and glass textures; short oscillator envelopes provide start, jump, safe-answer, checkpoint, respawn and completion cues.
+- Audio unlocks only after player interaction, ambience fades while paused/hidden, and the HUD speaker button or M key controls a device-local mute preference. No remote or copyrighted audio assets were added.
+- Integrated cues with actual physics and progression events rather than button presses, so buffered jumps sound when launched and landings/answers/checkpoints sound when resolved.
+- Added four audio unit tests and static integration coverage, including a fake Web Audio graph that schedules every cue. `npm run test:all` passes 69 tests and validates 120 local files.
+- Refreshed and visually reviewed the 390 × 844 and 844 × 390 Skybound baselines; compact mobile HUD sizing keeps the new speaker control clear of the learning card and other controls.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.

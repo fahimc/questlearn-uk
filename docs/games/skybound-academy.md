@@ -39,6 +39,7 @@ Every question includes a curriculum objective ID, child-readable success explan
 
 - `site/games/skybound-engine.js` is the deterministic, renderer-independent state machine. It owns left/right answer allocation, correct/falling/crossing states, checkpoint advancement, retries and completion.
 - `site/games/skybound.js` owns Three.js presentation, block-character animation, fixed-step movement, jumping, platform collision, glass collapse, camera follow, touch/keyboard input and local best-checkpoint storage.
+- `site/games/skybound-audio.js` synthesises low-volume cloud wind and short gameplay cues with Web Audio. No audio files are downloaded, and the ambience is suspended while paused or hidden.
 - Static checkpoint geometry and cloud clusters use instanced rendering. The twenty answer tiles remain separate because each can change material, break and fall independently.
 - The existing low-power quality selector reduces pixel density, antialiasing and shadows on ChromeOS and coarse-pointer devices without changing questions or mechanics.
 
@@ -46,6 +47,7 @@ Every question includes a curriculum objective ID, child-readable success explan
 
 - Desktop: WASD or arrow keys move; Space jumps.
 - Touch: a pressure-free analogue stick provides 360-degree direction and variable speed while the separate Jump pointer fires independently.
+- Sound starts only after player interaction. The HUD speaker button or M key toggles a preference remembered on that device.
 - The full-screen canvas owns the viewport. The compact question card, safe-area HUD and touch controls occupy separate zones.
 - Portrait mobile keeps the question above the active tiles and the controls at the bottom corners. Short landscape compacts the question into the upper-left while preserving a clear view of the bridge.
 - Text selection and touch callouts are disabled only on the gameplay controls.
