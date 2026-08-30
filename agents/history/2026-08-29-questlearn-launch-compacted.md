@@ -167,6 +167,7 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Corrected Skybound's horizontal movement mapping for its positive-Z follow camera. On-screen Left now moves left and on-screen Right moves right for arrow keys, A/D and touch controls.
 - Centralised the camera-relative direction calculation in `site/games/skybound-engine.js` and added a regression test covering left, right, forward and normalised diagonal input.
 - `npm run test:all` passes 62 tests and validates 118 local files.
+- GitHub commit `7b0d4e0` and Netlify production deploy `6a943a1b5e4367a3ce1076f7` published the correction.
 
 ## Constraints and follow-ups
 
