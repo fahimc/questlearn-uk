@@ -226,6 +226,14 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 - Added four saved baselines: 390 × 844 course, 1280 × 720 course, 390 × 844 English gate and 844 × 390 English gate. Visual review found no clipping or control overlap. The optional scripted browser automation bridge failed to initialise, so runtime interaction automation remains a follow-up; deterministic rules, static integration, syntax and live WebGL rendering passed.
 - `npm run test:all` passes 80 tests and validates 133 local files; `npm run screenshots` captures 41 baselines. GitHub commit `91b7ca2` and Netlify production deploy `6a94a612af4b5cacf6e023ab` published the game. Production portal, game, game module, engine, challenge bank and artwork all returned 200 with six gates, wall-collapse, analogue and Learn paths present.
 
+## Shared obby orbit-facing correction
+
+- Skybound Academy and LexiClimb Tower now orient their avatars from the orbit camera's forward heading on every fixed simulation step, including while the player is standing still. Forward, reverse and strafing movement remain camera-relative.
+- Added the renderer-independent `getOrbitFacingYaw` helper to the shared Skybound engine and removed velocity-based avatar turning from both game controllers.
+- Updated both welcome/help screens so learners know that dragging, swiping or Q/E turns the view and their character.
+- Added a deterministic quarter-turn preview and regressions for idle orientation plus both game integrations. Browser captures at 1280 × 720 visually confirmed the avatars facing the rotated route with intact HUD/course framing.
+- `npm run test:all` passes 81 tests and validates 133 local files. GitHub commit `cef9ac1` and Netlify production deploy `6a94a90ad8a901608db3284b` published the correction; both production pages, controllers and shared engine returned 200 with the new orientation path.
+
 ## Constraints and follow-ups
 
 - This is a product/research prototype, not a certified curriculum, legal opinion, completed DPIA or production safeguarding assessment.
@@ -234,4 +242,4 @@ Research UK curricula for ages 7–10 and deliver a GitHub-hosted blueprint/tool
 
 ## Resume point
 
-EduGames now has three active Three.js games on Netlify and GitHub: Blocksmith Worlds, Skybound Academy and LexiClimb Tower. The repository has 80 passing tests, 133 validated local files and 41 saved visual baselines. LexiClimb supplies the English movement/mastery route with six long obby sections and checkpoint word walls; Skybound supplies ten physical-answer maths bridges; Blocksmith supplies the open voxel build-and-language world. All three use mobile-first controls and local/private progress boundaries, and Skybound/LexiClimb provide privacy-safe completion sharing. Physical Chromebook/tablet heat and full interaction testing remain follow-ups, along with a motor-assist option, animal collision and saved constructions for Blocksmith, expanded educator-reviewed item banks and teacher evidence export.
+EduGames now has three active Three.js games on Netlify and GitHub: Blocksmith Worlds, Skybound Academy and LexiClimb Tower. The repository has 81 passing tests, 133 validated local files and 41 saved visual baselines. LexiClimb supplies the English movement/mastery route with six long obby sections and checkpoint word walls; Skybound supplies ten physical-answer maths bridges; Blocksmith supplies the open voxel build-and-language world. All three use mobile-first controls and local/private progress boundaries, and Skybound/LexiClimb provide privacy-safe completion sharing. Both obby avatars turn with their orbit camera even while idle. Physical Chromebook/tablet heat and full interaction testing remain follow-ups, along with a motor-assist option, animal collision and saved constructions for Blocksmith, expanded educator-reviewed item banks and teacher evidence export.
