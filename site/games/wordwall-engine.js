@@ -3,7 +3,7 @@ function assertChallenges(challenges){if(!Array.isArray(challenges)||!challenges
 
 export const WORDWALL_SPIRAL=Object.freeze({radius:13,stageArc:Math.PI/2,stageRise:4,startAngle:-Math.PI/2});
 export const WORDWALL_GATE_COLLIDER=Object.freeze({width:7,depth:.72,height:3.15});
-export const WORDWALL_TOKEN_STEPS=Object.freeze([0,2,3,5,7]);
+export const WORDWALL_TOKEN_STEPS=Object.freeze([0,1,2,3,5,7]);
 export const WORDWALL_PLAYER_COLLIDER=Object.freeze({footRadius:.3,bodyRadius:.48,height:2.2});
 export const WORDWALL_MIN_CLEARANCE=Object.freeze({box:.75,circle:.9,triangle:1.05});
 export const WORDWALL_SKINS=Object.freeze([
@@ -46,12 +46,12 @@ export function reachWordwallCheckpoint(state,challenges,checkpointIndex){assert
 export function submitWordwallAnswer(state,challenges,answer){assertChallenges(challenges);if(state.status!=='challenge'||state.activeChallenge===null)return{state,correct:false};const challenge=challenges[state.activeChallenge],correct=normalise(answer)===normalise(challenge.answer);if(!correct)return{state:{...state,attempts:state.attempts+1},correct:false};const solvedCount=state.solvedCount+1,completed=solvedCount===challenges.length;return{state:{...state,solvedCount,status:completed?'complete':'running',activeChallenge:null,completed},correct:true}}
 export function respawnWordwallRun(state){return{...state,status:state.completed?'complete':'running',activeChallenge:null}}
 export function getWordwallChallenge(state,challenges){assertChallenges(challenges);return state.activeChallenge===null?null:challenges[state.activeChallenge]}
-export function createWordwallShareData(pageUrl){const url=new URL(pageUrl);url.search='';url.hash='';return{title:'LexiClimb Tower achievement',text:'I completed all 6 English gates in LexiClimb Tower on EduGames!',url:url.href}}
+export function createWordwallShareData(pageUrl,{worldName='Word Quest',levelCount=5}={}){const url=new URL(pageUrl);url.searchParams.delete('preview');url.searchParams.delete('quality');url.hash='';return{title:'LexiClimb Tower achievement',text:`I completed all ${levelCount} levels in ${worldName} on LexiClimb Tower!`,url:url.href}}
 
 export function createWordwallProfile(saved={}){
   const source=saved&&typeof saved==='object'?saved:{},skinIds=new Set(WORDWALL_SKINS.map(skin=>skin.id)),owned=[...new Set(Array.isArray(source.ownedSkins)?source.ownedSkins.filter(id=>skinIds.has(id)):[])];if(!owned.includes('starter'))owned.unshift('starter');const equippedSkin=owned.includes(source.equippedSkin)?source.equippedSkin:'starter',collectedTokens=[...new Set(Array.isArray(source.collectedTokens)?source.collectedTokens.filter(id=>typeof id==='string'&&id.length<=40):[])];return{version:1,coins:Math.max(0,Math.floor(Number(source.coins)||0)),collectedTokens,ownedSkins:owned,equippedSkin};
 }
-export function createWordwallTokenId(stageIndex,stepIndex){if(!Number.isInteger(stageIndex)||stageIndex<0||!Number.isInteger(stepIndex)||stepIndex<0)throw new RangeError('Token positions need non-negative integer indexes.');return`stage-${stageIndex+1}-coin-${stepIndex+1}`}
+export function createWordwallTokenId(stageIndex,stepIndex,scope=''){if(!Number.isInteger(stageIndex)||stageIndex<0||!Number.isInteger(stepIndex)||stepIndex<0)throw new RangeError('Token positions need non-negative integer indexes.');const prefix=String(scope).replace(/[^a-z0-9-]/gi,'').slice(0,24);return`${prefix?`${prefix}-`:''}stage-${stageIndex+1}-coin-${stepIndex+1}`}
 export function collectWordwallToken(profile,tokenId,value=1){const current=createWordwallProfile(profile),id=String(tokenId);if(!id||current.collectedTokens.includes(id))return{profile:current,collected:false};return{profile:{...current,coins:current.coins+Math.max(1,Math.floor(Number(value)||1)),collectedTokens:[...current.collectedTokens,id]},collected:true}}
 export function purchaseWordwallSkin(profile,skinId){const current=createWordwallProfile(profile),skin=WORDWALL_SKINS.find(item=>item.id===skinId);if(!skin)return{profile:current,purchased:false,reason:'missing'};if(current.ownedSkins.includes(skin.id))return{profile:{...current,equippedSkin:skin.id},purchased:false,reason:'owned'};if(current.coins<skin.price)return{profile:current,purchased:false,reason:'coins'};return{profile:{...current,coins:current.coins-skin.price,ownedSkins:[...current.ownedSkins,skin.id],equippedSkin:skin.id},purchased:true,reason:'purchased'}}
 export function equipWordwallSkin(profile,skinId){const current=createWordwallProfile(profile);return current.ownedSkins.includes(skinId)?{...current,equippedSkin:skinId}:current}

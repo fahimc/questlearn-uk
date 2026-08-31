@@ -30,13 +30,15 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Skybound glass run, desktop, 1280 × 720 | [PNG](responsive/skybound-desktop.png) |
 | Skybound Learn support, desktop, 1280 × 720 | [PNG](responsive/skybound-learn-desktop.png) |
 | Skybound short landscape, 844 × 390 | [PNG](responsive/skybound-short-landscape.png) |
-| LexiClimb course, mobile, 390 × 844 | [PNG](responsive/wordwall-mobile.png) |
-| LexiClimb course, desktop, 1280 × 720 | [PNG](responsive/wordwall-desktop.png) |
-| LexiClimb spiral overview, 1280 × 720 | [PNG](responsive/wordwall-overview.png) |
+| LexiClimb world selector, mobile, 390 × 844 | [PNG](responsive/wordwall-worlds-mobile.png) |
+| LexiClimb world selector, short landscape, 844 × 390 | [PNG](responsive/wordwall-worlds-landscape.png) |
+| LexiClimb Word Quest course, mobile, 390 × 844 | [PNG](responsive/wordwall-mobile.png) |
+| LexiClimb Number Nebula course, desktop, 1280 × 720 | [PNG](responsive/wordwall-desktop.png) |
+| LexiClimb Discovery Canopy spiral and flags, 1280 × 720 | [PNG](responsive/wordwall-overview.png) |
 | LexiClimb skin shop, mobile, 390 × 844 | [PNG](responsive/wordwall-shop-mobile.png) |
 | LexiClimb skin shop, short landscape, 844 × 390 | [PNG](responsive/wordwall-shop-landscape.png) |
-| LexiClimb English gate, mobile, 390 × 844 | [PNG](responsive/wordwall-challenge-mobile.png) |
-| LexiClimb English gate, short landscape, 844 × 390 | [PNG](responsive/wordwall-short-landscape.png) |
+| LexiClimb Science gate, mobile, 390 × 844 | [PNG](responsive/wordwall-challenge-mobile.png) |
+| LexiClimb Maths gate, short landscape, 844 × 390 | [PNG](responsive/wordwall-short-landscape.png) |
 | Chronicle desktop, 1280 × 720 | [PNG](responsive/chronicle-desktop.png) |
 
 ## Component designs

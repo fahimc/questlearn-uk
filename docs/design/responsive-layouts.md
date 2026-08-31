@@ -57,9 +57,9 @@
 - The full-screen Three.js course keeps its compact progress HUD at the top, a single next-gate objective below it and independent movement/jump controls at the bottom corners.
 - The coin balance is a compact HUD button. On narrow phones all HUD items use a 36–38 px compact state so the added economy control does not overlap audio, help or pause.
 - The character shop pauses traversal, uses a bounded two-column skin grid, keeps its close control visible and confines overflow to the grid. Skin cards show appearance, name and buy/owned/equipped state without relying on colour alone.
-- Portrait stacks multiple-choice answers and completion actions into one thumb-friendly column. Letter-bank gates retain five equal touch columns.
+- Portrait stacks the three world choices, multiple-choice answers and completion actions into one thumb-friendly column inside a bounded onboarding card. Letter-bank gates retain five equal touch columns.
 - Short landscape uses two answer columns, a ten-column letter bank and a shallower dialog so the complete challenge stays inside 844 × 390.
-- The English dialog owns the top layer and pauses movement; Learn and Hint expand inside its bounded scrolling area.
+- The curriculum dialog owns the top layer and pauses movement; Learn and Hint expand inside its bounded scrolling area.
 - Desktop and touch both retain orbital camera control without stealing the analogue or Jump pointers.
 
 Visual baselines are generated in `docs/images/responsive/`; automated screenshots support review but do not replace physical device and assistive-technology testing.

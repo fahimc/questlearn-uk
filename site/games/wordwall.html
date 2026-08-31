@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#8f5cff">
-  <meta name="description" content="Climb a huge 3D obby, collect coins, unlock character skins and solve English word walls for UK learners aged 7 to 10.">
+  <meta name="description" content="Climb three curriculum worlds, collect coins and solve progressive Maths, Science and English gates for UK learners aged 7 to 10.">
   <title>LexiClimb Tower · EduGames</title>
   <link rel="stylesheet" href="../assets/game.css">
   <link rel="stylesheet" href="wordwall.css">
@@ -12,13 +12,13 @@
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js"}}</script>
 </head>
 <body class="game-page wordwall-page">
-  <a class="skip-link" href="#wordChallenge">Skip to English challenge</a>
-  <main class="wordwall-game" aria-label="LexiClimb Tower English obstacle course">
+  <a class="skip-link" href="#wordChallenge">Skip to curriculum challenge</a>
+  <main class="wordwall-game" aria-label="LexiClimb Tower curriculum obstacle course">
     <canvas id="towerCanvas" tabindex="0" aria-label="A third-person floating obstacle tower. Move with W A S D or the analogue stick, jump with Space or Jump, and drag the world to orbit the camera."></canvas>
 
     <header class="tower-hud" aria-label="Game status">
       <a class="tower-brand" href="../index.html" aria-label="Exit LexiClimb Tower"><span>E</span><b>LexiClimb</b></a>
-      <div class="tower-progress"><small>Course</small><b><span data-stage>1</span>/6</b><i><em data-progress></em></i></div>
+      <div class="tower-progress"><small>Level</small><b><span data-stage>1</span>/<span data-level-total>5</span></b><i><em data-progress></em></i></div>
       <span class="tower-checkpoint"><i>◆</i><span>Checkpoint</span><b data-checkpoint>0</b></span>
       <button class="tower-wallet" type="button" data-shop aria-label="Open skin shop. You have 0 coins"><i aria-hidden="true">●</i><b data-coins>0</b></button>
       <button class="tower-icon" type="button" data-audio aria-label="Mute sound" aria-pressed="false">🔊</button>
@@ -26,7 +26,7 @@
       <button class="tower-icon" type="button" data-pause aria-label="Pause game">Ⅱ</button>
     </header>
 
-    <aside class="tower-objective" aria-live="polite"><span data-year>Year 3</span><div><small>Next English gate</small><b data-objective>Missing letter</b></div></aside>
+    <aside class="tower-objective" aria-live="polite"><span data-year>Year 3</span><div><small data-objective-label>Next curriculum gate</small><b data-objective>First challenge</b></div></aside>
     <div class="tower-toast" data-toast role="status" aria-live="polite"></div>
 
     <nav class="tower-touch" aria-label="Touch game controls">
@@ -36,23 +36,24 @@
 
     <div class="tower-intro" data-intro>
       <section class="tower-card" aria-labelledby="towerWelcome">
-        <p class="tower-kicker">English obby · ages 7–10</p><h1 id="towerWelcome">LexiClimb Tower</h1>
-        <p>Climb six huge floating courses that spiral around the tower. Each checkpoint is locked by an English word wall. Solve it, watch the wall collapse, then keep climbing.</p>
-        <div class="tower-guide"><article><span>1</span><div><b>Climb the spiral</b><small>Cross blocks, circles and triangles in different sizes.</small></div></article><article><span>2</span><div><b>Move &amp; look</b><small class="desktop-copy">Use WASD or arrows. Drag or use Q/E to orbit and turn your character.</small><small class="touch-copy">Use the analogue stick. Swipe the world to orbit and turn your character.</small></div></article><article><span>3</span><div><b>Jump &amp; collect</b><small>Grab coins along the route and spend them on character skins.</small></div></article><article><span>4</span><div><b>Unlock</b><small>Solve the English gate. Learn and Hint are always available.</small></div></article></div>
+        <p class="tower-kicker" data-world-kicker>Curriculum obby · ages 7–10</p><h1 id="towerWelcome">LexiClimb Tower</h1>
+        <p data-world-intro>Choose a world, climb five continuous spiral levels and solve each curriculum gate.</p>
+        <div class="world-grid" data-world-grid aria-label="Choose a learning world"><button type="button" data-world-choice="english"><i>Aa</i><span><b>Word Quest</b><small>English</small></span></button><button type="button" data-world-choice="maths"><i>×</i><span><b>Number Nebula</b><small>Maths</small></span></button><button type="button" data-world-choice="science"><i>⚗</i><span><b>Discovery Canopy</b><small>Science</small></span></button></div>
+        <div class="tower-guide"><article><span>1</span><div><b>Follow the flags</b><small>Cross varied shapes to reach each numbered level platform.</small></div></article><article><span>2</span><div><b>Move &amp; look</b><small class="desktop-copy">Use WASD or arrows. Drag or use Q/E to orbit and turn your character.</small><small class="touch-copy">Use the analogue stick. Swipe the world to orbit and turn your character.</small></div></article><article><span>3</span><div><b>Jump &amp; collect</b><small>Grab 30 coins along the route and spend them on character skins.</small></div></article><article><span>4</span><div><b>Unlock</b><small>Solve the subject gate. Learn and Hint are always available.</small></div></article></div>
         <button class="tower-primary" type="button" data-start>Start climbing</button><small>No timer · no lives · no adverts · no chat</small>
       </section>
     </div>
 
     <dialog class="tower-dialog challenge-dialog" data-challenge-dialog id="wordChallenge">
-      <section class="tower-card"><p class="tower-kicker"><span data-challenge-year>Year 3</span> · <span data-challenge-strand>Spelling</span></p><h2 data-challenge-title>English gate</h2><p class="challenge-prompt" data-challenge-prompt></p><div class="spell-answer" data-spell-answer hidden aria-live="polite"></div><div class="challenge-options" data-options></div><div class="challenge-actions"><button type="button" data-learn>Learn</button><button type="button" data-hint>Hint</button><button type="button" data-clear hidden>Clear letters</button></div><div class="challenge-support" data-support hidden><strong data-support-title></strong><p data-support-copy></p><small data-support-example></small></div><div class="challenge-feedback" data-feedback role="status" aria-live="polite"></div></section>
+      <section class="tower-card"><p class="tower-kicker"><span data-challenge-year>Year 3</span> · <span data-challenge-strand>Curriculum</span></p><h2 data-challenge-title>Level gate</h2><p class="challenge-prompt" data-challenge-prompt></p><div class="spell-answer" data-spell-answer hidden aria-live="polite"></div><div class="challenge-options" data-options></div><div class="challenge-actions"><button type="button" data-learn>Learn</button><button type="button" data-hint>Hint</button><button type="button" data-clear hidden>Clear letters</button></div><div class="challenge-support" data-support hidden><strong data-support-title></strong><p data-support-copy></p><small data-support-example></small></div><div class="challenge-feedback" data-feedback role="status" aria-live="polite"></div></section>
     </dialog>
 
-    <dialog class="tower-dialog" data-pause-dialog><section class="tower-card"><p class="tower-kicker">Game paused</p><h2>Checkpoint saved</h2><p>Take your time. Your latest word wall is safe.</p><button class="tower-primary" type="button" data-resume>Continue climbing</button><a href="../index.html">Exit to EduGames</a></section></dialog>
+    <dialog class="tower-dialog" data-pause-dialog><section class="tower-card"><p class="tower-kicker">Game paused</p><h2>Checkpoint saved</h2><p>Take your time. Your latest curriculum gate is safe.</p><button class="tower-primary" type="button" data-resume>Continue climbing</button><a href="../index.html">Exit to EduGames</a></section></dialog>
     <dialog class="tower-dialog" data-help-dialog><section class="tower-card"><button class="dialog-close" type="button" data-close-help aria-label="Close how to play">×</button><p class="tower-kicker">How to play</p><h2>Climb, solve, continue</h2><div class="tower-guide compact"><article><span>W</span><div><b>Move</b><small>Run in any direction.</small></div></article><article><span>↔</span><div><b>Orbit</b><small>Drag or swipe to turn the view and your character. Desktop can use Q/E.</small></div></article><article><span>↑</span><div><b>Jump</b><small>Every new press makes a new jump when grounded.</small></div></article><article><span>●</span><div><b>Collect</b><small>Touch coins and open the coin button to buy skins.</small></div></article><article><span>Aa</span><div><b>Unlock</b><small>Complete the word task to drop the wall.</small></div></article></div><button class="tower-primary" type="button" data-close-help>Back to course</button></section></dialog>
 
     <dialog class="tower-dialog shop-dialog" data-shop-dialog><section class="tower-card"><button class="dialog-close" type="button" data-close-shop aria-label="Close skin shop">×</button><p class="tower-kicker">Character shop</p><h2>Choose your climber</h2><p class="shop-balance"><i aria-hidden="true">●</i> <b data-shop-coins>0</b> coins</p><div class="skin-grid" data-skin-grid></div><p class="shop-message" data-shop-message role="status" aria-live="polite"></p><small>Coins, owned skins and your chosen look are saved only on this device.</small></section></dialog>
 
-    <dialog class="tower-dialog complete-dialog" data-complete-dialog><section class="tower-card"><div class="tower-trophy" aria-hidden="true">★</div><p class="tower-kicker">All six walls unlocked</p><h2>Tower conquered!</h2><p>You used spelling, vocabulary, homophones, punctuation and prefixes to reach the summit.</p><div class="complete-actions"><button class="tower-primary" type="button" data-share>Share achievement</button><button class="tower-secondary" type="button" data-replay>Climb again</button></div><span class="share-status" data-share-status role="status" aria-live="polite"></span><a href="../index.html">Choose another game</a></section></dialog>
+    <dialog class="tower-dialog complete-dialog" data-complete-dialog><section class="tower-card"><div class="tower-trophy" aria-hidden="true">★</div><p class="tower-kicker" data-complete-kicker>All five levels unlocked</p><h2>World conquered!</h2><p data-complete-copy>You reached every flag and solved each curriculum gate.</p><div class="complete-actions"><button class="tower-primary" type="button" data-share>Share achievement</button><button class="tower-secondary" type="button" data-replay>New question set</button></div><span class="share-status" data-share-status role="status" aria-live="polite"></span><a href="../index.html">Choose another game</a></section></dialog>
   </main>
   <script type="module" src="wordwall.js"></script>
 </body>
