@@ -409,3 +409,17 @@ LexiClimb remains five levels × five one-question walls. Its authoritative bank
 ## Current resume point
 
 LexiClimb's authoritative content model is **3 years × 3 subjects × 100 questions = 900**, with 20 records at every in-year level and 25 one-question walls per run. The selected year is a hard question boundary. Preserve the nine bank files, `curriculum-year-banks.js` validation, four-set non-repeating partition and `data-wordwall-year` metadata when extending the game. The live selector supports `?world=english|maths|science&year=3|4|5&set=0..` at `https://edugames-189.netlify.app/games/wordwall.html`.
+
+## Skybound year-tailored curriculum routes
+
+- Replaced Skybound's ten hard-coded mixed-year Maths questions with `createSkyboundQuestions`, an adapter over the shared 900-question registry. Players choose Year 3–5 and English, Maths or Science; the selected year is a hard content boundary.
+- Every ten-bridge run draws two questions from each of five in-year levels. Sets 0–9 partition all 100 source records in the selected year/subject without repetition; adjacent sets do not overlap. Four-option questions retain one reviewed distractor, while spelling questions use a same-length deterministic transposition error.
+- Added responsive year and subject selectors, subject-themed copy, scoped replay/progress/share state, detailed three-step Learn support and question-linked Hint support.
+- Long English and Science answers now wrap across up to four lines on larger world-space signs. A compact HUD legend repeats the visible left/right choices for mobile readability. Corrected the physical lane map to `left: +1.75`, `right: -1.75`, matching the camera-relative control axes and screen position.
+- Updated the homepage, game plan, curriculum-bank and engine documentation. Saved phone selector, 1024 × 576 selector, Year 5 Science bridge and Year 4 English Learn visual baselines.
+- `npm run test:all` passes 115 tests and validates 190 local files. Production verification found three year choices, three subject choices, the 900-bank marker, scoped generator, answer legend, corrected lane map and ten-bridge partition markers.
+- GitHub commit `eb81f1a` and Netlify production deploy `6a95f7604d0e5f59a527fc18` published the release.
+
+## Latest resume point
+
+Skybound and LexiClimb now share the same 900-question year/subject registry. Skybound's authoritative run is **ten bridges = two questions per Level 1–5**, and ten sets exhaust a selected 100-question scope. Preserve the corrected visual lane coordinates, readable HUD answer legend, wrapped sign rendering, source non-repetition and scoped replay URL when changing the bridge. The live route accepts `?year=3|4|5&subject=english|maths|science&set=0..` at `https://edugames-189.netlify.app/games/skybound.html`.
