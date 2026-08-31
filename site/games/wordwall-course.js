@@ -4,15 +4,15 @@ import { WORDWALL_LEVEL_COUNT, WORDWALL_QUESTIONS_PER_LEVEL } from './wordwall-w
 export const WORDWALL_RAINBOW=Object.freeze([0xff3b21,0xffa51f,0xffed31,0x45df46,0x20d9dc,0x3677f5,0x8c45ef,0xff4fc4]);
 export const WORDWALL_ROUTE_TYPES=Object.freeze(['rainbow-stairs','prism-tunnel','uphill-runway','donut-rings','sky-ribbons']);
 export const WORDWALL_TOTAL_WALLS=WORDWALL_LEVEL_COUNT*WORDWALL_QUESTIONS_PER_LEVEL;
-export const WORDWALL_COURSE_GRID=Object.freeze({unit:.5,platformHeight:1,checkpointCells:12,centreDistanceCells:52,pathCells:40,ringDiameterCells:12,ringHoleDiameterCells:3,ringGapCells:2});
+export const WORDWALL_COURSE_GRID=Object.freeze({unit:.5,platformHeight:1,checkpointCells:12,centreDistanceCells:88,pathCells:76,ringDiameterCells:24,ringHoleDiameterCells:3,ringGapCells:2});
 
 const CONTINUOUS_ROUTE_TYPES=Object.freeze(['rainbow-stairs','prism-tunnel','uphill-runway']);
 const ROUTES=Object.freeze({
-  'rainbow-stairs':Object.freeze({pieces:8,depthCells:5,widthCells:Object.freeze([18,18,16,14,14,16,18,18]),shape:'box',gapCells:0,leadCells:0}),
-  'prism-tunnel':Object.freeze({pieces:8,depthCells:5,widthCells:16,shape:'box',gapCells:0,leadCells:0}),
-  'uphill-runway':Object.freeze({pieces:5,depthCells:8,widthCells:18,shape:'box',gapCells:0,leadCells:0}),
-  'donut-rings':Object.freeze({pieces:3,depthCells:12,widthCells:12,shape:'ring',gapCells:2,leadCells:0}),
-  'sky-ribbons':Object.freeze({pieces:4,depthCells:8,widthCells:Object.freeze([8,8,10,8]),shape:Object.freeze(['circle','box','triangle','circle']),gapCells:2,leadCells:1})
+  'rainbow-stairs':Object.freeze({pieces:8,depthCells:Object.freeze([10,10,10,10,9,9,9,9]),widthCells:Object.freeze([18,18,16,14,14,16,18,18]),shape:'box',gapCells:0,leadCells:0}),
+  'prism-tunnel':Object.freeze({pieces:8,depthCells:Object.freeze([10,10,10,10,9,9,9,9]),widthCells:16,shape:'box',gapCells:0,leadCells:0}),
+  'uphill-runway':Object.freeze({pieces:5,depthCells:Object.freeze([15,15,15,15,16]),widthCells:18,shape:'box',gapCells:0,leadCells:0}),
+  'donut-rings':Object.freeze({pieces:3,depthCells:24,widthCells:24,shape:'ring',gapCells:2,leadCells:0}),
+  'sky-ribbons':Object.freeze({pieces:4,depthCells:17,widthCells:Object.freeze([8,8,10,8]),shape:Object.freeze(['circle','box','triangle','circle']),gapCells:2,leadCells:1})
 });
 
 function routeTypeFor(levelIndex,wallInLevel){return WORDWALL_ROUTE_TYPES[(levelIndex+wallInLevel)%WORDWALL_ROUTE_TYPES.length]}

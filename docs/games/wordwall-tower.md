@@ -11,12 +11,12 @@ The route mixes broad rainbow staircases, hexagonal prism tunnels, uphill runway
 `Choose a subject world → cross a rainbow path → reach a wall → answer one question with Learn or Hint available → collapse the wall → continue to the next path`.
 
 - Five levels each contain five complete path-to-wall sections. Every level rotates through all five path families so the traversal rhythm changes before each question.
-- The entire course is authored on an invisible 0.5-world-unit grid. Each 26-unit checkpoint-to-checkpoint span reserves 3 units for each circular checkpoint and exactly 20 units for the path between them.
+- The entire course is authored on an invisible 0.5-world-unit grid. Each 44-unit checkpoint-to-checkpoint span reserves 3 units for each circular checkpoint and exactly 38 units for the path between them.
 - Stair, tunnel-floor and uphill pieces use integer grid footprints that meet edge-to-edge. Their visible bodies extend down to the previous step so there are no interpenetrating slabs or false sky gaps between continuous pieces.
-- Donut sections use three large 6-unit rings. Each has a compact 1.5-unit-diameter centre hole, leaving a broad 2.25-unit walking band, plus a measured 1-unit fall gap before the next ring; those gaps are intentional jump spaces rather than placement errors.
+- Donut sections use three screenshot-scale 12-unit flat rings. Each has a compact 1.5-unit-diameter centre hole, leaving a broad 5.25-unit walking band, plus a measured 1-unit fall gap before the next ring; those gaps are intentional jump spaces rather than placement errors.
 - A sizing guard expands every platform to a safe-centre radius: 1.10 for boxes, 1.20 for circles, 1.35 for triangles and 1.05 across a donut walkway.
 - Solid 0.48-radius body collision blocks platform sides; underside collision stops upward jumps through bases.
-- Each path turns 60 degrees around a 26-unit-radius tower and rises 5 world units. Twenty-six circular checkpoint platforms connect all 25 paths without a level-loading break.
+- Each path turns 60 degrees around a 44-unit-radius tower and rises 5 world units. Twenty-six circular checkpoint platforms connect all 25 paths without a level-loading break.
 - Large physical **LEVEL 1–5** flags mark the start of each five-wall circuit. The HUD separately shows the current wall from 0/5 to 5/5.
 - One coin sits on each path and a bonus coin appears on every fifth path, preserving 30 rewards per world in one instanced render batch.
 - Each closed wall blocks its full front, back, sides and corners. One correct answer releases that wall; every fifth wall completes the current curriculum level.
