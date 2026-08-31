@@ -1,0 +1,37 @@
+import { buildScienceYearBank, validateDeepQuestionBank } from '../question-factory.js';
+
+const levels=[
+  [
+    {term:'a classification key',strand:'Living things',generatorId:'classification',description:'A sequence of either-or questions used to identify organisms',example:'“Does it have feathers?” separates two animal groups',purpose:'It narrows choices using observable features',evidence:'Each answer leads to another question or a name',link:'Clear measurable features make the key reliable'},
+    {term:'a habitat',strand:'Habitats',generatorId:'habitats',description:'The environment where an organism lives',example:'A pond supplies frogs with water, food and shelter',purpose:'It provides resources and suitable conditions',evidence:'The organism feeds, shelters or reproduces there',link:'Environmental change can remove a needed resource'},
+    {term:'environmental change',strand:'Habitats',generatorId:'habitats',description:'An alteration to conditions or resources in a habitat',example:'A pond dries during a long hot period',purpose:'It can increase or reduce an organism’s chance of survival',evidence:'A population falls after its food source disappears',link:'Different species may respond differently to the same change'},
+    {term:'a food chain',strand:'Food chains',generatorId:'food-chain',description:'A sequence showing how energy passes between organisms',example:'grass → rabbit → fox',purpose:'It links producers and consumers through feeding',evidence:'Arrows point towards the organism receiving energy',link:'Every food chain begins with a producer'}
+  ],
+  [
+    {term:'the digestive system',strand:'Digestion',generatorId:'digestion',description:'Organs that break food down and absorb useful substances',example:'Food moves from the mouth through the stomach and intestines',purpose:'It makes nutrients small and soluble enough to absorb',evidence:'Digested nutrients pass through the small intestine wall',link:'Chewing begins physical digestion in the mouth'},
+    {term:'incisors',strand:'Teeth',generatorId:'teeth',description:'Sharp front teeth shaped for cutting food',example:'They bite a piece from an apple',purpose:'They cut food into smaller pieces',evidence:'Their thin edges meet at the front of the mouth',link:'Their shape differs from broad grinding molars'},
+    {term:'molars',strand:'Teeth',generatorId:'teeth',description:'Broad back teeth with ridges for crushing and grinding',example:'They grind a piece of bread before swallowing',purpose:'They break food into smaller pieces by grinding',evidence:'Their wide surfaces press together at the back of the mouth',link:'Their shape suits a different job from incisors'},
+    {term:'a producer',strand:'Food chains',generatorId:'food-chain',description:'An organism, usually a green plant, that makes its own food',example:'Grass begins a meadow food chain',purpose:'It introduces energy into a food chain',evidence:'It uses light rather than eating another organism',link:'A consumer receives energy by eating a producer or another consumer'}
+  ],
+  [
+    {term:'a solid',strand:'States of matter',generatorId:'states',description:'Matter that keeps its own shape and volume',example:'An ice cube stays cube-shaped on a plate until it melts',purpose:'Its particles remain in fixed positions while vibrating',evidence:'Moving it to a new container does not make it fill the base',link:'Heating some solids can change them into liquids'},
+    {term:'a liquid',strand:'States of matter',generatorId:'states',description:'Matter that keeps its volume but flows to fit a container',example:'Water changes shape when poured into a jug',purpose:'It can flow while remaining a fixed amount',evidence:'Its surface settles level in different containers',link:'Cooling some liquids can change them into solids'},
+    {term:'evaporation',strand:'Changes of state',generatorId:'water-cycle',description:'A liquid changing into a gas at its surface',example:'A shallow puddle slowly disappears on a warm day',purpose:'It moves water from liquid stores into the air',evidence:'Wet fabric loses mass while no liquid drips away',link:'Warmer conditions usually increase its rate'},
+    {term:'condensation',strand:'Changes of state',generatorId:'water-cycle',description:'A gas changing into a liquid as it cools',example:'Droplets appear on the outside of a cold glass',purpose:'It returns water vapour to liquid water',evidence:'Water droplets form where moist air meets a cold surface',link:'It is the reverse change of evaporation'}
+  ],
+  [
+    {term:'vibration',strand:'Sound',generatorId:'sound',description:'A rapid back-and-forth movement that produces sound',example:'A plucked ruler moves up and down and can be heard',purpose:'It starts sound waves in a surrounding medium',evidence:'Touching the source gently reveals repeated movement',link:'Stopping the vibration stops the sound at its source'},
+    {term:'pitch',strand:'Sound',generatorId:'sound',description:'How high or low a sound seems',example:'A short tight string makes a higher note than a long loose one',purpose:'It describes vibration frequency rather than loudness',evidence:'Faster vibration is heard as a higher note',link:'Changing pitch does not always change volume'},
+    {term:'volume',strand:'Sound',generatorId:'sound',description:'How loud or quiet a sound seems',example:'A drum hit harder sounds louder',purpose:'It describes sound strength rather than pitch',evidence:'A stronger vibration produces a larger sound signal',link:'Distance from the source can change the volume heard'},
+    {term:'a sound medium',strand:'Sound',generatorId:'sound',description:'Matter through which sound vibrations travel',example:'Air carries a bell sound to a listener',purpose:'It transfers vibration energy between source and ear',evidence:'A sound can travel through a table as well as air',link:'Sound cannot travel through a complete vacuum'}
+  ],
+  [
+    {term:'a complete circuit',strand:'Electricity',generatorId:'circuits',description:'An unbroken conducting loop connected to both battery terminals',example:'Wires join a cell, closed switch and bulb in one loop',purpose:'It allows electric current to pass through every component',evidence:'The bulb lights when the final gap is closed',link:'One open connection prevents the circuit working'},
+    {term:'a switch',strand:'Electricity',generatorId:'circuits',description:'A component that opens or closes a circuit',example:'Pressing it joins two contacts and lights a lamp',purpose:'It controls whether current has a complete path',evidence:'The bulb turns off when the contacts separate',link:'A closed switch completes the loop'},
+    {term:'an electrical conductor',strand:'Electricity',generatorId:'conductors',description:'A material that allows electric current to pass',example:'Copper wire completes a circuit',purpose:'It connects components in a working loop',evidence:'A test bulb lights when the material bridges a gap',link:'Many metals conduct electricity'},
+    {term:'an electrical insulator',strand:'Electricity',generatorId:'conductors',description:'A material that resists electric current passing through',example:'Plastic covers the outside of a wire',purpose:'It helps stop current reaching people or unwanted paths',evidence:'A test bulb stays off when the material bridges the gap',link:'Rubber and plastic are common insulators'}
+  ]
+];
+
+export const year4ScienceQuestions=buildScienceYearBank(4,levels);
+validateDeepQuestionBank(year4ScienceQuestions,{subject:'science',year:4});

@@ -1,0 +1,37 @@
+import { buildScienceYearBank, validateDeepQuestionBank } from '../question-factory.js';
+
+const levels=[
+  [
+    {term:'roots',strand:'Plant parts',generatorId:'plant-parts',description:'They absorb water and minerals from soil',example:'Fine roots spread through damp soil',purpose:'They anchor the plant and take in water',evidence:'Coloured water first enters a plant below the stem',link:'Roots supply water that the stem transports'},
+    {term:'stems',strand:'Plant parts',generatorId:'plant-parts',description:'They support leaves and carry water through a plant',example:'A sunflower stalk holds its flower upright',purpose:'They connect roots, leaves and flowers',evidence:'Coloured water can be seen moving up a celery stalk',link:'Stems transport water from roots towards leaves'},
+    {term:'leaves',strand:'Plant parts',generatorId:'plant-parts',description:'They use light to help the plant make food',example:'Broad green blades face towards sunlight',purpose:'They capture light and exchange gases',evidence:'A plant kept without light develops pale weak leaves',link:'Leaves need water delivered by roots and stems'},
+    {term:'flowers',strand:'Plant parts',generatorId:'plant-parts',description:'They are involved in reproduction and seed formation',example:'A bee carries pollen between blossoms',purpose:'They help the plant produce seeds',evidence:'Seeds begin forming after a flower is pollinated',link:'Flowers can develop into fruits containing seeds'}
+  ],
+  [
+    {term:'a skeleton',strand:'Animals including humans',generatorId:'body-parts',description:'A framework of bones that supports and protects the body',example:'The skull forms a hard case around the brain',purpose:'It gives support, protection and places for muscles to attach',evidence:'An X-ray shows connected bones inside a limb',link:'Muscles pull on bones at joints to create movement'},
+    {term:'muscles',strand:'Animals including humans',generatorId:'body-parts',description:'Body tissues that contract and pull',example:'The biceps shortens when the elbow bends',purpose:'They pull bones to move body parts',evidence:'A muscle becomes shorter and thicker during a pull',link:'Muscles work in pairs because they can only pull'},
+    {term:'igneous rock',strand:'Rocks',generatorId:'rocks',description:'Rock formed when molten material cools and solidifies',example:'Granite can form from slowly cooled magma',purpose:'Its crystals record how melted rock cooled',evidence:'Interlocking crystals are visible in a granite sample',link:'Cooling rate can affect the size of its crystals'},
+    {term:'fossil formation',strand:'Rocks and fossils',generatorId:'rocks',description:'A long process that may preserve traces of ancient life',example:'A shell is buried by layers of sediment',purpose:'It leaves evidence about organisms from the past',evidence:'A rock contains the shape of a once-living shell',link:'Rapid burial can protect remains before they decay'}
+  ],
+  [
+    {term:'a light source',strand:'Light',generatorId:'light',description:'An object that produces its own light',example:'A switched-on torch shines in a dark room',purpose:'It sends light that can travel to objects and eyes',evidence:'The object remains visible in an otherwise dark box',link:'The Sun is a source, while the Moon reflects light'},
+    {term:'reflection',strand:'Light',generatorId:'light',description:'Light bouncing from a surface',example:'A mirror redirects a torch beam',purpose:'It allows light from an object to reach our eyes',evidence:'A bright spot moves when a mirror is turned',link:'Smooth shiny surfaces usually reflect clearly'},
+    {term:'an opaque object',strand:'Shadows',generatorId:'shadows',description:'A material that blocks light passing through it',example:'Cardboard placed before a lamp makes a dark shape',purpose:'It creates a shadow on the side away from the source',evidence:'No light is detected directly behind the material',link:'Moving it nearer the source can make its shadow larger'},
+    {term:'sun safety',strand:'Light safety',generatorId:'light',description:'Protecting eyes from very bright sunlight',example:'Looking beside the Sun instead of directly at it',purpose:'It reduces the risk of serious eye damage',evidence:'A safe investigation uses shadows rather than staring at the Sun',link:'Sunglasses are not permission to look directly at the Sun'}
+  ],
+  [
+    {term:'a contact force',strand:'Forces',generatorId:'friction',description:'A push or pull that acts when objects touch',example:'A hand pushes a toy car across a table',purpose:'It can start, stop or change an object’s motion',evidence:'The object changes speed while another object touches it',link:'Friction is a contact force between surfaces'},
+    {term:'friction',strand:'Forces',generatorId:'friction',description:'A force that opposes movement between touching surfaces',example:'A book slides less far on carpet than on a smooth desk',purpose:'It can slow movement or provide grip',evidence:'The same block travels different distances on two surfaces',link:'Rougher surfaces usually create more friction'},
+    {term:'magnetic poles',strand:'Magnets',generatorId:'magnets',description:'The north and south ends where magnetic effects are strongest',example:'A north pole faces a south pole and they move together',purpose:'Their arrangement decides attraction or repulsion',evidence:'Two north poles move apart without touching',link:'Unlike poles attract and like poles repel'},
+    {term:'a magnetic material',strand:'Magnets',generatorId:'magnets',description:'A material attracted to a magnet, such as iron',example:'An iron paperclip moves towards a bar magnet',purpose:'It responds to a nearby magnetic field',evidence:'The object is pulled without direct contact',link:'Not every metal is magnetic'}
+  ],
+  [
+    {term:'a fair test',strand:'Working scientifically',generatorId:'fair-test',description:'An enquiry that changes one factor and controls the others',example:'Changing ramp surface while keeping the car and height the same',purpose:'It supports a trustworthy comparison',evidence:'Only the chosen independent variable differs between trials',link:'Repeat measurements make its conclusion more reliable'},
+    {term:'careful observation',strand:'Working scientifically',generatorId:'fair-test',description:'Noticing and recording relevant details accurately',example:'Writing the plant height in centimetres each day',purpose:'It creates evidence that can be compared',evidence:'A dated table records the same measure over time',link:'Observations can reveal a pattern before an explanation is made'},
+    {term:'standard measurement',strand:'Working scientifically',generatorId:'fair-test',description:'Measuring with agreed units and suitable equipment',example:'Using a ruler to record length in centimetres',purpose:'It lets different results be compared fairly',evidence:'Every group records mass in grams',link:'The unit must match the quantity being measured'},
+    {term:'classification',strand:'Working scientifically',generatorId:'classification',description:'Grouping things using shared observable properties',example:'Sorting leaves by edge shape and vein pattern',purpose:'It helps identify similarities and differences',evidence:'Every item in a group shares the stated feature',link:'A useful key asks one clear either-or question at a time'}
+  ]
+];
+
+export const year3ScienceQuestions=buildScienceYearBank(3,levels);
+validateDeepQuestionBank(year3ScienceQuestions,{subject:'science',year:3});

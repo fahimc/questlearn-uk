@@ -1,6 +1,7 @@
 import { createLevelQuestionSet, validateGeneratedQuestion } from './curriculum-question-generator.js';
 
 export const WORDWALL_WORLD_IDS=Object.freeze(['english','maths','science']);
+export const WORDWALL_YEAR_IDS=Object.freeze([3,4,5]);
 export const WORDWALL_LEVEL_COUNT=5;
 export const WORDWALL_QUESTIONS_PER_LEVEL=5;
 export const WORDWALL_TOTAL_QUESTIONS=WORDWALL_LEVEL_COUNT*WORDWALL_QUESTIONS_PER_LEVEL;
@@ -13,13 +14,14 @@ export const WORDWALL_WORLDS=Object.freeze({
 
 export function getWordwallWorld(worldId='english'){return WORDWALL_WORLDS[worldId]||WORDWALL_WORLDS.english}
 
-export function createWordwallWorldLevels(worldId='english',set=0){
+export function createWordwallWorldLevels(worldId='english',set=0,year=3){
   const world=getWordwallWorld(worldId);
-  return Object.freeze(Array.from({length:WORDWALL_LEVEL_COUNT},(_,index)=>{const level=index+1,questions=createLevelQuestionSet({subject:world.subject,level,set,count:WORDWALL_QUESTIONS_PER_LEVEL}).map((question,questionIndex)=>Object.freeze({...question,number:questionIndex+1,worldId:world.id,levelNumber:level}));return Object.freeze({id:`${world.id}-level-${level}`,worldId:world.id,number:level,level,year:questions[0].year,title:`Level ${level}`,questions:Object.freeze(questions)})}));
+  const selectedYear=WORDWALL_YEAR_IDS.includes(Number(year))?Number(year):3;
+  return Object.freeze(Array.from({length:WORDWALL_LEVEL_COUNT},(_,index)=>{const level=index+1,questions=createLevelQuestionSet({subject:world.subject,year:selectedYear,level,set,count:WORDWALL_QUESTIONS_PER_LEVEL}).map((question,questionIndex)=>Object.freeze({...question,number:questionIndex+1,worldId:world.id,levelNumber:level}));return Object.freeze({id:`${world.id}-year-${selectedYear}-level-${level}`,worldId:world.id,number:level,level,year:`Year ${selectedYear}`,yearNumber:selectedYear,title:`Level ${level}`,questions:Object.freeze(questions)})}));
 }
 
-export function createWordwallWorldQuestions(worldId='english',set=0){return Object.freeze(createWordwallWorldLevels(worldId,set).flatMap(level=>level.questions))}
+export function createWordwallWorldQuestions(worldId='english',set=0,year=3){return Object.freeze(createWordwallWorldLevels(worldId,set,year).flatMap(level=>level.questions))}
 
 export function validateWordwallWorlds(worlds=WORDWALL_WORLDS){
-  for(const id of WORDWALL_WORLD_IDS){const world=worlds[id];if(!world||world.id!==id||!world.subjectName||world.palette.length!==WORDWALL_LEVEL_COUNT)throw new Error(`Invalid Wordwall world ${id}`);const levels=createWordwallWorldLevels(id,0);if(levels.length!==WORDWALL_LEVEL_COUNT)throw new Error(`Invalid level route for ${id}`);for(const [index,level] of levels.entries()){if(level.number!==index+1||level.questions.length!==WORDWALL_QUESTIONS_PER_LEVEL||level.questions.some(question=>question.level!==level.number||!validateGeneratedQuestion(question)))throw new Error(`Invalid question route for ${id} level ${index+1}`)}}return true;
+  for(const id of WORDWALL_WORLD_IDS){const world=worlds[id];if(!world||world.id!==id||!world.subjectName||world.palette.length!==WORDWALL_LEVEL_COUNT)throw new Error(`Invalid Wordwall world ${id}`);for(const year of WORDWALL_YEAR_IDS){const levels=createWordwallWorldLevels(id,0,year);if(levels.length!==WORDWALL_LEVEL_COUNT)throw new Error(`Invalid level route for ${id}`);for(const [index,level] of levels.entries()){if(level.number!==index+1||level.yearNumber!==year||level.questions.length!==WORDWALL_QUESTIONS_PER_LEVEL||level.questions.some(question=>question.level!==level.number||question.yearNumber!==year||!validateGeneratedQuestion(question)))throw new Error(`Invalid Year ${year} question route for ${id} level ${index+1}`)}}}return true;
 }

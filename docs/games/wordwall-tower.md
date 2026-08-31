@@ -2,13 +2,13 @@
 
 ## Playable promise
 
-LexiClimb Tower is a third-person, block-character curriculum obby for UK learners aged 7–10. The player chooses **Word Quest**, **Number Nebula** or **Discovery Canopy**, then climbs five large, continuous circuits around a rising spiral. Every circuit contains five paths and five learning walls. Each world has the same traversal length and difficulty rhythm but its own English, Maths or Science question route.
+LexiClimb Tower is a third-person, block-character curriculum obby for UK learners aged 7–10. The player first chooses **Year 3**, **Year 4** or **Year 5**, then chooses **Word Quest**, **Number Nebula** or **Discovery Canopy**. They climb five large, continuous circuits around a rising spiral. Every circuit contains five paths and five learning walls. Each world has the same traversal length and difficulty rhythm, while its question route stays inside the chosen year and subject.
 
 The route mixes broad rainbow staircases, hexagonal prism tunnels, uphill runways, traversable donut rings and floating ribbons of boxes, circles and triangles. Falling more than 3.5 world units below the latest checkpoint immediately returns the player there, even when a lower circuit could otherwise catch them. Bright browser obbies inform the broad genre pattern, but the world, character, routes, interface, questions, artwork and code are original EduGames work.
 
 ## Core loop
 
-`Choose a subject world → cross a rainbow path → reach a wall → answer one question with Learn or Hint available → collapse the wall → continue to the next path`.
+`Choose a year and subject world → cross a rainbow path → reach a wall → answer one question with Learn or Hint available → collapse the wall → continue to the next path`.
 
 - Five levels each contain five complete path-to-wall sections. Every level rotates through all five path families so the traversal rhythm changes before each question.
 - The entire course is authored on an invisible 0.5-world-unit grid. Each 44-unit checkpoint-to-checkpoint span reserves 3 units for each circular checkpoint and exactly 38 units for the path between them.
@@ -23,17 +23,17 @@ The route mixes broad rainbow staircases, hexagonal prism tunnels, uphill runway
 - Repeated platforms, checkpoint rings and tunnel frames are instanced so the larger course remains practical on low-power tablets and Chromebooks.
 - There is no timer, lives counter, public leaderboard, advertising or chat.
 
-## Worlds and progression
+## Year-tailored worlds and progression
 
-| Level | Suggested stage | Word Quest | Number Nebula | Discovery Canopy |
+| Level | In-year demand | Word Quest | Number Nebula | Discovery Canopy |
 |---|---|---|---|---|
-| 1 | Year 3 foundation | spelling, vocabulary or sentence basics | place value and one-step calculation | identify plant, animal, rock, light or force facts |
-| 2 | Year 3 application | homophones, reading and grammar in context | tables, division, fraction and measure application | connect plant/body/material/force systems |
-| 3 | Year 4 foundation | paragraphs, inference, pronouns and punctuation | rounding, factors, decimals, fractions and area | classification, food chains, matter, sound and circuits |
-| 4 | Year 4 independence | fronted adverbials, summary, affixes and word class | negative numbers, conversion, angles and coordinates | habitats, water cycle, pitch, conductors and evidence |
-| 5 | Year 5 application | clauses, modal verbs, cohesion and author language | primes, fractions, percentage, volume and multi-step work | life cycles, solutions, separation, space and forces |
+| 1 | recognise and recall | spelling, vocabulary or sentence basics | number and place-value foundations | identify the year's core facts and vocabulary |
+| 2 | connect facts | grammar and word relationships | calculations and number relationships | connect parts, properties and processes |
+| 3 | apply a familiar rule | punctuation, reading and composition | fractions, measures and representations | explain changes and linked systems |
+| 4 | select a method | inference, cohesion and editing | geometry, data and connected reasoning | interpret patterns and evidence |
+| 5 | reason independently | integrated language decisions | multi-step problems | scientific enquiry across the year's topics |
 
-All three worlds always contain five levels ordered Levels 1–5, with five questions and five separate walls at each level: 25 questions in a completed world. Every question in a circuit uses that level's curriculum difficulty. A run contains no repeated prompt, and “New question set” advances to a disjoint reviewed batch so it does not repeat the previous run. See [`curriculum-question-bank.md`](curriculum-question-bank.md) for the 150-item authored bank and generation limits.
+Every year-and-subject combination contains five levels ordered Levels 1–5, with five questions and five separate walls at each level: 25 questions in a completed world. Every question in a circuit uses that selected year's matching difficulty. A run contains no repeated prompt. Four consecutive “New question set” routes partition and exhaust all 100 reviewed questions for the selected year and subject before wrapping. See [`curriculum-question-bank.md`](curriculum-question-bank.md) for the 900-item bank and selection limits.
 
 Every gate has a learner-controlled explanation, separate hint, age-readable feedback and teaching example. Learn is tailored to the live question and presents the topic, a three-step method, a different worked example and a self-check; it does not reveal the live answer.
 
@@ -46,14 +46,14 @@ Every gate has a learner-controlled explanation, separate hint, age-readable fee
 
 ## Runtime and responsive behaviour
 
-- `curriculum-question-bank.js` owns the validated 150 authored items; `curriculum-learning-guides.js` supplies question-aware teaching; `curriculum-question-generator.js` owns deterministic non-repeating variants.
-- `wordwall-worlds.js` owns the three subject themes and guarantees five progressive levels with five deterministic questions in each.
+- Nine files under `question-banks/year-{3,4,5}` own the validated 900 items; `curriculum-year-banks.js` provides scoped lookup; `curriculum-learning-guides.js` supplies question-aware teaching; `curriculum-question-generator.js` owns deterministic non-repeating selection.
+- `wordwall-worlds.js` owns the three subject themes and guarantees five progressive levels with five deterministic, selected-year questions in each.
 - `wordwall-course.js` owns the deterministic 25-path plan, hidden-grid placement, non-overlap validation, route-family rotation, minimum sizing and tunnel/ring metadata.
 - `wordwall-engine.js` is renderer-independent and owns one-question-per-wall progression, level boundaries, collision, support sizing, rewards, skins and privacy-safe sharing.
 - `wordwall.js` composes batched Three.js presentation with faster camera-relative movement, higher buffered jumping, analogue input, orbit camera, procedural audio and low-power selection.
 - Each current wall has three guarded activation routes: landing on its checkpoint, touching or stepping close to either face, and an on-screen **Open question** fallback that works only within the same proximity zone.
 - Desktop uses WASD/arrows, Space, mouse drag and Q/E. Touch uses an independent analogue pointer, Jump pointer and swipe-to-orbit canvas.
-- Portrait layouts stack world choices and challenge options inside a bounded scrolling card. Short landscape hides the onboarding guide, keeps all three world choices visible and preserves the game view.
+- Portrait layouts stack the year selector, world choices and challenge options inside a bounded scrolling card. Short landscape compacts onboarding while preserving all three year and subject choices and the game view.
 
 ## Risks and next tests
 

@@ -11,6 +11,7 @@ The detailed content baseline in this repository is England, where ages 7–10 n
 ## Research notes
 
 - [England: Years 3–5 curriculum map](england-years-3-5.md)
+- Deep playable-bank reviews: [Year 3](question-banks/year-3.md), [Year 4](question-banks/year-4.md), [Year 5](question-banks/year-5.md)
 - [Wales, Scotland and Northern Ireland mapping](devolved-nations.md)
 - [Curriculum-to-game matrix](curriculum-game-matrix.md)
 - [Learning science and ethical engagement](learning-science-and-engagement.md)
@@ -22,4 +23,3 @@ The detailed content baseline in this repository is England, where ages 7–10 n
 The strongest early product wedge is maths fluency plus applied science and reading comprehension. These have clear progression, short assessable interactions and natural links to building, movement and narrative. History, geography, computing and design technology should appear as integrated mission contexts rather than interchangeable quiz skins.
 
 Every content item should carry: jurisdiction, stage/year, subject, objective ID, objective wording or licensed paraphrase, prerequisite skills, interaction type, misconception tags, feedback model, accessibility variants, evidence rule and review date.
-
