@@ -304,3 +304,17 @@ EduGames now has a reusable cross-subject curriculum content layer and LexiClimb
 ## Latest resume point
 
 LexiClimb has three subject worlds with five continuous physical levels and ten curriculum questions at every level. The wall is a level boundary, not a one-question boundary. Future progression changes must preserve the five-level/50-question distinction and the Level 1–5 difficulty grouping. The repository has 98 passing tests and 144 validated local links/files. The live game is `https://edugames-189.netlify.app/games/wordwall.html`.
+
+## LexiClimb five-wall rainbow circuits
+
+- This release supersedes the ten-question-at-one-wall model above. Each subject world now has five continuous levels; every level is a circuit of five paths ending at five separate walls, and each wall asks exactly one question. Clearing wall 5 completes that level, for 25 questions/walls per world.
+- Added `site/games/wordwall-course.js` as a deterministic course planner. Every level contains one rainbow staircase, prism tunnel, uphill runway, true donut-ring route and mixed-shape sky-ribbon route, rotated around the rising tower. There are 25 path segments and 26 checkpoint platforms.
+- Enlarged paths and gates for child-friendly clearance, added real annulus collision so donut centres remain holes, retained solid sides/undersides, and raised movement to 8.4 units/s with 9.6 jump velocity.
+- Batched static support shapes, tunnel bars, checkpoint rings, clouds and coins with instanced rendering to keep the expanded course practical on lower-power devices. The five circuits retain 30 one-time coin rewards and the existing local skin economy.
+- Updated onboarding, HUD, completion/share copy, responsive documentation and screenshot automation. Visually reviewed portrait phone, short landscape, desktop, tower overview, challenge, rainbow-tunnel and donut-ring renders; the mobile HUD correctly shows `0/5` and the challenge shows `Level 1 · Wall 1 of 5`.
+- `npm run test:all` passes 100 tests and validates 147 local links/files. Coverage verifies one question per wall, every-fifth-wall level completion, all five route families in every circuit, safe shape sizing/collision, faster movement, 25-wall completion and privacy-safe sharing.
+- GitHub commit `dad7278` and Netlify production deploy `6a958e9eadf31a65ccb36e91` published the release. Production HTML and modules expose the 5-question level constant, all five route types, 25-wall course plan and new movement settings.
+
+## Current resume point
+
+LexiClimb's authoritative progression is now **five levels × five one-question walls = 25 walls per world**. A wall is a single question boundary, not a ten-question round. Each level must retain five varied traversal paths and should finish only after its fifth wall. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`; GitHub `main` includes the production release at `dad7278`.
