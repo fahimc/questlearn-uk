@@ -395,3 +395,17 @@ LexiClimb stair physics now uses fixed-step horizontal body collision, bounded g
 ## Latest resume point
 
 LexiClimb remains five levels × five one-question walls. Its authoritative bank is now 150 items, with 10 reviewed questions per subject/level and non-repeating five-item batches. Keep new Learn content in `curriculum-learning-guides.js`, preserve the no-replacement selector and checkpoint-relative fall threshold, and add regression coverage when introducing new generators. The live game is `https://edugames-189.netlify.app/games/wordwall.html`.
+
+## LexiClimb year-tailored 900-question curriculum release
+
+- Replaced the cross-year 150-item pool with nine explicit banks under `site/games/question-banks/year-{3,4,5}`: 100 English, 100 Maths and 100 Science questions for each of Years 3, 4 and 5. `curriculum-year-banks.js` exposes and validates the 900-item registry.
+- Each year-and-subject scope has 20 questions at each of five in-year difficulty levels. A world draws five per level; sets 0–3 partition all 100 source records into four 25-wall runs without repetition. Selection only shuffles reviewed records and never crosses the selected year.
+- Added a Year 3/4/5 selector before the subject selector. Year remains in replay URLs, HUD/challenge labels, coin scopes, completion copy and sharing. A visual review caught and fixed a `data-year` selector collision that erased the body; page metadata now uses `data-wordwall-year`.
+- Added strict suitability checks for stable metadata, unique prompts, exact spelling tiles, four distinct choices, compact presentation and complete Learn/Hint support. Extended topic guides for new number, fraction, geometry and science concepts.
+- Added deep research/review files for each year, refreshed game and architecture documentation, and saved 390 × 844 selector/challenge/Learn plus 1024 × 576 selector baselines. Short landscape now hides the onboarding guide up to 620 px high so the Start action remains visible.
+- `npm run test:all` passes 111 tests and validates 185 local files. Production verification found three year choices, the 900 marker, year-scoped controller wiring, safe page metadata and the 900-item registry.
+- GitHub commit `d7d9999` and Netlify production deploy `6a95d00fd784ce3463c11df7` published the release.
+
+## Current resume point
+
+LexiClimb's authoritative content model is **3 years × 3 subjects × 100 questions = 900**, with 20 records at every in-year level and 25 one-question walls per run. The selected year is a hard question boundary. Preserve the nine bank files, `curriculum-year-banks.js` validation, four-set non-repeating partition and `data-wordwall-year` metadata when extending the game. The live selector supports `?world=english|maths|science&year=3|4|5&set=0..` at `https://edugames-189.netlify.app/games/wordwall.html`.
