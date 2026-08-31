@@ -382,3 +382,16 @@ LexiClimb's authoritative donut size is now **12 world units / 24 half-unit cell
 ## Latest resume point
 
 LexiClimb stair physics now uses fixed-step horizontal body collision, bounded grounded autostep, underside collision and swept top-surface landing. Keep rendered support dimensions, `isWordwallFootprintOnSupport` and the three movement/ceiling/landing resolvers aligned when changing course shapes or heights. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`.
+
+## LexiClimb non-repeating curriculum and checkpoint recovery
+
+- Expanded the reviewed Years 3–5 bank from 100 to 150 items: exactly 50 Maths, 50 Science and 50 English questions, with 10 items per subject at every Level 1–5 difficulty. The 25-wall world draws five without replacement per level; the following set draws the disjoint half of each level pool, preventing immediate replay repetition.
+- Added `site/games/curriculum-learning-guides.js` with topic-specific explanations across the three subjects. Each Learn panel now shows the live strand's rule or concept, a three-step method, a different worked example and a self-check without displaying the live answer. The panel remains scrollable in short landscape.
+- Added checkpoint-relative fall recovery. The controller respawns as soon as the avatar is more than 3.5 world units below the latest checkpoint, before a lower circuit can catch them, and restores the exact saved checkpoint without changing solved progress.
+- Strengthened bank, generated-question and world validators for detailed support and duplicate prompts. Regression sampling covers 500 complete sets per subject plus every adjacent set pair; there are no repeated prompts within a world and no reused authored item in the immediately following set.
+- `npm run test:all` passes 110 tests and validates 166 local links/files. Learn views were reviewed at 390 × 844, 844 × 390 and 1280 × 720; the immutable production phone capture matches the local layout.
+- GitHub commit `98889f9` and Netlify production deploy `6a95c8655dc99989ad583b2b` published the release. The immutable HTML, bank, guide, generator, engine and controller all returned 200 with the new markers.
+
+## Latest resume point
+
+LexiClimb remains five levels × five one-question walls. Its authoritative bank is now 150 items, with 10 reviewed questions per subject/level and non-repeating five-item batches. Keep new Learn content in `curriculum-learning-guides.js`, preserve the no-replacement selector and checkpoint-relative fall threshold, and add regression coverage when introducing new generators. The live game is `https://edugames-189.netlify.app/games/wordwall.html`.
