@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#7cdcf0">
-  <meta name="description" content="Run, jump and solve curriculum-linked maths questions on a sky-high glass bridge for ages 7 to 10.">
+  <meta name="description" content="Choose Year 3, 4 or 5 and cross a sky-high glass bridge using tailored English, Maths or Science answers.">
   <title>Skybound Academy · EduGames</title>
   <link rel="stylesheet" href="../assets/game.css">
   <link rel="stylesheet" href="skybound.css">
@@ -27,9 +27,10 @@
     <section class="bridge-question" id="bridgeQuestion" aria-live="polite">
       <div class="question-meta"><span data-year>Year 3</span><b data-strand>Multiplication</b></div>
       <h1 data-prompt>Loading bridge question…</h1>
+      <div class="bridge-answer-guide" aria-label="Answers shown on the glass tiles"><span><b>← Left glass</b><em data-left-answer></em></span><span><b>Right glass →</b><em data-right-answer></em></span></div>
       <p class="choose-note"><span aria-hidden="true">↙</span> Jump onto the left or right answer tile <span aria-hidden="true">↘</span></p>
       <div class="support-actions"><button type="button" data-learn>Learn</button><button type="button" data-hint>Hint</button></div>
-      <div class="support-panel" data-support hidden><strong data-support-title></strong><p data-support-copy></p><small data-support-example></small></div>
+      <div class="support-panel" data-support hidden><strong data-support-title></strong><p data-support-copy></p><ol data-support-steps></ol><small data-support-example></small><p class="support-check" data-support-check></p></div>
     </section>
 
     <div class="bridge-toast" data-toast role="status" aria-live="polite"></div>
@@ -42,17 +43,21 @@
 
     <div class="world-intro" data-intro>
       <section class="sky-modal-card" aria-labelledby="welcomeTitle">
-        <p class="modal-kicker">Educational obby · ages 7–10</p>
+        <p class="modal-kicker" data-intro-kicker>Year 3 · Maths bridge</p>
         <h1 id="welcomeTitle">Skybound Glass Run</h1>
-        <p>Cross ten glass bridges above the clouds. Read the question, then jump onto the tile carrying the correct answer.</p>
+        <p data-intro-copy>Cross ten glass bridges above the clouds with Year 3 Maths questions. Read each question, then jump onto the tile carrying the correct answer.</p>
+        <p class="selector-label">Choose your year</p>
+        <div class="sky-year-grid" data-year-grid aria-label="Choose a school year"><button type="button" data-year-choice="3"><b>Year 3</b><small>Ages 7–8</small></button><button type="button" data-year-choice="4"><b>Year 4</b><small>Ages 8–9</small></button><button type="button" data-year-choice="5"><b>Year 5</b><small>Ages 9–10</small></button></div>
+        <p class="selector-label">Choose your subject</p>
+        <div class="sky-subject-grid" data-subject-grid aria-label="Choose a subject"><button type="button" data-subject-choice="english"><i>Aa</i><span><b>English</b><small>Word Skyway</small></span></button><button type="button" data-subject-choice="maths"><i>×</i><span><b>Maths</b><small>Number Skyway</small></span></button><button type="button" data-subject-choice="science"><i>⚗</i><span><b>Science</b><small>Discovery Skyway</small></span></button></div>
         <div class="guide-grid">
           <article><span>1</span><div><b>Read</b><small>Both answers appear on the glass.</small></div></article>
           <article><span>2</span><div><b>Move &amp; look</b><small class="desktop-copy">Use WASD or arrows. Drag or use Q/E to orbit and turn your character.</small><small class="touch-copy">Drag the analogue stick. Swipe the world to orbit and turn your character.</small></div></article>
           <article><span>3</span><div><b>Jump</b><small class="desktop-copy">Press Space.</small><small class="touch-copy">Tap Jump.</small></div></article>
           <article><span>4</span><div><b>Checkpoint</b><small>A wrong tile drops you back to this bridge, not the beginning.</small></div></article>
         </div>
-        <button class="sky-primary" type="button" data-start>Start the glass run</button>
-        <small>No timer · no lives · no adverts · no chat</small>
+        <button class="sky-primary" type="button" data-start>Start Year 3 Maths</button>
+        <small>900 curriculum questions · no timer · no lives · no adverts · no chat</small>
       </section>
     </div>
 
@@ -65,7 +70,7 @@
     </dialog>
 
     <dialog class="sky-dialog complete-dialog" data-complete-dialog>
-      <section class="sky-modal-card"><div class="trophy" aria-hidden="true">★</div><p class="modal-kicker">All bridges crossed</p><h2>Skybound champion!</h2><p>You used multiplication, division, fractions, decimals, perimeter, percentages and volume to reach the final platform.</p><div class="complete-actions"><button class="sky-primary" type="button" data-share>Share achievement</button><button class="sky-secondary" type="button" data-replay>Run again</button></div><small class="share-privacy">Shares only the public game link — never your answers or progress.</small><span class="share-status" data-share-status role="status" aria-live="polite"></span><a href="../index.html">Choose another game</a></section>
+      <section class="sky-modal-card"><div class="trophy" aria-hidden="true">★</div><p class="modal-kicker" data-complete-kicker>Year 3 Maths route cleared</p><h2>Skybound champion!</h2><p data-complete-copy>You crossed all ten Year 3 Maths bridges.</p><div class="complete-actions"><button class="sky-primary" type="button" data-share>Share achievement</button><button class="sky-secondary" type="button" data-replay>New question set</button></div><small class="share-privacy">Shares only the public game link — never your answers or progress.</small><span class="share-status" data-share-status role="status" aria-live="polite"></span><a href="../index.html">Choose another game</a></section>
     </dialog>
   </main>
   <script type="module" src="skybound.js"></script>

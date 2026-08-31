@@ -1,9 +1,9 @@
 export const SKYBOUND_LANES=Object.freeze(['left','right']);
 export const SKYBOUND_PLAYER_FOOT_RADIUS=.3;
 
-export function createSkyboundShareData(pageUrl){
+export function createSkyboundShareData(pageUrl,{year=3,subjectName='Maths'}={}){
   const url=new URL(pageUrl);url.search='';url.hash='';
-  return{title:'Skybound Academy achievement',text:'I completed all 10 maths bridges in Skybound Academy on EduGames!',url:url.href};
+  return{title:'Skybound Academy achievement',text:`I completed all 10 Year ${year} ${subjectName} bridges in Skybound Academy on EduGames!`,url:url.href};
 }
 
 function analogAxis(value){return Number.isFinite(value)?Math.max(-1,Math.min(1,value)):0}

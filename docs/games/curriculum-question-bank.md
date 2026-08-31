@@ -15,7 +15,7 @@ This is age-tailored practice content, not a replacement for teacher sequencing 
 | Year 5 (ages 9–10) | 100 | 100 | 100 | 300 |
 | **Total** | **300** | **300** | **300** | **900** |
 
-Each year-and-subject bank has five in-year difficulty levels with 20 questions per level. A LexiClimb world draws five questions from each level, producing 25 one-question walls. Four consecutive question sets therefore exhaust all 100 source records in that selected year and subject without repetition.
+Each year-and-subject bank has five in-year difficulty levels with 20 questions per level. LexiClimb draws five questions from each level, producing 25 one-question walls and exhausting the scope in four runs. Skybound draws two from each level, producing ten glass bridges and exhausting the same scope in ten runs. Both games isolate the selected year and avoid source repetition within their full cycle.
 
 ## Game-suitability contract
 
@@ -50,6 +50,7 @@ Questions use short, single-focus interactions suitable for movement games. Math
 - `site/games/curriculum-learning-guides.js`: question-aware teaching explanations and checks.
 - `site/games/curriculum-question-generator.js`: deterministic, year-scoped selection.
 - `site/games/wordwall-worlds.js`: year-and-subject routes with five levels and 25 walls.
+- `site/games/skybound-questions.js`: year-and-subject routes with two physical choices across ten bridges.
 - `tests/curriculum-question-bank.test.js`: counts, year boundaries, presentation safety and non-repetition tests.
 
 ## Review boundary

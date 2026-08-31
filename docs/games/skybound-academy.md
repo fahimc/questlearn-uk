@@ -2,64 +2,75 @@
 
 ## Playable promise
 
-Skybound Academy is a third-person, block-character glass-bridge obby for UK learners aged 7–10. Ten bridges form one continuous route above the clouds. Each safe checkpoint presents a curriculum question; its two possible answers are rendered on the left and right glass tiles, so the learner answers through movement rather than a detached quiz button.
+Skybound Academy is a third-person, block-character glass-bridge obby for learners aged 7–10. The player chooses **Year 3**, **Year 4** or **Year 5**, then English, Maths or Science. Ten bridges form one continuous route above the clouds. Each checkpoint presents a question from that exact year-and-subject scope; two possible answers appear on the left and right glass, so the learner answers through movement rather than a detached quiz button.
 
-The game uses an original EduGames world, character, interface and question set. It borrows the general physical-choice loop found in glass-bridge and obstacle-course games without using another game's names, characters, artwork, level layout or code.
+The game uses an original EduGames world, character and interface. It applies the general physical-choice loop of glass-bridge obstacle games without copying another game's characters, artwork, course or code.
 
 ## Core loop
 
-`Reach checkpoint → read question → use Learn or Hint if needed → jump to an answer tile → cross safe glass or fall → retry the same bridge → reach the next checkpoint`.
+`Choose year and subject → reach checkpoint → read the question → use Learn or Hint → jump to an answer tile → cross safe glass or fall → retry the same bridge`.
 
 - A correct tile turns green and remains solid.
 - A wrong tile turns red, cracks away and drops the avatar below the clouds.
-- Landing uses the avatar's foot area rather than a zero-width centre point, so every visible glass edge is usable while the gap between answers remains unsafe.
-- Falling always returns the learner to the checkpoint immediately before that bridge.
-- Checkpoint progress is local and private. There is no timer, public ranking, chat, lives system or paid skip.
-- Completing the tenth bridge opens a natural session ending with share, replay and choose-another-game actions. Sharing uses the device's native share sheet when available and falls back to copying the canonical game link. The fixed achievement message never includes a learner's identity, answers or saved progress.
+- Falling returns the learner to the checkpoint immediately before that bridge.
+- The current left and right answers appear both on world-space signs above the glass and in a compact accessible legend on the question card.
+- World-space signs wrap up to four lines and scale type for longer English and Science answers.
+- Landing uses the avatar's foot area, so visible glass edges remain usable while the gap stays unsafe.
+- There is no timer, public ranking, chat, lives system, advertising or paid skip.
 
-## Curriculum route
+## Year-tailored curriculum route
 
-`site/games/skybound-questions.js` contains ten two-option maths questions:
+Skybound shares the validated [900-question curriculum bank](curriculum-question-bank.md) with LexiClimb:
 
-| Bridge | Year | Focus |
-|---|---|---|
-| 1 | Year 3 | Multiplication as equal groups |
-| 2 | Year 3 | Equal sharing and division |
-| 3 | Year 3 | One third of an amount |
-| 4 | Year 4 | Rectangle perimeter |
-| 5 | Year 4 | Three quarters of an amount |
-| 6 | Year 4 | Tenths and decimals |
-| 7 | Year 4 | Factor pairs |
-| 8 | Year 5 | 25% as one quarter |
-| 9 | Year 5 | Cuboid volume |
-| 10 | Year 5 | Two fifths of an amount |
+| Selection dimension | Choices |
+|---|---|
+| School year | Year 3, Year 4, Year 5 |
+| Subject | English, Maths, Science |
+| Questions in each scope | 100 |
+| Bridges per run | 10 |
+| In-year progression | two questions from each of Levels 1–5 |
+| Non-repeating cycle | ten complete runs exhaust all 100 source records |
 
-Every question includes a curriculum objective ID, child-readable success explanation, learner-controlled hint, and short teaching example that uses different numbers from the live answer.
+`site/games/skybound-questions.js` is the bridge adapter. Four-option records are reduced deterministically to the correct answer and one plausible reviewed distractor. Spelling records become a correct spelling and a deterministic transposition error. The adapter never changes the answer, curriculum metadata, Learn support or selected year.
+
+Every run has ten unique source questions. Sets 0–9 partition all 100 records in the selected year and subject; adjacent sets do not overlap. A later set wraps to the reviewed source pool. Selecting another year or subject resets the set to zero.
+
+## Learning support
+
+Every question exposes a separate Hint and Learn action. Learn shows:
+
+1. a topic explanation tied to the live strand;
+2. three steps for solving or checking the task;
+3. a worked example that does not expose the live answer;
+4. a final self-check.
+
+The bridge remains a two-choice retrieval/application interaction. It is useful for fast practice, but it should not be interpreted as open-response mastery evidence.
 
 ## Runtime architecture
 
-- `site/games/skybound-engine.js` is the deterministic, renderer-independent state machine. It owns left/right answer allocation, correct/falling/crossing states, checkpoint advancement, retries and completion.
-- `site/games/skybound.js` owns Three.js presentation, block-character animation, fixed-step movement, jumping, platform collision, glass collapse, camera follow, touch/keyboard input and local best-checkpoint storage.
-- `site/games/skybound-audio.js` synthesises low-volume cloud wind and short gameplay cues with Web Audio. No audio files are downloaded, and the ambience is suspended while paused or hidden.
-- Static checkpoint geometry and cloud clusters use instanced rendering. The twenty answer tiles remain separate because each can change material, break and fall independently.
-- The existing low-power quality selector reduces pixel density, antialiasing and shadows on ChromeOS and coarse-pointer devices without changing questions or mechanics.
+- `site/games/curriculum-year-banks.js` owns the validated 900-question registry.
+- `site/games/curriculum-question-generator.js` supplies deterministic, year-scoped level batches.
+- `site/games/skybound-questions.js` creates ten two-option bridge records and validates source uniqueness, year, subject, progression and support.
+- `site/games/skybound-engine.js` is the renderer-independent state machine for answer lanes, falls, retries, checkpoints, completion and privacy-safe sharing.
+- `site/games/skybound.js` owns Three.js presentation, wrapped sign textures, fixed-step movement, jumping, collision, glass collapse, orbit camera and responsive controls.
+- `site/games/skybound-audio.js` synthesises ambience and cues with Web Audio; no audio files are downloaded.
+- Checkpoints, posts and clouds are instanced. The twenty answer tiles remain individual because they change material and fall independently.
 
-## Controls and responsive behaviour
+## Responsive behaviour
 
-- Desktop: WASD or arrow keys move; Space jumps.
-- Touch: a pressure-free analogue stick provides 360-degree direction and variable speed while the separate Jump pointer fires independently.
-- Dragging or swiping the orbit camera turns the avatar to the camera's forward heading, including while standing still. Forward, reverse and strafing movement remain camera-relative.
-- Sound starts only after player interaction. The HUD speaker button or M key toggles a preference remembered on that device.
-- The full-screen canvas owns the viewport. The compact question card, safe-area HUD and touch controls occupy separate zones.
-- Portrait mobile keeps the question above the active tiles and the controls at the bottom corners. Short landscape compacts the question into the upper-left while preserving a clear view of the bridge.
-- Text selection and touch callouts are disabled only on the gameplay controls.
+- Desktop uses WASD/arrows, Space, mouse orbit and Q/E.
+- Touch uses an independent analogue stick, Jump pointer and swipe-to-orbit canvas.
+- Portrait mobile gives the selector card one deliberate scroll region. Gameplay keeps the question and readable left/right legend above the tiles and controls at opposite bottom corners.
+- Short landscape hides onboarding guidance, preserving all year/subject choices and the Start action without covering the bridge.
+- Detailed Learn content scrolls inside the bounded question card.
+- Text selection and callouts are disabled only on gameplay controls.
 
 ## Evidence and tests
 
-Pure tests cover the ten-question curriculum contract, deterministic lane assignment, wrong-tile retry, safe-tile checkpoint advancement, post-answer falls and full-run completion. Browser checks cover desktop and mobile rendering, Learn support, wrong-tile collapse, checkpoint respawn, safe-tile feedback, steady frame rate and console errors.
+Pure tests cover all nine year/subject combinations, 100-source exhaustion across ten runs, deterministic set creation, no adjacent overlap, two distinct options, spelling distractors, lane assignment, wrong-tile retry, checkpoint advancement, completion and private sharing. Browser review covers phone portrait, 1024 × 576 landscape, long Science answer signs and detailed English Learn support.
 
 ## Risks before classroom use
 
-- Physical skill may still mask knowledge. A later motor-assist option should widen tiles and add guided jumps without changing mathematics.
-- The two-choice format is appropriate for retrieval but weak evidence for open problem solving; combine it with Blocksmith construction evidence.
-- Production acceptance still requires physical Chromebook/tablet heat testing, keyboard-only review, screen-reader review of the question/support layer, and child usability testing.
+- Physical skill can mask curriculum knowledge. A future motor-assist option should widen tiles or offer guided jumps without changing questions.
+- Formal classroom use still needs educator review of local sequencing, accessibility, reading load and misconception coverage.
+- Physical Chromebook/tablet heat, keyboard-only, screen-reader and child usability testing remain required.
