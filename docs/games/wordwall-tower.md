@@ -2,21 +2,22 @@
 
 ## Playable promise
 
-LexiClimb Tower is a third-person, block-character curriculum obby for UK learners aged 7–10. The player chooses **Word Quest**, **Number Nebula** or **Discovery Canopy**, then climbs five large, continuous course sections around a rising spiral. Each world has the same traversal length and difficulty rhythm but its own palette and English, Maths or Science question route.
+LexiClimb Tower is a third-person, block-character curriculum obby for UK learners aged 7–10. The player chooses **Word Quest**, **Number Nebula** or **Discovery Canopy**, then climbs five large, continuous circuits around a rising spiral. Every circuit contains five paths and five learning walls. Each world has the same traversal length and difficulty rhythm but its own English, Maths or Science question route.
 
-The route mixes stepping stones, narrow beams, circles, triangles and rising jumps. Falling returns the player to the latest checkpoint without losing learning progress. Bright browser obbies inform the broad genre pattern, but the world, character, routes, interface, questions, artwork and code are original EduGames work.
+The route mixes broad rainbow staircases, hexagonal prism tunnels, uphill runways, traversable donut rings and floating ribbons of boxes, circles and triangles. Falling returns the player to the latest wall checkpoint without losing learning progress. Bright browser obbies inform the broad genre pattern, but the world, character, routes, interface, questions, artwork and code are original EduGames work.
 
 ## Core loop
 
-`Choose a subject world → traverse varied shapes → collect coins → reach a numbered flag → answer its ten questions with Learn or Hint available → collapse the gate → continue upward`.
+`Choose a subject world → cross a rainbow path → reach a wall → answer one question with Learn or Hint available → collapse the wall → continue to the next path`.
 
-- Five sections each have eight traversable obstacles and a distinct colour/shape rhythm. Boxes, circles and triangles use the same rotated footprint for rendering and collision.
-- A sizing guard expands every platform to a safe-centre radius: 0.75 for boxes, 0.90 for circles and 1.05 for triangles.
+- Five levels each contain five complete path-to-wall sections. Every level rotates through all five path families so the traversal rhythm changes before each question.
+- A sizing guard expands every platform to a safe-centre radius: 1.10 for boxes, 1.20 for circles, 1.35 for triangles and 1.05 across a donut walkway.
 - Solid 0.48-radius body collision blocks platform sides; underside collision stops upward jumps through bases.
-- Each section curves 90 degrees and rises four world units. Six checkpoint platforms form one continuous route with no level-loading break.
-- Checkpoints 1–5 carry large physical **LEVEL 1–5** flags. Reaching a platform secures it before opening a ten-question curriculum round.
-- Six coins sit on each section, preserving 30 rewards per five-level world in one instanced render batch.
-- A closed wall blocks its full front, back, sides and corners. It stays solid through questions 1–9, then the tenth correct answer releases the collider as the bricks collapse.
+- Each path curves 45 degrees and rises 3.4 world units. Twenty-six checkpoint platforms connect all 25 paths without a level-loading break.
+- Large physical **LEVEL 1–5** flags mark the start of each five-wall circuit. The HUD separately shows the current wall from 0/5 to 5/5.
+- One coin sits on each path and a bonus coin appears on every fifth path, preserving 30 rewards per world in one instanced render batch.
+- Each closed wall blocks its full front, back, sides and corners. One correct answer releases that wall; every fifth wall completes the current curriculum level.
+- Repeated platforms, checkpoint rings and tunnel frames are instanced so the larger course remains practical on low-power tablets and Chromebooks.
 - There is no timer, lives counter, public leaderboard, advertising or chat.
 
 ## Worlds and progression
@@ -29,7 +30,7 @@ The route mixes stepping stones, narrow beams, circles, triangles and rising jum
 | 4 | Year 4 independence | fronted adverbials, summary, affixes and word class | negative numbers, conversion, angles and coordinates | habitats, water cycle, pitch, conductors and evidence |
 | 5 | Year 5 application | clauses, modal verbs, cohesion and author language | primes, fractions, percentage, volume and multi-step work | life cycles, solutions, separation, space and forces |
 
-All three worlds always contain five levels ordered Levels 1–5, with ten questions at each level and 50 questions in a completed world. Every question in a level uses that level's curriculum difficulty. “New question set” advances the deterministic seed and builds another 50-question route at the same progression. See [`curriculum-question-bank.md`](curriculum-question-bank.md) for the 100-item authored bank and generation limits.
+All three worlds always contain five levels ordered Levels 1–5, with five questions and five separate walls at each level: 25 questions in a completed world. Every question in a circuit uses that level's curriculum difficulty. “New question set” advances the deterministic seed and builds another 25-wall route at the same progression. See [`curriculum-question-bank.md`](curriculum-question-bank.md) for the 100-item authored bank and generation limits.
 
 Every gate has a learner-controlled explanation, separate hint, age-readable feedback and teaching example. Learn text explains a transferable method and does not simply reveal the live answer.
 
@@ -43,9 +44,10 @@ Every gate has a learner-controlled explanation, separate hint, age-readable fee
 ## Runtime and responsive behaviour
 
 - `curriculum-question-bank.js` owns the validated 100 authored items; `curriculum-question-generator.js` owns deterministic variants.
-- `wordwall-worlds.js` owns the three subject themes and guarantees five progressive levels with ten deterministic questions in each.
-- `wordwall-engine.js` is renderer-independent and owns per-question and per-level progression, collision, support sizing, rewards, skins and privacy-safe sharing.
-- `wordwall.js` composes Three.js presentation with shared Skybound movement, buffered jumping, analogue input, orbit camera, procedural audio and low-power selection.
+- `wordwall-worlds.js` owns the three subject themes and guarantees five progressive levels with five deterministic questions in each.
+- `wordwall-course.js` owns the deterministic 25-path plan, route-family rotation, minimum sizing and tunnel/ring metadata.
+- `wordwall-engine.js` is renderer-independent and owns one-question-per-wall progression, level boundaries, collision, support sizing, rewards, skins and privacy-safe sharing.
+- `wordwall.js` composes batched Three.js presentation with faster camera-relative movement, higher buffered jumping, analogue input, orbit camera, procedural audio and low-power selection.
 - Desktop uses WASD/arrows, Space, mouse drag and Q/E. Touch uses an independent analogue pointer, Jump pointer and swipe-to-orbit canvas.
 - Portrait layouts stack world choices and challenge options inside a bounded scrolling card. Short landscape hides the onboarding guide, keeps all three world choices visible and preserves the game view.
 

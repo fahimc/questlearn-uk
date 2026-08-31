@@ -4,7 +4,7 @@ All three concepts use the same learning contract and UI library but create diff
 
 - [Blocksmith Worlds](blocksmith-worlds.md): 3D creative construction and simulation.
 - [Skybound Academy](skybound-academy.md): 3D obstacle-platforming and short retrieval/application.
-- [LexiClimb Tower](wordwall-tower.md): 3D spiral parkour with five flagged levels and ten questions per level in separate Maths, Science and English worlds, backed by a [100-question bank](curriculum-question-bank.md) and seeded variants.
+- [LexiClimb Tower](wordwall-tower.md): 3D rainbow-circuit parkour with five levels, five one-question walls per level and varied stair, tunnel, slope, donut and ribbon paths in separate Maths, Science and English worlds, backed by a [100-question bank](curriculum-question-bank.md) and seeded variants.
 
 These are original educational designs inspired by broad genres—not copies of particular worlds, art, names, levels or code.
 

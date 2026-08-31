@@ -60,7 +60,7 @@
 - Portrait stacks the three world choices, multiple-choice answers and completion actions into one thumb-friendly column inside a bounded onboarding card. Letter-bank gates retain five equal touch columns.
 - Short landscape uses two answer columns, a ten-column letter bank and a shallower dialog so the complete challenge stays inside 844 × 390.
 - The curriculum dialog owns the top layer and pauses movement; Learn and Hint expand inside its bounded scrolling area.
-- The dialog and compact objective always show **Question X of 10**. Correct answers 1–9 refresh the same open dialog, while answer 10 closes it and collapses the wall.
+- The compact objective and challenge dialog always show **Level X · Wall Y of 5**. Each wall contains one question; a correct answer closes the dialog and collapses that wall, while wall 5 completes the level.
 - Desktop and touch both retain orbital camera control without stealing the analogue or Jump pointers.
 
 Visual baselines are generated in `docs/images/responsive/`; automated screenshots support review but do not replace physical device and assistive-technology testing.

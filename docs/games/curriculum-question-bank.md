@@ -36,7 +36,7 @@ Year 3–4 spelling patterns and words; prefixes and suffixes; homophones; vocab
 - Maths produces fresh operands for addition, selected times tables, equivalent fractions, rectangular area and percentages. Distractors are recalculated from each answer rather than copied from another item.
 - Science rotates through an educator-authored fact pool and deterministically changes question and choice order. Scientific facts are never invented from free-form text.
 - English rotates through an educator-authored language pool, changes choice order and reshuffles spelling tiles while preserving the exact answer letters.
-- Every world set contains five level rounds in order, with ten questions at the matching difficulty in each round: 50 questions in total. A new set changes the seed without changing the learning progression.
+- Every world set contains five level circuits in order, with five questions at the matching difficulty in each circuit: 25 questions in total. Each question belongs to its own physical wall. A new set changes the seed without changing the learning progression.
 - Generated questions pass the same answerability checks as authored items. Seeds do not include learner names, answers or progress.
 
 The generator is deliberately hybrid. Numeric relationships can vary parametrically; spelling, grammar and science claims stay inside reviewed pools. This avoids the unsafe claim that unreviewed prose is “curriculum correct” merely because it was generated.
@@ -44,8 +44,9 @@ The generator is deliberately hybrid. Numeric relationships can vary parametrica
 ## Runtime files
 
 - `site/games/curriculum-question-bank.js`: canonical materialised 100-item bank and validator.
-- `site/games/curriculum-question-generator.js`: deterministic seeded variants and ten-question level-set builder.
-- `site/games/wordwall-worlds.js`: subject-world definitions, themes and five-level, 50-question routes.
+- `site/games/curriculum-question-generator.js`: deterministic seeded variants and configurable level-set builder.
+- `site/games/wordwall-worlds.js`: subject-world definitions, themes and five-level, 25-question routes.
+- `site/games/wordwall-course.js`: five path families repeated across 25 one-question wall checkpoints.
 - `tests/curriculum-question-bank.test.js`: count, progression, deterministic generation and answerability checks.
 
 ## Review boundary

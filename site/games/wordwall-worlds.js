@@ -2,7 +2,8 @@ import { createLevelQuestionSet, validateGeneratedQuestion } from './curriculum-
 
 export const WORDWALL_WORLD_IDS=Object.freeze(['english','maths','science']);
 export const WORDWALL_LEVEL_COUNT=5;
-export const WORDWALL_QUESTIONS_PER_LEVEL=10;
+export const WORDWALL_QUESTIONS_PER_LEVEL=5;
+export const WORDWALL_TOTAL_QUESTIONS=WORDWALL_LEVEL_COUNT*WORDWALL_QUESTIONS_PER_LEVEL;
 
 export const WORDWALL_WORLDS=Object.freeze({
   english:Object.freeze({id:'english',name:'Word Quest',subject:'english',subjectName:'English',icon:'Aa',description:'Spelling, vocabulary, grammar and reading clues.',sky:0x79d9ef,fog:0x79d9ef,core:0x5640a2,groundLight:0x604b8b,palette:Object.freeze([0xff62c7,0x835cff,0x45d9e8,0xffc94f,0x61dd88])}),

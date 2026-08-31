@@ -7,3 +7,5 @@
 @media(max-width:620px){.world-grid{grid-template-columns:1fr}.tower-intro .tower-card{max-height:calc(100dvh - 24px);overflow:auto}}
 @media(max-height:560px) and (orientation:landscape){.world-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin:8px 0}.world-grid button{min-height:50px}.world-grid button i{width:34px;height:34px}.tower-intro .tower-card{max-height:calc(100dvh - 16px);overflow:auto}.tower-intro .tower-guide{display:none}}
 @media(prefers-reduced-motion:reduce){.tower-toast,.tower-progress em{transition:none}}
+.tower-checkpoint b{display:flex;width:auto;min-width:39px;padding:0 4px;align-items:center;justify-content:center}
+@media(max-width:620px){.tower-checkpoint b span{display:inline}}
