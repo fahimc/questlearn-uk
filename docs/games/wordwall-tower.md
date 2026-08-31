@@ -4,7 +4,7 @@
 
 LexiClimb Tower is a third-person, block-character curriculum obby for UK learners aged 7–10. The player chooses **Word Quest**, **Number Nebula** or **Discovery Canopy**, then climbs five large, continuous circuits around a rising spiral. Every circuit contains five paths and five learning walls. Each world has the same traversal length and difficulty rhythm but its own English, Maths or Science question route.
 
-The route mixes broad rainbow staircases, hexagonal prism tunnels, uphill runways, traversable donut rings and floating ribbons of boxes, circles and triangles. Falling returns the player to the latest wall checkpoint without losing learning progress. Bright browser obbies inform the broad genre pattern, but the world, character, routes, interface, questions, artwork and code are original EduGames work.
+The route mixes broad rainbow staircases, hexagonal prism tunnels, uphill runways, traversable donut rings and floating ribbons of boxes, circles and triangles. Falling more than 3.5 world units below the latest checkpoint immediately returns the player there, even when a lower circuit could otherwise catch them. Bright browser obbies inform the broad genre pattern, but the world, character, routes, interface, questions, artwork and code are original EduGames work.
 
 ## Core loop
 
@@ -33,9 +33,9 @@ The route mixes broad rainbow staircases, hexagonal prism tunnels, uphill runway
 | 4 | Year 4 independence | fronted adverbials, summary, affixes and word class | negative numbers, conversion, angles and coordinates | habitats, water cycle, pitch, conductors and evidence |
 | 5 | Year 5 application | clauses, modal verbs, cohesion and author language | primes, fractions, percentage, volume and multi-step work | life cycles, solutions, separation, space and forces |
 
-All three worlds always contain five levels ordered Levels 1–5, with five questions and five separate walls at each level: 25 questions in a completed world. Every question in a circuit uses that level's curriculum difficulty. “New question set” advances the deterministic seed and builds another 25-wall route at the same progression. See [`curriculum-question-bank.md`](curriculum-question-bank.md) for the 100-item authored bank and generation limits.
+All three worlds always contain five levels ordered Levels 1–5, with five questions and five separate walls at each level: 25 questions in a completed world. Every question in a circuit uses that level's curriculum difficulty. A run contains no repeated prompt, and “New question set” advances to a disjoint reviewed batch so it does not repeat the previous run. See [`curriculum-question-bank.md`](curriculum-question-bank.md) for the 150-item authored bank and generation limits.
 
-Every gate has a learner-controlled explanation, separate hint, age-readable feedback and teaching example. Learn text explains a transferable method and does not simply reveal the live answer.
+Every gate has a learner-controlled explanation, separate hint, age-readable feedback and teaching example. Learn is tailored to the live question and presents the topic, a three-step method, a different worked example and a self-check; it does not reveal the live answer.
 
 ## Coins and character skins
 
@@ -46,7 +46,7 @@ Every gate has a learner-controlled explanation, separate hint, age-readable fee
 
 ## Runtime and responsive behaviour
 
-- `curriculum-question-bank.js` owns the validated 100 authored items; `curriculum-question-generator.js` owns deterministic variants.
+- `curriculum-question-bank.js` owns the validated 150 authored items; `curriculum-learning-guides.js` supplies question-aware teaching; `curriculum-question-generator.js` owns deterministic non-repeating variants.
 - `wordwall-worlds.js` owns the three subject themes and guarantees five progressive levels with five deterministic questions in each.
 - `wordwall-course.js` owns the deterministic 25-path plan, hidden-grid placement, non-overlap validation, route-family rotation, minimum sizing and tunnel/ring metadata.
 - `wordwall-engine.js` is renderer-independent and owns one-question-per-wall progression, level boundaries, collision, support sizing, rewards, skins and privacy-safe sharing.

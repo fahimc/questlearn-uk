@@ -1,38 +1,18 @@
-const SUPPORT={
-  number:{title:'Use place value',text:'Read each digit by its place and work from the largest place to the smallest.',example:'In 462, the 4 represents 400.'},
-  calculation:{title:'Choose an operation',text:'Decide what changes in the problem, then calculate and check with the inverse operation.',example:'If 63 − 18 = 45, then 45 + 18 = 63.'},
-  tables:{title:'Build equal groups',text:'Multiplication combines equal groups. Division splits a total into equal groups.',example:'4 groups of 6 make 24, so 24 ÷ 4 = 6.'},
-  fractions:{title:'Think about equal parts',text:'The denominator tells you how many equal parts make the whole. The numerator tells you how many parts are used.',example:'Three of four equal parts is 3/4.'},
-  measure:{title:'Keep the units',text:'Choose the correct measure, convert units when needed and write the unit with the answer.',example:'100 centimetres is the same length as 1 metre.'},
-  geometry:{title:'Use shape facts',text:'Look for sides, vertices, right angles, parallel lines or the amount of turn before deciding.',example:'A right angle is a quarter turn.'},
-  data:{title:'Read the scale first',text:'Check what each mark or symbol represents before comparing or calculating with the data.',example:'If one symbol means 2 votes, four symbols mean 8 votes.'},
-  plants:{title:'Follow the plant system',text:'Plants use different parts to absorb water, make food, support growth and reproduce.',example:'Roots absorb water while leaves use light to help make food.'},
-  animals:{title:'Connect structure and job',text:'Body parts work together. Think about what each part allows an animal or human to do.',example:'Muscles pull on bones to produce movement.'},
-  materials:{title:'Observe material properties',text:'Classify a material by what it does when it is heated, cooled, mixed, stretched or tested.',example:'A liquid flows and takes the shape of its container.'},
-  forces:{title:'Look for the force',text:'A force is a push or pull that can change movement, direction or shape.',example:'Friction can slow a moving object.'},
-  lightSound:{title:'Trace the signal',text:'Think about where light or vibration starts and how it travels to the observer.',example:'We see an object when light from it reaches our eyes.'},
-  living:{title:'Use observable features',text:'Scientists group living things by shared features and use evidence to identify them.',example:'A classification key asks one clear question at each step.'},
-  electricity:{title:'Trace the circuit',text:'A working series circuit needs a complete loop and materials that let electric current pass.',example:'Closing a switch completes a circuit.'},
-  earth:{title:'Model movement in space',text:'Use the movement and position of Earth, the Moon and the Sun to explain what we observe.',example:'Earth rotating once causes day and night.'},
-  spelling:{title:'Use sounds and word parts',text:'Break the word into syllables, roots, prefixes and suffixes, then check the tricky letters.',example:'Unhelpful can be split into un + help + ful.'},
-  vocabulary:{title:'Use context and meaning',text:'Read the whole clue or sentence, then test which word has the closest meaning.',example:'Enormous is a synonym for very large.'},
-  grammar:{title:'Check the sentence job',text:'Identify what each word or phrase is doing before choosing the grammatical form.',example:'In “the noisy class”, noisy describes the noun class.'},
-  punctuation:{title:'Read the sentence aloud',text:'Use capitals and punctuation to show where a sentence starts, ends, pauses or includes speech.',example:'A direct question begins with a capital and ends with a question mark.'},
-  reading:{title:'Use evidence from the text',text:'Return to the exact words in the sentence and choose an answer supported by that evidence.',example:'“Mia shivered” is evidence that she may feel cold.'}
-};
+import { createCurriculumLearning } from './curriculum-learning-guides.js';
 
 const SUBJECT_NAME={maths:'Maths',science:'Science',english:'English'};
 const codeFor=subject=>({maths:'MAT',science:'SCI',english:'ENG'})[subject];
 const optionList=(answer,wrong)=>[String(answer),...wrong.map(String)];
 
 function choice(subject,index,year,level,strand,support,prompt,answer,wrong,generatorId){
-  const help=SUPPORT[support];
-  return Object.freeze({id:`${subject.slice(0,3)}-${String(index).padStart(3,'0')}`,subject,subjectName:SUBJECT_NAME[subject],objectiveId:`${codeFor(subject)}-Y${year}-${strand.toUpperCase().replace(/[^A-Z0-9]+/g,'-')}`,year:`Year ${year}`,level,strand,type:'choice',title:strand,prompt,answer:String(answer),options:optionList(answer,wrong),hint:`Rule out choices that do not fit the ${strand.toLowerCase()} clue, then check your choice.`,learn:help,success:`Correct. ${help.example}`,generatorId:generatorId||null});
+  const learn=createCurriculumLearning({subject,strand,generatorId});
+  return Object.freeze({id:`${subject.slice(0,3)}-${String(index).padStart(3,'0')}`,subject,subjectName:SUBJECT_NAME[subject],objectiveId:`${codeFor(subject)}-Y${year}-${strand.toUpperCase().replace(/[^A-Z0-9]+/g,'-')}`,year:`Year ${year}`,level,strand,type:'choice',title:strand,prompt,answer:String(answer),options:optionList(answer,wrong),hint:`Rule out choices that do not fit the ${strand.toLowerCase()} clue, then check your choice.`,learn,success:`Correct. ${learn.example}`,generatorId:generatorId||null});
 }
 
 function spell(index,year,level,strand,prompt,answer,hint,generatorId){
   const clean=String(answer).toLocaleLowerCase('en-GB'),letters=[...clean].filter(letter=>letter!==' '),shift=index%letters.length,shuffled=[...letters.slice(shift),...letters.slice(0,shift)].reverse();
-  return Object.freeze({id:`eng-${String(index).padStart(3,'0')}`,subject:'english',subjectName:'English',objectiveId:`ENG-Y${year}-${strand.toUpperCase().replace(/[^A-Z0-9]+/g,'-')}`,year:`Year ${year}`,level,strand,type:'spell',title:strand,prompt,answer:clean.replaceAll(' ',''),letters:shuffled,hint,learn:SUPPORT.spelling,success:`Correct. ${SUPPORT.spelling.example}`,generatorId:generatorId||null});
+  const learn=createCurriculumLearning({subject:'english',strand,generatorId});
+  return Object.freeze({id:`eng-${String(index).padStart(3,'0')}`,subject:'english',subjectName:'English',objectiveId:`ENG-Y${year}-${strand.toUpperCase().replace(/[^A-Z0-9]+/g,'-')}`,year:`Year ${year}`,level,strand,type:'spell',title:strand,prompt,answer:clean.replaceAll(' ',''),letters:shuffled,hint,learn,success:`Correct. ${learn.example}`,generatorId:generatorId||null});
 }
 
 const mathsRows=[
@@ -147,27 +127,89 @@ const englishSpells=[
   [33,5,5,'Spelling','Spell the word meaning a place where people live together.','community','Break it into com-mu-ni-ty.','spelling-word']
 ];
 
+const mathsExtensionRows=[
+  [3,1,'Place value','number','What is the value of 7 in 2,741?','700',['70','7','7,000'],'place-value'],
+  [3,1,'Addition','calculation','What is 10 more than 689?','699',['679','690','789'],'addition'],
+  [3,1,'Comparing numbers','number','Which number is greatest?','3,402',['3,240','3,024','3,399'],'place-value'],
+  [3,2,'Division','tables','What is 48 ÷ 8?','6',['5','7','8'],'division'],
+  [3,2,'Fractions of amounts','fractions','What is 3/4 of 20?','15',['5','12','16'],'unit-fraction'],
+  [3,2,'Time','measure','What time is 40 minutes after 11:35?','12:15',['11:75','12:05','12:25'],'time'],
+  [4,3,'Rounding','number','Round 5,286 to the nearest 10.','5,290',['5,280','5,300','5,200'],'rounding'],
+  [4,3,'Times tables','tables','What is 12 × 8?','96',['88','92','108'],'multiplication'],
+  [4,3,'Perimeter','measure','A rectangle is 9 cm by 4 cm. What is its perimeter?','26 cm',['13 cm','36 cm','22 cm'],'perimeter'],
+  [4,4,'Negative numbers','number','The temperature rises from −6°C to 2°C. How many degrees does it rise?','8°C',['4°C','6°C','10°C'],'negative-number'],
+  [4,4,'Metric conversion','measure','How many centimetres are in 4.2 metres?','420 cm',['42 cm','402 cm','4,200 cm'],'unit-conversion'],
+  [4,4,'Coordinates','geometry','Move 2 left and 4 up from (6, 1). Where do you land?','(4, 5)',['(8, 5)','(4, 3)','(2, 7)'],'coordinates'],
+  [5,5,'Prime numbers','tables','Which of these is a prime number greater than 30?','37',['33','39','49'],'prime'],
+  [5,5,'Adding fractions','fractions','What is 2/3 + 1/6?','5/6',['3/9','3/6','1'],'fraction-addition'],
+  [5,5,'Volume','measure','A cuboid is 5 cm × 3 cm × 4 cm. What is its volume?','60 cm³',['12 cm³','40 cm³','60 cm²'],'volume'],
+  [5,5,'Multi-step problem','calculation','A coach has 8 bags of 15 cones and gives away 17. How many remain?','103',['97','105','137'],'multi-step']
+];
+
+const scienceExtensionRows=[
+  [3,1,'Seed dispersal','plants','Why do some seeds have wing-like shapes?','To be carried by wind',['To make their own soil','To attract magnets','To stop needing water'],'plant-parts'],
+  [3,1,'Light sources','lightSound','Which object is a light source?','A lit torch',['The Moon','A mirror','A book'],'light'],
+  [3,1,'Magnetic materials','forces','Which object is most likely attracted to a magnet?','An iron nail',['A wooden spoon','A glass marble','A rubber band'],'magnets'],
+  [3,2,'Plant investigation','plants','A plant is kept dark while an identical plant has light. What is being changed?','The light',['The plant type','The pot size','The amount measured'],'fair-test'],
+  [3,2,'Joints','animals','What do joints allow bones to do?','Move relative to each other',['Make food','Absorb light','Turn into muscle'],'body-parts'],
+  [3,2,'Transparent materials','lightSound','Which material lets most light pass through clearly?','Clear glass',['Cardboard','Brick','Thick wood'],'light'],
+  [4,3,'Changes of state','materials','What is melting?','A solid changing to a liquid',['A liquid changing to a gas','A gas changing to a liquid','A liquid changing to a solid'],'states'],
+  [4,3,'Sound volume','lightSound','What usually makes a drum sound louder?','Hit it with more force',['Stop the skin vibrating','Move it into a vacuum','Touch it very gently'],'sound'],
+  [4,3,'Food chains','animals','In algae → tadpole → fish, which animal eats the producer?','Tadpole',['Fish','Algae','Neither animal'],'food-chain'],
+  [4,4,'Condensation','materials','Why do droplets form on the outside of a cold glass?','Water vapour cools and condenses',['The glass creates new water','Ice passes through the glass','Gravity changes air into water'],'water-cycle'],
+  [4,4,'Circuit investigation','electricity','To test how bulb number affects brightness, what should stay the same?','The battery',['The number of bulbs','The measured brightness','The question'],'fair-test'],
+  [4,4,'Habitat evidence','living','Which observation best shows a pond supports frogs?','Frogspawn and tadpoles are present',['The water looks blue','A sign names the pond','The bank has one stone'],'habitats'],
+  [4,4,'Sound travel','lightSound','Why can you hear a bell through air?','Vibrations travel through the air',['Light carries the sound','The bell pulls your ears','Air stops all vibration'],'sound'],
+  [5,5,'Plant reproduction','living','Which part of a flower receives pollen?','Stigma',['Root hair','Stem','Seed coat'],'life-cycles'],
+  [5,5,'Reversible changes','materials','Which change is reversible?','Melting and refreezing ice',['Burning paper','Baking a cake','Rusting iron'],'states'],
+  [5,5,'Moon movement','earth','What does the Moon orbit?','Earth',['Mars','The North Star','Only itself'],'earth-space'],
+  [5,5,'Levers','forces','How can a lever make lifting easier?','It increases the turning effect of a force',['It removes mass','It switches off gravity','It turns solids into gases'],'forces']
+];
+
+const englishExtensionRows=[
+  [3,1,'Nouns','grammar','Which word is the noun? “The rabbit hopped quickly.”','rabbit',['hopped','quickly','the'],'noun'],
+  [3,1,'Vocabulary','vocabulary','Which word means very angry?','furious',['gentle','tiny','silent'],'synonym'],
+  [3,1,'Sentence punctuation','punctuation','Which statement has the correct capital letter and end mark?','The race starts today.',['the race starts today.','The race starts today?','the race starts today'],'punctuation'],
+  [3,1,'Reading retrieval','reading','“The red kite landed beside the oak tree.” Where did the kite land?','Beside the oak tree',['On the roof','Inside a cave','Across the river'],'retrieval'],
+  [3,2,'Conjunctions','grammar','Choose the best word: “We packed boots ___ the path was muddy.”','because',['under','quietly','tomorrow'],'conjunction'],
+  [3,2,'Adverbs','grammar','Which word tells how the owl flew? “The owl flew silently.”','silently',['owl','flew','the'],'adverb'],
+  [3,2,'Main idea','reading','A paragraph explains how to plant, water and care for a bean. What is its main idea?','How to grow a bean plant',['Why beans are blue','How to cook every vegetable','Why soil is made of metal'],'main-idea'],
+  [3,2,'Suffixes','spelling','Which word means someone who teaches?','teacher',['teachful','unteach','teachment'],'suffix'],
+  [4,3,'Determiners','grammar','Which word is the determiner? “Those birds built a nest.”','Those',['birds','built','nest'],'determiner'],
+  [4,3,'Possessive apostrophes','punctuation','Which phrase means the den belonging to several foxes?','the foxes’ den',['the fox’s den','the foxes den','the foxes,s den'],'apostrophe'],
+  [4,3,'Inference','reading','“Priya grinned and held the trophy above her head.” How does Priya probably feel?','Proud',['Bored','Hungry','Lost'],'inference'],
+  [4,4,'Pronouns','grammar','Which pronoun best replaces “the two climbers”?','they',['it','he','this'],'pronoun'],
+  [4,4,'Commas','punctuation','Which sentence correctly uses a comma after an opening phrase?','During the night, snow covered the path.',['During, the night snow covered the path.','During the night snow, covered the path.','During the night snow covered the path.'],'comma'],
+  [4,4,'Prefixes','spelling','Which word means to build again?','rebuild',['unbuild','prebuild','buildless'],'prefix'],
+  [4,4,'Reading evidence','reading','“The puddles had frozen and each breath made a cloud.” Which detail shows it was cold?','The puddles had frozen',['There were puddles','Someone was breathing','A cloud was seen'],'retrieval'],
+  [5,5,'Relative clauses','grammar','Which words form the relative clause? “The bridge, which crossed the ravine, shook.”','which crossed the ravine',['The bridge','shook','the ravine shook'],'relative-clause'],
+  [5,5,'Modal verbs','grammar','Which modal verb shows strong obligation? “You ___ wear a helmet.”','must',['might','could','may'],'modal-verb']
+];
+
 export const curriculumQuestionBank=Object.freeze([
   ...mathsRows.map((row,index)=>choice('maths',index+1,...row)),
+  ...mathsExtensionRows.map((row,index)=>choice('maths',index+35,...row)),
   ...scienceRows.map((row,index)=>choice('science',index+1,...row)),
+  ...scienceExtensionRows.map((row,index)=>choice('science',index+34,...row)),
   ...englishChoiceRows.map((row,index)=>choice('english',index+1,...row)),
-  ...englishSpells.map(row=>spell(...row))
+  ...englishSpells.map(row=>spell(...row)),
+  ...englishExtensionRows.map((row,index)=>choice('english',index+34,...row))
 ]);
 
-export const CURRICULUM_BANK_COUNTS=Object.freeze({total:100,maths:34,science:33,english:33});
+export const CURRICULUM_BANK_COUNTS=Object.freeze({total:150,maths:50,science:50,english:50});
 
 export function getCurriculumQuestions({subject,year,level}={}){
   return curriculumQuestionBank.filter(question=>(!subject||question.subject===subject)&&(!year||question.year===`Year ${year}`||question.year===year)&&(!level||question.level===Number(level)));
 }
 
 export function validateCurriculumQuestionBank(bank=curriculumQuestionBank){
-  if(!Array.isArray(bank)||bank.length!==CURRICULUM_BANK_COUNTS.total)throw new Error('The curriculum bank must contain exactly 100 questions.');
+  if(!Array.isArray(bank)||bank.length!==CURRICULUM_BANK_COUNTS.total)throw new Error('The curriculum bank must contain exactly 150 questions.');
   const ids=new Set();
   for(const question of bank){
     if(ids.has(question.id))throw new Error(`Duplicate curriculum question ${question.id}`);ids.add(question.id);
     if(!['maths','science','english'].includes(question.subject))throw new Error(`Unknown subject for ${question.id}`);
     if(!['Year 3','Year 4','Year 5'].includes(question.year)||question.level<1||question.level>5)throw new Error(`Invalid progression for ${question.id}`);
-    if(!question.prompt||!question.answer||!question.hint||!question.learn?.text||!question.learn?.example)throw new Error(`Incomplete curriculum question ${question.id}`);
+    if(!question.prompt||!question.answer||!question.hint||!question.learn?.text||!question.learn?.example||question.learn.steps?.length<3||!question.learn.check)throw new Error(`Incomplete curriculum question ${question.id}`);
     if(question.type==='choice'&&(!Array.isArray(question.options)||!question.options.includes(question.answer)||new Set(question.options).size!==question.options.length))throw new Error(`Invalid choices for ${question.id}`);
     if(question.type==='spell'&&[...question.answer].sort().join('')!==[...question.letters].sort().join(''))throw new Error(`Invalid letter bank for ${question.id}`);
   }

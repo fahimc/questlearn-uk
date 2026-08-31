@@ -2,7 +2,7 @@
 
 ## Scope
 
-The playable bank contains exactly **100 questions** for England Years 3–5: **34 Maths, 33 Science and 33 English**. The content is derived from the subject progression in [`england-years-3-5.md`](../research/england-years-3-5.md). It is prototype content for ages 7–10, not a replacement for teacher sequencing or assessment.
+The playable bank contains exactly **150 questions** for England Years 3–5: **50 Maths, 50 Science and 50 English**. The content is derived from the subject progression in [`england-years-3-5.md`](../research/england-years-3-5.md). It is prototype content for ages 7–10, not a replacement for teacher sequencing or assessment.
 
 Every item has a stable ID, subject, curriculum objective ID, suggested year, difficulty level, strand, prompt, answer, interaction type, choices or letter tiles, a separate hint, a short Learn explanation and a worked example. Validation rejects duplicate IDs, missing support, invalid progression, choices without the answer, duplicate choices and spelling banks whose letters cannot construct the answer.
 
@@ -10,12 +10,12 @@ Every item has a stable ID, subject, curriculum objective ID, suggested year, di
 
 | Level | Suggested curriculum stage | Intended demand | Maths items | Science items | English items |
 |---|---|---|---:|---:|---:|
-| 1 | Year 3 foundation | one-step recall, recognise and identify | 7 | 7 | 6 |
-| 2 | Year 3 application | use a familiar rule in context | 7 | 7 | 6 |
-| 3 | Year 4 foundation | connect facts and representations | 7 | 7 | 7 |
-| 4 | Year 4 independence / Year 5 bridge | select a method and interpret evidence | 7 | 6 | 6 |
-| 5 | Year 5 application | multi-step reasoning and precise language | 6 | 6 | 8 |
-| **Total** |  |  | **34** | **33** | **33** |
+| 1 | Year 3 foundation | one-step recall, recognise and identify | 10 | 10 | 10 |
+| 2 | Year 3 application | use a familiar rule in context | 10 | 10 | 10 |
+| 3 | Year 4 foundation | connect facts and representations | 10 | 10 | 10 |
+| 4 | Year 4 independence / Year 5 bridge | select a method and interpret evidence | 10 | 10 | 10 |
+| 5 | Year 5 application | multi-step reasoning and precise language | 10 | 10 | 10 |
+| **Total** |  |  | **50** | **50** | **50** |
 
 ### Maths coverage
 
@@ -36,14 +36,16 @@ Year 3–4 spelling patterns and words; prefixes and suffixes; homophones; vocab
 - Maths produces fresh operands for addition, selected times tables, equivalent fractions, rectangular area and percentages. Distractors are recalculated from each answer rather than copied from another item.
 - Science rotates through an educator-authored fact pool and deterministically changes question and choice order. Scientific facts are never invented from free-form text.
 - English rotates through an educator-authored language pool, changes choice order and reshuffles spelling tiles while preserving the exact answer letters.
-- Every world set contains five level circuits in order, with five questions at the matching difficulty in each circuit: 25 questions in total. Each question belongs to its own physical wall. A new set changes the seed without changing the learning progression.
+- Every world set contains five level circuits in order, with five questions at the matching difficulty in each circuit: 25 questions in total. Each question belongs to its own physical wall. Selection is without replacement, so a run has no repeated prompt. The next set uses the other five reviewed items at every level, so it cannot repeat a source question from the immediately previous run.
 - Generated questions pass the same answerability checks as authored items. Seeds do not include learner names, answers or progress.
+- Learn support is generated from the live question's subject, strand and generator family. It gives a topic explanation, a three-step method, a worked example using different values or wording, and a final self-check without exposing the live answer.
 
 The generator is deliberately hybrid. Numeric relationships can vary parametrically; spelling, grammar and science claims stay inside reviewed pools. This avoids the unsafe claim that unreviewed prose is “curriculum correct” merely because it was generated.
 
 ## Runtime files
 
-- `site/games/curriculum-question-bank.js`: canonical materialised 100-item bank and validator.
+- `site/games/curriculum-question-bank.js`: canonical materialised 150-item bank and validator.
+- `site/games/curriculum-learning-guides.js`: question-aware teaching explanations, worked examples and self-check prompts.
 - `site/games/curriculum-question-generator.js`: deterministic seeded variants and configurable level-set builder.
 - `site/games/wordwall-worlds.js`: subject-world definitions, themes and five-level, 25-question routes.
 - `site/games/wordwall-course.js`: five path families repeated across 25 one-question wall checkpoints.

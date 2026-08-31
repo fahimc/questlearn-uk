@@ -8,6 +8,7 @@ export const WORDWALL_SPIRAL=Object.freeze({radius:44,stageArc:Math.PI/3,stageRi
 export const WORDWALL_GATE_COLLIDER=Object.freeze({width:9,depth:1,height:3.5});
 export const WORDWALL_TOKEN_STEPS=Object.freeze([2]);
 export const WORDWALL_PLAYER_COLLIDER=Object.freeze({footRadius:.3,bodyRadius:.48,height:2.2,stepHeight:1.05});
+export const WORDWALL_MAX_CHECKPOINT_DROP=3.5;
 export const WORDWALL_MIN_CLEARANCE=Object.freeze({box:1.1,circle:1.2,triangle:1.35,ring:1.05});
 export const WORDWALL_MOVEMENT=Object.freeze({walkSpeed:8.4,jumpVelocity:9.6,gravity:19});
 export const WORDWALL_SKINS=Object.freeze([
@@ -66,6 +67,8 @@ export function resolveWordwallSupportLanding({previousY,nextY,x,z},supports,{ra
   }
   return landedSupport?{y:landedSupport.top,landed:true,support:landedSupport}:{y:nextY,landed:false,support:null};
 }
+
+export function shouldRespawnWordwallPlayer(playerY,checkpointTop,maxDrop=WORDWALL_MAX_CHECKPOINT_DROP){return Number(playerY)<Number(checkpointTop)-Math.max(.5,Number(maxDrop)||WORDWALL_MAX_CHECKPOINT_DROP)}
 
 export function resolveWordwallGateMovement({previousX,previousZ,nextX,nextZ,playerY},gate,{radius=.3,playerHeight=2.2}={}){
   const clear={x:nextX,z:nextZ,blockedX:false,blockedZ:false};
