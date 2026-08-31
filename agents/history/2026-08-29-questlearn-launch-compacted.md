@@ -318,3 +318,17 @@ LexiClimb has three subject worlds with five continuous physical levels and ten 
 ## Current resume point
 
 LexiClimb's authoritative progression is now **five levels × five one-question walls = 25 walls per world**. A wall is a single question boundary, not a ten-question round. Each level must retain five varied traversal paths and should finish only after its fifth wall. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`; GitHub `main` includes the production release at `dad7278`.
+
+## LexiClimb hidden-grid course rebuild
+
+- Replaced percentage-based support placement, which compressed oversized slabs into overlapping volumes, with a renderer-independent 0.5-world-unit grid in `site/games/wordwall-course.js`.
+- Every checkpoint centre is 52 cells/26 world units from the next. Circular 6-unit checkpoints reserve 6 cells at each end and leave an exact 40-cell/20-unit route span. Continuous stairs, tunnel floors and uphill slabs meet edge-to-edge with zero negative interval; their bodies extend down to the prior step so no false vertical sky gaps appear.
+- Donut routes now contain exactly three 6-unit rings with 1.5-unit centre holes and 2-cell/1-unit fall gaps. Mixed-shape ribbons retain deliberate jump gaps. Final sized mesh footprints, not just authored grid cells, are validated for non-overlap.
+- The helix now uses radius 26, 60-degree turns and 5-unit rises. Circular checkpoints remove rotation-dependent square-corner intrusion, grid-aligned walls sit at route exits, and camera/fog/world bounds were expanded for the larger 125-unit tower.
+- Refreshed all LexiClimb responsive baselines and added dedicated uphill-runway and sky-ribbon captures. Browser review covered phone stairs, tunnel, uphill, rings, ribbons, challenge layout and whole-tower overview; the immutable production donut render matched local output.
+- `npm run test:all` passes 103 tests and validates 149 local files. New regressions cover grid alignment, post-sizing overlap, zero-gap continuous routes, checkpoint tangency and exact donut dimensions/gaps.
+- GitHub commit `b3ec7b7` and Netlify production deploy `6a95944bf63f3766780a342e` published the rebuild. Production exposes the half-unit grid, overlap guard, circular checkpoints, 6-unit rings, 1-unit gaps, radius 26 and rise 5.
+
+## Latest resume point
+
+LexiClimb still uses five levels × five one-question walls. Course geometry must now be authored through `WORDWALL_COURSE_GRID`; do not place route meshes by percentage or bypass `validateWordwallCoursePlan`. Continuous route pieces must have zero grid/world overlap and zero horizontal gap, while intentional jump routes must declare positive measured gaps. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`.
