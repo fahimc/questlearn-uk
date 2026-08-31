@@ -356,3 +356,16 @@ The current LexiClimb wall can activate through checkpoint landing, touching/app
 ## Latest resume point
 
 LexiClimb donut routes remain three 6-unit rings separated by 1-unit fall gaps, but their authoritative hole radius is now 0.75 and their walking-band width is 2.25. Keep `WORDWALL_COURSE_GRID.ringHoleDiameterCells`, course collision and `renderSupportBatches` geometry ratios synchronised if ring sizing changes again. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`.
+
+## LexiClimb screenshot-scale double-size rings
+
+- This release corrects the prior donut update, which widened the band but mistakenly left the outer diameter at 6 units. Every donut platform is now a true 12 units across—exactly 2× the previous outer diameter—with a 0.75-unit hole radius and a 5.25-unit radial walking band.
+- Replaced the rounded torus presentation with a flat, solid extruded annulus to match the supplied obby reference more closely. The instanced visual footprint and renderer-independent annulus collision share the same grid-derived outer and inner dimensions.
+- Expanded the half-unit course grid from 26 to 44 units checkpoint-to-checkpoint, with 38 usable path units. Each donut route still contains three rings and measured 1-unit gaps without overlap; continuous route depths were redistributed across the larger span.
+- Increased the spiral radius from 26 to 44 and the movement world bound from 36 to 58. Whole-tower and normal mobile-start reviews confirmed continuous geometry and unchanged HUD/control framing.
+- The corrected donut preview places the avatar on the first walking band and aims down the route. At 1280 × 720, the foreground ring spans about 11 avatar widths, closely matching the supplied reference's roughly 10–11 avatar widths; 390 × 844 also keeps the player and next rings readable.
+- `npm run test:all` passes 104 tests. GitHub commit `2c2b538` and Netlify production deploy `6a959d4ccf34d7e681de4c66` published the correction. Immutable production returned 200 for course, engine and controller with 24-cell diameter, 88-cell span, radius-44 and flat-extrusion markers.
+
+## Current resume point
+
+LexiClimb's authoritative donut size is now **12 world units / 24 half-unit cells**, not 6 units. Rings use flat `ExtrudeGeometry`, a 1.5-unit-diameter hole, a 5.25-unit walking band and 1-unit inter-ring fall gaps. The tower uses radius 44 and 44-unit checkpoint spans so the three rings never overlap. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`.
