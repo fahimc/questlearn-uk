@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#71c7dc">
-  <meta name="description" content="Dig, collect and build in curriculum-linked maths and English quests for ages 7 to 10.">
+  <meta name="description" content="Dig, collect and build in Year 3, 4 and 5 English, maths and science quests for ages 7 to 10.">
   <title>Blocksmith Worlds · EduGames</title>
   <link rel="stylesheet" href="../assets/game.css">
   <link rel="stylesheet" href="blocksmith.css">
@@ -70,7 +70,12 @@
         <article class="tour-step" data-tour-step>
           <p class="voxel-eyebrow">Welcome to Blocksmith Worlds</p>
           <h1 id="intro-title">Mine. Solve. Build.</h1>
-          <p>Roam Numberland and English Land, collect blocks and discover 30 learning quests for ages 7–10. The blocks you build are your answer.</p>
+          <p data-expedition-copy>Choose a school year and subject. Every expedition has 20 non-repeating quests, and the blocks you build are your answer.</p>
+          <p class="selector-label">Choose your year</p>
+          <div class="blocksmith-year-grid" data-year-grid aria-label="Choose a school year"><button type="button" data-year-choice="3"><b>Year 3</b><small>Ages 7–8</small></button><button type="button" data-year-choice="4"><b>Year 4</b><small>Ages 8–9</small></button><button type="button" data-year-choice="5"><b>Year 5</b><small>Ages 9–10</small></button></div>
+          <p class="selector-label">Choose your subject</p>
+          <div class="blocksmith-subject-grid" data-subject-grid aria-label="Choose a subject"><button type="button" data-subject-choice="english"><i>Aa</i><span><b>English</b><small>Wordcraft</small></span></button><button type="button" data-subject-choice="maths"><i>×</i><span><b>Maths</b><small>Numbercraft</small></span></button><button type="button" data-subject-choice="science"><i>⚗</i><span><b>Science</b><small>Discovery</small></span></button></div>
+          <div class="expedition-set"><span data-set-copy>Expedition 1 of 5 · questions 1–20 of 100</span><a data-next-set href="blocksmith.html">Load the next 20</a></div>
         </article>
         <article class="tour-step" data-tour-step hidden>
           <p class="voxel-eyebrow">Step 2 · Move and look</p>
@@ -101,6 +106,7 @@
       <form method="dialog" class="quest-card">
         <header><div class="quest-glyph" data-quest-number>01</div><div><span data-quest-objective></span><h2 data-quest-title>Quest title</h2></div><button class="dialog-close" value="cancel" aria-label="Close quest">×</button></header>
         <div class="quest-copy"><p class="quest-kicker" data-quest-kicker>Build challenge</p><p data-quest-prompt></p></div>
+        <section class="block-answer-key" data-answer-key hidden aria-label="Answer block key"><p>Choose the correct answer, then place its material block:</p><div data-answer-options></div></section>
         <div class="quest-rule"><span class="block-swatch swatch-quest"></span><div><b data-quest-rule>Build your answer</b><p data-quest-collect>Mine the world to collect the blocks you need, then build inside the glowing pad.</p></div></div>
         <div class="quest-support-actions"><button type="button" data-learn-toggle aria-expanded="false">📘 Learn this</button><button type="button" data-hint-toggle aria-expanded="false">💡 Show a hint</button></div>
         <section class="quest-support-panel" data-learn-panel hidden><h3 data-learn-title>Learn this topic</h3><p data-learn-text></p><ul data-learn-examples></ul></section>
@@ -114,7 +120,7 @@
     </dialog>
 
     <aside id="questJournal" class="quest-journal" data-journal aria-label="Quest journal">
-      <header><div><span>World journal</span><h2>Build quests</h2></div><b><i data-complete-count>0</i>/30</b></header>
+      <header><div><span data-journal-scope>World journal</span><h2>Build quests</h2></div><b><i data-complete-count>0</i>/<i data-quest-total>20</i></b></header>
       <div data-quest-list></div>
       <button type="button" data-close-journal>Close journal</button>
     </aside>

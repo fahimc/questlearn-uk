@@ -26,6 +26,11 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Blocksmith roaming voxel animals, 1280 × 720 | [PNG](responsive/blocksmith-animals-desktop.png) |
 | Blocksmith Learn support, mobile, 390 × 844 | [PNG](responsive/blocksmith-learn-mobile.png) |
 | Blocksmith pulsing active pad, desktop, 1280 × 720 | [PNG](responsive/blocksmith-highlight-desktop.png) |
+| Blocksmith Year/subject selector, mobile, 360 × 800 | [PNG](responsive/blocksmith-year-subject-mobile.png) |
+| Blocksmith Year/subject selector, narrow, 320 × 568 | [PNG](responsive/blocksmith-year-subject-narrow.png) |
+| Blocksmith curriculum answer-block quest, mobile, 390 × 844 | [PNG](responsive/blocksmith-curriculum-quest-mobile.png) |
+| Blocksmith curriculum spelling quest, mobile, 390 × 844 | [PNG](responsive/blocksmith-curriculum-spelling-mobile.png) |
+| Blocksmith curriculum answer-block quest, desktop, 1280 × 720 | [PNG](responsive/blocksmith-curriculum-quest-desktop.png) |
 | Skybound glass run, mobile, 390 × 844 | [PNG](responsive/skybound-mobile.png) |
 | Skybound glass run, desktop, 1280 × 720 | [PNG](responsive/skybound-desktop.png) |
 | Skybound Learn support, desktop, 1280 × 720 | [PNG](responsive/skybound-learn-desktop.png) |

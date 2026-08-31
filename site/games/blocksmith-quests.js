@@ -65,7 +65,7 @@ export function validateQuestBuild(quest,blocks){
   const difference=blocks.length-quest.targetBlocks;
   if(difference<0)return{complete:false,difference,message:`You have placed ${blocks.length}. Add ${Math.abs(difference)} more ${Math.abs(difference)===1?'block':'blocks'}, then check again.`};
   if(difference>0)return{complete:false,difference,message:`You have placed ${blocks.length}. Remove ${difference} ${difference===1?'block':'blocks'}, then check again.`};
-  if(quest.subject==='English'){if(!shapeIsCorrect(quest,blocks))return{complete:false,difference:0,message:'The letters or punctuation do not complete the quest yet. Rearrange them, or open the quest for Learn and Hint.'};return{complete:true,difference:0,message:quest.success}}
+  if(quest.interaction==='spell'||(!quest.interaction&&quest.subject==='English')){if(!shapeIsCorrect(quest,blocks))return{complete:false,difference:0,message:'The letters or punctuation do not complete the quest yet. Rearrange them, or open the quest for Learn and Hint.'};return{complete:true,difference:0,message:quest.success}}
   const counts=countMaterials(blocks);const materialsCorrect=Object.entries(quest.materialPlan).every(([type,needed])=>(counts[type]||0)===needed)&&Object.keys(counts).every(type=>Boolean(quest.materialPlan[type]));
   if(!materialsCorrect)return{complete:false,difference:0,message:'The total is right, but the material fractions do not match. Open the quest for Learn or Hint if you are stuck.'};
   if(!shapeIsCorrect(quest,blocks))return{complete:false,difference:0,message:`You have the right materials. Rearrange them as ${quest.shape.label}, or open the quest for Learn and Hint.`};
