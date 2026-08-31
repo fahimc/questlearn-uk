@@ -7,7 +7,7 @@ function questionsPerLevel(challenges){return Math.max(1,questionsIn(challenges[
 export const WORDWALL_SPIRAL=Object.freeze({radius:44,stageArc:Math.PI/3,stageRise:5,startAngle:-Math.PI/2});
 export const WORDWALL_GATE_COLLIDER=Object.freeze({width:9,depth:1,height:3.5});
 export const WORDWALL_TOKEN_STEPS=Object.freeze([2]);
-export const WORDWALL_PLAYER_COLLIDER=Object.freeze({footRadius:.3,bodyRadius:.48,height:2.2});
+export const WORDWALL_PLAYER_COLLIDER=Object.freeze({footRadius:.3,bodyRadius:.48,height:2.2,stepHeight:1.05});
 export const WORDWALL_MIN_CLEARANCE=Object.freeze({box:1.1,circle:1.2,triangle:1.35,ring:1.05});
 export const WORDWALL_MOVEMENT=Object.freeze({walkSpeed:8.4,jumpVelocity:9.6,gravity:19});
 export const WORDWALL_SKINS=Object.freeze([
@@ -35,8 +35,37 @@ export function isWordwallFootprintOnSupport(x,z,support,radius=.3){
   if(!support?.solid)return false;const local=worldToLocal(x,z,support.x,support.z,support.yaw||0),distance=Math.hypot(local.x,local.z);if(support.shape==='circle')return distance<=support.width/2+radius+1e-9;if(support.shape==='ring'){const inner=Number(support.holeRadius)||support.width*.17;return distance<=support.width/2+radius+1e-9&&distance>=inner-radius-1e-9}if(support.shape==='triangle'){const vertices=triangleVertices(support.width,support.depth);return pointInTriangle(local,...vertices)||vertices.some((vertex,index)=>distanceToSegment(local,vertex,vertices[(index+1)%3])<=radius+1e-9)}const outsideX=Math.max(0,Math.abs(local.x)-support.width/2),outsideZ=Math.max(0,Math.abs(local.z)-support.depth/2);return Math.hypot(outsideX,outsideZ)<=radius+1e-9;
 }
 
-export function resolveWordwallSupportMovement({previousX,previousZ,nextX,nextZ,playerY},supports,{radius=WORDWALL_PLAYER_COLLIDER.bodyRadius,playerHeight=WORDWALL_PLAYER_COLLIDER.height,topEpsilon=.04}={}){let x=nextX,z=nextZ,blockedX=false,blockedZ=false;for(const support of supports||[]){if(!support?.solid)continue;const bottom=support.bottom??support.top-(support.height??.72);if(playerY>=support.top-topEpsilon||playerY+playerHeight<=bottom+topEpsilon)continue;const previousInside=isWordwallFootprintOnSupport(previousX,previousZ,support,radius);if(previousInside)continue;if(isWordwallFootprintOnSupport(x,previousZ,support,radius)){x=previousX;blockedX=true}if(isWordwallFootprintOnSupport(x,z,support,radius)){z=previousZ;blockedZ=true}if(isWordwallFootprintOnSupport(x,z,support,radius)){x=previousX;z=previousZ;blockedX=true;blockedZ=true}}return{x,z,blockedX,blockedZ}}
+export function resolveWordwallSupportMovement({previousX,previousZ,nextX,nextZ,playerY,grounded=false},supports,{radius=WORDWALL_PLAYER_COLLIDER.bodyRadius,playerHeight=WORDWALL_PLAYER_COLLIDER.height,stepHeight=WORDWALL_PLAYER_COLLIDER.stepHeight,topEpsilon=.04}={}){
+  let x=nextX,z=nextZ,blockedX=false,blockedZ=false,steppedSupport=null;
+  if(grounded){
+    for(const support of supports||[]){
+      if(!support?.solid||support.top<=playerY+topEpsilon||support.top>playerY+stepHeight+topEpsilon||!isWordwallFootprintOnSupport(nextX,nextZ,support,radius))continue;
+      if(!steppedSupport||support.top>steppedSupport.top)steppedSupport=support;
+    }
+  }
+  const collisionY=steppedSupport?.top??playerY;
+  for(const support of supports||[]){
+    if(!support?.solid)continue;const bottom=support.bottom??support.top-(support.height??.72);if(collisionY>=support.top-topEpsilon||collisionY+playerHeight<=bottom+topEpsilon)continue;
+    // Radius-expanded footprints may already touch the next stair while the
+    // player's centre is still outside it. Only a true core overlap is a valid
+    // reason to skip entry resolution; otherwise the stair side must block.
+    const previousInside=isWordwallFootprintOnSupport(previousX,previousZ,support,0);if(previousInside)continue;
+    if(isWordwallFootprintOnSupport(x,previousZ,support,radius)){x=previousX;blockedX=true}if(isWordwallFootprintOnSupport(x,z,support,radius)){z=previousZ;blockedZ=true}if(isWordwallFootprintOnSupport(x,z,support,radius)){x=previousX;z=previousZ;blockedX=true;blockedZ=true}
+  }
+  if(steppedSupport&&!isWordwallFootprintOnSupport(x,z,steppedSupport,radius))steppedSupport=null;
+  return{x,z,blockedX,blockedZ,steppedSupport};
+}
 export function resolveWordwallSupportCeiling({previousY,nextY,x,z},supports,{radius=WORDWALL_PLAYER_COLLIDER.footRadius,playerHeight=WORDWALL_PLAYER_COLLIDER.height}={}){if(nextY<=previousY)return{y:nextY,blocked:false};const previousHead=previousY+playerHeight,nextHead=nextY+playerHeight;let ceiling=Infinity;for(const support of supports||[]){if(!support?.solid||!isWordwallFootprintOnSupport(x,z,support,radius))continue;const bottom=support.bottom??support.top-(support.height??.72);if(previousHead<=bottom+1e-9&&nextHead>=bottom-1e-9)ceiling=Math.min(ceiling,bottom)}return Number.isFinite(ceiling)?{y:ceiling-playerHeight,blocked:true}:{y:nextY,blocked:false}}
+
+export function resolveWordwallSupportLanding({previousY,nextY,x,z},supports,{radius=WORDWALL_PLAYER_COLLIDER.footRadius,epsilon=.08}={}){
+  if(nextY>previousY)return{y:nextY,landed:false,support:null};
+  let landedSupport=null;
+  for(const support of supports||[]){
+    if(!support?.solid||!isWordwallFootprintOnSupport(x,z,support,radius)||previousY<support.top-epsilon||nextY>support.top+epsilon)continue;
+    if(!landedSupport||support.top>landedSupport.top)landedSupport=support;
+  }
+  return landedSupport?{y:landedSupport.top,landed:true,support:landedSupport}:{y:nextY,landed:false,support:null};
+}
 
 export function resolveWordwallGateMovement({previousX,previousZ,nextX,nextZ,playerY},gate,{radius=.3,playerHeight=2.2}={}){
   const clear={x:nextX,z:nextZ,blockedX:false,blockedZ:false};
