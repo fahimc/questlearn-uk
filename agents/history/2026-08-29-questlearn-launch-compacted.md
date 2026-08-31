@@ -369,3 +369,16 @@ LexiClimb donut routes remain three 6-unit rings separated by 1-unit fall gaps, 
 ## Current resume point
 
 LexiClimb's authoritative donut size is now **12 world units / 24 half-unit cells**, not 6 units. Rings use flat `ExtrudeGeometry`, a 1.5-unit-diameter hole, a 5.25-unit walking band and 1-unit inter-ring fall gaps. The tower uses radius 44 and 44-unit checkpoint spans so the three rings never overlap. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`.
+
+## LexiClimb stair collision correction
+
+- Fixed a capsule/riser boundary error in `site/games/wordwall-engine.js`: radius-expanded contact with the next stair no longer counts as a pre-existing core overlap, so an airborne player cannot enter a stair body and lose the supporting surface below.
+- Added grounded autostep for the authored 0.5- and 1-unit stair rises, with a 1.05-unit maximum, so continuous rainbow stairs climb smoothly without bypassing taller obstacle sides.
+- Added swept downward landing against the highest crossed solid top. A frame can no longer tunnel through a staircase top even when it moves from above to below the surface.
+- Regression coverage checks all 40 staircase blocks and all 40 checkpoint/stair or stair/stair transitions across the five generated rainbow stair routes. `npm run test:all` passes 105 tests and validates 162 local files.
+- Local desktop and 390 × 844 browser runs traversed the complete first staircase; a mobile-sized run also jumped mid-route, landed at Y=5 and opened the checkpoint challenge at 60 FPS. The same jump traversal passed against immutable production.
+- GitHub commit `958f872` and Netlify production deploy `6a95c2db4d0e5ffbc027fdd5` published the fix. Production HTML and both Wordwall JavaScript modules returned 200 with the swept-landing and safe-step markers.
+
+## Latest resume point
+
+LexiClimb stair physics now uses fixed-step horizontal body collision, bounded grounded autostep, underside collision and swept top-surface landing. Keep rendered support dimensions, `isWordwallFootprintOnSupport` and the three movement/ceiling/landing resolvers aligned when changing course shapes or heights. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`.
