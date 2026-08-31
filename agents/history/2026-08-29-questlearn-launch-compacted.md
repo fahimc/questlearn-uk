@@ -344,3 +344,15 @@ LexiClimb still uses five levels × five one-question walls. Course geometry mus
 ## Current resume point
 
 The current LexiClimb wall can activate through checkpoint landing, touching/approaching either wall face, or the proximity-gated fallback button. Future wall changes should keep those inputs routed through `openCurrentWallChallenge` and preserve `isWordwallPlayerNearGate` as the renderer-independent geometry authority. The live game is `https://edugames-189.netlify.app/games/wordwall.html` and GitHub `main` contains the feature at `c8a7694`.
+
+## LexiClimb wider donut walking bands
+
+- Reduced every 6-unit donut's centre opening from a 1.5-unit radius to a 1.5-unit diameter. The resulting radial walking band grows from 1.5 to 2.25 units, while the three-ring route and measured 1-unit inter-ring fall gaps remain unchanged.
+- Added `ringHoleDiameterCells: 3` to the authoritative half-unit course grid. Course collision consumes the same value, and the instanced Torus geometry derives its inner ratio and vertical scale from it so visible and physical dimensions stay aligned.
+- Replaced the generic fixed 0.8 ring-hole clamp with a player-footprint-derived minimum. This preserves the authored 0.75 radius without permitting holes too small to function as holes.
+- `npm run test:all` passes 104 tests and validates 152 local files. Desktop, 390 × 844 local and immutable-production donut previews show the thicker standable bands with intact gaps and HUD framing.
+- GitHub commit `8306398` and Netlify production deploy `6a959afe0b463ecb88e143a9` published the update. The immutable course, engine and controller returned 200 with the new grid, clamp and torus-ratio markers.
+
+## Latest resume point
+
+LexiClimb donut routes remain three 6-unit rings separated by 1-unit fall gaps, but their authoritative hole radius is now 0.75 and their walking-band width is 2.25. Keep `WORDWALL_COURSE_GRID.ringHoleDiameterCells`, course collision and `renderSupportBatches` geometry ratios synchronised if ring sizing changes again. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`.
