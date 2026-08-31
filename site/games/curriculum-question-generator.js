@@ -36,6 +36,11 @@ export function createInfiniteQuestionSet({subject,set=0,count=5}={}){
   return Object.freeze(Array.from({length:safeCount},(_,index)=>generateCurriculumQuestion({subject,level:index%5+1,seed:`${safeSet}:${index}`})));
 }
 
+export function createLevelQuestionSet({subject,level,set=0,count=10}={}){
+  const safeSet=Math.max(0,Math.floor(Number(set)||0)),safeCount=Math.max(1,Math.floor(Number(count)||10)),numericLevel=Number(level);
+  return Object.freeze(Array.from({length:safeCount},(_,index)=>generateCurriculumQuestion({subject,level:numericLevel,seed:`${safeSet}:level-${numericLevel}:question-${index}`})));
+}
+
 export function validateGeneratedQuestion(question){
   if(!question?.id||!question.answer||!question.prompt||!question.learn?.text)return false;
   if(question.type==='choice')return question.options.includes(question.answer)&&new Set(question.options).size===question.options.length;

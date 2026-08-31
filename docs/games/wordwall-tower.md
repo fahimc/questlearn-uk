@@ -8,15 +8,15 @@ The route mixes stepping stones, narrow beams, circles, triangles and rising jum
 
 ## Core loop
 
-`Choose a subject world → traverse varied shapes → collect coins → reach a numbered flag → use Learn or Hint if needed → solve the gate → continue upward`.
+`Choose a subject world → traverse varied shapes → collect coins → reach a numbered flag → answer its ten questions with Learn or Hint available → collapse the gate → continue upward`.
 
 - Five sections each have eight traversable obstacles and a distinct colour/shape rhythm. Boxes, circles and triangles use the same rotated footprint for rendering and collision.
 - A sizing guard expands every platform to a safe-centre radius: 0.75 for boxes, 0.90 for circles and 1.05 for triangles.
 - Solid 0.48-radius body collision blocks platform sides; underside collision stops upward jumps through bases.
 - Each section curves 90 degrees and rises four world units. Six checkpoint platforms form one continuous route with no level-loading break.
-- Checkpoints 1–5 carry large physical **LEVEL 1–5** flags. Reaching a platform secures it before opening its curriculum challenge.
+- Checkpoints 1–5 carry large physical **LEVEL 1–5** flags. Reaching a platform secures it before opening a ten-question curriculum round.
 - Six coins sit on each section, preserving 30 rewards per five-level world in one instanced render batch.
-- A closed wall blocks its full front, back, sides and corners. Correct answers release the collider as the bricks collapse.
+- A closed wall blocks its full front, back, sides and corners. It stays solid through questions 1–9, then the tenth correct answer releases the collider as the bricks collapse.
 - There is no timer, lives counter, public leaderboard, advertising or chat.
 
 ## Worlds and progression
@@ -29,7 +29,7 @@ The route mixes stepping stones, narrow beams, circles, triangles and rising jum
 | 4 | Year 4 independence | fronted adverbials, summary, affixes and word class | negative numbers, conversion, angles and coordinates | habitats, water cycle, pitch, conductors and evidence |
 | 5 | Year 5 application | clauses, modal verbs, cohesion and author language | primes, fractions, percentage, volume and multi-step work | life cycles, solutions, separation, space and forces |
 
-All three worlds always contain five gates ordered Levels 1–5. “New question set” advances the deterministic seed and builds another route at the same progression. See [`curriculum-question-bank.md`](curriculum-question-bank.md) for the 100-item bank and generation limits.
+All three worlds always contain five levels ordered Levels 1–5, with ten questions at each level and 50 questions in a completed world. Every question in a level uses that level's curriculum difficulty. “New question set” advances the deterministic seed and builds another 50-question route at the same progression. See [`curriculum-question-bank.md`](curriculum-question-bank.md) for the 100-item authored bank and generation limits.
 
 Every gate has a learner-controlled explanation, separate hint, age-readable feedback and teaching example. Learn text explains a transferable method and does not simply reveal the live answer.
 
@@ -43,8 +43,8 @@ Every gate has a learner-controlled explanation, separate hint, age-readable fee
 ## Runtime and responsive behaviour
 
 - `curriculum-question-bank.js` owns the validated 100 authored items; `curriculum-question-generator.js` owns deterministic variants.
-- `wordwall-worlds.js` owns the three subject themes and guarantees five progressive gates per world.
-- `wordwall-engine.js` is renderer-independent and owns progression, collision, support sizing, rewards, skins and privacy-safe sharing.
+- `wordwall-worlds.js` owns the three subject themes and guarantees five progressive levels with ten deterministic questions in each.
+- `wordwall-engine.js` is renderer-independent and owns per-question and per-level progression, collision, support sizing, rewards, skins and privacy-safe sharing.
 - `wordwall.js` composes Three.js presentation with shared Skybound movement, buffered jumping, analogue input, orbit camera, procedural audio and low-power selection.
 - Desktop uses WASD/arrows, Space, mouse drag and Q/E. Touch uses an independent analogue pointer, Jump pointer and swipe-to-orbit canvas.
 - Portrait layouts stack world choices and challenge options inside a bounded scrolling card. Short landscape hides the onboarding guide, keeps all three world choices visible and preserves the game view.
