@@ -4,7 +4,7 @@ import { WORDWALL_LEVEL_COUNT, WORDWALL_QUESTIONS_PER_LEVEL } from './wordwall-w
 export const WORDWALL_RAINBOW=Object.freeze([0xff3b21,0xffa51f,0xffed31,0x45df46,0x20d9dc,0x3677f5,0x8c45ef,0xff4fc4]);
 export const WORDWALL_ROUTE_TYPES=Object.freeze(['rainbow-stairs','prism-tunnel','uphill-runway','donut-rings','sky-ribbons']);
 export const WORDWALL_TOTAL_WALLS=WORDWALL_LEVEL_COUNT*WORDWALL_QUESTIONS_PER_LEVEL;
-export const WORDWALL_COURSE_GRID=Object.freeze({unit:.5,platformHeight:1,checkpointCells:12,centreDistanceCells:52,pathCells:40,ringDiameterCells:12,ringGapCells:2});
+export const WORDWALL_COURSE_GRID=Object.freeze({unit:.5,platformHeight:1,checkpointCells:12,centreDistanceCells:52,pathCells:40,ringDiameterCells:12,ringHoleDiameterCells:3,ringGapCells:2});
 
 const CONTINUOUS_ROUTE_TYPES=Object.freeze(['rainbow-stairs','prism-tunnel','uphill-runway']);
 const ROUTES=Object.freeze({
@@ -24,7 +24,7 @@ function createRouteSupports(stageIndex,levelIndex,wallInLevel,type,start,end,gr
   const route=ROUTES[type],frame=segmentFrame(start,end),supports=[];
   let cursor=grid.checkpointCells/2+route.leadCells,previousTopCells=0;
   for(let step=0;step<route.pieces;step+=1){
-    const depthCells=valueAt(route.depthCells,step),widthCells=valueAt(route.widthCells,step),shape=valueAt(route.shape,step),startCell=cursor,endCell=startCell+depthCells,centreCell=(startCell+endCell)/2,sideCells=type==='sky-ribbons'?[0,-2,2,0][step]:0,topCells=Math.round((step+1)/route.pieces*((end.top-start.top)/grid.unit)),distance=gridValue(centreCell,grid),side=gridValue(sideCells,grid),width=gridValue(widthCells,grid),depth=gridValue(depthCells,grid),sized=sizeWordwallSupport({shape,width,depth,holeRadius:shape==='ring'?width*.25:undefined});
+    const depthCells=valueAt(route.depthCells,step),widthCells=valueAt(route.widthCells,step),shape=valueAt(route.shape,step),startCell=cursor,endCell=startCell+depthCells,centreCell=(startCell+endCell)/2,sideCells=type==='sky-ribbons'?[0,-2,2,0][step]:0,topCells=Math.round((step+1)/route.pieces*((end.top-start.top)/grid.unit)),distance=gridValue(centreCell,grid),side=gridValue(sideCells,grid),width=gridValue(widthCells,grid),depth=gridValue(depthCells,grid),holeRadius=shape==='ring'?gridValue(grid.ringHoleDiameterCells,grid)/2:undefined,sized=sizeWordwallSupport({shape,width,depth,holeRadius});
     const height=CONTINUOUS_ROUTE_TYPES.includes(type)?grid.platformHeight+gridValue(topCells-previousTopCells,grid):grid.platformHeight;
     supports.push(Object.freeze({x:start.x+frame.forwardX*distance+frame.sideX*side,z:start.z+frame.forwardZ*distance+frame.sideZ*side,top:start.top+gridValue(topCells,grid),height,yaw:frame.yaw,...sized,shape,color:WORDWALL_RAINBOW[(step+stageIndex)%WORDWALL_RAINBOW.length],kind:'obstacle',index:stageIndex,routeType:type,level:levelIndex+1,wall:wallInLevel+1,step,gridX:sideCells,gridZ:centreCell,gridTop:topCells,gridWidth:widthCells,gridDepth:depthCells,gridStart:startCell,gridEnd:endCell,gapBefore:step?route.gapCells:route.leadCells}));
     previousTopCells=topCells;
