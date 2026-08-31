@@ -291,3 +291,16 @@ EduGames now has three active Three.js games on Netlify and GitHub: Blocksmith W
 ## Updated resume point
 
 EduGames now has a reusable cross-subject curriculum content layer and LexiClimb is no longer English-only. The active game at `https://edugames-189.netlify.app/games/wordwall.html` defaults to Word Quest and accepts `?world=maths` or `?world=science`; `set` selects a deterministic question route. The repository has 97 passing tests, 144 validated local files and 46 saved visual baselines. The next high-value product work is educator review/versioning of the bank, misconception tagging and evidence capture, followed by motor-assist and physical Chromebook/tablet testing.
+
+## LexiClimb ten-question levels
+
+- Corrected the learning model so each of the five physical levels contains a ten-question round rather than one question. Each world now requires 50 correct answers; answers 1–9 advance inside the same open challenge dialog and keep the wall solid, while answer 10 completes the level and collapses its wall.
+- Added deterministic `createLevelQuestionSet` generation and grouped world content into five validated level bundles. Every generated question in a bundle retains the matching Level 1–5 curriculum difficulty, and a new `set` seed creates another reproducible 50-question world.
+- Added renderer-independent question index, within-level and total-correct state. The objective HUD and challenge card show `Question X of 10`; completion and privacy-safe share copy state all 50 questions.
+- Updated onboarding, responsive guidance, architecture and game documentation. Refreshed phone and 844 × 390 challenge/world-selector baselines; visual review confirmed the counter and all choices/Learn/Hint actions remain unclipped.
+- `npm run test:all` passes 98 tests and validates 144 local links/files. Regression coverage proves wrong answers preserve the current question, questions 1–9 do not unlock a wall, question 10 does, and all 50 complete the world.
+- GitHub commit `9d4bf93` and Netlify production deploy `6a95875d86ad817a251188d2` published the correction. Production returned 200 and exposes the ten-per-level constant, per-question state and `Question 1 of 10` UI marker.
+
+## Latest resume point
+
+LexiClimb has three subject worlds with five continuous physical levels and ten curriculum questions at every level. The wall is a level boundary, not a one-question boundary. Future progression changes must preserve the five-level/50-question distinction and the Level 1–5 difficulty grouping. The repository has 98 passing tests and 144 validated local links/files. The live game is `https://edugames-189.netlify.app/games/wordwall.html`.
