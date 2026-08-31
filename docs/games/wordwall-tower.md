@@ -10,7 +10,8 @@ The visual direction uses the broad genre pattern visible in bright browser obbi
 
 `Traverse varied shapes → collect coins → reach checkpoint → use Learn or Hint if needed → solve the English wall → spend coins on a skin → continue upward`.
 
-- Each course has eight traversable obstacles and a distinct colour/shape rhythm. Boxes, circles and triangles vary in width and depth, and the landing engine uses the same rotated footprint as the visible mesh.
+- Each course has eight traversable obstacles and a distinct colour/shape rhythm. Boxes, circles and triangles vary in width and depth, and the landing engine uses the same rotated footprint as the visible mesh. A sizing guard expands every platform to a shape-specific safe-centre radius: 0.75 for boxes, 0.90 for circles and 1.05 for triangles, before the mesh and collider are created.
+- Platform bodies are solid as well as landable. A 0.48-radius body collider blocks walking through box, circle and triangle side faces, while an underside check stops upward jumps through their bases. Players already standing on a top face remain free to move.
 - Each section curves through 90 degrees around the core and rises four world units. Seven rotated checkpoint platforms join the sections into one readable helix rather than a straight corridor.
 - Five coins sit on each section's intended route. Collection is immediate, idempotent and rendered as one instanced batch, so the 30 rewards do not create 30 extra draw calls.
 - A checkpoint is secured before its challenge opens, so a later fall never erases a solved or reached section.
