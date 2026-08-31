@@ -4,6 +4,7 @@ Thumbs.db
 coverage/
 dist/
 test-results/
+artifacts/
 
 
 # Local Netlify folder

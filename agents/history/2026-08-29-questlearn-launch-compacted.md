@@ -332,3 +332,15 @@ LexiClimb's authoritative progression is now **five levels × five one-question 
 ## Latest resume point
 
 LexiClimb still uses five levels × five one-question walls. Course geometry must now be authored through `WORDWALL_COURSE_GRID`; do not place route meshes by percentage or bypass `validateWordwallCoursePlan`. Continuous route pieces must have zero grid/world overlap and zero horizontal gap, while intentional jump routes must declare positive measured gaps. The live game remains `https://edugames-189.netlify.app/games/wordwall.html`.
+
+## LexiClimb reliable wall-question activation
+
+- Replaced the landing-only learning-wall trigger with a single guarded opener shared by checkpoint landing, closed-wall contact, wall proximity and the on-screen fallback control. Progression remains sequential and the shared run-state transition prevents duplicate questions.
+- Added renderer-independent `isWordwallPlayerNearGate` geometry. It recognises either wall face across the playable width, respects rotated gates and vertical tiers, and ignores distant or already-open walls.
+- Added a responsive **Open question** button below the objective HUD. It opens only when the avatar is in the same wall proximity zone; farther away it gives clear movement guidance instead of bypassing the route.
+- Browser review covered 390 × 844 portrait, 844 × 390 short landscape and 1280 × 720 automatic wall activation. The button remained separate from HUD/movement controls, and the wall preview opened its question without requiring a precise landing event.
+- `npm run test:all` passes 104 tests and validates 152 local links/files. GitHub commit `c8a7694` and Netlify production deploy `6a95997f25663bb4755688e9` published the fix; production HTML, controller and engine returned 200 with fallback, handler and proximity markers.
+
+## Current resume point
+
+The current LexiClimb wall can activate through checkpoint landing, touching/approaching either wall face, or the proximity-gated fallback button. Future wall changes should keep those inputs routed through `openCurrentWallChallenge` and preserve `isWordwallPlayerNearGate` as the renderer-independent geometry authority. The live game is `https://edugames-189.netlify.app/games/wordwall.html` and GitHub `main` contains the feature at `c8a7694`.
