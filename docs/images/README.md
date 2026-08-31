@@ -37,6 +37,8 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | LexiClimb 25-path rainbow spiral overview, 1280 × 720 | [PNG](responsive/wordwall-overview.png) |
 | LexiClimb rainbow prism tunnel, 1280 × 720 | [PNG](responsive/wordwall-rainbow-tunnel.png) |
 | LexiClimb traversable donut-ring circuit, 1280 × 720 | [PNG](responsive/wordwall-donut-rings.png) |
+| LexiClimb grid-built uphill runway, 1280 × 720 | [PNG](responsive/wordwall-uphill-runway.png) |
+| LexiClimb grid-spaced shape ribbons, 1280 × 720 | [PNG](responsive/wordwall-sky-ribbons.png) |
 | LexiClimb skin shop, mobile, 390 × 844 | [PNG](responsive/wordwall-shop-mobile.png) |
 | LexiClimb skin shop, short landscape, 844 × 390 | [PNG](responsive/wordwall-shop-landscape.png) |
 | LexiClimb Science gate, mobile, 390 × 844 | [PNG](responsive/wordwall-challenge-mobile.png) |

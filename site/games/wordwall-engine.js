@@ -4,8 +4,8 @@ function questionsIn(challenge){return Array.isArray(challenge?.questions)?chall
 function flattenChallenges(challenges){return challenges.flatMap(questionsIn)}
 function questionsPerLevel(challenges){return Math.max(1,questionsIn(challenges[0]).length)}
 
-export const WORDWALL_SPIRAL=Object.freeze({radius:18,stageArc:Math.PI/4,stageRise:3.4,startAngle:-Math.PI/2});
-export const WORDWALL_GATE_COLLIDER=Object.freeze({width:9,depth:.8,height:3.4});
+export const WORDWALL_SPIRAL=Object.freeze({radius:26,stageArc:Math.PI/3,stageRise:5,startAngle:-Math.PI/2});
+export const WORDWALL_GATE_COLLIDER=Object.freeze({width:9,depth:1,height:3.5});
 export const WORDWALL_TOKEN_STEPS=Object.freeze([2]);
 export const WORDWALL_PLAYER_COLLIDER=Object.freeze({footRadius:.3,bodyRadius:.48,height:2.2});
 export const WORDWALL_MIN_CLEARANCE=Object.freeze({box:1.1,circle:1.2,triangle:1.35,ring:1.05});

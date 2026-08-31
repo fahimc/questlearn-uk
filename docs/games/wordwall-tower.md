@@ -11,9 +11,12 @@ The route mixes broad rainbow staircases, hexagonal prism tunnels, uphill runway
 `Choose a subject world → cross a rainbow path → reach a wall → answer one question with Learn or Hint available → collapse the wall → continue to the next path`.
 
 - Five levels each contain five complete path-to-wall sections. Every level rotates through all five path families so the traversal rhythm changes before each question.
+- The entire course is authored on an invisible 0.5-world-unit grid. Each 26-unit checkpoint-to-checkpoint span reserves 3 units for each circular checkpoint and exactly 20 units for the path between them.
+- Stair, tunnel-floor and uphill pieces use integer grid footprints that meet edge-to-edge. Their visible bodies extend down to the previous step so there are no interpenetrating slabs or false sky gaps between continuous pieces.
+- Donut sections use three large 6-unit rings. Each has a 1.5-unit centre hole and a measured 1-unit fall gap before the next ring; those gaps are intentional jump spaces rather than placement errors.
 - A sizing guard expands every platform to a safe-centre radius: 1.10 for boxes, 1.20 for circles, 1.35 for triangles and 1.05 across a donut walkway.
 - Solid 0.48-radius body collision blocks platform sides; underside collision stops upward jumps through bases.
-- Each path curves 45 degrees and rises 3.4 world units. Twenty-six checkpoint platforms connect all 25 paths without a level-loading break.
+- Each path turns 60 degrees around a 26-unit-radius tower and rises 5 world units. Twenty-six circular checkpoint platforms connect all 25 paths without a level-loading break.
 - Large physical **LEVEL 1–5** flags mark the start of each five-wall circuit. The HUD separately shows the current wall from 0/5 to 5/5.
 - One coin sits on each path and a bonus coin appears on every fifth path, preserving 30 rewards per world in one instanced render batch.
 - Each closed wall blocks its full front, back, sides and corners. One correct answer releases that wall; every fifth wall completes the current curriculum level.
@@ -45,7 +48,7 @@ Every gate has a learner-controlled explanation, separate hint, age-readable fee
 
 - `curriculum-question-bank.js` owns the validated 100 authored items; `curriculum-question-generator.js` owns deterministic variants.
 - `wordwall-worlds.js` owns the three subject themes and guarantees five progressive levels with five deterministic questions in each.
-- `wordwall-course.js` owns the deterministic 25-path plan, route-family rotation, minimum sizing and tunnel/ring metadata.
+- `wordwall-course.js` owns the deterministic 25-path plan, hidden-grid placement, non-overlap validation, route-family rotation, minimum sizing and tunnel/ring metadata.
 - `wordwall-engine.js` is renderer-independent and owns one-question-per-wall progression, level boundaries, collision, support sizing, rewards, skins and privacy-safe sharing.
 - `wordwall.js` composes batched Three.js presentation with faster camera-relative movement, higher buffered jumping, analogue input, orbit camera, procedural audio and low-power selection.
 - Desktop uses WASD/arrows, Space, mouse drag and Q/E. Touch uses an independent analogue pointer, Jump pointer and swipe-to-orbit canvas.
