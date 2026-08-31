@@ -51,6 +51,7 @@ Every gate has a learner-controlled explanation, separate hint, age-readable fee
 - `wordwall-course.js` owns the deterministic 25-path plan, hidden-grid placement, non-overlap validation, route-family rotation, minimum sizing and tunnel/ring metadata.
 - `wordwall-engine.js` is renderer-independent and owns one-question-per-wall progression, level boundaries, collision, support sizing, rewards, skins and privacy-safe sharing.
 - `wordwall.js` composes batched Three.js presentation with faster camera-relative movement, higher buffered jumping, analogue input, orbit camera, procedural audio and low-power selection.
+- Each current wall has three guarded activation routes: landing on its checkpoint, touching or stepping close to either face, and an on-screen **Open question** fallback that works only within the same proximity zone.
 - Desktop uses WASD/arrows, Space, mouse drag and Q/E. Touch uses an independent analogue pointer, Jump pointer and swipe-to-orbit canvas.
 - Portrait layouts stack world choices and challenge options inside a bounded scrolling card. Short landscape hides the onboarding guide, keeps all three world choices visible and preserves the game view.
 

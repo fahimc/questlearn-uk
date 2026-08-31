@@ -6,6 +6,9 @@
 .question-count{color:var(--tower-yellow)}
 @media(max-width:620px){.world-grid{grid-template-columns:1fr}.tower-intro .tower-card{max-height:calc(100dvh - 24px);overflow:auto}}
 @media(max-height:560px) and (orientation:landscape){.world-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin:8px 0}.world-grid button{min-height:50px}.world-grid button i{width:34px;height:34px}.tower-intro .tower-card{max-height:calc(100dvh - 16px);overflow:auto}.tower-intro .tower-guide{display:none}}
+.tower-question-button{position:absolute;z-index:14;top:143px;left:max(12px,env(safe-area-inset-left));display:flex;min-height:44px;align-items:center;gap:8px;padding:5px 12px 5px 6px;border:2px solid rgba(8,10,39,.25);border-radius:13px;background:var(--tower-panel);color:#fff;font:inherit;font-size:.72rem;font-weight:900;box-shadow:0 5px 0 rgba(4,6,29,.42),0 12px 28px rgba(4,6,29,.18);cursor:pointer;backdrop-filter:blur(9px);touch-action:manipulation}.tower-question-button span{display:grid;width:30px;height:30px;place-items:center;border-radius:9px;background:var(--tower-yellow);color:#30234c;font-size:1rem;font-weight:950}.tower-question-button:hover,.tower-question-button:focus-visible{border-color:var(--tower-yellow);outline:3px solid rgba(255,225,107,.28);outline-offset:2px}.tower-question-button[hidden]{display:none}
+@media(max-width:620px){.tower-question-button{top:133px}}
+@media(max-height:560px) and (orientation:landscape){.tower-question-button{top:108px;left:8px;min-height:40px}.tower-question-button span{width:27px;height:27px}}
 @media(prefers-reduced-motion:reduce){.tower-toast,.tower-progress em{transition:none}}
 .tower-checkpoint b{display:flex;width:auto;min-width:39px;padding:0 4px;align-items:center;justify-content:center}
 @media(max-width:620px){.tower-checkpoint b span{display:inline}}
