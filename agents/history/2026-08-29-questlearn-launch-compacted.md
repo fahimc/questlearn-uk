@@ -423,3 +423,17 @@ LexiClimb's authoritative content model is **3 years × 3 subjects × 100 questi
 ## Latest resume point
 
 Skybound and LexiClimb now share the same 900-question year/subject registry. Skybound's authoritative run is **ten bridges = two questions per Level 1–5**, and ten sets exhaust a selected 100-question scope. Preserve the corrected visual lane coordinates, readable HUD answer legend, wrapped sign rendering, source non-repetition and scoped replay URL when changing the bridge. The live route accepts `?year=3|4|5&subject=english|maths|science&set=0..` at `https://edugames-189.netlify.app/games/skybound.html`.
+
+## Blocksmith year-tailored curriculum expeditions
+
+- Added `site/games/blocksmith-curriculum-quests.js`, an adapter over the shared 900-question registry. Blocksmith now offers Year 3, 4 and 5 plus English, Maths and Science selection on its welcome screen.
+- Each run contains 20 beacons: four questions from every in-year Level 1–5. Sets 0–4 partition all 100 source questions in a Year/subject scope without repeats. The next-set link cycles through the complete scope, and completion state is stored separately by year, subject and set while inventory and mining remain shared.
+- Multiple-choice questions are translated into physical answer-block tasks. Their four shuffled choices map visibly to moss, wood, stone and glass; validation accepts exactly one block of the material attached to the correct answer. English spelling records retain the deeper interaction: learners mine hidden letter stones and build the exact word in one straight line.
+- Every generated quest keeps the source objective, strand, Hint and question-specific Learn guide. The mobile dialog lays out long Science and English options without overlap and keeps both Keep exploring and Accept build quest visible in the first viewport.
+- Replaced fixed world signs with the selected expedition/year label, updated the journal to show the selected scope and 20-quest total, added five responsive baselines, and refreshed the homepage/game documentation.
+- Regression coverage proves all nine year/subject combinations, Level 1–5 grouping, physical answer-material mapping, exact spelling validation and complete five-set exhaustion of all 100 source records. `npm run test:all` passes 119 tests and validates 196 local files.
+- Visual QA covered 320 × 568, 360 × 800, 390 × 844 and 1280 × 720 for selection, material-answer and spelling routes. GitHub commit `47dca72` and Netlify production deploy `6a960e428a0be003b7146e83` published the release. Production returned HTTP 200 for the game HTML, curriculum adapter, controller and homepage with selector/adapter markers present.
+
+## Latest resume point
+
+All three active learning games now share the same hard Year 3–5 and English/Maths/Science content boundaries. Blocksmith's authoritative run is **20 physical build quests = four questions per Level 1–5**, and five sets exhaust a selected 100-question scope. Preserve the four-material option mapping, spelling-letter build route, scoped completion key and mobile two-action footer when extending it. The live route accepts `?year=3|4|5&subject=english|maths|science&set=0..4` at `https://edugames-189.netlify.app/games/blocksmith.html`.
