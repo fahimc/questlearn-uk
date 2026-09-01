@@ -17,7 +17,7 @@ for(const cell of cover)walls.add(cell);
 addRect(lowClearance,11,17,5,2);addRect(lowClearance,17,17,5,2);
 
 export const outbreakCheckpoints=Object.freeze([
-  {id:'south-spawn',name:'South Safe Room',tile:{x:16,z:28},heading:0},
+  {id:'south-spawn',name:'South Safe Room',tile:{x:19,z:28},heading:.46},
   {id:'west-yard',name:'West Yard',tile:{x:5,z:23},heading:0.7},
   {id:'west-warehouse',name:'West Warehouse',tile:{x:6,z:9},heading:0},
   {id:'north-court',name:'North Court',tile:{x:16,z:3},heading:Math.PI},
