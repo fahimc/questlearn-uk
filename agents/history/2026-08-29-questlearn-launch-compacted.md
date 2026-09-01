@@ -488,3 +488,15 @@ Maths Outbreak shots must remain routed through `resolveOutbreakShotIntersection
 ## Latest resume point
 
 Maths Outbreak camera rotation must remain `YXZ` with zero roll. Keep both pointer-lock mouse input and touch drag routed through `updateOutbreakLook`; do not directly mutate Euler components or remove the pitch clamp. The live game is `https://edugames-189.netlify.app/games/outbreak.html`.
+
+## Maths Outbreak directional damage and survival audio
+
+- Added renderer-independent nearest-attacker bearing logic in `outbreak-engine.js`. Damage is classified as front, left, right or behind relative to the upright FPS yaw and also yields a stereo pan value.
+- Damage now produces a full-screen red edge vignette, a crosshair-relative direction marker, an explicit `Hit from …!` label and a direction-aware toast. The health stat pulses below 30 health. The visual remains readable at 390 × 844, 844 × 390 and 1280 × 720; `preview=damage` provides a deterministic behind-hit fixture.
+- Expanded the asset-free Web Audio layer with stereo hurt cues, nearby-zombie warnings, footsteps and a low-health heartbeat. Existing firing, hit, checkpoint, down, ambience and persistent mute behaviour remain intact.
+- `npm run test:all` passes 134 tests and validates 216 local files. Production HTML/controller/audio source checks found all release markers, and the immutable browser render matched local QA without runtime failure.
+- GitHub commit `b5815e0` and Netlify production deploy `6a96d3dcc60f3e5d0ea849fa` published the release.
+
+## Latest resume point
+
+Keep damage bearing based on player yaw rather than camera Euler state, preserve the stereo-panner fallback and ensure new survival cues respect the persistent mute flag. The live game is `https://edugames-189.netlify.app/games/outbreak.html`.
