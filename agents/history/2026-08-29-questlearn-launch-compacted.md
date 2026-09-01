@@ -464,3 +464,15 @@ EduGames now has four active Three.js games. Maths Outbreak is live at `https://
 ## Latest resume point
 
 Maths Outbreak is live at `https://edugames-189.netlify.app/games/outbreak.html` with the Gridlock Garden art direction. Keep `outbreak-map.js` authoritative for collision and navigation, add future scenery through the deterministic environment plan, and preserve the low-power instanced path. The current visual plan is `gridlock-garden-v1`.
+
+## Maths Outbreak full-body hitscan correction
+
+- Fixed the torso-only shot query in `site/games/outbreak.js`. The raycaster now includes the head, torso, arms and legs instanced meshes, with stable hit-zone metadata on every body batch.
+- Added renderer-independent `resolveOutbreakShotIntersections` in `outbreak-engine.js`. It sorts hits by distance, accepts all four known body zones, preserves the shared zombie instance index, rejects out-of-range hits and lets the nearest wall, cover crate or service-tunnel ceiling block a target behind it.
+- Headshots use the same one-zombie/one-count learning rule as every other body hit but now provide explicit `Headshot!` feedback. A deterministic `preview=headshot` browser fixture places one stationary target on the crosshair for real Three.js integration testing.
+- Regression coverage checks each body zone, blocker ordering and range. `npm run test:all` passes 131 tests and validates 215 local files. Local and production browser runs both exposed four hit meshes, registered the actual head intersection and advanced the counter from 0 to 1 without runtime errors.
+- GitHub commit `6ce1108` and Netlify production deploy `6a96c4b311a4f329740737ab` published the correction.
+
+## Latest resume point
+
+Maths Outbreak shots must remain routed through `resolveOutbreakShotIntersections`; do not reduce `shotMeshes` back to the torso batch. Each visible zombie body mesh owns an `outbreakHitZone`, while map blockers own `blocksOutbreakShots`. The live game is `https://edugames-189.netlify.app/games/outbreak.html`.
