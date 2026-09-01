@@ -500,3 +500,14 @@ Maths Outbreak camera rotation must remain `YXZ` with zero roll. Keep both point
 ## Latest resume point
 
 Keep damage bearing based on player yaw rather than camera Euler state, preserve the stereo-panner fallback and ensure new survival cues respect the persistent mute flag. The live game is `https://edugames-189.netlify.app/games/outbreak.html`.
+
+## Maths Outbreak portal key art refresh
+
+- Replaced the flat gameplay-capture thumbnail with original cinematic 3D key art matching the Blocksmith, Skybound and LexiClimb discovery tiles. The scene keeps Maths Outbreak child-safe through a toy-like number tagger, playful block zombies, bright Gridlock Garden architecture and floating maths tokens, with no baked-in title or UI.
+- Archived the full 1536 × 1024 generated source at `docs/images/generated/maths-outbreak-source.png` and published a centred 960 × 640 WebP derivative at `site/assets/edugames/maths-outbreak.webp`. The optimized 126 KB asset is smaller than the deleted 175 KB screenshot PNG.
+- Desktop and 390 px production portal captures preserve the learner, closest zombies, maths tokens and landmark within the responsive tile crop. `npm run test:all` passes 134 tests and validates 217 local files.
+- GitHub commit `1e4cb2e` and Netlify production deploy `6a96e3e9b6b95196135bfada` published the refresh. Production serves the new WebP with HTTP 200 and the updated accessible description.
+
+## Latest resume point
+
+The four active discovery thumbnails now share high-saturation, polished 3D key-art direction with titles kept in HTML. Keep the full generated source in `docs/images/generated/` and serve an optimized derivative from `site/assets/edugames/` when refreshing future artwork.
