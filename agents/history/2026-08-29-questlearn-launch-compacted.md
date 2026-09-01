@@ -451,3 +451,16 @@ All three active learning games now share the same hard Year 3–5 and English/M
 ## Current resume point
 
 EduGames now has four active Three.js games. Maths Outbreak is live at `https://edugames-189.netlify.app/games/outbreak.html` and accepts `?year=3|4|5&set=0..`. Preserve the hidden-answer counter, neutral incorrect retry, five-checkpoint order, map-grid collision authority and instanced low-power path when extending it. Physical Chromebook/tablet performance, keyboard-only accessibility and child playtesting remain required before a classroom pilot.
+
+## Maths Outbreak Gridlock Garden environment pass
+
+- Replaced the dark industrial presentation with the bright daytime Gridlock Garden district. Number Works, Puzzle Depot and Count Court now have distinct warm, cool and purple landmark palettes, readable signs, repeated windows, awnings, roofs, trim, rooftop equipment and skylights.
+- Added deterministic surface zoning, lane markings, planted cover, streetlights, distant low-poly trees and stylised clouds. The South Safe Room moved to a nearby clear tile and starts angled into the landmark view instead of facing the old cover wall.
+- Kept visual dressing separate from game physics. `outbreak-environment-plan.js` is renderer-independent; streetlights occupy existing solid wall cells, shrubs sit on existing cover and trees remain outside the map. `outbreak-environment.js` consumes the plan with shared materials and instanced geometry, so the visual pass adds no invisible blockers.
+- Corrected instance-colour materials during browser QA, refreshed the portal thumbnail and desktop/portrait/short-landscape reference images, and made `?touch=1` exercise the real low-power tier. Production low-power WebGL reports ready with no runtime error, 49 calls and 21,222 triangles; the high-tier local reference reports 64 calls and 26,778 triangles.
+- `npm run test:all` passes 129 tests and validates 540 local links/files. New regression coverage validates the two building plans, distinct surface zones and decoration placement against the collision map.
+- GitHub commit `59a80a8` and Netlify production deploy `6a96bdacd11446b10aa71304` published the update. Production HTML, environment renderer, environment plan and refreshed thumbnail return HTTP 200; the live WebGL diagnostic exposes two buildings and 48 window instances.
+
+## Latest resume point
+
+Maths Outbreak is live at `https://edugames-189.netlify.app/games/outbreak.html` with the Gridlock Garden art direction. Keep `outbreak-map.js` authoritative for collision and navigation, add future scenery through the deterministic environment plan, and preserve the low-power instanced path. The current visual plan is `gridlock-garden-v1`.
