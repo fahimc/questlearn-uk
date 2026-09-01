@@ -51,6 +51,8 @@ Six mapped pads define start plus five sequential checkpoints: South Safe Room, 
 
 Pointer capture supports held touch controls, and the entire game disables text selection and touch callouts. The HUD is a responsive grid: brand, equation and essential counters occupy the top row; the mission sits beneath it; thumb controls stay in independent lower corners. On short landscape screens the controls shrink while the checkpoint or Confirm action remains centred and unobstructed.
 
+Camera look follows conventional FPS orientation. Left/right input changes yaw around the upright world axis; up/down input changes pitch; roll always remains zero. Both mouse and touch use the same look resolver, which normalises repeated horizontal turns and clamps vertical look to about 83° before the view can invert.
+
 ## Architecture
 
 ```mermaid
