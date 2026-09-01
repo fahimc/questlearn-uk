@@ -548,3 +548,14 @@ Skybound's mobile question HUD is intentionally persistent but shallow. Keep the
 ## Latest resume point
 
 EduGames now has five active Three.js titles. One Block Academy is live at `https://edugames-189.netlify.app/games/oneblock.html`. Preserve the central renewable core, exact ten-mine phase gate, deterministic weighted phase resources, grid-snapped island placement, challenge fallback button, scoped Year/subject/set save and non-repeating ten-question curriculum route when extending it.
+
+## One Block edge-building correction
+
+- Corrected the missing first-island expansion interaction. Side-face placement still uses exact voxel adjacency, while aiming at a block's top face now resolves to the nearest horizontal edge (or the camera-forward edge at the centre) instead of stacking upward. A learner can mine one resource and immediately place it beside the renewable core without stepping off.
+- Added Minecraft-style ledge protection: desktop holds Shift and touch toggles a fourth Sneak action. Grounded sneaking rejects movement into unsupported space but does not suppress jumping, so deliberate void risk remains.
+- Updated onboarding/help, game and research notes, phone and short-landscape baselines, and deterministic engine/site coverage. `npm run test:all` passes 145 tests and validates 230 local links/files.
+- GitHub commit `8e2c5c5` and Netlify production deploy `6a9723d9906017297bf4f2d4` published the correction. The live HTML and engine expose the Sneak control and placement resolver, and the production 390 × 844 capture shows the four-button layout without overlap.
+
+## Latest resume point
+
+One Block Academy supports safe first-block expansion through both precise side-face placement and forgiving top-face edge placement. Preserve `resolveOneBlockPlacement`, `oneBlockSneakAllowsStep`, desktop held Shift, the touch Sneak toggle and jump-while-sneaking behavior when changing construction or movement.
