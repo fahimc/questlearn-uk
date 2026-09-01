@@ -74,4 +74,4 @@ These captures cover visual regression/reference needs. Production acceptance st
 
 ## Generated EduGames artwork
 
-Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The active set contains the EduGames mark and thumbnails for Blocksmith, Skybound, LexiClimb and Maths Outbreak; the earlier Chronicle artwork remains archived in the repository. Visible titles remain HTML rather than baked into the artwork.
+Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The active set contains the EduGames mark and thumbnails for Blocksmith, Skybound, LexiClimb and Maths Outbreak; the earlier Chronicle artwork remains archived in the repository. The Maths Outbreak key art uses the same cinematic, colourful 3D language as the other active games while keeping its tagger and zombies playful and non-violent. Visible titles remain HTML rather than baked into the artwork.
