@@ -46,10 +46,10 @@
 
 ## Skybound glass run
 
-- The question is a compact DOM card over the 3D scene; the two answers stay physically attached to the left and right glass tiles.
-- Learn and Hint expand inside the card and pause no gameplay state, allowing the learner to request support before jumping.
+- The question is a compact DOM HUD over the 3D scene; on portrait phones its metadata, prompt, Learn/Hint actions and two-column answer legend use roughly one short strip rather than stacking into half the viewport. The two answers remain physically attached to the left and right glass tiles.
+- Learn and Hint open a bounded teaching panel below the compact HUD only when requested. Closing the selected action restores the unobstructed playfield without changing gameplay state.
 - Touch movement and Jump are independent pointer controls so the learner can run and jump at the same time.
-- Portrait uses a full-width question below the HUD and bottom-corner controls. Short landscape uses a 300 px question card in the upper-left, smaller controls and the rest of the viewport for the bridge.
+- Portrait uses a shallow full-width question strip below the HUD and bottom-corner controls. Short landscape uses a 310 px question card in the upper-left, smaller controls and the rest of the viewport for the bridge.
 - All HUD elements use safe-area offsets. Gameplay controls disable selection and callouts without disabling selection in learning text.
 
 ## LexiClimb tower

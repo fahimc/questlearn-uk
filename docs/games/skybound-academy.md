@@ -60,9 +60,9 @@ The bridge remains a two-choice retrieval/application interaction. It is useful 
 
 - Desktop uses WASD/arrows, Space, mouse orbit and Q/E.
 - Touch uses an independent analogue stick, Jump pointer and swipe-to-orbit canvas.
-- Portrait mobile gives the selector card one deliberate scroll region. Gameplay keeps the question and readable left/right legend above the tiles and controls at opposite bottom corners.
+- Portrait mobile gives the selector card one deliberate scroll region. Gameplay keeps a shallow question strip and two-column left/right legend above the tiles, leaving most of the bridge visible with controls at opposite bottom corners.
 - Short landscape hides onboarding guidance, preserving all year/subject choices and the Start action without covering the bridge.
-- Detailed Learn content scrolls inside the bounded question card.
+- Detailed Learn content appears only on request and scrolls inside a separate bounded teaching panel below the compact question strip.
 - Text selection and callouts are disabled only on gameplay controls.
 
 ## Evidence and tests
