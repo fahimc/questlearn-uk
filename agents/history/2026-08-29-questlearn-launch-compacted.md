@@ -572,3 +572,16 @@ One Block Academy supports safe first-block expansion through both precise side-
 ## Latest resume point
 
 The EduGames homepage now begins with the safety promise followed by five timed game banners. Preserve the safety slide as the first item, its exact four-part promise, manual pause/navigation controls, focus/visibility/reduced-motion pauses and narrow-screen no-crop treatment when changing portal discovery. The live portal remains `https://edugames-189.netlify.app/`.
+
+## Maths Outbreak key-art gameplay pass
+
+- Reworked the live Gridlock Garden presentation to match the Maths Outbreak thumbnail's defining visual language without changing the 32 × 32 collision/navigation map. `gridlock-garden-keyart-v2` uses saturated teal/orange checker paving, taller layered Number Works/Puzzle Depot façades and a stepped Count Court school entrance with orange framing, clock tower and flag.
+- Added bounded hero decoration: four floating glowing maths tiles, stronger planting and flowers. The environment exposes a lightweight update hook for tile bob/turn motion; low-power mode reduces flowers and still uses instanced repeated geometry.
+- Rebuilt zombies as larger toy-like targets with varied green heads, colourful shirts, bright eyes, pupils, mouths and maths badges. The decorative face meshes are deliberately excluded from hitscan; the enlarged head, torso, arms and legs remain the four authoritative full-body zones.
+- Replaced the dark rectangular weapon with a compact teal/cyan/orange number blaster. Its illuminated panel mirrors the current tagged count and remains below the main sightline in desktop, portrait and short-landscape layouts.
+- Added key-art contract tests, refreshed desktop/mobile/checkpoint baselines, added a close-zombie baseline and made all six Outbreak captures reproducible through `scripts/capture-previews.mjs`.
+- `npm run test:all` passes 148 tests and validates 233 local links/files. GitHub commit `53927d3` and Netlify production deploy `6a97318f4fef0d66ecf75da4` published the pass. Production desktop, portrait and headshot captures match local output.
+
+## Latest resume point
+
+Maths Outbreak now uses the `gridlock-garden-keyart-v2` art plan. Keep `outbreak-map.js` authoritative for collision/navigation, `zombieHitMeshes` restricted to the four visible body zones and the blaster counter synchronised through `updateHud`. Add future repeated scenery through instancing and preserve the coarse-pointer low-power reductions. The live game remains `https://edugames-189.netlify.app/games/outbreak.html`.
