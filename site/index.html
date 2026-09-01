@@ -32,6 +32,54 @@
   </aside>
 
   <main id="main" class="portal-main">
+    <section class="hero-carousel" data-hero-carousel aria-label="Featured EduGames" aria-roledescription="carousel">
+      <div class="hero-viewport">
+        <article class="hero-slide hero-safety-slide active" data-carousel-slide data-slide-name="Kid Safe Games" aria-hidden="false">
+          <a href="#games" aria-label="Kid Safe Games: no ads, no chat and learning built in. Explore all games.">
+            <img src="assets/edugames/kid-safe-games-hero.webp" alt="Kid Safe Games — no ads, no chat, learning built in">
+            <span class="hero-safety-cta">Explore all games <i aria-hidden="true">↓</i></span>
+          </a>
+        </article>
+        <article class="hero-slide" data-carousel-slide data-slide-name="Blocksmith Worlds" aria-hidden="true">
+          <a href="games/blocksmith.html" aria-label="Play Blocksmith Worlds">
+            <img src="assets/edugames/blocksmith-worlds.webp" alt="A bright voxel island with a workshop, river and glowing build challenge">
+            <span class="hero-slide-shade"></span><span class="hero-slide-copy"><span class="hero-slide-badges"><b>Playable now</b><em>Years 3–5</em></span><strong>Blocksmith Worlds</strong><small>Mine resources, explore curriculum quests and build the answer.</small><i class="hero-play">▶ Play now</i></span>
+          </a>
+        </article>
+        <article class="hero-slide" data-carousel-slide data-slide-name="One Block Academy" aria-hidden="true">
+          <a href="games/oneblock.html" aria-label="Play One Block Academy">
+            <img src="assets/edugames/one-block-academy.webp" alt="A learner building a colourful sky island around a glowing renewable block">
+            <span class="hero-slide-shade"></span><span class="hero-slide-copy"><span class="hero-slide-badges"><b>New adventure</b><em>Years 3–5</em></span><strong>One Block Academy</strong><small>Mine one renewable block, solve each learning gate and grow your island.</small><i class="hero-play">▶ Play now</i></span>
+          </a>
+        </article>
+        <article class="hero-slide" data-carousel-slide data-slide-name="Skybound Academy" aria-hidden="true">
+          <a href="games/skybound.html" aria-label="Play Skybound Academy">
+            <img src="assets/edugames/skybound-academy.webp" alt="A learner crossing a colourful glass bridge high above the clouds">
+            <span class="hero-slide-shade"></span><span class="hero-slide-copy"><span class="hero-slide-badges"><b>Quick challenge</b><em>Years 3–5</em></span><strong>Skybound Academy</strong><small>Choose the correct glass answer and race across ten curriculum bridges.</small><i class="hero-play">▶ Play now</i></span>
+          </a>
+        </article>
+        <article class="hero-slide" data-carousel-slide data-slide-name="LexiClimb Tower" aria-hidden="true">
+          <a href="games/wordwall.html" aria-label="Play LexiClimb Tower">
+            <img src="assets/edugames/lexiclimb-tower.webp" alt="A block character climbing a colourful floating obstacle tower with learning gates">
+            <span class="hero-slide-shade"></span><span class="hero-slide-copy"><span class="hero-slide-badges"><b>Five worlds</b><em>Years 3–5</em></span><strong>LexiClimb Tower</strong><small>Climb rainbow circuits and open every English, Maths or Science wall.</small><i class="hero-play">▶ Play now</i></span>
+          </a>
+        </article>
+        <article class="hero-slide" data-carousel-slide data-slide-name="Maths Outbreak" aria-hidden="true">
+          <a href="games/outbreak.html" aria-label="Play Maths Outbreak">
+            <img src="assets/edugames/maths-outbreak.webp" alt="A learner carrying a number tagger through a colourful courtyard with playful block zombies">
+            <span class="hero-slide-shade"></span><span class="hero-slide-copy"><span class="hero-slide-badges"><b>Action maths</b><em>Years 3–5</em></span><strong>Maths Outbreak</strong><small>Solve the equation, tag exactly that many zombies and reach the checkpoint.</small><i class="hero-play">▶ Play now</i></span>
+          </a>
+        </article>
+      </div>
+      <button class="hero-arrow hero-prev" type="button" data-carousel-prev aria-label="Show previous banner">‹</button>
+      <button class="hero-arrow hero-next" type="button" data-carousel-next aria-label="Show next banner">›</button>
+      <div class="hero-carousel-footer">
+        <div class="hero-dots" data-carousel-dots aria-label="Choose a banner"></div>
+        <button class="hero-pause" type="button" data-carousel-pause aria-label="Pause carousel" aria-pressed="false"><span aria-hidden="true">Ⅱ</span><b>Pause</b></button>
+      </div>
+      <p class="sr-only" data-carousel-live aria-live="off" aria-atomic="true">Showing Kid Safe Games</p>
+    </section>
+
     <section class="welcome-row" aria-labelledby="welcome-title">
       <div><p class="portal-kicker">Educational games · ages 7–10</p><h1 id="welcome-title">Pick a world. Learn by playing.</h1></div>
       <ul class="promise-list" aria-label="EduGames promises"><li><span>✓</span>No adverts</li><li><span>✓</span>No chats</li><li><span>✓</span>No account needed</li></ul>
@@ -44,18 +92,6 @@
       <button class="category-card" type="button" data-category="science" aria-pressed="false"><span class="category-icon coral">⚗</span><b>Science labs</b><small>Test ideas</small></button>
       <button class="category-card" type="button" data-category="creative" aria-pressed="false"><span class="category-icon blue">▦</span><b>Creative play</b><small>Make & improve</small></button>
     </nav>
-
-    <section class="featured-section" aria-labelledby="featured-title">
-      <div class="shelf-heading"><div><p class="portal-kicker">Start here</p><h2 id="featured-title">Featured learning game</h2></div><span class="safe-session"><i></i> Private guest play</span></div>
-      <article class="featured-card" data-game data-categories="maths science geography creative" data-search="blocksmith worlds maths fractions multiplication perimeter volume percentages building mining">
-        <a href="games/blocksmith.html" aria-label="Play Blocksmith Worlds">
-          <img src="assets/edugames/blocksmith-worlds.webp" alt="A bright voxel island with a workshop, river, resources and a glowing build challenge">
-          <div class="featured-shade"></div>
-          <div class="featured-copy"><div class="tile-badges"><span class="live-badge">Playable now</span><span>Years 3–5</span></div><h2>Blocksmith Worlds</h2><p>Choose English, Maths or Science. Dig for materials and letters, then build the answer across 900 tailored questions.</p><span class="play-pill"><i>▶</i> Play now</span></div>
-          <div class="learning-stamp"><span>Learning focus</span><b>Maths · Science · Design</b></div>
-        </a>
-      </article>
-    </section>
 
     <section id="games" class="game-shelf" aria-labelledby="games-title">
       <div class="shelf-heading"><div><p class="portal-kicker">Play and learn</p><h2 id="games-title">Choose your next adventure</h2></div><p>Every challenge uses real curriculum ideas inside the game.</p></div>

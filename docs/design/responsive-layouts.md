@@ -2,6 +2,8 @@
 
 ## Extreme portrait: 320 × 800
 
+- The landing page begins with the child-safety carousel. Its first image is contained rather than cropped, keeping “Kid safe games”, “No ads”, “No chat” and “Learning built in” readable at the narrowest supported width.
+- Carousel controls remain inside the banner, while the shorter mobile height returns the categories and game browser to the first scroll.
 - Landing actions become full-width.
 - Game board remains first for spatial context; challenge card follows and page can scroll.
 - Component content reflows, never shrinks below readable size.
@@ -24,12 +26,15 @@
 
 ## Desktop: 1440 × 900
 
+- The opening carousel uses the full content width for the safety promise and five playable game banners, with HTML titles and actions layered over game artwork.
+- Previous/next arrows, slide dots, pause/resume, keyboard navigation and timed rotation share one consistent control layer. Rotation pauses for hover, focus, a hidden tab or reduced-motion preferences.
 - Content width caps at 1180 px.
 - Three game concepts sit in one row.
 - Game board and challenge dock use roughly 70/30 width.
 
 ## Extreme short landscape: 844 × 390
 
+- The safety artwork switches to a contained treatment so none of its promise is lost to the shallow crop; the whole slide remains the action target and the redundant CTA is hidden.
 - Nonessential brand chrome is removed in game pages.
 - Game board and challenge dock appear side-by-side.
 - Challenge answers use compact vertical rhythm but remain at least 40–44 px.

@@ -6,10 +6,10 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 
 | Scenario | Preview |
 |---|---|
-| Extreme mobile landing, 320 × 800 | [PNG](responsive/index-mobile.png) |
-| Tablet landing, 768 × 1024 | [PNG](responsive/index-tablet.png) |
-| Desktop landing, 1440 × 900 | [PNG](responsive/index-desktop.png) |
-| EduGames short landscape, 844 × 390 | [PNG](responsive/index-short-landscape.png) |
+| Extreme mobile safety carousel, 320 × 800 | [PNG](responsive/index-mobile.png) |
+| Tablet safety carousel, 768 × 1024 | [PNG](responsive/index-tablet.png) |
+| Desktop safety carousel, 1440 × 900 | [PNG](responsive/index-desktop.png) |
+| EduGames safety carousel, short landscape, 844 × 390 | [PNG](responsive/index-short-landscape.png) |
 | Blocksmith mobile, 390 × 844 | [PNG](responsive/blocksmith-mobile.png) |
 | Blocksmith narrow mobile, 341 × 772 | [PNG](responsive/blocksmith-narrow-mobile.png) |
 | Blocksmith mobile inventory, 341 × 772 | [PNG](responsive/blocksmith-inventory-mobile.png) |
@@ -78,4 +78,4 @@ These captures cover visual regression/reference needs. Production acceptance st
 
 ## Generated EduGames artwork
 
-Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The active set contains the EduGames mark and thumbnails for Blocksmith, One Block Academy, Skybound, LexiClimb and Maths Outbreak; the earlier Chronicle artwork remains archived in the repository. One Block Academy uses original sky-island key art with a renewable learning core rather than third-party game textures or branding. The Maths Outbreak key art uses the same cinematic, colourful 3D language as the other active games while keeping its tagger and zombies playful and non-violent. Visible titles remain HTML rather than baked into the artwork.
+Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The active set contains the EduGames mark, a child-safety hero banner and thumbnails for Blocksmith, One Block Academy, Skybound, LexiClimb and Maths Outbreak; the earlier Chronicle artwork remains archived in the repository. The safety banner carries the exact product promise—kid-safe games, no ads, no chat and learning built in—inside its artwork, with equivalent alternative text in the page. One Block Academy uses original sky-island key art with a renewable learning core rather than third-party game textures or branding. The Maths Outbreak key art uses the same cinematic, colourful 3D language as the other active games while keeping its tagger and zombies playful and non-violent. Game-slide titles remain HTML rather than baked into their artwork.
