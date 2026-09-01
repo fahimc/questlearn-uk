@@ -534,3 +534,17 @@ Keep all Maths Outbreak movement, damage bearings and positional audio derived f
 ## Latest resume point
 
 Skybound's mobile question HUD is intentionally persistent but shallow. Keep the two physical answer tiles visible, preserve the two-column narrow-screen legend, and put longer teaching content in the bounded on-demand panel. The live route remains `https://edugames-189.netlify.app/games/skybound.html`.
+
+## One Block Academy educational sky-island game
+
+- Researched the original OneBlock format from IJAMinecraft's creator page, Minecraft.net's play article and the original CurseForge listing. The implementation keeps the abstract renewable-block survival loop but uses original phases, names, artwork, textures, code and curriculum interactions; it does not reproduce or redistribute the original protected map.
+- Added the fifth active EduGames title at `site/games/oneblock.html`. One renewable core regenerates immediately after every mine, grants a deterministic weighted resource, and lets the learner expand a grid-snapped floating island through first-person mining and placement.
+- `oneblock-engine.js` owns ten original ten-mine phases, seeded material rolls, challenge locking, inventory/rewards, Afterglow free play and bounded save restoration. The Three.js adapter reuses Blocksmith's voxel style, fixed-step gravity, collision, analogue input and low-power selection while keeping the smaller island performant.
+- Every phase ends at a paused Year 3–5 English, Maths or Science knowledge gate adapted from the shared 900-question bank. Ten questions are selected without repetition for the chosen scope; each gate has tailored Learn and Hint support, physical block-like answer choices and a persistent HUD fallback until solved.
+- Added responsive onboarding, desktop WASD/mouse controls, touch drag/analogue/Mine/Place/Jump controls, void respawn without progress loss, synthesised cues, local scoped saves, original generated key art and the homepage discovery tile.
+- Added research, game, engine, responsive and image documentation plus four visual baselines at 1280 × 720, 390 × 844, 360 × 740 and 844 × 390. `npm run test:all` passes 143 tests and validates 230 local links/files.
+- GitHub commit `339c7b3` and Netlify production deploy `6a97192894d8e312251bbf75` published the game. The live portal, game HTML, pure engine and optimized artwork all return HTTP 200; the production 390 × 844 WebGL capture matches the local touch baseline.
+
+## Latest resume point
+
+EduGames now has five active Three.js titles. One Block Academy is live at `https://edugames-189.netlify.app/games/oneblock.html`. Preserve the central renewable core, exact ten-mine phase gate, deterministic weighted phase resources, grid-snapped island placement, challenge fallback button, scoped Year/subject/set save and non-repeating ten-question curriculum route when extending it.
