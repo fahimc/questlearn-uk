@@ -48,6 +48,11 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | LexiClimb skin shop, short landscape, 844 × 390 | [PNG](responsive/wordwall-shop-landscape.png) |
 | LexiClimb Science gate, mobile, 390 × 844 | [PNG](responsive/wordwall-challenge-mobile.png) |
 | LexiClimb Maths gate, short landscape, 844 × 390 | [PNG](responsive/wordwall-short-landscape.png) |
+| Maths Outbreak welcome, mobile, 390 × 844 | [PNG](responsive/outbreak-welcome-mobile.png) |
+| Maths Outbreak tiled arena, desktop, 1280 × 720 | [PNG](responsive/outbreak-gameplay-desktop.png) |
+| Maths Outbreak touch controls, mobile, 390 × 844 | [PNG](responsive/outbreak-gameplay-mobile.png) |
+| Maths Outbreak checkpoint, short landscape, 844 × 390 | [PNG](responsive/outbreak-checkpoint-mobile.png) |
+| Maths Outbreak question-specific Learn panel, desktop, 1280 × 720 | [PNG](responsive/outbreak-learn-desktop.png) |
 | Chronicle desktop, 1280 × 720 | [PNG](responsive/chronicle-desktop.png) |
 
 ## Component designs
@@ -69,4 +74,4 @@ These captures cover visual regression/reference needs. Production acceptance st
 
 ## Generated EduGames artwork
 
-Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The active set contains the EduGames mark and thumbnails for Blocksmith, Skybound and LexiClimb; the earlier Chronicle artwork remains archived in the repository. Visible titles remain HTML rather than baked into the artwork.
+Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The active set contains the EduGames mark and thumbnails for Blocksmith, Skybound, LexiClimb and Maths Outbreak; the earlier Chronicle artwork remains archived in the repository. Visible titles remain HTML rather than baked into the artwork.

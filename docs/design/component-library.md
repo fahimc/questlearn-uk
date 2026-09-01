@@ -12,6 +12,8 @@ The live examples and image-capture routes are in [`site/components.html`](../..
 | Mission card | game, subject, duration, objective, action | vertical → horizontal | clear heading; one primary link |
 | Game HUD | mission and essential counters | hides secondary labels on narrow/short | landmark label; pause always present |
 | Touch controls | logical actions + key bindings | thumb zones; scales for short landscape | keyboard equivalent; labelled controls |
+| Virtual stick | normalised x/y vector, dead zone, reset | fixed thumb zone; shrinks in short landscape | pointer capture; keyboard movement remains available |
+| Exact-count mission | equation, tagged count, target, phase | equation stays top-centre; mission copy moves below HUD | live feedback; Learn and pause remain reachable |
 | Pause modal | state, save note, continue/finish | centred → full-height sheet on very narrow | native dialog target; focus trap in production |
 | Learner profile | pseudonym, avatar token, skill summary | action moves below profile | avatar decorative or labelled correctly |
 | Teacher insight | group, skill, action label | bars collapse to list; never horizontal scroll | text values accompany visuals |
@@ -31,4 +33,3 @@ Component breaking changes require a migration note. Curriculum content must nev
 ## Preview images
 
 `npm run screenshots` captures each isolated component to `docs/images/components/` and responsive whole-page views to `docs/images/responsive/`. The query format is `components.html?component=feedback`.
-

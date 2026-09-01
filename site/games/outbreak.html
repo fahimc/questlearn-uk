@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#091722">
+  <meta name="description" content="Solve maths equations by tagging the exact number of blocky zombies in a safe, no-gore FPS challenge for Years 3 to 5.">
+  <title>Maths Outbreak · EduGames</title>
+  <link rel="stylesheet" href="../assets/game.css">
+  <link rel="stylesheet" href="outbreak.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js"}}</script>
+</head>
+<body class="game-page outbreak-page">
+  <main class="outbreak-game" aria-label="Maths Outbreak first-person maths game">
+    <canvas id="outbreakCanvas" tabindex="0" aria-label="First-person tiled arena. Use WASD or the touch stick to move, drag to look and fire at blocky zombies."></canvas>
+    <header class="outbreak-hud">
+      <a class="outbreak-brand" href="../index.html" aria-label="Exit Maths Outbreak"><span>E</span><b>Maths Outbreak</b></a>
+      <section class="equation-card" aria-live="polite"><small><span data-year>Year 3</span> · Level <span data-level>1</span>/5</small><strong data-equation>4 + 3</strong><em data-strand>Addition</em></section>
+      <div class="outbreak-stats"><span class="health-stat"><i>♥</i><b data-health>100</b></span><span class="count-stat" aria-label="Zombies tagged"><i>◎</i><b data-count>0</b></span><button type="button" data-audio aria-label="Mute sound">♪</button><button type="button" data-help aria-label="Open controls and learning help">?</button><button type="button" data-pause aria-label="Pause game">Ⅱ</button></div>
+    </header>
+    <div class="crosshair outbreak-crosshair" aria-hidden="true"><i></i><i></i></div>
+    <div class="outbreak-toast" data-toast role="status" aria-live="polite"></div>
+    <aside class="mission-card" data-mission><span data-phase-label>SWARM ACTIVE</span><b data-mission-copy>Work out the equation. Tag exactly that many zombies.</b><div><i style="--progress:0%" data-count-progress></i></div></aside>
+    <button class="confirm-count" type="button" data-confirm><span>✓</span><b>Confirm <em data-confirm-count>0</em></b><small>Is this the equation answer?</small></button>
+    <button class="checkpoint-prompt" type="button" data-checkpoint hidden><span>◆</span><b>Enter checkpoint</b><small data-checkpoint-name>West Yard</small></button>
+    <div class="stance-pill" data-stance hidden>DUCKING · HIDDEN</div>
+    <div class="outbreak-touch" aria-label="Touch controls">
+      <div class="virtual-stick" data-stick aria-label="Movement stick"><span data-stick-knob></span></div>
+      <div class="action-stack"><button type="button" data-action="run" aria-label="Hold to sprint" aria-pressed="false"><span>»</span><small>RUN</small></button><button type="button" data-action="crouch" aria-label="Duck or stand" aria-pressed="false"><span>⌄</span><small>DUCK</small></button><button class="fire-button" type="button" data-action="fire" aria-label="Fire tag blaster"><span>●</span><small>FIRE</small></button></div>
+    </div>
+    <section class="outbreak-intro" data-intro aria-labelledby="outbreak-title">
+      <div class="outbreak-intro-card">
+        <p class="outbreak-kicker">EduGames operation 04</p><h1 id="outbreak-title">Maths<br><span>Outbreak</span></h1>
+        <p>Blocky zombies have swarmed Gridlock Courtyard. Solve each equation, tag exactly that many, confirm your count and run to the next checkpoint.</p>
+        <p class="selector-label">Choose your year</p><div class="outbreak-year-grid" data-year-grid><button type="button" data-year-choice="3"><b>Year 3</b><small>Ages 7–8</small></button><button type="button" data-year-choice="4"><b>Year 4</b><small>Ages 8–9</small></button><button type="button" data-year-choice="5"><b>Year 5</b><small>Ages 9–10</small></button></div>
+        <div class="outbreak-guide"><div><b>MOVE &amp; LOOK</b><span class="desktop-guide"><kbd>WASD</kbd> · mouse</span><span class="touch-guide">Stick · drag world</span></div><div><b>TAG</b><span class="desktop-guide">Click or <kbd>F</kbd></span><span class="touch-guide">Hold FIRE</span></div><div><b>RUN &amp; DUCK</b><span class="desktop-guide"><kbd>Shift</kbd> · <kbd>C</kbd></span><span class="touch-guide">RUN · DUCK</span></div></div>
+        <p class="safety-note">No gore, no adverts and no public chat. Zombies dissolve into number sparks.</p>
+        <button class="outbreak-primary" type="button" data-start>Start operation</button>
+      </div>
+    </section>
+    <dialog class="outbreak-dialog" data-help-dialog><form method="dialog"><header><div><span>Mission support</span><h2 data-help-title>How to solve this equation</h2></div><button value="close" aria-label="Close help">×</button></header><p data-help-text></p><ol data-help-steps></ol><div class="help-controls"><b>Survival tips</b><p>Run to create space. Duck behind crates to break line of sight. Yellow-striped service tunnels only fit while ducking. Keep your own count, then press Confirm.</p></div><button class="outbreak-primary" value="close">Back to operation</button></form></dialog>
+    <dialog class="outbreak-dialog pause-dialog" data-pause-dialog><form method="dialog"><span>Operation paused</span><h2>Take a breather.</h2><p>Your current checkpoint and equation are safe.</p><button class="outbreak-primary" value="resume">Resume</button><a href="../index.html">Finish for now</a></form></dialog>
+    <dialog class="outbreak-dialog result-dialog" data-result-dialog><form method="dialog"><span>Operation complete</span><h2>All five checkpoints secured!</h2><p data-result-copy>You solved five equations and cleared Gridlock Courtyard.</p><div><button class="outbreak-primary" type="button" data-replay>New equations</button><a href="../index.html">Choose another game</a></div></form></dialog>
+    <div class="webgl-warning" data-webgl-warning hidden><b>The 3D operation could not start.</b><span>Try a current browser with WebGL enabled and an internet connection.</span></div>
+  </main>
+  <script>addEventListener('error',event=>{document.documentElement.dataset.outbreakError=event.message||'runtime error';const warning=document.querySelector('[data-webgl-warning]');if(warning){warning.hidden=false;warning.querySelector('span').textContent=event.message||'The game stopped while loading.'}})</script>
+  <script type="module" src="outbreak.js"></script>
+  <script>setTimeout(()=>{if(!document.documentElement.dataset.outbreakReady)document.querySelector('[data-webgl-warning]').hidden=false},8000)</script>
+</body>
+</html>
