@@ -53,6 +53,8 @@ Pointer capture supports held touch controls, and the entire game disables text 
 
 Camera look follows conventional FPS orientation. Left/right input changes yaw around the upright world axis; up/down input changes pitch; roll always remains zero. Both mouse and touch use the same look resolver, which normalises repeated horizontal turns and clamps vertical look to about 83° before the view can invert.
 
+Damage feedback remains visible even when the attacker is behind the camera. A red edge vignette flashes, a marker points towards the nearest attacker and a plain-language label says front, left, right or behind. The health panel pulses below 30 health. Procedural Web Audio adds a quiet arena drone, firing and hit sounds, alternating footsteps, stereo-panned nearby-zombie warnings, directional hurt cues and a low-health heartbeat; every cue respects the persistent mute control and needs no downloaded audio asset.
+
 ## Architecture
 
 ```mermaid
