@@ -437,3 +437,17 @@ Skybound and LexiClimb now share the same 900-question year/subject registry. Sk
 ## Latest resume point
 
 All three active learning games now share the same hard Year 3–5 and English/Maths/Science content boundaries. Blocksmith's authoritative run is **20 physical build quests = four questions per Level 1–5**, and five sets exhaust a selected 100-question scope. Preserve the four-material option mapping, spelling-letter build route, scoped completion key and mobile two-action footer when extending it. The live route accepts `?year=3|4|5&subject=english|maths|science&set=0..4` at `https://edugames-189.netlify.app/games/blocksmith.html`.
+
+## Maths Outbreak first-person learning game
+
+- Added the fourth active EduGames title, Maths Outbreak, at `site/games/outbreak.html`. It is an original, no-gore first-person swarm game on the 32 × 32 tiled Gridlock Courtyard rather than a copied commercial map. The three-lane arena includes two warehouses, a central court, cover crates, crouch-only service tunnels and five sequential checkpoints.
+- Each Year 3–5 operation contains five deterministic equations with answers bounded from 3–15. The learner tags a self-chosen number of pooled block zombies and presses Confirm; neither the HUD nor the question-specific Learn panel displays the answer. An incorrect count restarts only the current swarm with neutral feedback, while a correct count opens the next checkpoint.
+- Added renderer-independent `outbreak-engine.js`, `outbreak-map.js` and `outbreak-questions.js` plus reusable `game-input.js` analogue-stick/hold controls. The game supports WASD/mouse/Shift/C/F/E and mobile stick/drag/Run/Duck/Fire, crouched hiding near cover, checkpoint respawn, synthesised audio and persistent mute.
+- Floor tiles, walls, cover, tunnel ceilings and zombie body parts use instanced rendering. Low-power/coarse-pointer/ChromeOS mode disables shadows and antialiasing and caps pixel density. The reviewed scene reports 34 draw calls and about 22,700 triangles.
+- Added the portal tile/thumbnail, architecture and component documentation, a full game plan and five responsive visual baselines covering welcome, desktop, phone touch controls, short landscape checkpoint and question-specific Learn.
+- `npm run test:all` passes 128 tests and validates 212 local links/files. Coverage includes 300 deterministic question sets, hidden-answer confirmation, map path reachability, collision/low clearance, five-checkpoint completion, checkpoint recovery, deterministic swarm pooling and crouch hiding.
+- GitHub commit `2072d8b` and Netlify production deploy `6a96b67b1b7dc26e589148f3` published the release. Production portal, HTML, controller, engine, map and thumbnail return HTTP 200; the public WebGL diagnostic reports ready with no runtime error.
+
+## Current resume point
+
+EduGames now has four active Three.js games. Maths Outbreak is live at `https://edugames-189.netlify.app/games/outbreak.html` and accepts `?year=3|4|5&set=0..`. Preserve the hidden-answer counter, neutral incorrect retry, five-checkpoint order, map-grid collision authority and instanced low-power path when extending it. Physical Chromebook/tablet performance, keyboard-only accessibility and child playtesting remain required before a classroom pilot.
