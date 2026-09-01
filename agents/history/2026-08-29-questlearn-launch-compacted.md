@@ -522,3 +522,15 @@ The four active discovery thumbnails now share high-saturation, polished 3D key-
 ## Latest resume point
 
 Keep all Maths Outbreak movement, damage bearings and positional audio derived from the shared camera-relative basis in `outbreak-engine.js`; do not reintroduce inline yaw formulas in the renderer adapter.
+
+## Skybound compact mobile question HUD
+
+- Reworked the portrait question card into a shallow persistent strip: Year/strand metadata, the prompt, Learn/Hint and a two-column left/right answer legend now remain visible without stacking over half the playfield. The redundant jump instruction is hidden on narrow screens.
+- Learn and Hint keep their teaching detail on demand in a separately bounded, scrollable panel. Its safe bottom boundary reserves the analogue-stick and Jump region rather than covering gameplay controls.
+- Added a compact short-landscape variant with inline support actions and horizontal answers. Documentation and a CSS regression test now preserve both responsive contracts.
+- Visual QA covered the user's short 393 × 550 browser viewport, 390 × 844 portrait and 844 × 390 landscape. The public 393 × 550 capture leaves the bridge, avatar, both answer tiles, stick and Jump fully visible.
+- `npm run test:all` passes 136 tests and validates 217 local files. GitHub commit `b31986d` and Netlify production deploy `6a96e81e11fab3be3ba4af65` published the correction.
+
+## Latest resume point
+
+Skybound's mobile question HUD is intentionally persistent but shallow. Keep the two physical answer tiles visible, preserve the two-column narrow-screen legend, and put longer teaching content in the bounded on-demand panel. The live route remains `https://edugames-189.netlify.app/games/skybound.html`.
