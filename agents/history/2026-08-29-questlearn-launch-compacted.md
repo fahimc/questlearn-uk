@@ -476,3 +476,15 @@ Maths Outbreak is live at `https://edugames-189.netlify.app/games/outbreak.html`
 ## Latest resume point
 
 Maths Outbreak shots must remain routed through `resolveOutbreakShotIntersections`; do not reduce `shotMeshes` back to the torso batch. Each visible zombie body mesh owns an `outbreakHitZone`, while map blockers own `blocksOutbreakShots`. The live game is `https://edugames-189.netlify.app/games/outbreak.html`.
+
+## Maths Outbreak upright FPS camera correction
+
+- Replaced the default Three.js `XYZ` Euler orientation with the conventional first-person `YXZ` order. Yaw now rotates only around the upright world axis, pitch only looks up/down and camera roll is reset to zero every frame.
+- Added renderer-independent `site/games/outbreak-look.js`. Mouse and touch both route through `updateOutbreakLook`, which normalises yaw after repeated full turns and clamps pitch to ±(π/2 − 0.12), about 83°, before inversion is possible.
+- Added diagnostics for camera order, yaw, pitch and roll. Real browser touch tests dragged left/up and right/down, confirming independent expected direction changes, an exact return to the starting orientation, `YXZ` order, zero roll and safe extreme-pitch clamping.
+- `npm run test:all` passes 132 tests and validates 216 local files. Production reports ready with no runtime error and the same four-way touch behaviour.
+- GitHub commit `66636b5` and Netlify production deploy `6a96c638466cb59170358656` published the correction.
+
+## Latest resume point
+
+Maths Outbreak camera rotation must remain `YXZ` with zero roll. Keep both pointer-lock mouse input and touch drag routed through `updateOutbreakLook`; do not directly mutate Euler components or remove the pitch clamp. The live game is `https://edugames-189.netlify.app/games/outbreak.html`.
