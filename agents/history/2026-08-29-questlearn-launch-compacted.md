@@ -585,3 +585,15 @@ The EduGames homepage now begins with the safety promise followed by five timed 
 ## Latest resume point
 
 Maths Outbreak now uses the `gridlock-garden-keyart-v2` art plan. Keep `outbreak-map.js` authoritative for collision/navigation, `zombieHitMeshes` restricted to the four visible body zones and the blaster counter synchronised through `updateHud`. Add future repeated scenery through instancing and preserve the coarse-pointer low-power reductions. The live game remains `https://edugames-189.netlify.app/games/outbreak.html`.
+
+## Maths Outbreak child-readable actions
+
+- Replaced the abbreviated world sign `CP` with the full label `CHECKPOINT` and resized/repositioned the sign and posts so its complete wording remains visible while entering the pad.
+- Renamed the count submission from the vague `Confirm` action to `Check answer`. The persistent desktop action displays an `ENTER` keycap; the nearby checkpoint action displays `E`. Mission copy, onboarding, Help, canvas accessibility text and documentation repeat the same action/key mapping.
+- Kept touch layouts concise: plain-language Check answer and Enter checkpoint buttons remain visible, while keyboard-only keycaps are hidden. A deterministic `input=desktop` preview mode makes the desktop contract reproducible in headless visual QA.
+- Added a desktop checkpoint baseline and refreshed the desktop gameplay and short-landscape checkpoint references. Production captures verify the full CHECKPOINT sign, Check answer/Enter and Enter checkpoint/E actions.
+- `npm run test:all` passes 149 tests and validates 234 local links/files. GitHub commit `23699ff` and Netlify production deploy `6a973fdf7e385d8c1e4e0f7c` published the correction.
+
+## Latest resume point
+
+Keep the child-facing terms `Check answer` and `Enter checkpoint` aligned across mission copy, action buttons, onboarding and Help. Desktop must retain the visible `ENTER` and `E` keycaps; touch must retain clear labels without keyboard-only clutter. Do not reintroduce the `CP` abbreviation. The live route remains `https://edugames-189.netlify.app/games/outbreak.html`.
