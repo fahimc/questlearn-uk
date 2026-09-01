@@ -40,7 +40,7 @@
 
     <div class="oneblock-touch" aria-label="Touch game controls">
       <div class="analog-stick" data-joystick aria-label="Move"><i></i><span data-stick-knob></span></div>
-      <div class="oneblock-actions"><button type="button" data-action="mine" aria-label="Mine targeted block"><span>⛏</span><b>Mine</b></button><button type="button" data-action="place" aria-label="Place selected block"><span>＋</span><b>Place</b></button><button class="jump-action" type="button" data-action="jump" aria-label="Jump"><span>↑</span><b>Jump</b></button></div>
+      <div class="oneblock-actions"><button type="button" data-action="mine" aria-label="Mine targeted block"><span>⛏</span><b>Mine</b></button><button type="button" data-action="place" aria-label="Place selected block beside the targeted edge"><span>＋</span><b>Place</b></button><button class="sneak-action" type="button" data-action="sneak" aria-label="Toggle sneak edge protection" aria-pressed="false"><span>⇣</span><b>Sneak</b></button><button class="jump-action" type="button" data-action="jump" aria-label="Jump"><span>↑</span><b>Jump</b></button></div>
     </div>
 
     <section class="world-intro" data-intro aria-labelledby="oneblock-title">
@@ -52,7 +52,7 @@
         <div class="blocksmith-year-grid" data-year-grid aria-label="Choose a school year"><button type="button" data-year-choice="3"><b>Year 3</b><small>Ages 7–8</small></button><button type="button" data-year-choice="4"><b>Year 4</b><small>Ages 8–9</small></button><button type="button" data-year-choice="5"><b>Year 5</b><small>Ages 9–10</small></button></div>
         <p class="selector-label">Choose your subject</p>
         <div class="blocksmith-subject-grid" data-subject-grid aria-label="Choose a subject"><button type="button" data-subject-choice="english"><i>Aa</i><span><b>English</b><small>Words and reading</small></span></button><button type="button" data-subject-choice="maths"><i>×</i><span><b>Maths</b><small>Number and reasoning</small></span></button><button type="button" data-subject-choice="science"><i>⚗</i><span><b>Science</b><small>Ideas and evidence</small></span></button></div>
-        <div class="oneblock-intro-guide"><span><b class="desktop-guide">WASD + mouse</b><b class="touch-guide">Stick + drag</b><small>Move and look</small></span><span><b>⛏ then ＋</b><small>Mine and build</small></span><span><b>10 phases</b><small>10 questions</small></span></div>
+        <div class="oneblock-intro-guide"><span><b class="desktop-guide">WASD + mouse</b><b class="touch-guide">Stick + drag</b><small>Move and look</small></span><span><b class="desktop-guide">Shift + ＋</b><b class="touch-guide">Sneak + ＋</b><small>Build safely at edges</small></span><span><b>10 phases</b><small>10 questions</small></span></div>
         <button class="voxel-primary" type="button" data-start>Start on one block</button>
         <small>No adverts, no public chat and no account needed. Progress stays on this device.</small>
       </div>
@@ -71,7 +71,7 @@
       </form>
     </dialog>
 
-    <dialog class="pause-dialog" data-help-dialog><form method="dialog" class="pause-card oneblock-help"><span>Getting started</span><h2>Turn one block into an island.</h2><ol><li>Look down and Mine the glowing centre block. It returns straight away.</li><li>Open ▦, choose a block you own, then Place it beside your island.</li><li>Reach 10 mined blocks and solve the question gate. Learn and Hint are always optional.</li><li>If you fall, you return to the centre without losing your work.</li></ol><button class="voxel-primary" value="resume">Back to building</button></form></dialog>
+    <dialog class="pause-dialog" data-help-dialog><form method="dialog" class="pause-card oneblock-help"><span>Getting started</span><h2>Turn one block into an island.</h2><ol><li>Look down and Mine the glowing centre block. It returns straight away.</li><li>Choose an owned block. Look down at the top or side of an island block and press Place—the nearest edge extends automatically.</li><li>Hold Shift on desktop or switch on Sneak on touch to stop at ledges while you build.</li><li>Reach 10 mined blocks and solve the question gate. Learn and Hint are always optional.</li><li>If you jump or step into the void, you return to the centre without losing your work.</li></ol><button class="voxel-primary" value="resume">Back to building</button></form></dialog>
     <dialog class="pause-dialog" data-pause-dialog><form method="dialog" class="pause-card"><span>Sky island paused</span><h2>Your island is safe.</h2><p>The phase, inventory and blocks you placed are saved on this device.</p><button class="voxel-primary" value="resume">Keep building</button><a href="../index.html">Finish for now</a></form></dialog>
     <dialog class="pause-dialog oneblock-complete" data-complete-dialog><form method="dialog" class="pause-card"><span>Ten knowledge gates opened</span><h2>Afterglow unlocked!</h2><p>Your centre block now mixes resources from every phase. Keep building, or begin a fresh set of ten curriculum questions.</p><button class="voxel-primary" value="continue">Keep building</button><a data-next-expedition href="oneblock.html">Start the next expedition</a></form></dialog>
 

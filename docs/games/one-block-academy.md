@@ -17,8 +17,9 @@ This is an original EduGames browser game inspired by the general one-block sky-
 
 ## Interaction
 
-- Desktop: WASD/arrows, mouse look, left-click Mine, right-click Place, Space Jump, number keys for the hotbar and Escape Pause.
-- Touch: independent analogue stick, drag-to-look world, Mine, Place and Jump buttons, plus a block inventory drawer.
+- Desktop: WASD/arrows, mouse look, left-click Mine, right-click Place, Space Jump, hold Shift to sneak safely at an edge, number keys for the hotbar and Escape Pause.
+- Touch: independent analogue stick, drag-to-look world, Mine, Place, Sneak and Jump buttons, plus a block inventory drawer.
+- Placing against a side face uses normal voxel adjacency. Looking down at the top of a block uses the nearest visible edge—or the view direction at its centre—so a child can create the first horizontal bridge without stepping into the void.
 - Mining the renewable centre block grants its visible material and immediately replaces it.
 - Placing consumes one owned block and snaps to the voxel grid.
 - Falling into the void respawns the player on the centre block and preserves the island, inventory, phase and learning progress.

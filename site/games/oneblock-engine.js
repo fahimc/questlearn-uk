@@ -28,6 +28,28 @@ export function oneBlockMaterialAt({phaseIndex=0,totalMined=0,seed=7319}={}){
 
 export function oneBlockPhase(run){return ONEBLOCK_PHASES[run.phaseIndex]||Object.freeze({id:'afterglow',name:'Afterglow',accent:'#ffe36c',blocks:afterglowBlocks})}
 
+export function resolveOneBlockPlacement({source,normal,hitPoint,yaw=0}={}){
+  if(!source||!normal)return null;
+  const cell={x:Math.round(Number(source.x)||0),y:Math.round(Number(source.y)||0),z:Math.round(Number(source.z)||0)},face={x:Number(normal.x)||0,y:Number(normal.y)||0,z:Number(normal.z)||0};
+  if(Math.abs(face.x)>.5)return Object.freeze({...cell,x:cell.x+Math.sign(face.x)});
+  if(Math.abs(face.z)>.5)return Object.freeze({...cell,z:cell.z+Math.sign(face.z)});
+  if(face.y<-.5)return Object.freeze({...cell,y:cell.y-1});
+  const offsetX=(Number(hitPoint?.x)||cell.x)-cell.x,offsetZ=(Number(hitPoint?.z)||cell.z)-cell.z;
+  if(Math.max(Math.abs(offsetX),Math.abs(offsetZ))>.16){
+    if(Math.abs(offsetX)>Math.abs(offsetZ))return Object.freeze({...cell,x:cell.x+(offsetX>=0?1:-1)});
+    return Object.freeze({...cell,z:cell.z+(offsetZ>=0?1:-1)});
+  }
+  const forwardX=-Math.sin(Number(yaw)||0),forwardZ=-Math.cos(Number(yaw)||0);
+  if(Math.abs(forwardX)>Math.abs(forwardZ))return Object.freeze({...cell,x:cell.x+(forwardX>=0?1:-1)});
+  return Object.freeze({...cell,z:cell.z+(forwardZ>=0?1:-1)});
+}
+
+export function oneBlockSneakAllowsStep({grounded=true,nextSupport=-100,feetHeight=0}={}){
+  if(!grounded)return true;
+  const support=Number(nextSupport),feet=Number(feetHeight);
+  return Number.isFinite(support)&&Number.isFinite(feet)&&support>-50&&support>=feet-.65;
+}
+
 export function createOneBlockRun({seed=7319,inventory,phaseIndex=0,totalMined=0,minedInPhase=0,challengePending=false,completed=false,attempts=0}={}){
   const safePhase=Math.max(0,Math.min(ONEBLOCK_PHASES.length,Math.floor(Number(phaseIndex)||0))),safeTotal=Math.max(0,Math.floor(Number(totalMined)||0));
   return Object.freeze({version:1,seed:cleanSeed(seed),phaseIndex:safePhase,totalMined:safeTotal,minedInPhase:safePhase>=ONEBLOCK_PHASES.length?Math.max(0,Math.floor(Number(minedInPhase)||0)):Math.max(0,Math.min(ONEBLOCK_PHASE_GOAL,Math.floor(Number(minedInPhase)||0))),challengePending:Boolean(challengePending)&&safePhase<ONEBLOCK_PHASES.length,completed:Boolean(completed)||safePhase>=ONEBLOCK_PHASES.length,attempts:Math.max(0,Math.floor(Number(attempts)||0)),inventory:Object.freeze(cleanInventory(inventory)),currentBlock:oneBlockMaterialAt({phaseIndex:safePhase,totalMined:safeTotal,seed})});

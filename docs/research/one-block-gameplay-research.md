@@ -11,6 +11,7 @@ This note studies the reusable game loop behind Minecraft's one-block map genre 
 - Progress is readable: mining fills a phase, the block pauses/upgrades, and a new resource family becomes available.
 - Chests, rare items, passive creatures and danger events interrupt the repeated mining action. Their purpose is surprise and pacing rather than replacing the core loop.
 - Collected blocks are useful because the player must build a safer, larger island. Falling is a natural risk, and returning to the growing island keeps failure recoverable.
+- The original uses normal Minecraft construction: crouch/sneak prevents the player walking off a ledge, then targeting an exposed side face places a collected block in the adjacent grid cell. This is how the single foothold becomes a platform; mining alone does not expand the island.
 - The original map documents ten main phases followed by an open-ended mixed after-phase. Its creator also says modified copies may not be redistributed, so EduGames must implement only the abstract loop with original content.
 
 Sources:
@@ -46,6 +47,7 @@ EduGames uses ten new phase names and original weighted resource tables: Seedlin
 
 - The canvas owns the viewport; menus and teaching panels are bounded overlays.
 - Analogue movement, Mine, Place and Jump use independent pointers.
+- Touch provides a persistent Sneak toggle while desktop uses held Shift. Top-face placement resolves to the nearest horizontal edge, giving younger touch players a forgiving equivalent to precisely targeting the thin side of a single block.
 - The question gate pauses movement so reading does not compete with survival.
 - The HUD must leave the renewable block and crosshair visible at 320 × 568 and 390 × 844.
 - The world stores only player-placed edits and inventory. A small island should use individual voxel meshes; repeated clouds and particles should be instanced or pooled.
