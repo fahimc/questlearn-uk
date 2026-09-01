@@ -15,6 +15,8 @@ Solve a short maths equation, tag exactly that many blocky zombies, confirm the 
 
 The answer is never displayed in the prompt, tagged counter or Learn panel. Learn is generated for the current operation and explains a strategy with three worked steps. A death returns the learner to the most recent secured checkpoint and restarts only the current count.
 
+The hitscan tests the complete block-zombie silhouette—head, torso, arms and legs. Every zone tags the same zombie once, headshots receive explicit feedback, and the nearest wall, crate or service-tunnel surface blocks a shot before any body part behind it.
+
 ## Year progression
 
 | Year | Typical operations | Intended strategy |

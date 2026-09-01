@@ -3,6 +3,10 @@ import { canOccupyOutbreakWorld, hasOutbreakLineOfSight, outbreakCheckpoints, ou
 const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
 function seeded(seed){let value=2166136261;for(const character of String(seed)){value^=character.charCodeAt(0);value=Math.imul(value,16777619)}return()=>{value+=0x6d2b79f5;let t=value;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
 
+export const OUTBREAK_ZOMBIE_HIT_ZONES=Object.freeze(['head','torso','arms','legs']);
+const outbreakHitZones=new Set(OUTBREAK_ZOMBIE_HIT_ZONES);
+export function resolveOutbreakShotIntersections(intersections,{maxDistance=30}={}){if(!Array.isArray(intersections))return{kind:'miss'};const ordered=[...intersections].filter(hit=>Number.isFinite(hit?.distance)&&hit.distance<=maxDistance).sort((a,b)=>a.distance-b.distance);for(const hit of ordered){if(hit.object?.userData?.blocksOutbreakShots)return{kind:'blocked',distance:hit.distance};const zone=hit.object?.userData?.outbreakHitZone;if(outbreakHitZones.has(zone)&&Number.isInteger(hit.instanceId))return{kind:'zombie',index:hit.instanceId,zone,distance:hit.distance}}return{kind:'miss'}}
+
 export function createOutbreakRun(rounds){if(!Array.isArray(rounds)||rounds.length!==5)throw new TypeError('Five Outbreak rounds are required.');return{rounds,levelIndex:0,phase:'hunt',eliminated:0,health:100,checkpointIndex:0,complete:false,deaths:0}}
 export function currentOutbreakRound(run){return run.rounds[run.levelIndex]}
 export function eliminateOutbreakZombie(run){if(run.phase!=='hunt')return{...run};const eliminated=Math.min(currentOutbreakRound(run).swarmSize,run.eliminated+1);return{...run,eliminated}}
