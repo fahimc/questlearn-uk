@@ -511,3 +511,14 @@ Keep damage bearing based on player yaw rather than camera Euler state, preserve
 ## Latest resume point
 
 The four active discovery thumbnails now share high-saturation, polished 3D key-art direction with titles kept in HTML. Keep the full generated source in `docs/images/generated/` and serve an optimized derivative from `site/assets/edugames/` when refreshing future artwork.
+
+## Maths Outbreak camera-relative left/right correction
+
+- Corrected the Three.js right-axis sign after horizontal turns. The camera basis is now consistently forward `(-sin(yaw), -cos(yaw))` and right `(cos(yaw), -sin(yaw))`.
+- Added renderer-independent `outbreakMovementVector` and routed desktop/touch strafing through it. Damage labels, indicator arrows and stereo warning pans use the same corrected basis, so movement and feedback remain aligned at north, east and west headings.
+- Added cardinal-heading regression tests plus deterministic `preview=damage-left` and `preview=damage-right` fixtures. Local and production short-landscape captures show the left arrow/label on the left and right arrow/label on the right.
+- `npm run test:all` passes 135 tests and validates 217 local files. GitHub commit `aba8b5a` and Netlify production deploy `6a96e52dd7e92eb062bd1a48` published the correction.
+
+## Latest resume point
+
+Keep all Maths Outbreak movement, damage bearings and positional audio derived from the shared camera-relative basis in `outbreak-engine.js`; do not reintroduce inline yaw formulas in the renderer adapter.
