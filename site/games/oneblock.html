@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#6fd9ee">
+  <meta name="description" content="Mine one renewable sky block, solve Year 3–5 curriculum challenges and build a growing island.">
+  <title>One Block Academy · EduGames</title>
+  <link rel="stylesheet" href="../assets/game.css">
+  <link rel="stylesheet" href="blocksmith.css">
+  <link rel="stylesheet" href="oneblock.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js"}}</script>
+</head>
+<body class="game-page blocksmith-page oneblock-page">
+  <main class="voxel-game oneblock-game" aria-label="One Block Academy sky-building game">
+    <canvas id="oneBlockCanvas" tabindex="0" aria-label="A first-person sky island. Mine the renewable centre block and build with what you collect."></canvas>
+
+    <header class="voxel-hud oneblock-hud" aria-label="Game status">
+      <a class="voxel-brand" href="../index.html" aria-label="Exit One Block Academy"><span>E</span><b>One Block</b></a>
+      <div class="oneblock-phase-pill"><small>Phase <b data-phase-number>1</b>/10</small><strong data-phase-name>Seedling Sky</strong><i><em data-phase-progress></em></i></div>
+      <div class="voxel-hud-actions">
+        <button class="voxel-icon-button inventory-toggle" type="button" data-inventory-toggle aria-label="Open block inventory" aria-expanded="false"><span aria-hidden="true">▦</span><small data-selected-short>M</small></button>
+        <button class="voxel-icon-button" type="button" data-audio aria-label="Mute sound">🔊</button>
+        <button class="voxel-icon-button" type="button" data-help aria-label="Open getting started guide">?</button>
+        <button class="voxel-icon-button" type="button" data-pause aria-label="Pause game">Ⅱ</button>
+      </div>
+    </header>
+
+    <button class="oneblock-objective" type="button" data-open-challenge aria-live="polite"><span data-core-swatch></span><span><small data-objective-kicker>Renewable block</small><b data-current-block>Moss</b><em><i data-mined-count>0</i>/10 until the next challenge</em></span></button>
+    <div class="crosshair" aria-hidden="true"><i></i><i></i></div>
+    <div class="world-message" data-world-message role="status" aria-live="polite"></div>
+    <div class="void-warning" data-void-warning hidden>Returning to your Knowledge Block…</div>
+
+    <nav class="oneblock-hotbar" data-hotbar aria-label="Block palette"></nav>
+    <aside class="inventory-drawer oneblock-inventory" data-inventory-drawer hidden aria-label="Owned block inventory">
+      <header><div><span>Your sky blocks</span><h2>Choose a building block</h2></div><button type="button" data-inventory-close aria-label="Close block inventory">×</button></header>
+      <p>Every block here came from the renewable centre block or a learning reward.</p>
+      <div class="inventory-grid" data-inventory-grid></div>
+    </aside>
+
+    <div class="oneblock-touch" aria-label="Touch game controls">
+      <div class="analog-stick" data-joystick aria-label="Move"><i></i><span data-stick-knob></span></div>
+      <div class="oneblock-actions"><button type="button" data-action="mine" aria-label="Mine targeted block"><span>⛏</span><b>Mine</b></button><button type="button" data-action="place" aria-label="Place selected block"><span>＋</span><b>Place</b></button><button class="jump-action" type="button" data-action="jump" aria-label="Jump"><span>↑</span><b>Jump</b></button></div>
+    </div>
+
+    <section class="world-intro" data-intro aria-labelledby="oneblock-title">
+      <div class="intro-card oneblock-intro-card">
+        <p class="voxel-eyebrow">A new Blocksmith sky expedition</p>
+        <h1 id="oneblock-title">One block.<br>A whole world.</h1>
+        <p>Mine the renewable Knowledge Block, build a safe island and solve one question to unlock each new resource phase.</p>
+        <p class="selector-label">Choose your year</p>
+        <div class="blocksmith-year-grid" data-year-grid aria-label="Choose a school year"><button type="button" data-year-choice="3"><b>Year 3</b><small>Ages 7–8</small></button><button type="button" data-year-choice="4"><b>Year 4</b><small>Ages 8–9</small></button><button type="button" data-year-choice="5"><b>Year 5</b><small>Ages 9–10</small></button></div>
+        <p class="selector-label">Choose your subject</p>
+        <div class="blocksmith-subject-grid" data-subject-grid aria-label="Choose a subject"><button type="button" data-subject-choice="english"><i>Aa</i><span><b>English</b><small>Words and reading</small></span></button><button type="button" data-subject-choice="maths"><i>×</i><span><b>Maths</b><small>Number and reasoning</small></span></button><button type="button" data-subject-choice="science"><i>⚗</i><span><b>Science</b><small>Ideas and evidence</small></span></button></div>
+        <div class="oneblock-intro-guide"><span><b class="desktop-guide">WASD + mouse</b><b class="touch-guide">Stick + drag</b><small>Move and look</small></span><span><b>⛏ then ＋</b><small>Mine and build</small></span><span><b>10 phases</b><small>10 questions</small></span></div>
+        <button class="voxel-primary" type="button" data-start>Start on one block</button>
+        <small>No adverts, no public chat and no account needed. Progress stays on this device.</small>
+      </div>
+    </section>
+
+    <dialog class="quest-dialog oneblock-challenge" data-challenge-dialog>
+      <form method="dialog" class="quest-card">
+        <header><div class="quest-glyph" data-question-number>01</div><div><span data-question-scope>Year 3 Maths</span><h2 data-question-title>Knowledge gate</h2></div><button class="dialog-close" value="cancel" aria-label="Close question">×</button></header>
+        <div class="quest-copy"><p class="quest-kicker" data-question-strand>Level 1</p><p data-question-prompt></p></div>
+        <div class="oneblock-answer-grid" data-answer-grid></div>
+        <div class="quest-support-actions"><button type="button" data-learn-toggle aria-expanded="false">📘 Learn</button><button type="button" data-hint-toggle aria-expanded="false">💡 Hint</button></div>
+        <section class="quest-support-panel" data-learn-panel hidden><h3 data-learn-title>Learn this</h3><p data-learn-text></p><ol data-learn-steps></ol><p class="support-example" data-learn-example></p><b data-learn-check></b></section>
+        <section class="quest-support-panel hint-panel" data-hint-panel hidden><h3>Try this hint</h3><p data-question-hint></p></section>
+        <p class="oneblock-answer-feedback" data-answer-feedback role="status" aria-live="polite"></p>
+        <footer><button class="voxel-secondary" value="cancel">Look at my island</button><span>Choose a block answer to upgrade the core.</span></footer>
+      </form>
+    </dialog>
+
+    <dialog class="pause-dialog" data-help-dialog><form method="dialog" class="pause-card oneblock-help"><span>Getting started</span><h2>Turn one block into an island.</h2><ol><li>Look down and Mine the glowing centre block. It returns straight away.</li><li>Open ▦, choose a block you own, then Place it beside your island.</li><li>Reach 10 mined blocks and solve the question gate. Learn and Hint are always optional.</li><li>If you fall, you return to the centre without losing your work.</li></ol><button class="voxel-primary" value="resume">Back to building</button></form></dialog>
+    <dialog class="pause-dialog" data-pause-dialog><form method="dialog" class="pause-card"><span>Sky island paused</span><h2>Your island is safe.</h2><p>The phase, inventory and blocks you placed are saved on this device.</p><button class="voxel-primary" value="resume">Keep building</button><a href="../index.html">Finish for now</a></form></dialog>
+    <dialog class="pause-dialog oneblock-complete" data-complete-dialog><form method="dialog" class="pause-card"><span>Ten knowledge gates opened</span><h2>Afterglow unlocked!</h2><p>Your centre block now mixes resources from every phase. Keep building, or begin a fresh set of ten curriculum questions.</p><button class="voxel-primary" value="continue">Keep building</button><a data-next-expedition href="oneblock.html">Start the next expedition</a></form></dialog>
+
+    <div class="webgl-warning" data-webgl-warning hidden><b>The 3D sky island could not start.</b><span>Try a current browser with WebGL enabled and an internet connection.</span></div>
+    <div class="sr-only" data-feedback aria-live="polite"></div>
+  </main>
+  <script type="module" src="oneblock.js"></script>
+  <script>setTimeout(()=>{if(!document.documentElement.dataset.oneblockReady)document.querySelector('[data-webgl-warning]').hidden=false},8000)</script>
+</body>
+</html>

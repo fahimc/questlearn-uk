@@ -8,7 +8,7 @@ Confident, playful and calm. The visual language uses chunky geometry and tactil
 
 The public game-discovery layer is named **EduGames**. Its original stacked-block `E` mark uses mint, yellow and indigo against a deep navy portal shell. Search, subject shortcuts, a large featured game and compact thumbnail shelves provide the fast discovery rhythm of a modern browser-game portal, while safety promises remain visible in the header and opening viewport.
 
-Original generated source artwork lives in `docs/images/generated/`; optimised web-ready derivatives live in `site/assets/edugames/`. The active set includes the EduGames mark plus covers for Blocksmith Worlds, Skybound Academy, LexiClimb Tower and Maths Outbreak; the earlier Chronicle cover is retained as archive material. The covers contain no third-party game branding or copied characters; titles and status labels remain accessible HTML overlays.
+Original generated source artwork lives in `docs/images/generated/`; optimised web-ready derivatives live in `site/assets/edugames/`. The active set includes the EduGames mark plus covers for Blocksmith Worlds, One Block Academy, Skybound Academy, LexiClimb Tower and Maths Outbreak; the earlier Chronicle cover is retained as archive material. The covers contain no third-party game branding or copied characters; titles and status labels remain accessible HTML overlays.
 
 ## Foundations
 

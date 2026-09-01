@@ -44,6 +44,14 @@
 - Desktop retains its fast numbered hotbar and letter tray while the mobile drawer keeps every item at a readable touch target.
 - Active quest borders pulse in the 3D world while the compact current-quest tile remains available in the HUD.
 
+## One Block Academy
+
+- Portrait keeps the phase meter and renewable-block counter in two shallow safe-area rows, with the analogue stick at bottom-left and Mine, Place and Jump at bottom-right.
+- The selected block hotbar remains centred on desktop and short landscape; portrait moves the full inventory into a paused grid drawer so it cannot cover the core block or movement controls.
+- Learning gates pause traversal and use a bounded two-choice modal. Learn and Hint expand inside the same scrollable surface, so they never push the close or return-to-island action outside the viewport.
+- A locked objective button stays available in the HUD until the gate is answered, preventing a dismissed question from blocking progress.
+- Low-power mode bounds pixel density and visual effects while preserving the renewable-block animation, building, physics and all curriculum interactions.
+
 ## Skybound glass run
 
 - The question is a compact DOM HUD over the 3D scene; on portrait phones its metadata, prompt, Learn/Hint actions and two-column answer legend use roughly one short strip rather than stacking into half the viewport. The two answers remain physically attached to the left and right glass tiles.

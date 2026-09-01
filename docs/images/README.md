@@ -35,6 +35,10 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Skybound glass run, desktop, 1280 × 720 | [PNG](responsive/skybound-desktop.png) |
 | Skybound Learn support, desktop, 1280 × 720 | [PNG](responsive/skybound-learn-desktop.png) |
 | Skybound short landscape, 844 × 390 | [PNG](responsive/skybound-short-landscape.png) |
+| One Block island, desktop, 1280 × 720 | [PNG](responsive/oneblock-desktop.png) |
+| One Block touch play, mobile, 390 × 844 | [PNG](responsive/oneblock-mobile.png) |
+| One Block learning gate, mobile, 360 × 740 | [PNG](responsive/oneblock-challenge-mobile.png) |
+| One Block short landscape, 844 × 390 | [PNG](responsive/oneblock-short-landscape.png) |
 | LexiClimb world selector, mobile, 390 × 844 | [PNG](responsive/wordwall-worlds-mobile.png) |
 | LexiClimb world selector, short landscape, 844 × 390 | [PNG](responsive/wordwall-worlds-landscape.png) |
 | LexiClimb Word Quest course, mobile, 390 × 844 | [PNG](responsive/wordwall-mobile.png) |
@@ -74,4 +78,4 @@ These captures cover visual regression/reference needs. Production acceptance st
 
 ## Generated EduGames artwork
 
-Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The active set contains the EduGames mark and thumbnails for Blocksmith, Skybound, LexiClimb and Maths Outbreak; the earlier Chronicle artwork remains archived in the repository. The Maths Outbreak key art uses the same cinematic, colourful 3D language as the other active games while keeping its tagger and zombies playful and non-violent. Visible titles remain HTML rather than baked into the artwork.
+Original full-size generated sources are stored in `generated/`. The site uses smaller PNG/WebP derivatives from `site/assets/edugames/` for fast delivery. The active set contains the EduGames mark and thumbnails for Blocksmith, One Block Academy, Skybound, LexiClimb and Maths Outbreak; the earlier Chronicle artwork remains archived in the repository. One Block Academy uses original sky-island key art with a renewable learning core rather than third-party game textures or branding. The Maths Outbreak key art uses the same cinematic, colourful 3D language as the other active games while keeping its tagger and zombies playful and non-violent. Visible titles remain HTML rather than baked into the artwork.

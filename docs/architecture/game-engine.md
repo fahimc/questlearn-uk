@@ -9,7 +9,7 @@ Use a progressive web app shell with DOM-based learning UI. Games are lazy-loade
 - TypeScript for production shared contracts.
 - Web Audio with explicit independent controls; service worker for downloaded missions.
 
-The playable Blocksmith, Skybound, LexiClimb and Maths Outbreak prototypes use Three.js from a pinned import map while keeping game rules in renderer-independent modules. Chronicle remains available as an earlier lightweight DOM/canvas prototype. All routes remain static-host compatible on GitHub Pages and Netlify.
+The playable Blocksmith, One Block Academy, Skybound, LexiClimb and Maths Outbreak prototypes use Three.js from a pinned import map while keeping game rules in renderer-independent modules. Chronicle remains available as an earlier lightweight DOM/canvas prototype. All routes remain static-host compatible on GitHub Pages and Netlify.
 
 ## Runtime layers
 
@@ -38,6 +38,8 @@ flowchart TB
 Detect broad capability from frame timing, not device fingerprinting. Offer a manual “simpler graphics” control.
 
 Blocksmith's current prototype maps capable desktops to its richer tier and maps coarse-pointer devices, ChromeOS, four-core-or-lower devices and devices reporting 4 GB memory or less to its low-power tier. The runtime uses procedural, seeded content in both tiers; quality changes only rendering cost. Terrain is divided into cullable instance chunks, repeated voxel props share instance batches, shadows and pixel density are bounded, distant actors stop animating, and non-render UI work is throttled. The low tier renders every animation frame rather than imposing an uneven fractional frame cap, while player physics uses fixed 60 Hz substeps and catches up safely after a slow frame. Query-string tier overrides make browser profiling and screenshot regression deterministic. A production build should add sustained frame-time sampling and expose a child-friendly graphics switch without changing saved world data.
+
+One Block Academy reuses Blocksmith's voxel textures, first-person collision, fixed-step gravity, analogue input and device quality selection around a smaller renderer-independent state machine. `oneblock-engine.js` owns the seeded weighted material sequence, ten ten-mine phases, challenge locks, phase rewards, inventory spending and bounded save format. The Three.js adapter keeps one renewable core block in the world, restores it immediately after mining, lets the learner expand a grid-snapped floating island, and respawns void falls without discarding progress. `skybound-questions.js` adapts the shared 900-question registry into one deterministic two-choice learning gate per phase; a selected year/subject/set therefore receives ten non-repeating questions with tailored Learn and Hint support. After ten successful gates, Afterglow mode keeps the renewable building loop open.
 
 Skybound reuses the same capability selector and fixed 60 Hz simulation. Checkpoints, posts and clouds are instanced; only the twenty stateful glass tiles and the small block-character rig remain individual meshes. `skybound-questions.js` adapts the shared 900-question registry into ten deterministic two-option physical choices for a selected Year 3–5 and English/Maths/Science scope. Ten sets partition all 100 records in that scope without source repetition. Long options use wrapped world-space signs plus an accessible HUD legend. The renderer-independent bridge state machine remains the authority for answer lanes, falls, retries, checkpoint progression and completion.
 
