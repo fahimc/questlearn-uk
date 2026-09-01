@@ -56,6 +56,7 @@ Generated with `npm run screenshots` from the live HTML/CSS components, not hand
 | Maths Outbreak tiled arena, desktop, 1280 × 720 | [PNG](responsive/outbreak-gameplay-desktop.png) |
 | Maths Outbreak touch controls, mobile, 390 × 844 | [PNG](responsive/outbreak-gameplay-mobile.png) |
 | Maths Outbreak expressive key-art zombie and number blaster, 1280 × 720 | [PNG](responsive/outbreak-keyart-zombie-desktop.png) |
+| Maths Outbreak attached rotating number block label, 800 × 600 | [PNG](responsive/outbreak-math-tile-desktop.png) |
 | Maths Outbreak named checkpoint and keyboard action, desktop, 1280 × 720 | [PNG](responsive/outbreak-checkpoint-desktop.png) |
 | Maths Outbreak checkpoint, short landscape, 844 × 390 | [PNG](responsive/outbreak-checkpoint-mobile.png) |
 | Maths Outbreak question-specific Learn panel, desktop, 1280 × 720 | [PNG](responsive/outbreak-learn-desktop.png) |

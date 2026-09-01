@@ -39,7 +39,10 @@ function illustratedTile(text,{fill='#20c6c7',glow=0x20c6c7}={}){
   const canvas=document.createElement('canvas');canvas.width=256;canvas.height=256;const context=canvas.getContext('2d');
   context.fillStyle='rgba(255,255,255,.13)';context.roundRect(11,11,234,234,38);context.fill();context.strokeStyle='rgba(255,255,255,.9)';context.lineWidth=11;context.stroke();
   context.fillStyle='#fff';context.font='900 132px Segoe UI';context.textAlign='center';context.textBaseline='middle';context.fillText(text,128,132);
-  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;const face=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthWrite:false}));face.position.z=.19;face.scale.set(1.18,1.18,1);group.add(body,face);return group;
+  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
+  const faceGeometry=new THREE.PlaneGeometry(1.18,1.18),faceMaterial=new THREE.MeshBasicMaterial({map:texture,transparent:true,depthWrite:false,toneMapped:false});
+  const frontFace=new THREE.Mesh(faceGeometry,faceMaterial),backFace=new THREE.Mesh(faceGeometry,faceMaterial);frontFace.position.z=.176;backFace.position.z=-.176;backFace.rotation.y=Math.PI;
+  group.userData.mathTileFaceMode='attached-planes';group.add(body,frontFace,backFace);return group;
 }
 
 function clockFace(){
