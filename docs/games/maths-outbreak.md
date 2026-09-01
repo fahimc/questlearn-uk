@@ -10,7 +10,7 @@ Solve a short maths equation, tag exactly that many blocky zombies, confirm the 
 2. Read the persistent equation and work out its answer.
 3. Explore the arena, use cover and tag exactly the answer number of zombies.
 4. Stop at the count you believe answers the equation.
-5. Press **Confirm** to test the equation against the tagged count. An incorrect count restarts the current swarm with neutral feedback, without saying whether the count was high or low.
+5. Choose **Check answer** (or press **Enter** on a keyboard) to test the equation against the tagged count. An incorrect count restarts the current swarm with neutral feedback, without saying whether the count was high or low.
 6. Reach the highlighted checkpoint to start the next equation and larger swarm.
 
 The answer is never displayed in the prompt, tagged counter or Learn panel. Learn is generated for the current operation and explains a strategy with three worked steps. A death returns the learner to the most recent secured checkpoint and restarts only the current count.
@@ -48,10 +48,12 @@ Six mapped pads define start plus five sequential checkpoints: South Safe Room, 
 | Tag | click or F | hold Fire |
 | Run | Shift | hold Run |
 | Duck/hide | C | Duck toggle |
-| Confirm | Enter or button | Confirm button |
+| Check answer | Enter or the labelled Check answer button | Check answer button |
 | Enter checkpoint | E or button | checkpoint button |
 
-Pointer capture supports held touch controls, and the entire game disables text selection and touch callouts. The HUD is a responsive grid: brand, equation and essential counters occupy the top row; the mission sits beneath it; thumb controls stay in independent lower corners. On short landscape screens the controls shrink while the checkpoint or Confirm action remains centred and unobstructed.
+Checkpoint signs always spell **Checkpoint** in full rather than using the abbreviation “CP”. On desktop, the persistent action button includes a visible **Enter** keycap while counting zombies, then changes to an **E** keycap when the player is close enough to enter a checkpoint. The mission sentence repeats the same instruction and the welcome/help panels name both actions and keys. Touch layouts keep the plain-language button labels without irrelevant keyboard keycaps.
+
+Pointer capture supports held touch controls, and the entire game disables text selection and touch callouts. The HUD is a responsive grid: brand, equation and essential counters occupy the top row; the mission sits beneath it; thumb controls stay in independent lower corners. On short landscape screens the controls shrink while the checkpoint or Check answer action remains centred and unobstructed.
 
 Camera look follows conventional FPS orientation. Left/right input changes yaw around the upright world axis; up/down input changes pitch; roll always remains zero. Both mouse and touch use the same look resolver, which normalises repeated horizontal turns and clamps vertical look to about 83° before the view can invert. Strafing, damage markers and stereo warning sounds all derive their left/right axis from the same camera basis, so they remain visually correct after any horizontal turn.
 
