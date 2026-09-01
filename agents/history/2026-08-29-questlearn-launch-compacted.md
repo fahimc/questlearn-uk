@@ -597,3 +597,14 @@ Maths Outbreak now uses the `gridlock-garden-keyart-v2` art plan. Keep `outbreak
 ## Latest resume point
 
 Keep the child-facing terms `Check answer` and `Enter checkpoint` aligned across mission copy, action buttons, onboarding and Help. Desktop must retain the visible `ENTER` and `E` keycaps; touch must retain clear labels without keyboard-only clutter. Do not reintroduce the `CP` abbreviation. The live route remains `https://edugames-189.netlify.app/games/outbreak.html`.
+
+## Maths Outbreak rotating number-block alignment
+
+- Fixed the floating maths-token labels drifting away from their coloured blocks. The old label was a camera-facing Three.js sprite inside a rotating group, so its orientation diverged from the block and its local front-face offset appeared beside the geometry.
+- `illustratedTile` now uses centred PlaneGeometry labels attached directly to both the front and back physical faces. The symbol, border and block therefore share the same transform through the complete rotation; the reverse face remains readable while a naturally edge-on block also makes its label edge-on.
+- Added deterministic `preview=math-tile`, a close 800 × 600 baseline and a regression contract for both attached faces. Local captures checked front, edge and reverse rotations; the production close-up matches the aligned local result.
+- `npm run test:all` passes 150 tests and validates 235 local links/files. GitHub commit `25d523a` and Netlify production deploy `6a9741be757ca3d99dc603f7` published the correction.
+
+## Latest resume point
+
+Keep floating maths-token labels as physical attached planes rather than camera-facing sprites. Preserve both front and back faces and the `preview=math-tile` visual fixture when changing token geometry or animation. The live route remains `https://edugames-189.netlify.app/games/outbreak.html`.
