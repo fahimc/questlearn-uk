@@ -559,3 +559,16 @@ EduGames now has five active Three.js titles. One Block Academy is live at `http
 ## Latest resume point
 
 One Block Academy supports safe first-block expansion through both precise side-face placement and forgiving top-face edge placement. Preserve `resolveOneBlockPlacement`, `oneBlockSneakAllowsStep`, desktop held Shift, the touch Sneak toggle and jump-while-sneaking behavior when changing construction or movement.
+
+## EduGames opening hero carousel
+
+- Replaced the static Blocksmith featured panel with a six-slide opening carousel. The first slide is original generated child-safety artwork carrying the exact promise “Kid Safe Games · No Ads · No Chat · Learning Built In”; the next five slides promote Blocksmith Worlds, One Block Academy, Skybound Academy, LexiClimb Tower and Maths Outbreak with accessible HTML copy and direct play links.
+- Added 6.5-second automatic rotation plus previous/next arrows, labelled slide dots, pause/resume, left/right keyboard navigation and horizontal swipe. Automatic motion pauses while hovered, focused or hidden and is disabled for `prefers-reduced-motion`.
+- Kept inactive slide links out of the tab order and disabled live announcements during automatic movement. Manual navigation uses a polite status region.
+- Phone and short-landscape layouts contain the complete safety artwork so its wording is never cropped. Desktop and game slides retain cinematic cover treatment; mobile height was reduced to keep categories and games close to the first viewport.
+- Archived the generated 1774 × 887 source at `docs/images/generated/kid-safe-games-hero-source.png` and serves the optimized 1600 × 900 WebP from `site/assets/edugames/kid-safe-games-hero.webp`. Refreshed all four homepage visual baselines and updated design/image documentation.
+- `npm run test:all` passes 146 tests and validates 232 local links/files. GitHub commit `8bfa725` and Netlify production deploy `6a972c8ea292686bd9f1e7d9` published the carousel. Production mobile safety and desktop timed game slides were visually verified.
+
+## Latest resume point
+
+The EduGames homepage now begins with the safety promise followed by five timed game banners. Preserve the safety slide as the first item, its exact four-part promise, manual pause/navigation controls, focus/visibility/reduced-motion pauses and narrow-screen no-crop treatment when changing portal discovery. The live portal remains `https://edugames-189.netlify.app/`.
